@@ -1,0 +1,5 @@
+[workspace]
+members = [
+    "nrf5340-app-pac",
+    "nrf5340-net-pac",
+]

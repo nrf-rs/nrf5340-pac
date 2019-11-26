@@ -1,0 +1,27 @@
+[package]
+version = "0.1.0"
+authors = [
+    "Jonas Schievink <jonasschievink@gmail.com>",
+]
+description = "Peripheral access API for the nRF5340 application core"
+documentation = "https://docs.rs/nrf5340-app-pac"
+keywords = ["no-std", "arm", "cortex-m", "nrf53", "nrf5240"]
+categories = ["no-std", "embedded"]
+license = "0BSD"
+name = "nrf5340-app-pac"
+repository = "https://github.com/nrf-rs/nrf5340-pac"
+edition = "2018"
+
+[dependencies]
+bare-metal = "0.2.4"
+vcell = "0.1"
+cortex-m = ">= 0.5.8, < 0.7"
+
+[dependencies.cortex-m-rt]
+optional = true
+version = "0.6.8"
+
+[features]
+rt = ["cortex-m-rt/device"]
+application-core = []
+network-core = []

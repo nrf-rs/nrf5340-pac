@@ -1,0 +1,48 @@
+#[doc = "Reader of register VREQHREADY"]
+pub type R = crate::R<u32, super::VREQHREADY>;
+#[doc = "RADIO is ready to operate on high voltage\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum READY_A {
+    #[doc = "0: Not ready"]
+    NOTREADY,
+    #[doc = "1: Ready"]
+    READY,
+}
+impl From<READY_A> for bool {
+    #[inline(always)]
+    fn from(variant: READY_A) -> Self {
+        match variant {
+            READY_A::NOTREADY => false,
+            READY_A::READY => true,
+        }
+    }
+}
+#[doc = "Reader of field `READY`"]
+pub type READY_R = crate::R<bool, READY_A>;
+impl READY_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> READY_A {
+        match self.bits {
+            false => READY_A::NOTREADY,
+            true => READY_A::READY,
+        }
+    }
+    #[doc = "Checks if the value of the field is `NOTREADY`"]
+    #[inline(always)]
+    pub fn is_not_ready(&self) -> bool {
+        *self == READY_A::NOTREADY
+    }
+    #[doc = "Checks if the value of the field is `READY`"]
+    #[inline(always)]
+    pub fn is_ready(&self) -> bool {
+        *self == READY_A::READY
+    }
+}
+impl R {
+    #[doc = "Bit 0 - RADIO is ready to operate on high voltage"]
+    #[inline(always)]
+    pub fn ready(&self) -> READY_R {
+        READY_R::new((self.bits & 0x01) != 0)
+    }
+}
