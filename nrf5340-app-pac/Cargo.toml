@@ -23,5 +23,3 @@ version = "0.6.8"
 
 [features]
 rt = ["cortex-m-rt/device"]
-application-core = []
-network-core = []
