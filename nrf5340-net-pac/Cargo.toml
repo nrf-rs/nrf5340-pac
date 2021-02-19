@@ -5,7 +5,7 @@ authors = [
 ]
 description = "Peripheral access API for the nRF5340 network core"
 documentation = "https://docs.rs/nrf5340-net-pac"
-keywords = ["no-std", "arm", "cortex-m", "nrf53", "nrf5240"]
+keywords = ["no-std", "arm", "cortex-m", "nrf53", "nrf5340"]
 categories = ["no-std", "embedded"]
 license = "0BSD"
 name = "nrf5340-net-pac"
