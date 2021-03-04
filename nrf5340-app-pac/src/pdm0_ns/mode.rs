@@ -1,35 +1,57 @@
-#[doc = "Reader of register MODE"]
-pub type R = crate::R<u32, super::MODE>;
-#[doc = "Writer for register MODE"]
-pub type W = crate::W<u32, super::MODE>;
-#[doc = "Register MODE `reset()`'s with value 0"]
-impl crate::ResetValue for super::MODE {
-    type Type = u32;
+#[doc = "Register `MODE` reader"]
+pub struct R(crate::R<MODE_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<MODE_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<MODE_SPEC>> for R {
+    fn from(reader: crate::R<MODE_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `MODE` writer"]
+pub struct W(crate::W<MODE_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<MODE_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<MODE_SPEC>> for W {
+    fn from(writer: crate::W<MODE_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "Mono or stereo operation\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum OPERATION_A {
     #[doc = "0: Sample and store one pair (left + right) of 16-bit samples per RAM word R=\\[31:16\\]; L=\\[15:0\\]"]
-    STEREO,
+    STEREO = 0,
     #[doc = "1: Sample and store two successive left samples (16 bits each) per RAM word L1=\\[31:16\\]; L0=\\[15:0\\]"]
-    MONO,
+    MONO = 1,
 }
 impl From<OPERATION_A> for bool {
     #[inline(always)]
     fn from(variant: OPERATION_A) -> Self {
-        match variant {
-            OPERATION_A::STEREO => false,
-            OPERATION_A::MONO => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `OPERATION`"]
-pub type OPERATION_R = crate::R<bool, OPERATION_A>;
+#[doc = "Field `OPERATION` reader - Mono or stereo operation"]
+pub struct OPERATION_R(crate::FieldReader<bool, OPERATION_A>);
 impl OPERATION_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OPERATION_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> OPERATION_A {
@@ -41,15 +63,22 @@ impl OPERATION_R {
     #[doc = "Checks if the value of the field is `STEREO`"]
     #[inline(always)]
     pub fn is_stereo(&self) -> bool {
-        *self == OPERATION_A::STEREO
+        **self == OPERATION_A::STEREO
     }
     #[doc = "Checks if the value of the field is `MONO`"]
     #[inline(always)]
     pub fn is_mono(&self) -> bool {
-        *self == OPERATION_A::MONO
+        **self == OPERATION_A::MONO
     }
 }
-#[doc = "Write proxy for field `OPERATION`"]
+impl core::ops::Deref for OPERATION_R {
+    type Target = crate::FieldReader<bool, OPERATION_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OPERATION` writer - Mono or stereo operation"]
 pub struct OPERATION_W<'a> {
     w: &'a mut W,
 }
@@ -57,9 +86,7 @@ impl<'a> OPERATION_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: OPERATION_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Sample and store one pair (left + right) of 16-bit samples per RAM word R=\\[31:16\\]; L=\\[15:0\\]"]
     #[inline(always)]
@@ -92,22 +119,22 @@ impl<'a> OPERATION_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum EDGE_A {
     #[doc = "0: Left (or mono) is sampled on falling edge of PDM_CLK"]
-    LEFTFALLING,
+    LEFTFALLING = 0,
     #[doc = "1: Left (or mono) is sampled on rising edge of PDM_CLK"]
-    LEFTRISING,
+    LEFTRISING = 1,
 }
 impl From<EDGE_A> for bool {
     #[inline(always)]
     fn from(variant: EDGE_A) -> Self {
-        match variant {
-            EDGE_A::LEFTFALLING => false,
-            EDGE_A::LEFTRISING => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `EDGE`"]
-pub type EDGE_R = crate::R<bool, EDGE_A>;
+#[doc = "Field `EDGE` reader - Defines on which PDM_CLK edge left (or mono) is sampled"]
+pub struct EDGE_R(crate::FieldReader<bool, EDGE_A>);
 impl EDGE_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        EDGE_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> EDGE_A {
@@ -119,15 +146,22 @@ impl EDGE_R {
     #[doc = "Checks if the value of the field is `LEFTFALLING`"]
     #[inline(always)]
     pub fn is_left_falling(&self) -> bool {
-        *self == EDGE_A::LEFTFALLING
+        **self == EDGE_A::LEFTFALLING
     }
     #[doc = "Checks if the value of the field is `LEFTRISING`"]
     #[inline(always)]
     pub fn is_left_rising(&self) -> bool {
-        *self == EDGE_A::LEFTRISING
+        **self == EDGE_A::LEFTRISING
     }
 }
-#[doc = "Write proxy for field `EDGE`"]
+impl core::ops::Deref for EDGE_R {
+    type Target = crate::FieldReader<bool, EDGE_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `EDGE` writer - Defines on which PDM_CLK edge left (or mono) is sampled"]
 pub struct EDGE_W<'a> {
     w: &'a mut W,
 }
@@ -135,9 +169,7 @@ impl<'a> EDGE_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: EDGE_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Left (or mono) is sampled on falling edge of PDM_CLK"]
     #[inline(always)]
@@ -188,5 +220,30 @@ impl W {
     #[inline(always)]
     pub fn edge(&mut self) -> EDGE_W {
         EDGE_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Defines the routing of the connected PDM microphones' signals\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [mode](index.html) module"]
+pub struct MODE_SPEC;
+impl crate::RegisterSpec for MODE_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [mode::R](R) reader structure"]
+impl crate::Readable for MODE_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [mode::W](W) writer structure"]
+impl crate::Writable for MODE_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets MODE to value 0"]
+impl crate::Resettable for MODE_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

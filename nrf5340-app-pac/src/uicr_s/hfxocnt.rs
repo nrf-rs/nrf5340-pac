@@ -1,38 +1,60 @@
-#[doc = "Reader of register HFXOCNT"]
-pub type R = crate::R<u32, super::HFXOCNT>;
-#[doc = "Writer for register HFXOCNT"]
-pub type W = crate::W<u32, super::HFXOCNT>;
-#[doc = "Register HFXOCNT `reset()`'s with value 0xffff_ffff"]
-impl crate::ResetValue for super::HFXOCNT {
-    type Type = u32;
+#[doc = "Register `HFXOCNT` reader"]
+pub struct R(crate::R<HFXOCNT_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<HFXOCNT_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0xffff_ffff
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<HFXOCNT_SPEC>> for R {
+    fn from(reader: crate::R<HFXOCNT_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `HFXOCNT` writer"]
+pub struct W(crate::W<HFXOCNT_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<HFXOCNT_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<HFXOCNT_SPEC>> for W {
+    fn from(writer: crate::W<HFXOCNT_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "HFXO startup counter. Total debounce time = HFXOCNT*64 us + 0.5 us\n\nValue on reset: 255"]
 #[derive(Clone, Copy, Debug, PartialEq)]
+#[repr(u8)]
 pub enum HFXOCNT_A {
     #[doc = "0: Min debounce time = (0*64 us + 0.5 us)"]
-    MINDEBOUNCETIME,
+    MINDEBOUNCETIME = 0,
     #[doc = "254: Max debounce time = (254*64 us + 0.5 us)"]
-    MAXDEBOUNCETIME,
+    MAXDEBOUNCETIME = 254,
     #[doc = "255: Default debounce time for erased UICR = 4*64 us + 0.5 us"]
-    DEFAULTDEBOUNCETIME,
+    DEFAULTDEBOUNCETIME = 255,
 }
 impl From<HFXOCNT_A> for u8 {
     #[inline(always)]
     fn from(variant: HFXOCNT_A) -> Self {
-        match variant {
-            HFXOCNT_A::MINDEBOUNCETIME => 0,
-            HFXOCNT_A::MAXDEBOUNCETIME => 254,
-            HFXOCNT_A::DEFAULTDEBOUNCETIME => 255,
-        }
+        variant as _
     }
 }
-#[doc = "Reader of field `HFXOCNT`"]
-pub type HFXOCNT_R = crate::R<u8, HFXOCNT_A>;
+#[doc = "Field `HFXOCNT` reader - HFXO startup counter. Total debounce time = HFXOCNT*64 us + 0.5 us"]
+pub struct HFXOCNT_R(crate::FieldReader<u8, HFXOCNT_A>);
 impl HFXOCNT_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        HFXOCNT_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> crate::Variant<u8, HFXOCNT_A> {
@@ -47,20 +69,27 @@ impl HFXOCNT_R {
     #[doc = "Checks if the value of the field is `MINDEBOUNCETIME`"]
     #[inline(always)]
     pub fn is_min_debounce_time(&self) -> bool {
-        *self == HFXOCNT_A::MINDEBOUNCETIME
+        **self == HFXOCNT_A::MINDEBOUNCETIME
     }
     #[doc = "Checks if the value of the field is `MAXDEBOUNCETIME`"]
     #[inline(always)]
     pub fn is_max_debounce_time(&self) -> bool {
-        *self == HFXOCNT_A::MAXDEBOUNCETIME
+        **self == HFXOCNT_A::MAXDEBOUNCETIME
     }
     #[doc = "Checks if the value of the field is `DEFAULTDEBOUNCETIME`"]
     #[inline(always)]
     pub fn is_default_debounce_time(&self) -> bool {
-        *self == HFXOCNT_A::DEFAULTDEBOUNCETIME
+        **self == HFXOCNT_A::DEFAULTDEBOUNCETIME
     }
 }
-#[doc = "Write proxy for field `HFXOCNT`"]
+impl core::ops::Deref for HFXOCNT_R {
+    type Target = crate::FieldReader<u8, HFXOCNT_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `HFXOCNT` writer - HFXO startup counter. Total debounce time = HFXOCNT*64 us + 0.5 us"]
 pub struct HFXOCNT_W<'a> {
     w: &'a mut W,
 }
@@ -104,5 +133,30 @@ impl W {
     #[inline(always)]
     pub fn hfxocnt(&mut self) -> HFXOCNT_W {
         HFXOCNT_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "HFXO startup counter\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [hfxocnt](index.html) module"]
+pub struct HFXOCNT_SPEC;
+impl crate::RegisterSpec for HFXOCNT_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [hfxocnt::R](R) reader structure"]
+impl crate::Readable for HFXOCNT_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [hfxocnt::W](W) writer structure"]
+impl crate::Writable for HFXOCNT_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets HFXOCNT to value 0xffff_ffff"]
+impl crate::Resettable for HFXOCNT_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0xffff_ffff
     }
 }

@@ -1,18 +1,52 @@
-#[doc = "Reader of register NFCID1_2ND_LAST"]
-pub type R = crate::R<u32, super::NFCID1_2ND_LAST>;
-#[doc = "Writer for register NFCID1_2ND_LAST"]
-pub type W = crate::W<u32, super::NFCID1_2ND_LAST>;
-#[doc = "Register NFCID1_2ND_LAST `reset()`'s with value 0"]
-impl crate::ResetValue for super::NFCID1_2ND_LAST {
-    type Type = u32;
+#[doc = "Register `NFCID1_2ND_LAST` reader"]
+pub struct R(crate::R<NFCID1_2ND_LAST_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<NFCID1_2ND_LAST_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `NFCID1_V`"]
-pub type NFCID1_V_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `NFCID1_V`"]
+impl core::convert::From<crate::R<NFCID1_2ND_LAST_SPEC>> for R {
+    fn from(reader: crate::R<NFCID1_2ND_LAST_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `NFCID1_2ND_LAST` writer"]
+pub struct W(crate::W<NFCID1_2ND_LAST_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<NFCID1_2ND_LAST_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<NFCID1_2ND_LAST_SPEC>> for W {
+    fn from(writer: crate::W<NFCID1_2ND_LAST_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `NFCID1_V` reader - NFCID1 byte V"]
+pub struct NFCID1_V_R(crate::FieldReader<u8, u8>);
+impl NFCID1_V_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        NFCID1_V_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for NFCID1_V_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `NFCID1_V` writer - NFCID1 byte V"]
 pub struct NFCID1_V_W<'a> {
     w: &'a mut W,
 }
@@ -24,9 +58,21 @@ impl<'a> NFCID1_V_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `NFCID1_U`"]
-pub type NFCID1_U_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `NFCID1_U`"]
+#[doc = "Field `NFCID1_U` reader - NFCID1 byte U"]
+pub struct NFCID1_U_R(crate::FieldReader<u8, u8>);
+impl NFCID1_U_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        NFCID1_U_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for NFCID1_U_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `NFCID1_U` writer - NFCID1 byte U"]
 pub struct NFCID1_U_W<'a> {
     w: &'a mut W,
 }
@@ -38,9 +84,21 @@ impl<'a> NFCID1_U_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `NFCID1_T`"]
-pub type NFCID1_T_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `NFCID1_T`"]
+#[doc = "Field `NFCID1_T` reader - NFCID1 byte T"]
+pub struct NFCID1_T_R(crate::FieldReader<u8, u8>);
+impl NFCID1_T_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        NFCID1_T_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for NFCID1_T_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `NFCID1_T` writer - NFCID1 byte T"]
 pub struct NFCID1_T_W<'a> {
     w: &'a mut W,
 }
@@ -84,5 +142,30 @@ impl W {
     #[inline(always)]
     pub fn nfcid1_t(&mut self) -> NFCID1_T_W {
         NFCID1_T_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Second last NFCID1 part (7 or 10 bytes ID)\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [nfcid1_2nd_last](index.html) module"]
+pub struct NFCID1_2ND_LAST_SPEC;
+impl crate::RegisterSpec for NFCID1_2ND_LAST_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [nfcid1_2nd_last::R](R) reader structure"]
+impl crate::Readable for NFCID1_2ND_LAST_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [nfcid1_2nd_last::W](W) writer structure"]
+impl crate::Writable for NFCID1_2ND_LAST_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets NFCID1_2ND_LAST to value 0"]
+impl crate::Resettable for NFCID1_2ND_LAST_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

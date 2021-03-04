@@ -1,18 +1,52 @@
-#[doc = "Reader of register DISABLE"]
-pub type R = crate::R<u32, super::DISABLE>;
-#[doc = "Writer for register DISABLE"]
-pub type W = crate::W<u32, super::DISABLE>;
-#[doc = "Register DISABLE `reset()`'s with value 0"]
-impl crate::ResetValue for super::DISABLE {
-    type Type = u32;
+#[doc = "Register `DISABLE` reader"]
+pub struct R(crate::R<DISABLE_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<DISABLE_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `KEY`"]
-pub type KEY_R = crate::R<u32, u32>;
-#[doc = "Write proxy for field `KEY`"]
+impl core::convert::From<crate::R<DISABLE_SPEC>> for R {
+    fn from(reader: crate::R<DISABLE_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `DISABLE` writer"]
+pub struct W(crate::W<DISABLE_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<DISABLE_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<DISABLE_SPEC>> for W {
+    fn from(writer: crate::W<DISABLE_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `KEY` reader - If the value of the KEY field is non-zero, and the KEY fields match on both the CPU and debugger sides, disable SECUREAPPROTECT and enable debug access to secure mode until the next pin reset, brown-out reset, power-on reset, or watchog timer reset. After reset the debugger side register has a fixed KEY value. To enable debug access, both CTRL-AP and UICR.SECUREAPPROTECT protection needs to be disabled."]
+pub struct KEY_R(crate::FieldReader<u32, u32>);
+impl KEY_R {
+    pub(crate) fn new(bits: u32) -> Self {
+        KEY_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for KEY_R {
+    type Target = crate::FieldReader<u32, u32>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `KEY` writer - If the value of the KEY field is non-zero, and the KEY fields match on both the CPU and debugger sides, disable SECUREAPPROTECT and enable debug access to secure mode until the next pin reset, brown-out reset, power-on reset, or watchog timer reset. After reset the debugger side register has a fixed KEY value. To enable debug access, both CTRL-AP and UICR.SECUREAPPROTECT protection needs to be disabled."]
 pub struct KEY_W<'a> {
     w: &'a mut W,
 }
@@ -25,16 +59,41 @@ impl<'a> KEY_W<'a> {
     }
 }
 impl R {
-    #[doc = "Bits 0:31 - Disable SECUREAPPROTECT and enable debug of secure mode until next pin reset if KEY fields match The current SECUREAPPROTECT value as configured from UICR is bypassed if value of KEY fields are non-zero and KEY fields match on both CPU and debugger side"]
+    #[doc = "Bits 0:31 - If the value of the KEY field is non-zero, and the KEY fields match on both the CPU and debugger sides, disable SECUREAPPROTECT and enable debug access to secure mode until the next pin reset, brown-out reset, power-on reset, or watchog timer reset. After reset the debugger side register has a fixed KEY value. To enable debug access, both CTRL-AP and UICR.SECUREAPPROTECT protection needs to be disabled."]
     #[inline(always)]
     pub fn key(&self) -> KEY_R {
         KEY_R::new((self.bits & 0xffff_ffff) as u32)
     }
 }
 impl W {
-    #[doc = "Bits 0:31 - Disable SECUREAPPROTECT and enable debug of secure mode until next pin reset if KEY fields match The current SECUREAPPROTECT value as configured from UICR is bypassed if value of KEY fields are non-zero and KEY fields match on both CPU and debugger side"]
+    #[doc = "Bits 0:31 - If the value of the KEY field is non-zero, and the KEY fields match on both the CPU and debugger sides, disable SECUREAPPROTECT and enable debug access to secure mode until the next pin reset, brown-out reset, power-on reset, or watchog timer reset. After reset the debugger side register has a fixed KEY value. To enable debug access, both CTRL-AP and UICR.SECUREAPPROTECT protection needs to be disabled."]
     #[inline(always)]
     pub fn key(&mut self) -> KEY_W {
         KEY_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "This register disables the SECUREAPPROTECT register and enables debug access to secure mode.\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [disable](index.html) module"]
+pub struct DISABLE_SPEC;
+impl crate::RegisterSpec for DISABLE_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [disable::R](R) reader structure"]
+impl crate::Readable for DISABLE_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [disable::W](W) writer structure"]
+impl crate::Writable for DISABLE_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets DISABLE to value 0"]
+impl crate::Resettable for DISABLE_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

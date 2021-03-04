@@ -1,28 +1,36 @@
-#[doc = "Writer for register CTIAPPPULSE"]
-pub type W = crate::W<u32, super::CTIAPPPULSE>;
-#[doc = "Register CTIAPPPULSE `reset()`'s with value 0"]
-impl crate::ResetValue for super::CTIAPPPULSE {
-    type Type = u32;
+#[doc = "Register `CTIAPPPULSE` writer"]
+pub struct W(crate::W<CTIAPPPULSE_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<CTIAPPPULSE_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<CTIAPPPULSE_SPEC>> for W {
+    fn from(writer: crate::W<CTIAPPPULSE_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "Setting a bit HIGH generates a channel event pulse for the selected channel. There is one bit of the register for each channel.\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum APPULSE_0_AW {
-    #[doc = "1: Generates an event pulse on channel 0"]
-    GENERATE,
+    #[doc = "1: Generates an event pulse on channel 0."]
+    GENERATE = 1,
 }
 impl From<APPULSE_0_AW> for bool {
     #[inline(always)]
     fn from(variant: APPULSE_0_AW) -> Self {
-        match variant {
-            APPULSE_0_AW::GENERATE => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Write proxy for field `APPULSE_0`"]
+#[doc = "Field `APPULSE_0` writer - Setting a bit HIGH generates a channel event pulse for the selected channel. There is one bit of the register for each channel."]
 pub struct APPULSE_0_W<'a> {
     w: &'a mut W,
 }
@@ -30,11 +38,9 @@ impl<'a> APPULSE_0_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: APPULSE_0_AW) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Generates an event pulse on channel 0"]
+    #[doc = "Generates an event pulse on channel 0."]
     #[inline(always)]
     pub fn generate(self) -> &'a mut W {
         self.variant(APPULSE_0_AW::GENERATE)
@@ -59,18 +65,16 @@ impl<'a> APPULSE_0_W<'a> {
 #[doc = "Setting a bit HIGH generates a channel event pulse for the selected channel. There is one bit of the register for each channel.\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum APPULSE_1_AW {
-    #[doc = "1: Generates an event pulse on channel 1"]
-    GENERATE,
+    #[doc = "1: Generates an event pulse on channel 1."]
+    GENERATE = 1,
 }
 impl From<APPULSE_1_AW> for bool {
     #[inline(always)]
     fn from(variant: APPULSE_1_AW) -> Self {
-        match variant {
-            APPULSE_1_AW::GENERATE => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Write proxy for field `APPULSE_1`"]
+#[doc = "Field `APPULSE_1` writer - Setting a bit HIGH generates a channel event pulse for the selected channel. There is one bit of the register for each channel."]
 pub struct APPULSE_1_W<'a> {
     w: &'a mut W,
 }
@@ -78,11 +82,9 @@ impl<'a> APPULSE_1_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: APPULSE_1_AW) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Generates an event pulse on channel 1"]
+    #[doc = "Generates an event pulse on channel 1."]
     #[inline(always)]
     pub fn generate(self) -> &'a mut W {
         self.variant(APPULSE_1_AW::GENERATE)
@@ -107,18 +109,16 @@ impl<'a> APPULSE_1_W<'a> {
 #[doc = "Setting a bit HIGH generates a channel event pulse for the selected channel. There is one bit of the register for each channel.\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum APPULSE_2_AW {
-    #[doc = "1: Generates an event pulse on channel 2"]
-    GENERATE,
+    #[doc = "1: Generates an event pulse on channel 2."]
+    GENERATE = 1,
 }
 impl From<APPULSE_2_AW> for bool {
     #[inline(always)]
     fn from(variant: APPULSE_2_AW) -> Self {
-        match variant {
-            APPULSE_2_AW::GENERATE => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Write proxy for field `APPULSE_2`"]
+#[doc = "Field `APPULSE_2` writer - Setting a bit HIGH generates a channel event pulse for the selected channel. There is one bit of the register for each channel."]
 pub struct APPULSE_2_W<'a> {
     w: &'a mut W,
 }
@@ -126,11 +126,9 @@ impl<'a> APPULSE_2_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: APPULSE_2_AW) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Generates an event pulse on channel 2"]
+    #[doc = "Generates an event pulse on channel 2."]
     #[inline(always)]
     pub fn generate(self) -> &'a mut W {
         self.variant(APPULSE_2_AW::GENERATE)
@@ -155,18 +153,16 @@ impl<'a> APPULSE_2_W<'a> {
 #[doc = "Setting a bit HIGH generates a channel event pulse for the selected channel. There is one bit of the register for each channel.\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum APPULSE_3_AW {
-    #[doc = "1: Generates an event pulse on channel 3"]
-    GENERATE,
+    #[doc = "1: Generates an event pulse on channel 3."]
+    GENERATE = 1,
 }
 impl From<APPULSE_3_AW> for bool {
     #[inline(always)]
     fn from(variant: APPULSE_3_AW) -> Self {
-        match variant {
-            APPULSE_3_AW::GENERATE => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Write proxy for field `APPULSE_3`"]
+#[doc = "Field `APPULSE_3` writer - Setting a bit HIGH generates a channel event pulse for the selected channel. There is one bit of the register for each channel."]
 pub struct APPULSE_3_W<'a> {
     w: &'a mut W,
 }
@@ -174,11 +170,9 @@ impl<'a> APPULSE_3_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: APPULSE_3_AW) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Generates an event pulse on channel 3"]
+    #[doc = "Generates an event pulse on channel 3."]
     #[inline(always)]
     pub fn generate(self) -> &'a mut W {
         self.variant(APPULSE_3_AW::GENERATE)
@@ -220,5 +214,26 @@ impl W {
     #[inline(always)]
     pub fn appulse_3(&mut self) -> APPULSE_3_W {
         APPULSE_3_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "CTI Application Pulse register\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [ctiapppulse](index.html) module"]
+pub struct CTIAPPPULSE_SPEC;
+impl crate::RegisterSpec for CTIAPPPULSE_SPEC {
+    type Ux = u32;
+}
+#[doc = "`write(|w| ..)` method takes [ctiapppulse::W](W) writer structure"]
+impl crate::Writable for CTIAPPPULSE_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets CTIAPPPULSE to value 0"]
+impl crate::Resettable for CTIAPPPULSE_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

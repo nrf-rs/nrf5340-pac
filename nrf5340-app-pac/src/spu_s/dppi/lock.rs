@@ -1,35 +1,57 @@
-#[doc = "Reader of register LOCK"]
-pub type R = crate::R<u32, super::LOCK>;
-#[doc = "Writer for register LOCK"]
-pub type W = crate::W<u32, super::LOCK>;
-#[doc = "Register LOCK `reset()`'s with value 0"]
-impl crate::ResetValue for super::LOCK {
-    type Type = u32;
+#[doc = "Register `LOCK` reader"]
+pub struct R(crate::R<LOCK_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<LOCK_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<LOCK_SPEC>> for R {
+    fn from(reader: crate::R<LOCK_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `LOCK` writer"]
+pub struct W(crate::W<LOCK_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<LOCK_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<LOCK_SPEC>> for W {
+    fn from(writer: crate::W<LOCK_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum LOCK_A {
     #[doc = "1: DPPI\\[n\\].PERM register can't be changed until next reset"]
-    LOCKED,
+    LOCKED = 1,
     #[doc = "0: DPPI\\[n\\].PERM register content can be changed"]
-    UNLOCKED,
+    UNLOCKED = 0,
 }
 impl From<LOCK_A> for bool {
     #[inline(always)]
     fn from(variant: LOCK_A) -> Self {
-        match variant {
-            LOCK_A::LOCKED => true,
-            LOCK_A::UNLOCKED => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `LOCK`"]
-pub type LOCK_R = crate::R<bool, LOCK_A>;
+#[doc = "Field `LOCK` reader - "]
+pub struct LOCK_R(crate::FieldReader<bool, LOCK_A>);
 impl LOCK_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        LOCK_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> LOCK_A {
@@ -41,15 +63,22 @@ impl LOCK_R {
     #[doc = "Checks if the value of the field is `LOCKED`"]
     #[inline(always)]
     pub fn is_locked(&self) -> bool {
-        *self == LOCK_A::LOCKED
+        **self == LOCK_A::LOCKED
     }
     #[doc = "Checks if the value of the field is `UNLOCKED`"]
     #[inline(always)]
     pub fn is_unlocked(&self) -> bool {
-        *self == LOCK_A::UNLOCKED
+        **self == LOCK_A::UNLOCKED
     }
 }
-#[doc = "Write proxy for field `LOCK`"]
+impl core::ops::Deref for LOCK_R {
+    type Target = crate::FieldReader<bool, LOCK_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `LOCK` writer - "]
 pub struct LOCK_W<'a> {
     w: &'a mut W,
 }
@@ -57,9 +86,7 @@ impl<'a> LOCK_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: LOCK_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "DPPI\\[n\\].PERM register can't be changed until next reset"]
     #[inline(always)]
@@ -100,5 +127,30 @@ impl W {
     #[inline(always)]
     pub fn lock(&mut self) -> LOCK_W {
         LOCK_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Description cluster: Prevent further modification of the corresponding PERM register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [lock](index.html) module"]
+pub struct LOCK_SPEC;
+impl crate::RegisterSpec for LOCK_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [lock::R](R) reader structure"]
+impl crate::Readable for LOCK_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [lock::W](W) writer structure"]
+impl crate::Writable for LOCK_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets LOCK to value 0"]
+impl crate::Resettable for LOCK_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

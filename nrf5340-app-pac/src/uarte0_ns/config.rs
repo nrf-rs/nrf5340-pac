@@ -1,35 +1,57 @@
-#[doc = "Reader of register CONFIG"]
-pub type R = crate::R<u32, super::CONFIG>;
-#[doc = "Writer for register CONFIG"]
-pub type W = crate::W<u32, super::CONFIG>;
-#[doc = "Register CONFIG `reset()`'s with value 0"]
-impl crate::ResetValue for super::CONFIG {
-    type Type = u32;
+#[doc = "Register `CONFIG` reader"]
+pub struct R(crate::R<CONFIG_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<CONFIG_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<CONFIG_SPEC>> for R {
+    fn from(reader: crate::R<CONFIG_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `CONFIG` writer"]
+pub struct W(crate::W<CONFIG_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<CONFIG_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<CONFIG_SPEC>> for W {
+    fn from(writer: crate::W<CONFIG_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "Hardware flow control\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum HWFC_A {
     #[doc = "0: Disabled"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Enabled"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<HWFC_A> for bool {
     #[inline(always)]
     fn from(variant: HWFC_A) -> Self {
-        match variant {
-            HWFC_A::DISABLED => false,
-            HWFC_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `HWFC`"]
-pub type HWFC_R = crate::R<bool, HWFC_A>;
+#[doc = "Field `HWFC` reader - Hardware flow control"]
+pub struct HWFC_R(crate::FieldReader<bool, HWFC_A>);
 impl HWFC_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        HWFC_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> HWFC_A {
@@ -41,15 +63,22 @@ impl HWFC_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == HWFC_A::DISABLED
+        **self == HWFC_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == HWFC_A::ENABLED
+        **self == HWFC_A::ENABLED
     }
 }
-#[doc = "Write proxy for field `HWFC`"]
+impl core::ops::Deref for HWFC_R {
+    type Target = crate::FieldReader<bool, HWFC_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `HWFC` writer - Hardware flow control"]
 pub struct HWFC_W<'a> {
     w: &'a mut W,
 }
@@ -57,9 +86,7 @@ impl<'a> HWFC_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: HWFC_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disabled"]
     #[inline(always)]
@@ -90,24 +117,25 @@ impl<'a> HWFC_W<'a> {
 }
 #[doc = "Parity\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
+#[repr(u8)]
 pub enum PARITY_A {
     #[doc = "0: Exclude parity bit"]
-    EXCLUDED,
+    EXCLUDED = 0,
     #[doc = "7: Include even parity bit"]
-    INCLUDED,
+    INCLUDED = 7,
 }
 impl From<PARITY_A> for u8 {
     #[inline(always)]
     fn from(variant: PARITY_A) -> Self {
-        match variant {
-            PARITY_A::EXCLUDED => 0,
-            PARITY_A::INCLUDED => 7,
-        }
+        variant as _
     }
 }
-#[doc = "Reader of field `PARITY`"]
-pub type PARITY_R = crate::R<u8, PARITY_A>;
+#[doc = "Field `PARITY` reader - Parity"]
+pub struct PARITY_R(crate::FieldReader<u8, PARITY_A>);
 impl PARITY_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        PARITY_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> crate::Variant<u8, PARITY_A> {
@@ -121,15 +149,22 @@ impl PARITY_R {
     #[doc = "Checks if the value of the field is `EXCLUDED`"]
     #[inline(always)]
     pub fn is_excluded(&self) -> bool {
-        *self == PARITY_A::EXCLUDED
+        **self == PARITY_A::EXCLUDED
     }
     #[doc = "Checks if the value of the field is `INCLUDED`"]
     #[inline(always)]
     pub fn is_included(&self) -> bool {
-        *self == PARITY_A::INCLUDED
+        **self == PARITY_A::INCLUDED
     }
 }
-#[doc = "Write proxy for field `PARITY`"]
+impl core::ops::Deref for PARITY_R {
+    type Target = crate::FieldReader<u8, PARITY_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `PARITY` writer - Parity"]
 pub struct PARITY_W<'a> {
     w: &'a mut W,
 }
@@ -160,22 +195,22 @@ impl<'a> PARITY_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum STOP_A {
     #[doc = "0: One stop bit"]
-    ONE,
+    ONE = 0,
     #[doc = "1: Two stop bits"]
-    TWO,
+    TWO = 1,
 }
 impl From<STOP_A> for bool {
     #[inline(always)]
     fn from(variant: STOP_A) -> Self {
-        match variant {
-            STOP_A::ONE => false,
-            STOP_A::TWO => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `STOP`"]
-pub type STOP_R = crate::R<bool, STOP_A>;
+#[doc = "Field `STOP` reader - Stop bits"]
+pub struct STOP_R(crate::FieldReader<bool, STOP_A>);
 impl STOP_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        STOP_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> STOP_A {
@@ -187,15 +222,22 @@ impl STOP_R {
     #[doc = "Checks if the value of the field is `ONE`"]
     #[inline(always)]
     pub fn is_one(&self) -> bool {
-        *self == STOP_A::ONE
+        **self == STOP_A::ONE
     }
     #[doc = "Checks if the value of the field is `TWO`"]
     #[inline(always)]
     pub fn is_two(&self) -> bool {
-        *self == STOP_A::TWO
+        **self == STOP_A::TWO
     }
 }
-#[doc = "Write proxy for field `STOP`"]
+impl core::ops::Deref for STOP_R {
+    type Target = crate::FieldReader<bool, STOP_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `STOP` writer - Stop bits"]
 pub struct STOP_W<'a> {
     w: &'a mut W,
 }
@@ -203,9 +245,7 @@ impl<'a> STOP_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: STOP_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "One stop bit"]
     #[inline(always)]
@@ -238,22 +278,22 @@ impl<'a> STOP_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum PARITYTYPE_A {
     #[doc = "0: Even parity"]
-    EVEN,
+    EVEN = 0,
     #[doc = "1: Odd parity"]
-    ODD,
+    ODD = 1,
 }
 impl From<PARITYTYPE_A> for bool {
     #[inline(always)]
     fn from(variant: PARITYTYPE_A) -> Self {
-        match variant {
-            PARITYTYPE_A::EVEN => false,
-            PARITYTYPE_A::ODD => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `PARITYTYPE`"]
-pub type PARITYTYPE_R = crate::R<bool, PARITYTYPE_A>;
+#[doc = "Field `PARITYTYPE` reader - Even or odd parity type"]
+pub struct PARITYTYPE_R(crate::FieldReader<bool, PARITYTYPE_A>);
 impl PARITYTYPE_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        PARITYTYPE_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> PARITYTYPE_A {
@@ -265,15 +305,22 @@ impl PARITYTYPE_R {
     #[doc = "Checks if the value of the field is `EVEN`"]
     #[inline(always)]
     pub fn is_even(&self) -> bool {
-        *self == PARITYTYPE_A::EVEN
+        **self == PARITYTYPE_A::EVEN
     }
     #[doc = "Checks if the value of the field is `ODD`"]
     #[inline(always)]
     pub fn is_odd(&self) -> bool {
-        *self == PARITYTYPE_A::ODD
+        **self == PARITYTYPE_A::ODD
     }
 }
-#[doc = "Write proxy for field `PARITYTYPE`"]
+impl core::ops::Deref for PARITYTYPE_R {
+    type Target = crate::FieldReader<bool, PARITYTYPE_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `PARITYTYPE` writer - Even or odd parity type"]
 pub struct PARITYTYPE_W<'a> {
     w: &'a mut W,
 }
@@ -281,9 +328,7 @@ impl<'a> PARITYTYPE_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: PARITYTYPE_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Even parity"]
     #[inline(always)]
@@ -354,5 +399,30 @@ impl W {
     #[inline(always)]
     pub fn paritytype(&mut self) -> PARITYTYPE_W {
         PARITYTYPE_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Configuration of parity and hardware flow control\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [config](index.html) module"]
+pub struct CONFIG_SPEC;
+impl crate::RegisterSpec for CONFIG_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [config::R](R) reader structure"]
+impl crate::Readable for CONFIG_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [config::W](W) writer structure"]
+impl crate::Writable for CONFIG_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets CONFIG to value 0"]
+impl crate::Resettable for CONFIG_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

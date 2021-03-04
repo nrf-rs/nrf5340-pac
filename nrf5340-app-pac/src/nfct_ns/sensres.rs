@@ -1,47 +1,66 @@
-#[doc = "Reader of register SENSRES"]
-pub type R = crate::R<u32, super::SENSRES>;
-#[doc = "Writer for register SENSRES"]
-pub type W = crate::W<u32, super::SENSRES>;
-#[doc = "Register SENSRES `reset()`'s with value 0x01"]
-impl crate::ResetValue for super::SENSRES {
-    type Type = u32;
+#[doc = "Register `SENSRES` reader"]
+pub struct R(crate::R<SENSRES_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<SENSRES_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0x01
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<SENSRES_SPEC>> for R {
+    fn from(reader: crate::R<SENSRES_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `SENSRES` writer"]
+pub struct W(crate::W<SENSRES_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<SENSRES_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<SENSRES_SPEC>> for W {
+    fn from(writer: crate::W<SENSRES_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "Bit frame SDD as defined by the b5:b1 of byte 1 in SENS_RES response in the NFC Forum, NFC Digital Protocol Technical Specification\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
+#[repr(u8)]
 pub enum BITFRAMESDD_A {
     #[doc = "0: SDD pattern 00000"]
-    SDD00000,
+    SDD00000 = 0,
     #[doc = "1: SDD pattern 00001"]
-    SDD00001,
+    SDD00001 = 1,
     #[doc = "2: SDD pattern 00010"]
-    SDD00010,
+    SDD00010 = 2,
     #[doc = "4: SDD pattern 00100"]
-    SDD00100,
+    SDD00100 = 4,
     #[doc = "8: SDD pattern 01000"]
-    SDD01000,
+    SDD01000 = 8,
     #[doc = "16: SDD pattern 10000"]
-    SDD10000,
+    SDD10000 = 16,
 }
 impl From<BITFRAMESDD_A> for u8 {
     #[inline(always)]
     fn from(variant: BITFRAMESDD_A) -> Self {
-        match variant {
-            BITFRAMESDD_A::SDD00000 => 0,
-            BITFRAMESDD_A::SDD00001 => 1,
-            BITFRAMESDD_A::SDD00010 => 2,
-            BITFRAMESDD_A::SDD00100 => 4,
-            BITFRAMESDD_A::SDD01000 => 8,
-            BITFRAMESDD_A::SDD10000 => 16,
-        }
+        variant as _
     }
 }
-#[doc = "Reader of field `BITFRAMESDD`"]
-pub type BITFRAMESDD_R = crate::R<u8, BITFRAMESDD_A>;
+#[doc = "Field `BITFRAMESDD` reader - Bit frame SDD as defined by the b5:b1 of byte 1 in SENS_RES response in the NFC Forum, NFC Digital Protocol Technical Specification"]
+pub struct BITFRAMESDD_R(crate::FieldReader<u8, BITFRAMESDD_A>);
 impl BITFRAMESDD_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        BITFRAMESDD_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> crate::Variant<u8, BITFRAMESDD_A> {
@@ -59,35 +78,42 @@ impl BITFRAMESDD_R {
     #[doc = "Checks if the value of the field is `SDD00000`"]
     #[inline(always)]
     pub fn is_sdd00000(&self) -> bool {
-        *self == BITFRAMESDD_A::SDD00000
+        **self == BITFRAMESDD_A::SDD00000
     }
     #[doc = "Checks if the value of the field is `SDD00001`"]
     #[inline(always)]
     pub fn is_sdd00001(&self) -> bool {
-        *self == BITFRAMESDD_A::SDD00001
+        **self == BITFRAMESDD_A::SDD00001
     }
     #[doc = "Checks if the value of the field is `SDD00010`"]
     #[inline(always)]
     pub fn is_sdd00010(&self) -> bool {
-        *self == BITFRAMESDD_A::SDD00010
+        **self == BITFRAMESDD_A::SDD00010
     }
     #[doc = "Checks if the value of the field is `SDD00100`"]
     #[inline(always)]
     pub fn is_sdd00100(&self) -> bool {
-        *self == BITFRAMESDD_A::SDD00100
+        **self == BITFRAMESDD_A::SDD00100
     }
     #[doc = "Checks if the value of the field is `SDD01000`"]
     #[inline(always)]
     pub fn is_sdd01000(&self) -> bool {
-        *self == BITFRAMESDD_A::SDD01000
+        **self == BITFRAMESDD_A::SDD01000
     }
     #[doc = "Checks if the value of the field is `SDD10000`"]
     #[inline(always)]
     pub fn is_sdd10000(&self) -> bool {
-        *self == BITFRAMESDD_A::SDD10000
+        **self == BITFRAMESDD_A::SDD10000
     }
 }
-#[doc = "Write proxy for field `BITFRAMESDD`"]
+impl core::ops::Deref for BITFRAMESDD_R {
+    type Target = crate::FieldReader<u8, BITFRAMESDD_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `BITFRAMESDD` writer - Bit frame SDD as defined by the b5:b1 of byte 1 in SENS_RES response in the NFC Forum, NFC Digital Protocol Technical Specification"]
 pub struct BITFRAMESDD_W<'a> {
     w: &'a mut W,
 }
@@ -134,9 +160,21 @@ impl<'a> BITFRAMESDD_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `RFU5`"]
-pub type RFU5_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `RFU5`"]
+#[doc = "Field `RFU5` reader - Reserved for future use. Shall be 0."]
+pub struct RFU5_R(crate::FieldReader<bool, bool>);
+impl RFU5_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        RFU5_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for RFU5_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `RFU5` writer - Reserved for future use. Shall be 0."]
 pub struct RFU5_W<'a> {
     w: &'a mut W,
 }
@@ -160,27 +198,27 @@ impl<'a> RFU5_W<'a> {
 }
 #[doc = "NFCID1 size. This value is used by the auto collision resolution engine.\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
+#[repr(u8)]
 pub enum NFCIDSIZE_A {
     #[doc = "0: NFCID1 size: single (4 bytes)"]
-    NFCID1SINGLE,
+    NFCID1SINGLE = 0,
     #[doc = "1: NFCID1 size: double (7 bytes)"]
-    NFCID1DOUBLE,
+    NFCID1DOUBLE = 1,
     #[doc = "2: NFCID1 size: triple (10 bytes)"]
-    NFCID1TRIPLE,
+    NFCID1TRIPLE = 2,
 }
 impl From<NFCIDSIZE_A> for u8 {
     #[inline(always)]
     fn from(variant: NFCIDSIZE_A) -> Self {
-        match variant {
-            NFCIDSIZE_A::NFCID1SINGLE => 0,
-            NFCIDSIZE_A::NFCID1DOUBLE => 1,
-            NFCIDSIZE_A::NFCID1TRIPLE => 2,
-        }
+        variant as _
     }
 }
-#[doc = "Reader of field `NFCIDSIZE`"]
-pub type NFCIDSIZE_R = crate::R<u8, NFCIDSIZE_A>;
+#[doc = "Field `NFCIDSIZE` reader - NFCID1 size. This value is used by the auto collision resolution engine."]
+pub struct NFCIDSIZE_R(crate::FieldReader<u8, NFCIDSIZE_A>);
 impl NFCIDSIZE_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        NFCIDSIZE_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> crate::Variant<u8, NFCIDSIZE_A> {
@@ -195,20 +233,27 @@ impl NFCIDSIZE_R {
     #[doc = "Checks if the value of the field is `NFCID1SINGLE`"]
     #[inline(always)]
     pub fn is_nfcid1single(&self) -> bool {
-        *self == NFCIDSIZE_A::NFCID1SINGLE
+        **self == NFCIDSIZE_A::NFCID1SINGLE
     }
     #[doc = "Checks if the value of the field is `NFCID1DOUBLE`"]
     #[inline(always)]
     pub fn is_nfcid1double(&self) -> bool {
-        *self == NFCIDSIZE_A::NFCID1DOUBLE
+        **self == NFCIDSIZE_A::NFCID1DOUBLE
     }
     #[doc = "Checks if the value of the field is `NFCID1TRIPLE`"]
     #[inline(always)]
     pub fn is_nfcid1triple(&self) -> bool {
-        *self == NFCIDSIZE_A::NFCID1TRIPLE
+        **self == NFCIDSIZE_A::NFCID1TRIPLE
     }
 }
-#[doc = "Write proxy for field `NFCIDSIZE`"]
+impl core::ops::Deref for NFCIDSIZE_R {
+    type Target = crate::FieldReader<u8, NFCIDSIZE_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `NFCIDSIZE` writer - NFCID1 size. This value is used by the auto collision resolution engine."]
 pub struct NFCIDSIZE_W<'a> {
     w: &'a mut W,
 }
@@ -240,9 +285,21 @@ impl<'a> NFCIDSIZE_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `PLATFCONFIG`"]
-pub type PLATFCONFIG_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `PLATFCONFIG`"]
+#[doc = "Field `PLATFCONFIG` reader - Tag platform configuration as defined by the b4:b1 of byte 2 in SENS_RES response in the NFC Forum, NFC Digital Protocol Technical Specification"]
+pub struct PLATFCONFIG_R(crate::FieldReader<u8, u8>);
+impl PLATFCONFIG_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        PLATFCONFIG_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for PLATFCONFIG_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `PLATFCONFIG` writer - Tag platform configuration as defined by the b4:b1 of byte 2 in SENS_RES response in the NFC Forum, NFC Digital Protocol Technical Specification"]
 pub struct PLATFCONFIG_W<'a> {
     w: &'a mut W,
 }
@@ -254,9 +311,21 @@ impl<'a> PLATFCONFIG_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `RFU74`"]
-pub type RFU74_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `RFU74`"]
+#[doc = "Field `RFU74` reader - Reserved for future use. Shall be 0."]
+pub struct RFU74_R(crate::FieldReader<u8, u8>);
+impl RFU74_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        RFU74_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for RFU74_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `RFU74` writer - Reserved for future use. Shall be 0."]
 pub struct RFU74_W<'a> {
     w: &'a mut W,
 }
@@ -320,5 +389,30 @@ impl W {
     #[inline(always)]
     pub fn rfu74(&mut self) -> RFU74_W {
         RFU74_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "NFC-A SENS_RES auto-response settings\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [sensres](index.html) module"]
+pub struct SENSRES_SPEC;
+impl crate::RegisterSpec for SENSRES_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [sensres::R](R) reader structure"]
+impl crate::Readable for SENSRES_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [sensres::W](W) writer structure"]
+impl crate::Writable for SENSRES_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets SENSRES to value 0x01"]
+impl crate::Resettable for SENSRES_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0x01
     }
 }

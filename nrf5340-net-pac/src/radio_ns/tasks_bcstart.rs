@@ -1,28 +1,36 @@
-#[doc = "Writer for register TASKS_BCSTART"]
-pub type W = crate::W<u32, super::TASKS_BCSTART>;
-#[doc = "Register TASKS_BCSTART `reset()`'s with value 0"]
-impl crate::ResetValue for super::TASKS_BCSTART {
-    type Type = u32;
+#[doc = "Register `TASKS_BCSTART` writer"]
+pub struct W(crate::W<TASKS_BCSTART_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<TASKS_BCSTART_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<TASKS_BCSTART_SPEC>> for W {
+    fn from(writer: crate::W<TASKS_BCSTART_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "Start the bit counter\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TASKS_BCSTART_AW {
     #[doc = "1: Trigger task"]
-    TRIGGER,
+    TRIGGER = 1,
 }
 impl From<TASKS_BCSTART_AW> for bool {
     #[inline(always)]
     fn from(variant: TASKS_BCSTART_AW) -> Self {
-        match variant {
-            TASKS_BCSTART_AW::TRIGGER => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Write proxy for field `TASKS_BCSTART`"]
+#[doc = "Field `TASKS_BCSTART` writer - Start the bit counter"]
 pub struct TASKS_BCSTART_W<'a> {
     w: &'a mut W,
 }
@@ -30,9 +38,7 @@ impl<'a> TASKS_BCSTART_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: TASKS_BCSTART_AW) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Trigger task"]
     #[inline(always)]
@@ -61,5 +67,26 @@ impl W {
     #[inline(always)]
     pub fn tasks_bcstart(&mut self) -> TASKS_BCSTART_W {
         TASKS_BCSTART_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Start the bit counter\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [tasks_bcstart](index.html) module"]
+pub struct TASKS_BCSTART_SPEC;
+impl crate::RegisterSpec for TASKS_BCSTART_SPEC {
+    type Ux = u32;
+}
+#[doc = "`write(|w| ..)` method takes [tasks_bcstart::W](W) writer structure"]
+impl crate::Writable for TASKS_BCSTART_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets TASKS_BCSTART to value 0"]
+impl crate::Resettable for TASKS_BCSTART_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

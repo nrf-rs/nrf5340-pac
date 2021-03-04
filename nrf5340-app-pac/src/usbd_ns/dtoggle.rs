@@ -1,18 +1,52 @@
-#[doc = "Reader of register DTOGGLE"]
-pub type R = crate::R<u32, super::DTOGGLE>;
-#[doc = "Writer for register DTOGGLE"]
-pub type W = crate::W<u32, super::DTOGGLE>;
-#[doc = "Register DTOGGLE `reset()`'s with value 0x0100"]
-impl crate::ResetValue for super::DTOGGLE {
-    type Type = u32;
+#[doc = "Register `DTOGGLE` reader"]
+pub struct R(crate::R<DTOGGLE_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<DTOGGLE_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0x0100
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `EP`"]
-pub type EP_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `EP`"]
+impl core::convert::From<crate::R<DTOGGLE_SPEC>> for R {
+    fn from(reader: crate::R<DTOGGLE_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `DTOGGLE` writer"]
+pub struct W(crate::W<DTOGGLE_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<DTOGGLE_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<DTOGGLE_SPEC>> for W {
+    fn from(writer: crate::W<DTOGGLE_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `EP` reader - Select bulk endpoint number"]
+pub struct EP_R(crate::FieldReader<u8, u8>);
+impl EP_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        EP_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for EP_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `EP` writer - Select bulk endpoint number"]
 pub struct EP_W<'a> {
     w: &'a mut W,
 }
@@ -28,22 +62,22 @@ impl<'a> EP_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum IO_A {
     #[doc = "0: Selects OUT endpoint"]
-    OUT,
+    OUT = 0,
     #[doc = "1: Selects IN endpoint"]
-    IN,
+    IN = 1,
 }
 impl From<IO_A> for bool {
     #[inline(always)]
     fn from(variant: IO_A) -> Self {
-        match variant {
-            IO_A::OUT => false,
-            IO_A::IN => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `IO`"]
-pub type IO_R = crate::R<bool, IO_A>;
+#[doc = "Field `IO` reader - Selects IN or OUT endpoint"]
+pub struct IO_R(crate::FieldReader<bool, IO_A>);
 impl IO_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        IO_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> IO_A {
@@ -55,15 +89,22 @@ impl IO_R {
     #[doc = "Checks if the value of the field is `OUT`"]
     #[inline(always)]
     pub fn is_out(&self) -> bool {
-        *self == IO_A::OUT
+        **self == IO_A::OUT
     }
     #[doc = "Checks if the value of the field is `IN`"]
     #[inline(always)]
     pub fn is_in_(&self) -> bool {
-        *self == IO_A::IN
+        **self == IO_A::IN
     }
 }
-#[doc = "Write proxy for field `IO`"]
+impl core::ops::Deref for IO_R {
+    type Target = crate::FieldReader<bool, IO_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `IO` writer - Selects IN or OUT endpoint"]
 pub struct IO_W<'a> {
     w: &'a mut W,
 }
@@ -71,9 +112,7 @@ impl<'a> IO_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: IO_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Selects OUT endpoint"]
     #[inline(always)]
@@ -104,27 +143,27 @@ impl<'a> IO_W<'a> {
 }
 #[doc = "Data toggle value\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
+#[repr(u8)]
 pub enum VALUE_A {
     #[doc = "0: No action on data toggle when writing the register with this value"]
-    NOP,
+    NOP = 0,
     #[doc = "1: Data toggle is DATA0 on endpoint set by EP and IO"]
-    DATA0,
+    DATA0 = 1,
     #[doc = "2: Data toggle is DATA1 on endpoint set by EP and IO"]
-    DATA1,
+    DATA1 = 2,
 }
 impl From<VALUE_A> for u8 {
     #[inline(always)]
     fn from(variant: VALUE_A) -> Self {
-        match variant {
-            VALUE_A::NOP => 0,
-            VALUE_A::DATA0 => 1,
-            VALUE_A::DATA1 => 2,
-        }
+        variant as _
     }
 }
-#[doc = "Reader of field `VALUE`"]
-pub type VALUE_R = crate::R<u8, VALUE_A>;
+#[doc = "Field `VALUE` reader - Data toggle value"]
+pub struct VALUE_R(crate::FieldReader<u8, VALUE_A>);
 impl VALUE_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        VALUE_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> crate::Variant<u8, VALUE_A> {
@@ -139,20 +178,27 @@ impl VALUE_R {
     #[doc = "Checks if the value of the field is `NOP`"]
     #[inline(always)]
     pub fn is_nop(&self) -> bool {
-        *self == VALUE_A::NOP
+        **self == VALUE_A::NOP
     }
     #[doc = "Checks if the value of the field is `DATA0`"]
     #[inline(always)]
     pub fn is_data0(&self) -> bool {
-        *self == VALUE_A::DATA0
+        **self == VALUE_A::DATA0
     }
     #[doc = "Checks if the value of the field is `DATA1`"]
     #[inline(always)]
     pub fn is_data1(&self) -> bool {
-        *self == VALUE_A::DATA1
+        **self == VALUE_A::DATA1
     }
 }
-#[doc = "Write proxy for field `VALUE`"]
+impl core::ops::Deref for VALUE_R {
+    type Target = crate::FieldReader<u8, VALUE_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `VALUE` writer - Data toggle value"]
 pub struct VALUE_W<'a> {
     w: &'a mut W,
 }
@@ -216,5 +262,30 @@ impl W {
     #[inline(always)]
     pub fn value(&mut self) -> VALUE_W {
         VALUE_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Data toggle control and status\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [dtoggle](index.html) module"]
+pub struct DTOGGLE_SPEC;
+impl crate::RegisterSpec for DTOGGLE_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [dtoggle::R](R) reader structure"]
+impl crate::Readable for DTOGGLE_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [dtoggle::W](W) writer structure"]
+impl crate::Writable for DTOGGLE_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets DTOGGLE to value 0x0100"]
+impl crate::Resettable for DTOGGLE_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0x0100
     }
 }

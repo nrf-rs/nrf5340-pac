@@ -1,18 +1,52 @@
-#[doc = "Reader of register GPREGRET[%s]"]
-pub type R = crate::R<u32, super::GPREGRET>;
-#[doc = "Writer for register GPREGRET[%s]"]
-pub type W = crate::W<u32, super::GPREGRET>;
-#[doc = "Register GPREGRET[%s] `reset()`'s with value 0"]
-impl crate::ResetValue for super::GPREGRET {
-    type Type = u32;
+#[doc = "Register `GPREGRET[%s]` reader"]
+pub struct R(crate::R<GPREGRET_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<GPREGRET_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `GPREGRET`"]
-pub type GPREGRET_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `GPREGRET`"]
+impl core::convert::From<crate::R<GPREGRET_SPEC>> for R {
+    fn from(reader: crate::R<GPREGRET_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `GPREGRET[%s]` writer"]
+pub struct W(crate::W<GPREGRET_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<GPREGRET_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<GPREGRET_SPEC>> for W {
+    fn from(writer: crate::W<GPREGRET_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `GPREGRET` reader - General purpose retention register"]
+pub struct GPREGRET_R(crate::FieldReader<u8, u8>);
+impl GPREGRET_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        GPREGRET_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for GPREGRET_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `GPREGRET` writer - General purpose retention register"]
 pub struct GPREGRET_W<'a> {
     w: &'a mut W,
 }
@@ -36,5 +70,31 @@ impl W {
     #[inline(always)]
     pub fn gpregret(&mut self) -> GPREGRET_W {
         GPREGRET_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Description collection: General purpose retention register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [gpregret](index.html) module"]
+pub struct GPREGRET_SPEC;
+impl crate::RegisterSpec for GPREGRET_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [gpregret::R](R) reader structure"]
+impl crate::Readable for GPREGRET_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [gpregret::W](W) writer structure"]
+impl crate::Writable for GPREGRET_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets GPREGRET[%s]
+to value 0"]
+impl crate::Resettable for GPREGRET_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

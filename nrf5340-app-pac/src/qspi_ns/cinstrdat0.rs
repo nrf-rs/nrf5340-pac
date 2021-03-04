@@ -1,18 +1,52 @@
-#[doc = "Reader of register CINSTRDAT0"]
-pub type R = crate::R<u32, super::CINSTRDAT0>;
-#[doc = "Writer for register CINSTRDAT0"]
-pub type W = crate::W<u32, super::CINSTRDAT0>;
-#[doc = "Register CINSTRDAT0 `reset()`'s with value 0"]
-impl crate::ResetValue for super::CINSTRDAT0 {
-    type Type = u32;
+#[doc = "Register `CINSTRDAT0` reader"]
+pub struct R(crate::R<CINSTRDAT0_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<CINSTRDAT0_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `BYTE0`"]
-pub type BYTE0_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `BYTE0`"]
+impl core::convert::From<crate::R<CINSTRDAT0_SPEC>> for R {
+    fn from(reader: crate::R<CINSTRDAT0_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `CINSTRDAT0` writer"]
+pub struct W(crate::W<CINSTRDAT0_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<CINSTRDAT0_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<CINSTRDAT0_SPEC>> for W {
+    fn from(writer: crate::W<CINSTRDAT0_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `BYTE0` reader - Data byte 0"]
+pub struct BYTE0_R(crate::FieldReader<u8, u8>);
+impl BYTE0_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        BYTE0_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for BYTE0_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `BYTE0` writer - Data byte 0"]
 pub struct BYTE0_W<'a> {
     w: &'a mut W,
 }
@@ -24,9 +58,21 @@ impl<'a> BYTE0_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `BYTE1`"]
-pub type BYTE1_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `BYTE1`"]
+#[doc = "Field `BYTE1` reader - Data byte 1"]
+pub struct BYTE1_R(crate::FieldReader<u8, u8>);
+impl BYTE1_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        BYTE1_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for BYTE1_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `BYTE1` writer - Data byte 1"]
 pub struct BYTE1_W<'a> {
     w: &'a mut W,
 }
@@ -38,9 +84,21 @@ impl<'a> BYTE1_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `BYTE2`"]
-pub type BYTE2_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `BYTE2`"]
+#[doc = "Field `BYTE2` reader - Data byte 2"]
+pub struct BYTE2_R(crate::FieldReader<u8, u8>);
+impl BYTE2_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        BYTE2_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for BYTE2_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `BYTE2` writer - Data byte 2"]
 pub struct BYTE2_W<'a> {
     w: &'a mut W,
 }
@@ -52,9 +110,21 @@ impl<'a> BYTE2_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `BYTE3`"]
-pub type BYTE3_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `BYTE3`"]
+#[doc = "Field `BYTE3` reader - Data byte 3"]
+pub struct BYTE3_R(crate::FieldReader<u8, u8>);
+impl BYTE3_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        BYTE3_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for BYTE3_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `BYTE3` writer - Data byte 3"]
 pub struct BYTE3_W<'a> {
     w: &'a mut W,
 }
@@ -108,5 +178,30 @@ impl W {
     #[inline(always)]
     pub fn byte3(&mut self) -> BYTE3_W {
         BYTE3_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Custom instruction data register 0.\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [cinstrdat0](index.html) module"]
+pub struct CINSTRDAT0_SPEC;
+impl crate::RegisterSpec for CINSTRDAT0_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [cinstrdat0::R](R) reader structure"]
+impl crate::Readable for CINSTRDAT0_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [cinstrdat0::W](W) writer structure"]
+impl crate::Writable for CINSTRDAT0_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets CINSTRDAT0 to value 0"]
+impl crate::Resettable for CINSTRDAT0_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

@@ -1,28 +1,36 @@
-#[doc = "Writer for register CTIINTACK"]
-pub type W = crate::W<u32, super::CTIINTACK>;
-#[doc = "Register CTIINTACK `reset()`'s with value 0"]
-impl crate::ResetValue for super::CTIINTACK {
-    type Type = u32;
+#[doc = "Register `CTIINTACK` writer"]
+pub struct W(crate::W<CTIINTACK_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<CTIINTACK_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<CTIINTACK_SPEC>> for W {
+    fn from(writer: crate::W<CTIINTACK_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "Processor debug request\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DEBUGREQ_AW {
-    #[doc = "1: Clears the ctitrigout"]
-    ACKNOWLEDGE,
+    #[doc = "1: Clears the ctitrigout."]
+    ACKNOWLEDGE = 1,
 }
 impl From<DEBUGREQ_AW> for bool {
     #[inline(always)]
     fn from(variant: DEBUGREQ_AW) -> Self {
-        match variant {
-            DEBUGREQ_AW::ACKNOWLEDGE => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Write proxy for field `DEBUGREQ`"]
+#[doc = "Field `DEBUGREQ` writer - Processor debug request"]
 pub struct DEBUGREQ_W<'a> {
     w: &'a mut W,
 }
@@ -30,11 +38,9 @@ impl<'a> DEBUGREQ_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: DEBUGREQ_AW) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Clears the ctitrigout"]
+    #[doc = "Clears the ctitrigout."]
     #[inline(always)]
     pub fn acknowledge(self) -> &'a mut W {
         self.variant(DEBUGREQ_AW::ACKNOWLEDGE)
@@ -59,18 +65,16 @@ impl<'a> DEBUGREQ_W<'a> {
 #[doc = "Processor Restart\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CPURESTART_AW {
-    #[doc = "1: Clears the ctitrigout"]
-    ACKNOWLEDGE,
+    #[doc = "1: Clears the ctitrigout."]
+    ACKNOWLEDGE = 1,
 }
 impl From<CPURESTART_AW> for bool {
     #[inline(always)]
     fn from(variant: CPURESTART_AW) -> Self {
-        match variant {
-            CPURESTART_AW::ACKNOWLEDGE => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Write proxy for field `CPURESTART`"]
+#[doc = "Field `CPURESTART` writer - Processor Restart"]
 pub struct CPURESTART_W<'a> {
     w: &'a mut W,
 }
@@ -78,11 +82,9 @@ impl<'a> CPURESTART_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: CPURESTART_AW) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Clears the ctitrigout"]
+    #[doc = "Clears the ctitrigout."]
     #[inline(always)]
     pub fn acknowledge(self) -> &'a mut W {
         self.variant(CPURESTART_AW::ACKNOWLEDGE)
@@ -107,18 +109,16 @@ impl<'a> CPURESTART_W<'a> {
 #[doc = "N/A\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum UNUSED0_AW {
-    #[doc = "1: Clears the ctitrigout"]
-    ACKNOWLEDGE,
+    #[doc = "1: Clears the ctitrigout."]
+    ACKNOWLEDGE = 1,
 }
 impl From<UNUSED0_AW> for bool {
     #[inline(always)]
     fn from(variant: UNUSED0_AW) -> Self {
-        match variant {
-            UNUSED0_AW::ACKNOWLEDGE => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Write proxy for field `UNUSED0`"]
+#[doc = "Field `UNUSED0` writer - N/A"]
 pub struct UNUSED0_W<'a> {
     w: &'a mut W,
 }
@@ -126,11 +126,9 @@ impl<'a> UNUSED0_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: UNUSED0_AW) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Clears the ctitrigout"]
+    #[doc = "Clears the ctitrigout."]
     #[inline(always)]
     pub fn acknowledge(self) -> &'a mut W {
         self.variant(UNUSED0_AW::ACKNOWLEDGE)
@@ -155,18 +153,16 @@ impl<'a> UNUSED0_W<'a> {
 #[doc = "N/A\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum UNUSED1_AW {
-    #[doc = "1: Clears the ctitrigout"]
-    ACKNOWLEDGE,
+    #[doc = "1: Clears the ctitrigout."]
+    ACKNOWLEDGE = 1,
 }
 impl From<UNUSED1_AW> for bool {
     #[inline(always)]
     fn from(variant: UNUSED1_AW) -> Self {
-        match variant {
-            UNUSED1_AW::ACKNOWLEDGE => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Write proxy for field `UNUSED1`"]
+#[doc = "Field `UNUSED1` writer - N/A"]
 pub struct UNUSED1_W<'a> {
     w: &'a mut W,
 }
@@ -174,11 +170,9 @@ impl<'a> UNUSED1_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: UNUSED1_AW) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Clears the ctitrigout"]
+    #[doc = "Clears the ctitrigout."]
     #[inline(always)]
     pub fn acknowledge(self) -> &'a mut W {
         self.variant(UNUSED1_AW::ACKNOWLEDGE)
@@ -203,18 +197,16 @@ impl<'a> UNUSED1_W<'a> {
 #[doc = "ETM Event Input 0\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum ETMEVTIN0_AW {
-    #[doc = "1: Clears the ctitrigout"]
-    ACKNOWLEDGE,
+    #[doc = "1: Clears the ctitrigout."]
+    ACKNOWLEDGE = 1,
 }
 impl From<ETMEVTIN0_AW> for bool {
     #[inline(always)]
     fn from(variant: ETMEVTIN0_AW) -> Self {
-        match variant {
-            ETMEVTIN0_AW::ACKNOWLEDGE => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Write proxy for field `ETMEVTIN0`"]
+#[doc = "Field `ETMEVTIN0` writer - ETM Event Input 0"]
 pub struct ETMEVTIN0_W<'a> {
     w: &'a mut W,
 }
@@ -222,11 +214,9 @@ impl<'a> ETMEVTIN0_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: ETMEVTIN0_AW) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Clears the ctitrigout"]
+    #[doc = "Clears the ctitrigout."]
     #[inline(always)]
     pub fn acknowledge(self) -> &'a mut W {
         self.variant(ETMEVTIN0_AW::ACKNOWLEDGE)
@@ -251,18 +241,16 @@ impl<'a> ETMEVTIN0_W<'a> {
 #[doc = "ETM Event Input 1\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum ETMEVTIN1_AW {
-    #[doc = "1: Clears the ctitrigout"]
-    ACKNOWLEDGE,
+    #[doc = "1: Clears the ctitrigout."]
+    ACKNOWLEDGE = 1,
 }
 impl From<ETMEVTIN1_AW> for bool {
     #[inline(always)]
     fn from(variant: ETMEVTIN1_AW) -> Self {
-        match variant {
-            ETMEVTIN1_AW::ACKNOWLEDGE => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Write proxy for field `ETMEVTIN1`"]
+#[doc = "Field `ETMEVTIN1` writer - ETM Event Input 1"]
 pub struct ETMEVTIN1_W<'a> {
     w: &'a mut W,
 }
@@ -270,11 +258,9 @@ impl<'a> ETMEVTIN1_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: ETMEVTIN1_AW) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Clears the ctitrigout"]
+    #[doc = "Clears the ctitrigout."]
     #[inline(always)]
     pub fn acknowledge(self) -> &'a mut W {
         self.variant(ETMEVTIN1_AW::ACKNOWLEDGE)
@@ -299,18 +285,16 @@ impl<'a> ETMEVTIN1_W<'a> {
 #[doc = "ETM Event Input 2\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum ETMEVTIN2_AW {
-    #[doc = "1: Clears the ctitrigout"]
-    ACKNOWLEDGE,
+    #[doc = "1: Clears the ctitrigout."]
+    ACKNOWLEDGE = 1,
 }
 impl From<ETMEVTIN2_AW> for bool {
     #[inline(always)]
     fn from(variant: ETMEVTIN2_AW) -> Self {
-        match variant {
-            ETMEVTIN2_AW::ACKNOWLEDGE => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Write proxy for field `ETMEVTIN2`"]
+#[doc = "Field `ETMEVTIN2` writer - ETM Event Input 2"]
 pub struct ETMEVTIN2_W<'a> {
     w: &'a mut W,
 }
@@ -318,11 +302,9 @@ impl<'a> ETMEVTIN2_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: ETMEVTIN2_AW) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Clears the ctitrigout"]
+    #[doc = "Clears the ctitrigout."]
     #[inline(always)]
     pub fn acknowledge(self) -> &'a mut W {
         self.variant(ETMEVTIN2_AW::ACKNOWLEDGE)
@@ -347,18 +329,16 @@ impl<'a> ETMEVTIN2_W<'a> {
 #[doc = "ETM Event Input 3\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum ETMEVTIN3_AW {
-    #[doc = "1: Clears the ctitrigout"]
-    ACKNOWLEDGE,
+    #[doc = "1: Clears the ctitrigout."]
+    ACKNOWLEDGE = 1,
 }
 impl From<ETMEVTIN3_AW> for bool {
     #[inline(always)]
     fn from(variant: ETMEVTIN3_AW) -> Self {
-        match variant {
-            ETMEVTIN3_AW::ACKNOWLEDGE => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Write proxy for field `ETMEVTIN3`"]
+#[doc = "Field `ETMEVTIN3` writer - ETM Event Input 3"]
 pub struct ETMEVTIN3_W<'a> {
     w: &'a mut W,
 }
@@ -366,11 +346,9 @@ impl<'a> ETMEVTIN3_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: ETMEVTIN3_AW) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Clears the ctitrigout"]
+    #[doc = "Clears the ctitrigout."]
     #[inline(always)]
     pub fn acknowledge(self) -> &'a mut W {
         self.variant(ETMEVTIN3_AW::ACKNOWLEDGE)
@@ -432,5 +410,26 @@ impl W {
     #[inline(always)]
     pub fn etmevtin3(&mut self) -> ETMEVTIN3_W {
         ETMEVTIN3_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "CTI Interrupt Acknowledge register\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [ctiintack](index.html) module"]
+pub struct CTIINTACK_SPEC;
+impl crate::RegisterSpec for CTIINTACK_SPEC {
+    type Ux = u32;
+}
+#[doc = "`write(|w| ..)` method takes [ctiintack::W](W) writer structure"]
+impl crate::Writable for CTIINTACK_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets CTIINTACK to value 0"]
+impl crate::Resettable for CTIINTACK_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

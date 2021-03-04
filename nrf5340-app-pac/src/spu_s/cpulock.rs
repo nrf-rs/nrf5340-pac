@@ -1,35 +1,57 @@
-#[doc = "Reader of register CPULOCK"]
-pub type R = crate::R<u32, super::CPULOCK>;
-#[doc = "Writer for register CPULOCK"]
-pub type W = crate::W<u32, super::CPULOCK>;
-#[doc = "Register CPULOCK `reset()`'s with value 0"]
-impl crate::ResetValue for super::CPULOCK {
-    type Type = u32;
+#[doc = "Register `CPULOCK` reader"]
+pub struct R(crate::R<CPULOCK_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<CPULOCK_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<CPULOCK_SPEC>> for R {
+    fn from(reader: crate::R<CPULOCK_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `CPULOCK` writer"]
+pub struct W(crate::W<CPULOCK_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<CPULOCK_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<CPULOCK_SPEC>> for W {
+    fn from(writer: crate::W<CPULOCK_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "Write '1' to prevent updating the secure interrupt configuration until the next reset\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum LOCKSVTAIRCR_A {
     #[doc = "1: Disables writes to the VTOR_S, AIRCR.PRIS, and AIRCR.BFHFNMINS registers"]
-    LOCKED,
+    LOCKED = 1,
     #[doc = "0: These registers can be updated"]
-    UNLOCKED,
+    UNLOCKED = 0,
 }
 impl From<LOCKSVTAIRCR_A> for bool {
     #[inline(always)]
     fn from(variant: LOCKSVTAIRCR_A) -> Self {
-        match variant {
-            LOCKSVTAIRCR_A::LOCKED => true,
-            LOCKSVTAIRCR_A::UNLOCKED => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `LOCKSVTAIRCR`"]
-pub type LOCKSVTAIRCR_R = crate::R<bool, LOCKSVTAIRCR_A>;
+#[doc = "Field `LOCKSVTAIRCR` reader - Write '1' to prevent updating the secure interrupt configuration until the next reset"]
+pub struct LOCKSVTAIRCR_R(crate::FieldReader<bool, LOCKSVTAIRCR_A>);
 impl LOCKSVTAIRCR_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        LOCKSVTAIRCR_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> LOCKSVTAIRCR_A {
@@ -41,15 +63,22 @@ impl LOCKSVTAIRCR_R {
     #[doc = "Checks if the value of the field is `LOCKED`"]
     #[inline(always)]
     pub fn is_locked(&self) -> bool {
-        *self == LOCKSVTAIRCR_A::LOCKED
+        **self == LOCKSVTAIRCR_A::LOCKED
     }
     #[doc = "Checks if the value of the field is `UNLOCKED`"]
     #[inline(always)]
     pub fn is_unlocked(&self) -> bool {
-        *self == LOCKSVTAIRCR_A::UNLOCKED
+        **self == LOCKSVTAIRCR_A::UNLOCKED
     }
 }
-#[doc = "Write proxy for field `LOCKSVTAIRCR`"]
+impl core::ops::Deref for LOCKSVTAIRCR_R {
+    type Target = crate::FieldReader<bool, LOCKSVTAIRCR_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `LOCKSVTAIRCR` writer - Write '1' to prevent updating the secure interrupt configuration until the next reset"]
 pub struct LOCKSVTAIRCR_W<'a> {
     w: &'a mut W,
 }
@@ -57,9 +86,7 @@ impl<'a> LOCKSVTAIRCR_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: LOCKSVTAIRCR_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disables writes to the VTOR_S, AIRCR.PRIS, and AIRCR.BFHFNMINS registers"]
     #[inline(always)]
@@ -92,22 +119,22 @@ impl<'a> LOCKSVTAIRCR_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum LOCKNSVTOR_A {
     #[doc = "1: The address of the non-secure vector table is locked"]
-    LOCKED,
+    LOCKED = 1,
     #[doc = "0: The address of the non-secure vector table can be updated"]
-    UNLOCKED,
+    UNLOCKED = 0,
 }
 impl From<LOCKNSVTOR_A> for bool {
     #[inline(always)]
     fn from(variant: LOCKNSVTOR_A) -> Self {
-        match variant {
-            LOCKNSVTOR_A::LOCKED => true,
-            LOCKNSVTOR_A::UNLOCKED => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `LOCKNSVTOR`"]
-pub type LOCKNSVTOR_R = crate::R<bool, LOCKNSVTOR_A>;
+#[doc = "Field `LOCKNSVTOR` reader - Write '1' to prevent updating the non-secure vector table base address until the next reset"]
+pub struct LOCKNSVTOR_R(crate::FieldReader<bool, LOCKNSVTOR_A>);
 impl LOCKNSVTOR_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        LOCKNSVTOR_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> LOCKNSVTOR_A {
@@ -119,15 +146,22 @@ impl LOCKNSVTOR_R {
     #[doc = "Checks if the value of the field is `LOCKED`"]
     #[inline(always)]
     pub fn is_locked(&self) -> bool {
-        *self == LOCKNSVTOR_A::LOCKED
+        **self == LOCKNSVTOR_A::LOCKED
     }
     #[doc = "Checks if the value of the field is `UNLOCKED`"]
     #[inline(always)]
     pub fn is_unlocked(&self) -> bool {
-        *self == LOCKNSVTOR_A::UNLOCKED
+        **self == LOCKNSVTOR_A::UNLOCKED
     }
 }
-#[doc = "Write proxy for field `LOCKNSVTOR`"]
+impl core::ops::Deref for LOCKNSVTOR_R {
+    type Target = crate::FieldReader<bool, LOCKNSVTOR_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `LOCKNSVTOR` writer - Write '1' to prevent updating the non-secure vector table base address until the next reset"]
 pub struct LOCKNSVTOR_W<'a> {
     w: &'a mut W,
 }
@@ -135,9 +169,7 @@ impl<'a> LOCKNSVTOR_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: LOCKNSVTOR_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "The address of the non-secure vector table is locked"]
     #[inline(always)]
@@ -170,22 +202,22 @@ impl<'a> LOCKNSVTOR_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum LOCKSMPU_A {
     #[doc = "1: Disables writes to the MPU_CTRL, MPU_RNR, MPU_RBAR, MPU_RLAR, MPU_RBAR_An and MPU_RLAR_An from software or from a debug agent connected to the processor in Secure state"]
-    LOCKED,
+    LOCKED = 1,
     #[doc = "0: These registers can be updated"]
-    UNLOCKED,
+    UNLOCKED = 0,
 }
 impl From<LOCKSMPU_A> for bool {
     #[inline(always)]
     fn from(variant: LOCKSMPU_A) -> Self {
-        match variant {
-            LOCKSMPU_A::LOCKED => true,
-            LOCKSMPU_A::UNLOCKED => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `LOCKSMPU`"]
-pub type LOCKSMPU_R = crate::R<bool, LOCKSMPU_A>;
+#[doc = "Field `LOCKSMPU` reader - Write '1' to prevent updating the secure MPU regions until the next reset"]
+pub struct LOCKSMPU_R(crate::FieldReader<bool, LOCKSMPU_A>);
 impl LOCKSMPU_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        LOCKSMPU_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> LOCKSMPU_A {
@@ -197,15 +229,22 @@ impl LOCKSMPU_R {
     #[doc = "Checks if the value of the field is `LOCKED`"]
     #[inline(always)]
     pub fn is_locked(&self) -> bool {
-        *self == LOCKSMPU_A::LOCKED
+        **self == LOCKSMPU_A::LOCKED
     }
     #[doc = "Checks if the value of the field is `UNLOCKED`"]
     #[inline(always)]
     pub fn is_unlocked(&self) -> bool {
-        *self == LOCKSMPU_A::UNLOCKED
+        **self == LOCKSMPU_A::UNLOCKED
     }
 }
-#[doc = "Write proxy for field `LOCKSMPU`"]
+impl core::ops::Deref for LOCKSMPU_R {
+    type Target = crate::FieldReader<bool, LOCKSMPU_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `LOCKSMPU` writer - Write '1' to prevent updating the secure MPU regions until the next reset"]
 pub struct LOCKSMPU_W<'a> {
     w: &'a mut W,
 }
@@ -213,9 +252,7 @@ impl<'a> LOCKSMPU_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: LOCKSMPU_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disables writes to the MPU_CTRL, MPU_RNR, MPU_RBAR, MPU_RLAR, MPU_RBAR_An and MPU_RLAR_An from software or from a debug agent connected to the processor in Secure state"]
     #[inline(always)]
@@ -248,22 +285,22 @@ impl<'a> LOCKSMPU_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum LOCKNSMPU_A {
     #[doc = "1: Disables writes to the MPU_CTRL_NS, MPU_RNR_NS, MPU_RBAR_NS, MPU_RLAR_NS, MPU_RBAR_A_NSn and MPU_RLAR_A_NSn from software or from a debug agent connected to the processor"]
-    LOCKED,
+    LOCKED = 1,
     #[doc = "0: These registers can be updated"]
-    UNLOCKED,
+    UNLOCKED = 0,
 }
 impl From<LOCKNSMPU_A> for bool {
     #[inline(always)]
     fn from(variant: LOCKNSMPU_A) -> Self {
-        match variant {
-            LOCKNSMPU_A::LOCKED => true,
-            LOCKNSMPU_A::UNLOCKED => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `LOCKNSMPU`"]
-pub type LOCKNSMPU_R = crate::R<bool, LOCKNSMPU_A>;
+#[doc = "Field `LOCKNSMPU` reader - Write '1' to prevent updating the Non-secure MPU regions until the next reset"]
+pub struct LOCKNSMPU_R(crate::FieldReader<bool, LOCKNSMPU_A>);
 impl LOCKNSMPU_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        LOCKNSMPU_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> LOCKNSMPU_A {
@@ -275,15 +312,22 @@ impl LOCKNSMPU_R {
     #[doc = "Checks if the value of the field is `LOCKED`"]
     #[inline(always)]
     pub fn is_locked(&self) -> bool {
-        *self == LOCKNSMPU_A::LOCKED
+        **self == LOCKNSMPU_A::LOCKED
     }
     #[doc = "Checks if the value of the field is `UNLOCKED`"]
     #[inline(always)]
     pub fn is_unlocked(&self) -> bool {
-        *self == LOCKNSMPU_A::UNLOCKED
+        **self == LOCKNSMPU_A::UNLOCKED
     }
 }
-#[doc = "Write proxy for field `LOCKNSMPU`"]
+impl core::ops::Deref for LOCKNSMPU_R {
+    type Target = crate::FieldReader<bool, LOCKNSMPU_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `LOCKNSMPU` writer - Write '1' to prevent updating the Non-secure MPU regions until the next reset"]
 pub struct LOCKNSMPU_W<'a> {
     w: &'a mut W,
 }
@@ -291,9 +335,7 @@ impl<'a> LOCKNSMPU_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: LOCKNSMPU_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disables writes to the MPU_CTRL_NS, MPU_RNR_NS, MPU_RBAR_NS, MPU_RLAR_NS, MPU_RBAR_A_NSn and MPU_RLAR_A_NSn from software or from a debug agent connected to the processor"]
     #[inline(always)]
@@ -326,22 +368,22 @@ impl<'a> LOCKNSMPU_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum LOCKSAU_A {
     #[doc = "1: Disables writes to the SAU_CTRL, SAU_RNR, SAU_RBAR and SAU_RLAR registers from software or from a debug agent connected to the processor"]
-    LOCKED,
+    LOCKED = 1,
     #[doc = "0: These registers can be updated"]
-    UNLOCKED,
+    UNLOCKED = 0,
 }
 impl From<LOCKSAU_A> for bool {
     #[inline(always)]
     fn from(variant: LOCKSAU_A) -> Self {
-        match variant {
-            LOCKSAU_A::LOCKED => true,
-            LOCKSAU_A::UNLOCKED => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `LOCKSAU`"]
-pub type LOCKSAU_R = crate::R<bool, LOCKSAU_A>;
+#[doc = "Field `LOCKSAU` reader - Write '1' to prevent updating the secure SAU regions until the next reset"]
+pub struct LOCKSAU_R(crate::FieldReader<bool, LOCKSAU_A>);
 impl LOCKSAU_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        LOCKSAU_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> LOCKSAU_A {
@@ -353,15 +395,22 @@ impl LOCKSAU_R {
     #[doc = "Checks if the value of the field is `LOCKED`"]
     #[inline(always)]
     pub fn is_locked(&self) -> bool {
-        *self == LOCKSAU_A::LOCKED
+        **self == LOCKSAU_A::LOCKED
     }
     #[doc = "Checks if the value of the field is `UNLOCKED`"]
     #[inline(always)]
     pub fn is_unlocked(&self) -> bool {
-        *self == LOCKSAU_A::UNLOCKED
+        **self == LOCKSAU_A::UNLOCKED
     }
 }
-#[doc = "Write proxy for field `LOCKSAU`"]
+impl core::ops::Deref for LOCKSAU_R {
+    type Target = crate::FieldReader<bool, LOCKSAU_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `LOCKSAU` writer - Write '1' to prevent updating the secure SAU regions until the next reset"]
 pub struct LOCKSAU_W<'a> {
     w: &'a mut W,
 }
@@ -369,9 +418,7 @@ impl<'a> LOCKSAU_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: LOCKSAU_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disables writes to the SAU_CTRL, SAU_RNR, SAU_RBAR and SAU_RLAR registers from software or from a debug agent connected to the processor"]
     #[inline(always)]
@@ -452,5 +499,30 @@ impl W {
     #[inline(always)]
     pub fn locksau(&mut self) -> LOCKSAU_W {
         LOCKSAU_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Configure bits to lock down CPU features at runtime\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [cpulock](index.html) module"]
+pub struct CPULOCK_SPEC;
+impl crate::RegisterSpec for CPULOCK_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [cpulock::R](R) reader structure"]
+impl crate::Readable for CPULOCK_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [cpulock::W](W) writer structure"]
+impl crate::Writable for CPULOCK_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets CPULOCK to value 0"]
+impl crate::Resettable for CPULOCK_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

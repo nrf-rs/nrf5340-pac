@@ -1,32 +1,56 @@
-#[doc = "Reader of register REFRESH"]
-pub type R = crate::R<u32, super::REFRESH>;
-#[doc = "Writer for register REFRESH"]
-pub type W = crate::W<u32, super::REFRESH>;
-#[doc = "Register REFRESH `reset()`'s with value 0x01"]
-impl crate::ResetValue for super::REFRESH {
-    type Type = u32;
+#[doc = "Register `REFRESH` reader"]
+pub struct R(crate::R<REFRESH_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<REFRESH_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0x01
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<REFRESH_SPEC>> for R {
+    fn from(reader: crate::R<REFRESH_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `REFRESH` writer"]
+pub struct W(crate::W<REFRESH_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<REFRESH_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<REFRESH_SPEC>> for W {
+    fn from(writer: crate::W<REFRESH_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "Number of additional PWM periods between samples loaded into compare register (load every REFRESH.CNT+1 PWM periods)\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
+#[repr(u32)]
 pub enum CNT_A {
     #[doc = "0: Update every PWM period"]
-    CONTINUOUS,
+    CONTINUOUS = 0,
 }
 impl From<CNT_A> for u32 {
     #[inline(always)]
     fn from(variant: CNT_A) -> Self {
-        match variant {
-            CNT_A::CONTINUOUS => 0,
-        }
+        variant as _
     }
 }
-#[doc = "Reader of field `CNT`"]
-pub type CNT_R = crate::R<u32, CNT_A>;
+#[doc = "Field `CNT` reader - Number of additional PWM periods between samples loaded into compare register (load every REFRESH.CNT+1 PWM periods)"]
+pub struct CNT_R(crate::FieldReader<u32, CNT_A>);
 impl CNT_R {
+    pub(crate) fn new(bits: u32) -> Self {
+        CNT_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> crate::Variant<u32, CNT_A> {
@@ -39,10 +63,17 @@ impl CNT_R {
     #[doc = "Checks if the value of the field is `CONTINUOUS`"]
     #[inline(always)]
     pub fn is_continuous(&self) -> bool {
-        *self == CNT_A::CONTINUOUS
+        **self == CNT_A::CONTINUOUS
     }
 }
-#[doc = "Write proxy for field `CNT`"]
+impl core::ops::Deref for CNT_R {
+    type Target = crate::FieldReader<u32, CNT_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CNT` writer - Number of additional PWM periods between samples loaded into compare register (load every REFRESH.CNT+1 PWM periods)"]
 pub struct CNT_W<'a> {
     w: &'a mut W,
 }
@@ -76,5 +107,30 @@ impl W {
     #[inline(always)]
     pub fn cnt(&mut self) -> CNT_W {
         CNT_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Description cluster: Number of additional PWM periods between samples loaded into compare register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [refresh](index.html) module"]
+pub struct REFRESH_SPEC;
+impl crate::RegisterSpec for REFRESH_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [refresh::R](R) reader structure"]
+impl crate::Readable for REFRESH_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [refresh::W](W) writer structure"]
+impl crate::Writable for REFRESH_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets REFRESH to value 0x01"]
+impl crate::Resettable for REFRESH_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0x01
     }
 }

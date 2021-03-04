@@ -1,35 +1,57 @@
-#[doc = "Reader of register INTEN"]
-pub type R = crate::R<u32, super::INTEN>;
-#[doc = "Writer for register INTEN"]
-pub type W = crate::W<u32, super::INTEN>;
-#[doc = "Register INTEN `reset()`'s with value 0"]
-impl crate::ResetValue for super::INTEN {
-    type Type = u32;
+#[doc = "Register `INTEN` reader"]
+pub struct R(crate::R<INTEN_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<INTEN_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<INTEN_SPEC>> for R {
+    fn from(reader: crate::R<INTEN_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `INTEN` writer"]
+pub struct W(crate::W<INTEN_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<INTEN_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<INTEN_SPEC>> for W {
+    fn from(writer: crate::W<INTEN_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "Enable or disable interrupt for event COMPARE\\[0\\]\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum COMPARE0_A {
     #[doc = "0: Disable"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Enable"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<COMPARE0_A> for bool {
     #[inline(always)]
     fn from(variant: COMPARE0_A) -> Self {
-        match variant {
-            COMPARE0_A::DISABLED => false,
-            COMPARE0_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `COMPARE0`"]
-pub type COMPARE0_R = crate::R<bool, COMPARE0_A>;
+#[doc = "Field `COMPARE0` reader - Enable or disable interrupt for event COMPARE\\[0\\]"]
+pub struct COMPARE0_R(crate::FieldReader<bool, COMPARE0_A>);
 impl COMPARE0_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        COMPARE0_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> COMPARE0_A {
@@ -41,15 +63,22 @@ impl COMPARE0_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == COMPARE0_A::DISABLED
+        **self == COMPARE0_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == COMPARE0_A::ENABLED
+        **self == COMPARE0_A::ENABLED
     }
 }
-#[doc = "Write proxy for field `COMPARE0`"]
+impl core::ops::Deref for COMPARE0_R {
+    type Target = crate::FieldReader<bool, COMPARE0_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `COMPARE0` writer - Enable or disable interrupt for event COMPARE\\[0\\]"]
 pub struct COMPARE0_W<'a> {
     w: &'a mut W,
 }
@@ -57,9 +86,7 @@ impl<'a> COMPARE0_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: COMPARE0_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disable"]
     #[inline(always)]
@@ -92,22 +119,22 @@ impl<'a> COMPARE0_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum COMPARE1_A {
     #[doc = "0: Disable"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Enable"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<COMPARE1_A> for bool {
     #[inline(always)]
     fn from(variant: COMPARE1_A) -> Self {
-        match variant {
-            COMPARE1_A::DISABLED => false,
-            COMPARE1_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `COMPARE1`"]
-pub type COMPARE1_R = crate::R<bool, COMPARE1_A>;
+#[doc = "Field `COMPARE1` reader - Enable or disable interrupt for event COMPARE\\[1\\]"]
+pub struct COMPARE1_R(crate::FieldReader<bool, COMPARE1_A>);
 impl COMPARE1_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        COMPARE1_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> COMPARE1_A {
@@ -119,15 +146,22 @@ impl COMPARE1_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == COMPARE1_A::DISABLED
+        **self == COMPARE1_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == COMPARE1_A::ENABLED
+        **self == COMPARE1_A::ENABLED
     }
 }
-#[doc = "Write proxy for field `COMPARE1`"]
+impl core::ops::Deref for COMPARE1_R {
+    type Target = crate::FieldReader<bool, COMPARE1_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `COMPARE1` writer - Enable or disable interrupt for event COMPARE\\[1\\]"]
 pub struct COMPARE1_W<'a> {
     w: &'a mut W,
 }
@@ -135,9 +169,7 @@ impl<'a> COMPARE1_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: COMPARE1_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disable"]
     #[inline(always)]
@@ -170,22 +202,22 @@ impl<'a> COMPARE1_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum COMPARE2_A {
     #[doc = "0: Disable"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Enable"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<COMPARE2_A> for bool {
     #[inline(always)]
     fn from(variant: COMPARE2_A) -> Self {
-        match variant {
-            COMPARE2_A::DISABLED => false,
-            COMPARE2_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `COMPARE2`"]
-pub type COMPARE2_R = crate::R<bool, COMPARE2_A>;
+#[doc = "Field `COMPARE2` reader - Enable or disable interrupt for event COMPARE\\[2\\]"]
+pub struct COMPARE2_R(crate::FieldReader<bool, COMPARE2_A>);
 impl COMPARE2_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        COMPARE2_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> COMPARE2_A {
@@ -197,15 +229,22 @@ impl COMPARE2_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == COMPARE2_A::DISABLED
+        **self == COMPARE2_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == COMPARE2_A::ENABLED
+        **self == COMPARE2_A::ENABLED
     }
 }
-#[doc = "Write proxy for field `COMPARE2`"]
+impl core::ops::Deref for COMPARE2_R {
+    type Target = crate::FieldReader<bool, COMPARE2_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `COMPARE2` writer - Enable or disable interrupt for event COMPARE\\[2\\]"]
 pub struct COMPARE2_W<'a> {
     w: &'a mut W,
 }
@@ -213,9 +252,7 @@ impl<'a> COMPARE2_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: COMPARE2_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disable"]
     #[inline(always)]
@@ -248,22 +285,22 @@ impl<'a> COMPARE2_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum COMPARE3_A {
     #[doc = "0: Disable"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Enable"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<COMPARE3_A> for bool {
     #[inline(always)]
     fn from(variant: COMPARE3_A) -> Self {
-        match variant {
-            COMPARE3_A::DISABLED => false,
-            COMPARE3_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `COMPARE3`"]
-pub type COMPARE3_R = crate::R<bool, COMPARE3_A>;
+#[doc = "Field `COMPARE3` reader - Enable or disable interrupt for event COMPARE\\[3\\]"]
+pub struct COMPARE3_R(crate::FieldReader<bool, COMPARE3_A>);
 impl COMPARE3_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        COMPARE3_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> COMPARE3_A {
@@ -275,15 +312,22 @@ impl COMPARE3_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == COMPARE3_A::DISABLED
+        **self == COMPARE3_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == COMPARE3_A::ENABLED
+        **self == COMPARE3_A::ENABLED
     }
 }
-#[doc = "Write proxy for field `COMPARE3`"]
+impl core::ops::Deref for COMPARE3_R {
+    type Target = crate::FieldReader<bool, COMPARE3_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `COMPARE3` writer - Enable or disable interrupt for event COMPARE\\[3\\]"]
 pub struct COMPARE3_W<'a> {
     w: &'a mut W,
 }
@@ -291,9 +335,7 @@ impl<'a> COMPARE3_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: COMPARE3_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disable"]
     #[inline(always)]
@@ -326,22 +368,22 @@ impl<'a> COMPARE3_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum COMPARE4_A {
     #[doc = "0: Disable"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Enable"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<COMPARE4_A> for bool {
     #[inline(always)]
     fn from(variant: COMPARE4_A) -> Self {
-        match variant {
-            COMPARE4_A::DISABLED => false,
-            COMPARE4_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `COMPARE4`"]
-pub type COMPARE4_R = crate::R<bool, COMPARE4_A>;
+#[doc = "Field `COMPARE4` reader - Enable or disable interrupt for event COMPARE\\[4\\]"]
+pub struct COMPARE4_R(crate::FieldReader<bool, COMPARE4_A>);
 impl COMPARE4_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        COMPARE4_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> COMPARE4_A {
@@ -353,15 +395,22 @@ impl COMPARE4_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == COMPARE4_A::DISABLED
+        **self == COMPARE4_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == COMPARE4_A::ENABLED
+        **self == COMPARE4_A::ENABLED
     }
 }
-#[doc = "Write proxy for field `COMPARE4`"]
+impl core::ops::Deref for COMPARE4_R {
+    type Target = crate::FieldReader<bool, COMPARE4_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `COMPARE4` writer - Enable or disable interrupt for event COMPARE\\[4\\]"]
 pub struct COMPARE4_W<'a> {
     w: &'a mut W,
 }
@@ -369,9 +418,7 @@ impl<'a> COMPARE4_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: COMPARE4_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disable"]
     #[inline(always)]
@@ -404,22 +451,22 @@ impl<'a> COMPARE4_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum COMPARE5_A {
     #[doc = "0: Disable"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Enable"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<COMPARE5_A> for bool {
     #[inline(always)]
     fn from(variant: COMPARE5_A) -> Self {
-        match variant {
-            COMPARE5_A::DISABLED => false,
-            COMPARE5_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `COMPARE5`"]
-pub type COMPARE5_R = crate::R<bool, COMPARE5_A>;
+#[doc = "Field `COMPARE5` reader - Enable or disable interrupt for event COMPARE\\[5\\]"]
+pub struct COMPARE5_R(crate::FieldReader<bool, COMPARE5_A>);
 impl COMPARE5_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        COMPARE5_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> COMPARE5_A {
@@ -431,15 +478,22 @@ impl COMPARE5_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == COMPARE5_A::DISABLED
+        **self == COMPARE5_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == COMPARE5_A::ENABLED
+        **self == COMPARE5_A::ENABLED
     }
 }
-#[doc = "Write proxy for field `COMPARE5`"]
+impl core::ops::Deref for COMPARE5_R {
+    type Target = crate::FieldReader<bool, COMPARE5_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `COMPARE5` writer - Enable or disable interrupt for event COMPARE\\[5\\]"]
 pub struct COMPARE5_W<'a> {
     w: &'a mut W,
 }
@@ -447,9 +501,7 @@ impl<'a> COMPARE5_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: COMPARE5_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disable"]
     #[inline(always)]
@@ -475,6 +527,172 @@ impl<'a> COMPARE5_W<'a> {
     #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
         self.w.bits = (self.w.bits & !(0x01 << 21)) | (((value as u32) & 0x01) << 21);
+        self.w
+    }
+}
+#[doc = "Enable or disable interrupt for event COMPARE\\[6\\]\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum COMPARE6_A {
+    #[doc = "0: Disable"]
+    DISABLED = 0,
+    #[doc = "1: Enable"]
+    ENABLED = 1,
+}
+impl From<COMPARE6_A> for bool {
+    #[inline(always)]
+    fn from(variant: COMPARE6_A) -> Self {
+        variant as u8 != 0
+    }
+}
+#[doc = "Field `COMPARE6` reader - Enable or disable interrupt for event COMPARE\\[6\\]"]
+pub struct COMPARE6_R(crate::FieldReader<bool, COMPARE6_A>);
+impl COMPARE6_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        COMPARE6_R(crate::FieldReader::new(bits))
+    }
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> COMPARE6_A {
+        match self.bits {
+            false => COMPARE6_A::DISABLED,
+            true => COMPARE6_A::ENABLED,
+        }
+    }
+    #[doc = "Checks if the value of the field is `DISABLED`"]
+    #[inline(always)]
+    pub fn is_disabled(&self) -> bool {
+        **self == COMPARE6_A::DISABLED
+    }
+    #[doc = "Checks if the value of the field is `ENABLED`"]
+    #[inline(always)]
+    pub fn is_enabled(&self) -> bool {
+        **self == COMPARE6_A::ENABLED
+    }
+}
+impl core::ops::Deref for COMPARE6_R {
+    type Target = crate::FieldReader<bool, COMPARE6_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `COMPARE6` writer - Enable or disable interrupt for event COMPARE\\[6\\]"]
+pub struct COMPARE6_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> COMPARE6_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: COMPARE6_A) -> &'a mut W {
+        self.bit(variant.into())
+    }
+    #[doc = "Disable"]
+    #[inline(always)]
+    pub fn disabled(self) -> &'a mut W {
+        self.variant(COMPARE6_A::DISABLED)
+    }
+    #[doc = "Enable"]
+    #[inline(always)]
+    pub fn enabled(self) -> &'a mut W {
+        self.variant(COMPARE6_A::ENABLED)
+    }
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 22)) | (((value as u32) & 0x01) << 22);
+        self.w
+    }
+}
+#[doc = "Enable or disable interrupt for event COMPARE\\[7\\]\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum COMPARE7_A {
+    #[doc = "0: Disable"]
+    DISABLED = 0,
+    #[doc = "1: Enable"]
+    ENABLED = 1,
+}
+impl From<COMPARE7_A> for bool {
+    #[inline(always)]
+    fn from(variant: COMPARE7_A) -> Self {
+        variant as u8 != 0
+    }
+}
+#[doc = "Field `COMPARE7` reader - Enable or disable interrupt for event COMPARE\\[7\\]"]
+pub struct COMPARE7_R(crate::FieldReader<bool, COMPARE7_A>);
+impl COMPARE7_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        COMPARE7_R(crate::FieldReader::new(bits))
+    }
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> COMPARE7_A {
+        match self.bits {
+            false => COMPARE7_A::DISABLED,
+            true => COMPARE7_A::ENABLED,
+        }
+    }
+    #[doc = "Checks if the value of the field is `DISABLED`"]
+    #[inline(always)]
+    pub fn is_disabled(&self) -> bool {
+        **self == COMPARE7_A::DISABLED
+    }
+    #[doc = "Checks if the value of the field is `ENABLED`"]
+    #[inline(always)]
+    pub fn is_enabled(&self) -> bool {
+        **self == COMPARE7_A::ENABLED
+    }
+}
+impl core::ops::Deref for COMPARE7_R {
+    type Target = crate::FieldReader<bool, COMPARE7_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `COMPARE7` writer - Enable or disable interrupt for event COMPARE\\[7\\]"]
+pub struct COMPARE7_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> COMPARE7_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: COMPARE7_A) -> &'a mut W {
+        self.bit(variant.into())
+    }
+    #[doc = "Disable"]
+    #[inline(always)]
+    pub fn disabled(self) -> &'a mut W {
+        self.variant(COMPARE7_A::DISABLED)
+    }
+    #[doc = "Enable"]
+    #[inline(always)]
+    pub fn enabled(self) -> &'a mut W {
+        self.variant(COMPARE7_A::ENABLED)
+    }
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 23)) | (((value as u32) & 0x01) << 23);
         self.w
     }
 }
@@ -509,6 +727,16 @@ impl R {
     pub fn compare5(&self) -> COMPARE5_R {
         COMPARE5_R::new(((self.bits >> 21) & 0x01) != 0)
     }
+    #[doc = "Bit 22 - Enable or disable interrupt for event COMPARE\\[6\\]"]
+    #[inline(always)]
+    pub fn compare6(&self) -> COMPARE6_R {
+        COMPARE6_R::new(((self.bits >> 22) & 0x01) != 0)
+    }
+    #[doc = "Bit 23 - Enable or disable interrupt for event COMPARE\\[7\\]"]
+    #[inline(always)]
+    pub fn compare7(&self) -> COMPARE7_R {
+        COMPARE7_R::new(((self.bits >> 23) & 0x01) != 0)
+    }
 }
 impl W {
     #[doc = "Bit 16 - Enable or disable interrupt for event COMPARE\\[0\\]"]
@@ -540,5 +768,40 @@ impl W {
     #[inline(always)]
     pub fn compare5(&mut self) -> COMPARE5_W {
         COMPARE5_W { w: self }
+    }
+    #[doc = "Bit 22 - Enable or disable interrupt for event COMPARE\\[6\\]"]
+    #[inline(always)]
+    pub fn compare6(&mut self) -> COMPARE6_W {
+        COMPARE6_W { w: self }
+    }
+    #[doc = "Bit 23 - Enable or disable interrupt for event COMPARE\\[7\\]"]
+    #[inline(always)]
+    pub fn compare7(&mut self) -> COMPARE7_W {
+        COMPARE7_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Enable or disable interrupt\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [inten](index.html) module"]
+pub struct INTEN_SPEC;
+impl crate::RegisterSpec for INTEN_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [inten::R](R) reader structure"]
+impl crate::Readable for INTEN_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [inten::W](W) writer structure"]
+impl crate::Writable for INTEN_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets INTEN to value 0"]
+impl crate::Resettable for INTEN_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

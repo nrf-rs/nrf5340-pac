@@ -1,44 +1,64 @@
-#[doc = "Reader of register CCACTRL"]
-pub type R = crate::R<u32, super::CCACTRL>;
-#[doc = "Writer for register CCACTRL"]
-pub type W = crate::W<u32, super::CCACTRL>;
-#[doc = "Register CCACTRL `reset()`'s with value 0x052d_0000"]
-impl crate::ResetValue for super::CCACTRL {
-    type Type = u32;
+#[doc = "Register `CCACTRL` reader"]
+pub struct R(crate::R<CCACTRL_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<CCACTRL_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0x052d_0000
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<CCACTRL_SPEC>> for R {
+    fn from(reader: crate::R<CCACTRL_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `CCACTRL` writer"]
+pub struct W(crate::W<CCACTRL_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<CCACTRL_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<CCACTRL_SPEC>> for W {
+    fn from(writer: crate::W<CCACTRL_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "CCA mode of operation\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
+#[repr(u8)]
 pub enum CCAMODE_A {
     #[doc = "0: Energy above threshold"]
-    EDMODE,
+    EDMODE = 0,
     #[doc = "1: Carrier seen"]
-    CARRIERMODE,
+    CARRIERMODE = 1,
     #[doc = "2: Energy above threshold AND carrier seen"]
-    CARRIERANDEDMODE,
+    CARRIERANDEDMODE = 2,
     #[doc = "3: Energy above threshold OR carrier seen"]
-    CARRIEROREDMODE,
+    CARRIEROREDMODE = 3,
     #[doc = "4: Energy above threshold test mode that will abort when first ED measurement over threshold is seen. No averaging."]
-    EDMODETEST1,
+    EDMODETEST1 = 4,
 }
 impl From<CCAMODE_A> for u8 {
     #[inline(always)]
     fn from(variant: CCAMODE_A) -> Self {
-        match variant {
-            CCAMODE_A::EDMODE => 0,
-            CCAMODE_A::CARRIERMODE => 1,
-            CCAMODE_A::CARRIERANDEDMODE => 2,
-            CCAMODE_A::CARRIEROREDMODE => 3,
-            CCAMODE_A::EDMODETEST1 => 4,
-        }
+        variant as _
     }
 }
-#[doc = "Reader of field `CCAMODE`"]
-pub type CCAMODE_R = crate::R<u8, CCAMODE_A>;
+#[doc = "Field `CCAMODE` reader - CCA mode of operation"]
+pub struct CCAMODE_R(crate::FieldReader<u8, CCAMODE_A>);
 impl CCAMODE_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        CCAMODE_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> crate::Variant<u8, CCAMODE_A> {
@@ -55,30 +75,37 @@ impl CCAMODE_R {
     #[doc = "Checks if the value of the field is `EDMODE`"]
     #[inline(always)]
     pub fn is_ed_mode(&self) -> bool {
-        *self == CCAMODE_A::EDMODE
+        **self == CCAMODE_A::EDMODE
     }
     #[doc = "Checks if the value of the field is `CARRIERMODE`"]
     #[inline(always)]
     pub fn is_carrier_mode(&self) -> bool {
-        *self == CCAMODE_A::CARRIERMODE
+        **self == CCAMODE_A::CARRIERMODE
     }
     #[doc = "Checks if the value of the field is `CARRIERANDEDMODE`"]
     #[inline(always)]
     pub fn is_carrier_and_ed_mode(&self) -> bool {
-        *self == CCAMODE_A::CARRIERANDEDMODE
+        **self == CCAMODE_A::CARRIERANDEDMODE
     }
     #[doc = "Checks if the value of the field is `CARRIEROREDMODE`"]
     #[inline(always)]
     pub fn is_carrier_or_ed_mode(&self) -> bool {
-        *self == CCAMODE_A::CARRIEROREDMODE
+        **self == CCAMODE_A::CARRIEROREDMODE
     }
     #[doc = "Checks if the value of the field is `EDMODETEST1`"]
     #[inline(always)]
     pub fn is_ed_mode_test1(&self) -> bool {
-        *self == CCAMODE_A::EDMODETEST1
+        **self == CCAMODE_A::EDMODETEST1
     }
 }
-#[doc = "Write proxy for field `CCAMODE`"]
+impl core::ops::Deref for CCAMODE_R {
+    type Target = crate::FieldReader<u8, CCAMODE_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CCAMODE` writer - CCA mode of operation"]
 pub struct CCAMODE_W<'a> {
     w: &'a mut W,
 }
@@ -120,9 +147,21 @@ impl<'a> CCAMODE_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `CCAEDTHRES`"]
-pub type CCAEDTHRES_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `CCAEDTHRES`"]
+#[doc = "Field `CCAEDTHRES` reader - CCA energy busy threshold. Used in all the CCA modes except CarrierMode."]
+pub struct CCAEDTHRES_R(crate::FieldReader<u8, u8>);
+impl CCAEDTHRES_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        CCAEDTHRES_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for CCAEDTHRES_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CCAEDTHRES` writer - CCA energy busy threshold. Used in all the CCA modes except CarrierMode."]
 pub struct CCAEDTHRES_W<'a> {
     w: &'a mut W,
 }
@@ -134,9 +173,21 @@ impl<'a> CCAEDTHRES_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `CCACORRTHRES`"]
-pub type CCACORRTHRES_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `CCACORRTHRES`"]
+#[doc = "Field `CCACORRTHRES` reader - CCA correlator busy threshold. Only relevant to CarrierMode, CarrierAndEdMode, and CarrierOrEdMode."]
+pub struct CCACORRTHRES_R(crate::FieldReader<u8, u8>);
+impl CCACORRTHRES_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        CCACORRTHRES_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for CCACORRTHRES_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CCACORRTHRES` writer - CCA correlator busy threshold. Only relevant to CarrierMode, CarrierAndEdMode, and CarrierOrEdMode."]
 pub struct CCACORRTHRES_W<'a> {
     w: &'a mut W,
 }
@@ -148,9 +199,21 @@ impl<'a> CCACORRTHRES_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `CCACORRCNT`"]
-pub type CCACORRCNT_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `CCACORRCNT`"]
+#[doc = "Field `CCACORRCNT` reader - Limit for occurances above CCACORRTHRES. When not equal to zero the corrolator based signal detect is enabled."]
+pub struct CCACORRCNT_R(crate::FieldReader<u8, u8>);
+impl CCACORRCNT_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        CCACORRCNT_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for CCACORRCNT_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CCACORRCNT` writer - Limit for occurances above CCACORRTHRES. When not equal to zero the corrolator based signal detect is enabled."]
 pub struct CCACORRCNT_W<'a> {
     w: &'a mut W,
 }
@@ -204,5 +267,30 @@ impl W {
     #[inline(always)]
     pub fn ccacorrcnt(&mut self) -> CCACORRCNT_W {
         CCACORRCNT_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "IEEE 802.15.4 clear channel assessment control\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [ccactrl](index.html) module"]
+pub struct CCACTRL_SPEC;
+impl crate::RegisterSpec for CCACTRL_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [ccactrl::R](R) reader structure"]
+impl crate::Readable for CCACTRL_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [ccactrl::W](W) writer structure"]
+impl crate::Writable for CCACTRL_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets CCACTRL to value 0x052d_0000"]
+impl crate::Resettable for CCACTRL_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0x052d_0000
     }
 }

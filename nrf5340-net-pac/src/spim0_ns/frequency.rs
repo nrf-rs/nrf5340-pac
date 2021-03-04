@@ -1,56 +1,72 @@
-#[doc = "Reader of register FREQUENCY"]
-pub type R = crate::R<u32, super::FREQUENCY>;
-#[doc = "Writer for register FREQUENCY"]
-pub type W = crate::W<u32, super::FREQUENCY>;
-#[doc = "Register FREQUENCY `reset()`'s with value 0x0400_0000"]
-impl crate::ResetValue for super::FREQUENCY {
-    type Type = u32;
+#[doc = "Register `FREQUENCY` reader"]
+pub struct R(crate::R<FREQUENCY_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<FREQUENCY_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0x0400_0000
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<FREQUENCY_SPEC>> for R {
+    fn from(reader: crate::R<FREQUENCY_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `FREQUENCY` writer"]
+pub struct W(crate::W<FREQUENCY_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<FREQUENCY_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<FREQUENCY_SPEC>> for W {
+    fn from(writer: crate::W<FREQUENCY_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "SPI master data rate\n\nValue on reset: 67108864"]
 #[derive(Clone, Copy, Debug, PartialEq)]
+#[repr(u32)]
 pub enum FREQUENCY_A {
     #[doc = "33554432: 125 kbps"]
-    K125,
+    K125 = 33554432,
     #[doc = "67108864: 250 kbps"]
-    K250,
+    K250 = 67108864,
     #[doc = "134217728: 500 kbps"]
-    K500,
+    K500 = 134217728,
     #[doc = "268435456: 1 Mbps"]
-    M1,
+    M1 = 268435456,
     #[doc = "536870912: 2 Mbps"]
-    M2,
+    M2 = 536870912,
     #[doc = "1073741824: 4 Mbps"]
-    M4,
+    M4 = 1073741824,
     #[doc = "2147483648: 8 Mbps"]
-    M8,
+    M8 = 2147483648,
     #[doc = "167772160: 16 Mbps"]
-    M16,
+    M16 = 167772160,
     #[doc = "335544320: 32 Mbps"]
-    M32,
+    M32 = 335544320,
 }
 impl From<FREQUENCY_A> for u32 {
     #[inline(always)]
     fn from(variant: FREQUENCY_A) -> Self {
-        match variant {
-            FREQUENCY_A::K125 => 33554432,
-            FREQUENCY_A::K250 => 67108864,
-            FREQUENCY_A::K500 => 134217728,
-            FREQUENCY_A::M1 => 268435456,
-            FREQUENCY_A::M2 => 536870912,
-            FREQUENCY_A::M4 => 1073741824,
-            FREQUENCY_A::M8 => 2147483648,
-            FREQUENCY_A::M16 => 167772160,
-            FREQUENCY_A::M32 => 335544320,
-        }
+        variant as _
     }
 }
-#[doc = "Reader of field `FREQUENCY`"]
-pub type FREQUENCY_R = crate::R<u32, FREQUENCY_A>;
+#[doc = "Field `FREQUENCY` reader - SPI master data rate"]
+pub struct FREQUENCY_R(crate::FieldReader<u32, FREQUENCY_A>);
 impl FREQUENCY_R {
+    pub(crate) fn new(bits: u32) -> Self {
+        FREQUENCY_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> crate::Variant<u32, FREQUENCY_A> {
@@ -71,50 +87,57 @@ impl FREQUENCY_R {
     #[doc = "Checks if the value of the field is `K125`"]
     #[inline(always)]
     pub fn is_k125(&self) -> bool {
-        *self == FREQUENCY_A::K125
+        **self == FREQUENCY_A::K125
     }
     #[doc = "Checks if the value of the field is `K250`"]
     #[inline(always)]
     pub fn is_k250(&self) -> bool {
-        *self == FREQUENCY_A::K250
+        **self == FREQUENCY_A::K250
     }
     #[doc = "Checks if the value of the field is `K500`"]
     #[inline(always)]
     pub fn is_k500(&self) -> bool {
-        *self == FREQUENCY_A::K500
+        **self == FREQUENCY_A::K500
     }
     #[doc = "Checks if the value of the field is `M1`"]
     #[inline(always)]
     pub fn is_m1(&self) -> bool {
-        *self == FREQUENCY_A::M1
+        **self == FREQUENCY_A::M1
     }
     #[doc = "Checks if the value of the field is `M2`"]
     #[inline(always)]
     pub fn is_m2(&self) -> bool {
-        *self == FREQUENCY_A::M2
+        **self == FREQUENCY_A::M2
     }
     #[doc = "Checks if the value of the field is `M4`"]
     #[inline(always)]
     pub fn is_m4(&self) -> bool {
-        *self == FREQUENCY_A::M4
+        **self == FREQUENCY_A::M4
     }
     #[doc = "Checks if the value of the field is `M8`"]
     #[inline(always)]
     pub fn is_m8(&self) -> bool {
-        *self == FREQUENCY_A::M8
+        **self == FREQUENCY_A::M8
     }
     #[doc = "Checks if the value of the field is `M16`"]
     #[inline(always)]
     pub fn is_m16(&self) -> bool {
-        *self == FREQUENCY_A::M16
+        **self == FREQUENCY_A::M16
     }
     #[doc = "Checks if the value of the field is `M32`"]
     #[inline(always)]
     pub fn is_m32(&self) -> bool {
-        *self == FREQUENCY_A::M32
+        **self == FREQUENCY_A::M32
     }
 }
-#[doc = "Write proxy for field `FREQUENCY`"]
+impl core::ops::Deref for FREQUENCY_R {
+    type Target = crate::FieldReader<u32, FREQUENCY_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `FREQUENCY` writer - SPI master data rate"]
 pub struct FREQUENCY_W<'a> {
     w: &'a mut W,
 }
@@ -188,5 +211,30 @@ impl W {
     #[inline(always)]
     pub fn frequency(&mut self) -> FREQUENCY_W {
         FREQUENCY_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "SPI frequency. Accuracy depends on the HFCLK source selected.\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [frequency](index.html) module"]
+pub struct FREQUENCY_SPEC;
+impl crate::RegisterSpec for FREQUENCY_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [frequency::R](R) reader structure"]
+impl crate::Readable for FREQUENCY_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [frequency::W](W) writer structure"]
+impl crate::Writable for FREQUENCY_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets FREQUENCY to value 0x0400_0000"]
+impl crate::Resettable for FREQUENCY_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0x0400_0000
     }
 }

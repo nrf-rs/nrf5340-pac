@@ -1,41 +1,62 @@
-#[doc = "Reader of register DECODER"]
-pub type R = crate::R<u32, super::DECODER>;
-#[doc = "Writer for register DECODER"]
-pub type W = crate::W<u32, super::DECODER>;
-#[doc = "Register DECODER `reset()`'s with value 0"]
-impl crate::ResetValue for super::DECODER {
-    type Type = u32;
+#[doc = "Register `DECODER` reader"]
+pub struct R(crate::R<DECODER_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<DECODER_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<DECODER_SPEC>> for R {
+    fn from(reader: crate::R<DECODER_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `DECODER` writer"]
+pub struct W(crate::W<DECODER_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<DECODER_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<DECODER_SPEC>> for W {
+    fn from(writer: crate::W<DECODER_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "How a sequence is read from RAM and spread to the compare register\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
+#[repr(u8)]
 pub enum LOAD_A {
     #[doc = "0: 1st half word (16-bit) used in all PWM channels 0..3"]
-    COMMON,
+    COMMON = 0,
     #[doc = "1: 1st half word (16-bit) used in channel 0..1; 2nd word in channel 2..3"]
-    GROUPED,
+    GROUPED = 1,
     #[doc = "2: 1st half word (16-bit) in ch.0; 2nd in ch.1; ...; 4th in ch.3"]
-    INDIVIDUAL,
+    INDIVIDUAL = 2,
     #[doc = "3: 1st half word (16-bit) in ch.0; 2nd in ch.1; ...; 4th in COUNTERTOP"]
-    WAVEFORM,
+    WAVEFORM = 3,
 }
 impl From<LOAD_A> for u8 {
     #[inline(always)]
     fn from(variant: LOAD_A) -> Self {
-        match variant {
-            LOAD_A::COMMON => 0,
-            LOAD_A::GROUPED => 1,
-            LOAD_A::INDIVIDUAL => 2,
-            LOAD_A::WAVEFORM => 3,
-        }
+        variant as _
     }
 }
-#[doc = "Reader of field `LOAD`"]
-pub type LOAD_R = crate::R<u8, LOAD_A>;
+#[doc = "Field `LOAD` reader - How a sequence is read from RAM and spread to the compare register"]
+pub struct LOAD_R(crate::FieldReader<u8, LOAD_A>);
 impl LOAD_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        LOAD_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> LOAD_A {
@@ -50,25 +71,32 @@ impl LOAD_R {
     #[doc = "Checks if the value of the field is `COMMON`"]
     #[inline(always)]
     pub fn is_common(&self) -> bool {
-        *self == LOAD_A::COMMON
+        **self == LOAD_A::COMMON
     }
     #[doc = "Checks if the value of the field is `GROUPED`"]
     #[inline(always)]
     pub fn is_grouped(&self) -> bool {
-        *self == LOAD_A::GROUPED
+        **self == LOAD_A::GROUPED
     }
     #[doc = "Checks if the value of the field is `INDIVIDUAL`"]
     #[inline(always)]
     pub fn is_individual(&self) -> bool {
-        *self == LOAD_A::INDIVIDUAL
+        **self == LOAD_A::INDIVIDUAL
     }
     #[doc = "Checks if the value of the field is `WAVEFORM`"]
     #[inline(always)]
     pub fn is_wave_form(&self) -> bool {
-        *self == LOAD_A::WAVEFORM
+        **self == LOAD_A::WAVEFORM
     }
 }
-#[doc = "Write proxy for field `LOAD`"]
+impl core::ops::Deref for LOAD_R {
+    type Target = crate::FieldReader<u8, LOAD_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `LOAD` writer - How a sequence is read from RAM and spread to the compare register"]
 pub struct LOAD_W<'a> {
     w: &'a mut W,
 }
@@ -76,9 +104,7 @@ impl<'a> LOAD_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: LOAD_A) -> &'a mut W {
-        {
-            self.bits(variant.into())
-        }
+        self.bits(variant.into())
     }
     #[doc = "1st half word (16-bit) used in all PWM channels 0..3"]
     #[inline(always)]
@@ -111,22 +137,22 @@ impl<'a> LOAD_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum MODE_A {
     #[doc = "0: SEQ\\[n\\].REFRESH is used to determine loading internal compare registers"]
-    REFRESHCOUNT,
+    REFRESHCOUNT = 0,
     #[doc = "1: NEXTSTEP task causes a new value to be loaded to internal compare registers"]
-    NEXTSTEP,
+    NEXTSTEP = 1,
 }
 impl From<MODE_A> for bool {
     #[inline(always)]
     fn from(variant: MODE_A) -> Self {
-        match variant {
-            MODE_A::REFRESHCOUNT => false,
-            MODE_A::NEXTSTEP => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `MODE`"]
-pub type MODE_R = crate::R<bool, MODE_A>;
+#[doc = "Field `MODE` reader - Selects source for advancing the active sequence"]
+pub struct MODE_R(crate::FieldReader<bool, MODE_A>);
 impl MODE_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        MODE_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> MODE_A {
@@ -138,15 +164,22 @@ impl MODE_R {
     #[doc = "Checks if the value of the field is `REFRESHCOUNT`"]
     #[inline(always)]
     pub fn is_refresh_count(&self) -> bool {
-        *self == MODE_A::REFRESHCOUNT
+        **self == MODE_A::REFRESHCOUNT
     }
     #[doc = "Checks if the value of the field is `NEXTSTEP`"]
     #[inline(always)]
     pub fn is_next_step(&self) -> bool {
-        *self == MODE_A::NEXTSTEP
+        **self == MODE_A::NEXTSTEP
     }
 }
-#[doc = "Write proxy for field `MODE`"]
+impl core::ops::Deref for MODE_R {
+    type Target = crate::FieldReader<bool, MODE_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `MODE` writer - Selects source for advancing the active sequence"]
 pub struct MODE_W<'a> {
     w: &'a mut W,
 }
@@ -154,9 +187,7 @@ impl<'a> MODE_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: MODE_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "SEQ\\[n\\].REFRESH is used to determine loading internal compare registers"]
     #[inline(always)]
@@ -207,5 +238,30 @@ impl W {
     #[inline(always)]
     pub fn mode(&mut self) -> MODE_W {
         MODE_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Configuration of the decoder\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [decoder](index.html) module"]
+pub struct DECODER_SPEC;
+impl crate::RegisterSpec for DECODER_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [decoder::R](R) reader structure"]
+impl crate::Readable for DECODER_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [decoder::W](W) writer structure"]
+impl crate::Writable for DECODER_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets DECODER to value 0"]
+impl crate::Resettable for DECODER_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

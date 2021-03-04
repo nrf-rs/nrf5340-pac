@@ -1,18 +1,52 @@
-#[doc = "Reader of register TXDATA"]
-pub type R = crate::R<u32, super::TXDATA>;
-#[doc = "Writer for register TXDATA"]
-pub type W = crate::W<u32, super::TXDATA>;
-#[doc = "Register TXDATA `reset()`'s with value 0"]
-impl crate::ResetValue for super::TXDATA {
-    type Type = u32;
+#[doc = "Register `TXDATA` reader"]
+pub struct R(crate::R<TXDATA_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<TXDATA_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `TXDATA`"]
-pub type TXDATA_R = crate::R<u32, u32>;
-#[doc = "Write proxy for field `TXDATA`"]
+impl core::convert::From<crate::R<TXDATA_SPEC>> for R {
+    fn from(reader: crate::R<TXDATA_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `TXDATA` writer"]
+pub struct W(crate::W<TXDATA_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<TXDATA_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<TXDATA_SPEC>> for W {
+    fn from(writer: crate::W<TXDATA_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `TXDATA` reader - Data sent to debugger"]
+pub struct TXDATA_R(crate::FieldReader<u32, u32>);
+impl TXDATA_R {
+    pub(crate) fn new(bits: u32) -> Self {
+        TXDATA_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for TXDATA_R {
+    type Target = crate::FieldReader<u32, u32>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `TXDATA` writer - Data sent to debugger"]
 pub struct TXDATA_W<'a> {
     w: &'a mut W,
 }
@@ -36,5 +70,30 @@ impl W {
     #[inline(always)]
     pub fn txdata(&mut self) -> TXDATA_W {
         TXDATA_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Data sent from the CPU to the debugger.\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [txdata](index.html) module"]
+pub struct TXDATA_SPEC;
+impl crate::RegisterSpec for TXDATA_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [txdata::R](R) reader structure"]
+impl crate::Readable for TXDATA_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [txdata::W](W) writer structure"]
+impl crate::Writable for TXDATA_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets TXDATA to value 0"]
+impl crate::Resettable for TXDATA_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

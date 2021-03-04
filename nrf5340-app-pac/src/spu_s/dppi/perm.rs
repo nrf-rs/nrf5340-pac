@@ -1,35 +1,57 @@
-#[doc = "Reader of register PERM"]
-pub type R = crate::R<u32, super::PERM>;
-#[doc = "Writer for register PERM"]
-pub type W = crate::W<u32, super::PERM>;
-#[doc = "Register PERM `reset()`'s with value 0xffff_ffff"]
-impl crate::ResetValue for super::PERM {
-    type Type = u32;
+#[doc = "Register `PERM` reader"]
+pub struct R(crate::R<PERM_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<PERM_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0xffff_ffff
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Select secure attribute.\n\nValue on reset: 1"]
+impl core::convert::From<crate::R<PERM_SPEC>> for R {
+    fn from(reader: crate::R<PERM_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `PERM` writer"]
+pub struct W(crate::W<PERM_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<PERM_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<PERM_SPEC>> for W {
+    fn from(writer: crate::W<PERM_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Select secure attribute\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CHANNEL0_A {
-    #[doc = "1: Channel0 has its secure attribute set"]
-    SECURE,
-    #[doc = "0: Channel0 has its non-secure attribute set"]
-    NONSECURE,
+    #[doc = "1: Channel 0 has its secure attribute set"]
+    SECURE = 1,
+    #[doc = "0: Channel 0 has its non-secure attribute set"]
+    NONSECURE = 0,
 }
 impl From<CHANNEL0_A> for bool {
     #[inline(always)]
     fn from(variant: CHANNEL0_A) -> Self {
-        match variant {
-            CHANNEL0_A::SECURE => true,
-            CHANNEL0_A::NONSECURE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `CHANNEL0`"]
-pub type CHANNEL0_R = crate::R<bool, CHANNEL0_A>;
+#[doc = "Field `CHANNEL0` reader - Select secure attribute"]
+pub struct CHANNEL0_R(crate::FieldReader<bool, CHANNEL0_A>);
 impl CHANNEL0_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CHANNEL0_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CHANNEL0_A {
@@ -41,15 +63,22 @@ impl CHANNEL0_R {
     #[doc = "Checks if the value of the field is `SECURE`"]
     #[inline(always)]
     pub fn is_secure(&self) -> bool {
-        *self == CHANNEL0_A::SECURE
+        **self == CHANNEL0_A::SECURE
     }
     #[doc = "Checks if the value of the field is `NONSECURE`"]
     #[inline(always)]
     pub fn is_non_secure(&self) -> bool {
-        *self == CHANNEL0_A::NONSECURE
+        **self == CHANNEL0_A::NONSECURE
     }
 }
-#[doc = "Write proxy for field `CHANNEL0`"]
+impl core::ops::Deref for CHANNEL0_R {
+    type Target = crate::FieldReader<bool, CHANNEL0_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CHANNEL0` writer - Select secure attribute"]
 pub struct CHANNEL0_W<'a> {
     w: &'a mut W,
 }
@@ -57,16 +86,14 @@ impl<'a> CHANNEL0_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: CHANNEL0_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Channel0 has its secure attribute set"]
+    #[doc = "Channel 0 has its secure attribute set"]
     #[inline(always)]
     pub fn secure(self) -> &'a mut W {
         self.variant(CHANNEL0_A::SECURE)
     }
-    #[doc = "Channel0 has its non-secure attribute set"]
+    #[doc = "Channel 0 has its non-secure attribute set"]
     #[inline(always)]
     pub fn non_secure(self) -> &'a mut W {
         self.variant(CHANNEL0_A::NONSECURE)
@@ -88,26 +115,26 @@ impl<'a> CHANNEL0_W<'a> {
         self.w
     }
 }
-#[doc = "Select secure attribute.\n\nValue on reset: 1"]
+#[doc = "Select secure attribute\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CHANNEL1_A {
-    #[doc = "1: Channel1 has its secure attribute set"]
-    SECURE,
-    #[doc = "0: Channel1 has its non-secure attribute set"]
-    NONSECURE,
+    #[doc = "1: Channel 1 has its secure attribute set"]
+    SECURE = 1,
+    #[doc = "0: Channel 1 has its non-secure attribute set"]
+    NONSECURE = 0,
 }
 impl From<CHANNEL1_A> for bool {
     #[inline(always)]
     fn from(variant: CHANNEL1_A) -> Self {
-        match variant {
-            CHANNEL1_A::SECURE => true,
-            CHANNEL1_A::NONSECURE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `CHANNEL1`"]
-pub type CHANNEL1_R = crate::R<bool, CHANNEL1_A>;
+#[doc = "Field `CHANNEL1` reader - Select secure attribute"]
+pub struct CHANNEL1_R(crate::FieldReader<bool, CHANNEL1_A>);
 impl CHANNEL1_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CHANNEL1_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CHANNEL1_A {
@@ -119,15 +146,22 @@ impl CHANNEL1_R {
     #[doc = "Checks if the value of the field is `SECURE`"]
     #[inline(always)]
     pub fn is_secure(&self) -> bool {
-        *self == CHANNEL1_A::SECURE
+        **self == CHANNEL1_A::SECURE
     }
     #[doc = "Checks if the value of the field is `NONSECURE`"]
     #[inline(always)]
     pub fn is_non_secure(&self) -> bool {
-        *self == CHANNEL1_A::NONSECURE
+        **self == CHANNEL1_A::NONSECURE
     }
 }
-#[doc = "Write proxy for field `CHANNEL1`"]
+impl core::ops::Deref for CHANNEL1_R {
+    type Target = crate::FieldReader<bool, CHANNEL1_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CHANNEL1` writer - Select secure attribute"]
 pub struct CHANNEL1_W<'a> {
     w: &'a mut W,
 }
@@ -135,16 +169,14 @@ impl<'a> CHANNEL1_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: CHANNEL1_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Channel1 has its secure attribute set"]
+    #[doc = "Channel 1 has its secure attribute set"]
     #[inline(always)]
     pub fn secure(self) -> &'a mut W {
         self.variant(CHANNEL1_A::SECURE)
     }
-    #[doc = "Channel1 has its non-secure attribute set"]
+    #[doc = "Channel 1 has its non-secure attribute set"]
     #[inline(always)]
     pub fn non_secure(self) -> &'a mut W {
         self.variant(CHANNEL1_A::NONSECURE)
@@ -166,26 +198,26 @@ impl<'a> CHANNEL1_W<'a> {
         self.w
     }
 }
-#[doc = "Select secure attribute.\n\nValue on reset: 1"]
+#[doc = "Select secure attribute\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CHANNEL2_A {
-    #[doc = "1: Channel2 has its secure attribute set"]
-    SECURE,
-    #[doc = "0: Channel2 has its non-secure attribute set"]
-    NONSECURE,
+    #[doc = "1: Channel 2 has its secure attribute set"]
+    SECURE = 1,
+    #[doc = "0: Channel 2 has its non-secure attribute set"]
+    NONSECURE = 0,
 }
 impl From<CHANNEL2_A> for bool {
     #[inline(always)]
     fn from(variant: CHANNEL2_A) -> Self {
-        match variant {
-            CHANNEL2_A::SECURE => true,
-            CHANNEL2_A::NONSECURE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `CHANNEL2`"]
-pub type CHANNEL2_R = crate::R<bool, CHANNEL2_A>;
+#[doc = "Field `CHANNEL2` reader - Select secure attribute"]
+pub struct CHANNEL2_R(crate::FieldReader<bool, CHANNEL2_A>);
 impl CHANNEL2_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CHANNEL2_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CHANNEL2_A {
@@ -197,15 +229,22 @@ impl CHANNEL2_R {
     #[doc = "Checks if the value of the field is `SECURE`"]
     #[inline(always)]
     pub fn is_secure(&self) -> bool {
-        *self == CHANNEL2_A::SECURE
+        **self == CHANNEL2_A::SECURE
     }
     #[doc = "Checks if the value of the field is `NONSECURE`"]
     #[inline(always)]
     pub fn is_non_secure(&self) -> bool {
-        *self == CHANNEL2_A::NONSECURE
+        **self == CHANNEL2_A::NONSECURE
     }
 }
-#[doc = "Write proxy for field `CHANNEL2`"]
+impl core::ops::Deref for CHANNEL2_R {
+    type Target = crate::FieldReader<bool, CHANNEL2_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CHANNEL2` writer - Select secure attribute"]
 pub struct CHANNEL2_W<'a> {
     w: &'a mut W,
 }
@@ -213,16 +252,14 @@ impl<'a> CHANNEL2_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: CHANNEL2_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Channel2 has its secure attribute set"]
+    #[doc = "Channel 2 has its secure attribute set"]
     #[inline(always)]
     pub fn secure(self) -> &'a mut W {
         self.variant(CHANNEL2_A::SECURE)
     }
-    #[doc = "Channel2 has its non-secure attribute set"]
+    #[doc = "Channel 2 has its non-secure attribute set"]
     #[inline(always)]
     pub fn non_secure(self) -> &'a mut W {
         self.variant(CHANNEL2_A::NONSECURE)
@@ -244,26 +281,26 @@ impl<'a> CHANNEL2_W<'a> {
         self.w
     }
 }
-#[doc = "Select secure attribute.\n\nValue on reset: 1"]
+#[doc = "Select secure attribute\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CHANNEL3_A {
-    #[doc = "1: Channel3 has its secure attribute set"]
-    SECURE,
-    #[doc = "0: Channel3 has its non-secure attribute set"]
-    NONSECURE,
+    #[doc = "1: Channel 3 has its secure attribute set"]
+    SECURE = 1,
+    #[doc = "0: Channel 3 has its non-secure attribute set"]
+    NONSECURE = 0,
 }
 impl From<CHANNEL3_A> for bool {
     #[inline(always)]
     fn from(variant: CHANNEL3_A) -> Self {
-        match variant {
-            CHANNEL3_A::SECURE => true,
-            CHANNEL3_A::NONSECURE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `CHANNEL3`"]
-pub type CHANNEL3_R = crate::R<bool, CHANNEL3_A>;
+#[doc = "Field `CHANNEL3` reader - Select secure attribute"]
+pub struct CHANNEL3_R(crate::FieldReader<bool, CHANNEL3_A>);
 impl CHANNEL3_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CHANNEL3_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CHANNEL3_A {
@@ -275,15 +312,22 @@ impl CHANNEL3_R {
     #[doc = "Checks if the value of the field is `SECURE`"]
     #[inline(always)]
     pub fn is_secure(&self) -> bool {
-        *self == CHANNEL3_A::SECURE
+        **self == CHANNEL3_A::SECURE
     }
     #[doc = "Checks if the value of the field is `NONSECURE`"]
     #[inline(always)]
     pub fn is_non_secure(&self) -> bool {
-        *self == CHANNEL3_A::NONSECURE
+        **self == CHANNEL3_A::NONSECURE
     }
 }
-#[doc = "Write proxy for field `CHANNEL3`"]
+impl core::ops::Deref for CHANNEL3_R {
+    type Target = crate::FieldReader<bool, CHANNEL3_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CHANNEL3` writer - Select secure attribute"]
 pub struct CHANNEL3_W<'a> {
     w: &'a mut W,
 }
@@ -291,16 +335,14 @@ impl<'a> CHANNEL3_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: CHANNEL3_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Channel3 has its secure attribute set"]
+    #[doc = "Channel 3 has its secure attribute set"]
     #[inline(always)]
     pub fn secure(self) -> &'a mut W {
         self.variant(CHANNEL3_A::SECURE)
     }
-    #[doc = "Channel3 has its non-secure attribute set"]
+    #[doc = "Channel 3 has its non-secure attribute set"]
     #[inline(always)]
     pub fn non_secure(self) -> &'a mut W {
         self.variant(CHANNEL3_A::NONSECURE)
@@ -322,26 +364,26 @@ impl<'a> CHANNEL3_W<'a> {
         self.w
     }
 }
-#[doc = "Select secure attribute.\n\nValue on reset: 1"]
+#[doc = "Select secure attribute\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CHANNEL4_A {
-    #[doc = "1: Channel4 has its secure attribute set"]
-    SECURE,
-    #[doc = "0: Channel4 has its non-secure attribute set"]
-    NONSECURE,
+    #[doc = "1: Channel 4 has its secure attribute set"]
+    SECURE = 1,
+    #[doc = "0: Channel 4 has its non-secure attribute set"]
+    NONSECURE = 0,
 }
 impl From<CHANNEL4_A> for bool {
     #[inline(always)]
     fn from(variant: CHANNEL4_A) -> Self {
-        match variant {
-            CHANNEL4_A::SECURE => true,
-            CHANNEL4_A::NONSECURE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `CHANNEL4`"]
-pub type CHANNEL4_R = crate::R<bool, CHANNEL4_A>;
+#[doc = "Field `CHANNEL4` reader - Select secure attribute"]
+pub struct CHANNEL4_R(crate::FieldReader<bool, CHANNEL4_A>);
 impl CHANNEL4_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CHANNEL4_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CHANNEL4_A {
@@ -353,15 +395,22 @@ impl CHANNEL4_R {
     #[doc = "Checks if the value of the field is `SECURE`"]
     #[inline(always)]
     pub fn is_secure(&self) -> bool {
-        *self == CHANNEL4_A::SECURE
+        **self == CHANNEL4_A::SECURE
     }
     #[doc = "Checks if the value of the field is `NONSECURE`"]
     #[inline(always)]
     pub fn is_non_secure(&self) -> bool {
-        *self == CHANNEL4_A::NONSECURE
+        **self == CHANNEL4_A::NONSECURE
     }
 }
-#[doc = "Write proxy for field `CHANNEL4`"]
+impl core::ops::Deref for CHANNEL4_R {
+    type Target = crate::FieldReader<bool, CHANNEL4_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CHANNEL4` writer - Select secure attribute"]
 pub struct CHANNEL4_W<'a> {
     w: &'a mut W,
 }
@@ -369,16 +418,14 @@ impl<'a> CHANNEL4_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: CHANNEL4_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Channel4 has its secure attribute set"]
+    #[doc = "Channel 4 has its secure attribute set"]
     #[inline(always)]
     pub fn secure(self) -> &'a mut W {
         self.variant(CHANNEL4_A::SECURE)
     }
-    #[doc = "Channel4 has its non-secure attribute set"]
+    #[doc = "Channel 4 has its non-secure attribute set"]
     #[inline(always)]
     pub fn non_secure(self) -> &'a mut W {
         self.variant(CHANNEL4_A::NONSECURE)
@@ -400,26 +447,26 @@ impl<'a> CHANNEL4_W<'a> {
         self.w
     }
 }
-#[doc = "Select secure attribute.\n\nValue on reset: 1"]
+#[doc = "Select secure attribute\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CHANNEL5_A {
-    #[doc = "1: Channel5 has its secure attribute set"]
-    SECURE,
-    #[doc = "0: Channel5 has its non-secure attribute set"]
-    NONSECURE,
+    #[doc = "1: Channel 5 has its secure attribute set"]
+    SECURE = 1,
+    #[doc = "0: Channel 5 has its non-secure attribute set"]
+    NONSECURE = 0,
 }
 impl From<CHANNEL5_A> for bool {
     #[inline(always)]
     fn from(variant: CHANNEL5_A) -> Self {
-        match variant {
-            CHANNEL5_A::SECURE => true,
-            CHANNEL5_A::NONSECURE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `CHANNEL5`"]
-pub type CHANNEL5_R = crate::R<bool, CHANNEL5_A>;
+#[doc = "Field `CHANNEL5` reader - Select secure attribute"]
+pub struct CHANNEL5_R(crate::FieldReader<bool, CHANNEL5_A>);
 impl CHANNEL5_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CHANNEL5_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CHANNEL5_A {
@@ -431,15 +478,22 @@ impl CHANNEL5_R {
     #[doc = "Checks if the value of the field is `SECURE`"]
     #[inline(always)]
     pub fn is_secure(&self) -> bool {
-        *self == CHANNEL5_A::SECURE
+        **self == CHANNEL5_A::SECURE
     }
     #[doc = "Checks if the value of the field is `NONSECURE`"]
     #[inline(always)]
     pub fn is_non_secure(&self) -> bool {
-        *self == CHANNEL5_A::NONSECURE
+        **self == CHANNEL5_A::NONSECURE
     }
 }
-#[doc = "Write proxy for field `CHANNEL5`"]
+impl core::ops::Deref for CHANNEL5_R {
+    type Target = crate::FieldReader<bool, CHANNEL5_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CHANNEL5` writer - Select secure attribute"]
 pub struct CHANNEL5_W<'a> {
     w: &'a mut W,
 }
@@ -447,16 +501,14 @@ impl<'a> CHANNEL5_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: CHANNEL5_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Channel5 has its secure attribute set"]
+    #[doc = "Channel 5 has its secure attribute set"]
     #[inline(always)]
     pub fn secure(self) -> &'a mut W {
         self.variant(CHANNEL5_A::SECURE)
     }
-    #[doc = "Channel5 has its non-secure attribute set"]
+    #[doc = "Channel 5 has its non-secure attribute set"]
     #[inline(always)]
     pub fn non_secure(self) -> &'a mut W {
         self.variant(CHANNEL5_A::NONSECURE)
@@ -478,26 +530,26 @@ impl<'a> CHANNEL5_W<'a> {
         self.w
     }
 }
-#[doc = "Select secure attribute.\n\nValue on reset: 1"]
+#[doc = "Select secure attribute\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CHANNEL6_A {
-    #[doc = "1: Channel6 has its secure attribute set"]
-    SECURE,
-    #[doc = "0: Channel6 has its non-secure attribute set"]
-    NONSECURE,
+    #[doc = "1: Channel 6 has its secure attribute set"]
+    SECURE = 1,
+    #[doc = "0: Channel 6 has its non-secure attribute set"]
+    NONSECURE = 0,
 }
 impl From<CHANNEL6_A> for bool {
     #[inline(always)]
     fn from(variant: CHANNEL6_A) -> Self {
-        match variant {
-            CHANNEL6_A::SECURE => true,
-            CHANNEL6_A::NONSECURE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `CHANNEL6`"]
-pub type CHANNEL6_R = crate::R<bool, CHANNEL6_A>;
+#[doc = "Field `CHANNEL6` reader - Select secure attribute"]
+pub struct CHANNEL6_R(crate::FieldReader<bool, CHANNEL6_A>);
 impl CHANNEL6_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CHANNEL6_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CHANNEL6_A {
@@ -509,15 +561,22 @@ impl CHANNEL6_R {
     #[doc = "Checks if the value of the field is `SECURE`"]
     #[inline(always)]
     pub fn is_secure(&self) -> bool {
-        *self == CHANNEL6_A::SECURE
+        **self == CHANNEL6_A::SECURE
     }
     #[doc = "Checks if the value of the field is `NONSECURE`"]
     #[inline(always)]
     pub fn is_non_secure(&self) -> bool {
-        *self == CHANNEL6_A::NONSECURE
+        **self == CHANNEL6_A::NONSECURE
     }
 }
-#[doc = "Write proxy for field `CHANNEL6`"]
+impl core::ops::Deref for CHANNEL6_R {
+    type Target = crate::FieldReader<bool, CHANNEL6_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CHANNEL6` writer - Select secure attribute"]
 pub struct CHANNEL6_W<'a> {
     w: &'a mut W,
 }
@@ -525,16 +584,14 @@ impl<'a> CHANNEL6_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: CHANNEL6_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Channel6 has its secure attribute set"]
+    #[doc = "Channel 6 has its secure attribute set"]
     #[inline(always)]
     pub fn secure(self) -> &'a mut W {
         self.variant(CHANNEL6_A::SECURE)
     }
-    #[doc = "Channel6 has its non-secure attribute set"]
+    #[doc = "Channel 6 has its non-secure attribute set"]
     #[inline(always)]
     pub fn non_secure(self) -> &'a mut W {
         self.variant(CHANNEL6_A::NONSECURE)
@@ -556,26 +613,26 @@ impl<'a> CHANNEL6_W<'a> {
         self.w
     }
 }
-#[doc = "Select secure attribute.\n\nValue on reset: 1"]
+#[doc = "Select secure attribute\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CHANNEL7_A {
-    #[doc = "1: Channel7 has its secure attribute set"]
-    SECURE,
-    #[doc = "0: Channel7 has its non-secure attribute set"]
-    NONSECURE,
+    #[doc = "1: Channel 7 has its secure attribute set"]
+    SECURE = 1,
+    #[doc = "0: Channel 7 has its non-secure attribute set"]
+    NONSECURE = 0,
 }
 impl From<CHANNEL7_A> for bool {
     #[inline(always)]
     fn from(variant: CHANNEL7_A) -> Self {
-        match variant {
-            CHANNEL7_A::SECURE => true,
-            CHANNEL7_A::NONSECURE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `CHANNEL7`"]
-pub type CHANNEL7_R = crate::R<bool, CHANNEL7_A>;
+#[doc = "Field `CHANNEL7` reader - Select secure attribute"]
+pub struct CHANNEL7_R(crate::FieldReader<bool, CHANNEL7_A>);
 impl CHANNEL7_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CHANNEL7_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CHANNEL7_A {
@@ -587,15 +644,22 @@ impl CHANNEL7_R {
     #[doc = "Checks if the value of the field is `SECURE`"]
     #[inline(always)]
     pub fn is_secure(&self) -> bool {
-        *self == CHANNEL7_A::SECURE
+        **self == CHANNEL7_A::SECURE
     }
     #[doc = "Checks if the value of the field is `NONSECURE`"]
     #[inline(always)]
     pub fn is_non_secure(&self) -> bool {
-        *self == CHANNEL7_A::NONSECURE
+        **self == CHANNEL7_A::NONSECURE
     }
 }
-#[doc = "Write proxy for field `CHANNEL7`"]
+impl core::ops::Deref for CHANNEL7_R {
+    type Target = crate::FieldReader<bool, CHANNEL7_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CHANNEL7` writer - Select secure attribute"]
 pub struct CHANNEL7_W<'a> {
     w: &'a mut W,
 }
@@ -603,16 +667,14 @@ impl<'a> CHANNEL7_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: CHANNEL7_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Channel7 has its secure attribute set"]
+    #[doc = "Channel 7 has its secure attribute set"]
     #[inline(always)]
     pub fn secure(self) -> &'a mut W {
         self.variant(CHANNEL7_A::SECURE)
     }
-    #[doc = "Channel7 has its non-secure attribute set"]
+    #[doc = "Channel 7 has its non-secure attribute set"]
     #[inline(always)]
     pub fn non_secure(self) -> &'a mut W {
         self.variant(CHANNEL7_A::NONSECURE)
@@ -634,26 +696,26 @@ impl<'a> CHANNEL7_W<'a> {
         self.w
     }
 }
-#[doc = "Select secure attribute.\n\nValue on reset: 1"]
+#[doc = "Select secure attribute\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CHANNEL8_A {
-    #[doc = "1: Channel8 has its secure attribute set"]
-    SECURE,
-    #[doc = "0: Channel8 has its non-secure attribute set"]
-    NONSECURE,
+    #[doc = "1: Channel 8 has its secure attribute set"]
+    SECURE = 1,
+    #[doc = "0: Channel 8 has its non-secure attribute set"]
+    NONSECURE = 0,
 }
 impl From<CHANNEL8_A> for bool {
     #[inline(always)]
     fn from(variant: CHANNEL8_A) -> Self {
-        match variant {
-            CHANNEL8_A::SECURE => true,
-            CHANNEL8_A::NONSECURE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `CHANNEL8`"]
-pub type CHANNEL8_R = crate::R<bool, CHANNEL8_A>;
+#[doc = "Field `CHANNEL8` reader - Select secure attribute"]
+pub struct CHANNEL8_R(crate::FieldReader<bool, CHANNEL8_A>);
 impl CHANNEL8_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CHANNEL8_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CHANNEL8_A {
@@ -665,15 +727,22 @@ impl CHANNEL8_R {
     #[doc = "Checks if the value of the field is `SECURE`"]
     #[inline(always)]
     pub fn is_secure(&self) -> bool {
-        *self == CHANNEL8_A::SECURE
+        **self == CHANNEL8_A::SECURE
     }
     #[doc = "Checks if the value of the field is `NONSECURE`"]
     #[inline(always)]
     pub fn is_non_secure(&self) -> bool {
-        *self == CHANNEL8_A::NONSECURE
+        **self == CHANNEL8_A::NONSECURE
     }
 }
-#[doc = "Write proxy for field `CHANNEL8`"]
+impl core::ops::Deref for CHANNEL8_R {
+    type Target = crate::FieldReader<bool, CHANNEL8_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CHANNEL8` writer - Select secure attribute"]
 pub struct CHANNEL8_W<'a> {
     w: &'a mut W,
 }
@@ -681,16 +750,14 @@ impl<'a> CHANNEL8_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: CHANNEL8_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Channel8 has its secure attribute set"]
+    #[doc = "Channel 8 has its secure attribute set"]
     #[inline(always)]
     pub fn secure(self) -> &'a mut W {
         self.variant(CHANNEL8_A::SECURE)
     }
-    #[doc = "Channel8 has its non-secure attribute set"]
+    #[doc = "Channel 8 has its non-secure attribute set"]
     #[inline(always)]
     pub fn non_secure(self) -> &'a mut W {
         self.variant(CHANNEL8_A::NONSECURE)
@@ -712,26 +779,26 @@ impl<'a> CHANNEL8_W<'a> {
         self.w
     }
 }
-#[doc = "Select secure attribute.\n\nValue on reset: 1"]
+#[doc = "Select secure attribute\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CHANNEL9_A {
-    #[doc = "1: Channel9 has its secure attribute set"]
-    SECURE,
-    #[doc = "0: Channel9 has its non-secure attribute set"]
-    NONSECURE,
+    #[doc = "1: Channel 9 has its secure attribute set"]
+    SECURE = 1,
+    #[doc = "0: Channel 9 has its non-secure attribute set"]
+    NONSECURE = 0,
 }
 impl From<CHANNEL9_A> for bool {
     #[inline(always)]
     fn from(variant: CHANNEL9_A) -> Self {
-        match variant {
-            CHANNEL9_A::SECURE => true,
-            CHANNEL9_A::NONSECURE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `CHANNEL9`"]
-pub type CHANNEL9_R = crate::R<bool, CHANNEL9_A>;
+#[doc = "Field `CHANNEL9` reader - Select secure attribute"]
+pub struct CHANNEL9_R(crate::FieldReader<bool, CHANNEL9_A>);
 impl CHANNEL9_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CHANNEL9_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CHANNEL9_A {
@@ -743,15 +810,22 @@ impl CHANNEL9_R {
     #[doc = "Checks if the value of the field is `SECURE`"]
     #[inline(always)]
     pub fn is_secure(&self) -> bool {
-        *self == CHANNEL9_A::SECURE
+        **self == CHANNEL9_A::SECURE
     }
     #[doc = "Checks if the value of the field is `NONSECURE`"]
     #[inline(always)]
     pub fn is_non_secure(&self) -> bool {
-        *self == CHANNEL9_A::NONSECURE
+        **self == CHANNEL9_A::NONSECURE
     }
 }
-#[doc = "Write proxy for field `CHANNEL9`"]
+impl core::ops::Deref for CHANNEL9_R {
+    type Target = crate::FieldReader<bool, CHANNEL9_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CHANNEL9` writer - Select secure attribute"]
 pub struct CHANNEL9_W<'a> {
     w: &'a mut W,
 }
@@ -759,16 +833,14 @@ impl<'a> CHANNEL9_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: CHANNEL9_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Channel9 has its secure attribute set"]
+    #[doc = "Channel 9 has its secure attribute set"]
     #[inline(always)]
     pub fn secure(self) -> &'a mut W {
         self.variant(CHANNEL9_A::SECURE)
     }
-    #[doc = "Channel9 has its non-secure attribute set"]
+    #[doc = "Channel 9 has its non-secure attribute set"]
     #[inline(always)]
     pub fn non_secure(self) -> &'a mut W {
         self.variant(CHANNEL9_A::NONSECURE)
@@ -790,26 +862,26 @@ impl<'a> CHANNEL9_W<'a> {
         self.w
     }
 }
-#[doc = "Select secure attribute.\n\nValue on reset: 1"]
+#[doc = "Select secure attribute\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CHANNEL10_A {
-    #[doc = "1: Channel10 has its secure attribute set"]
-    SECURE,
-    #[doc = "0: Channel10 has its non-secure attribute set"]
-    NONSECURE,
+    #[doc = "1: Channel 10 has its secure attribute set"]
+    SECURE = 1,
+    #[doc = "0: Channel 10 has its non-secure attribute set"]
+    NONSECURE = 0,
 }
 impl From<CHANNEL10_A> for bool {
     #[inline(always)]
     fn from(variant: CHANNEL10_A) -> Self {
-        match variant {
-            CHANNEL10_A::SECURE => true,
-            CHANNEL10_A::NONSECURE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `CHANNEL10`"]
-pub type CHANNEL10_R = crate::R<bool, CHANNEL10_A>;
+#[doc = "Field `CHANNEL10` reader - Select secure attribute"]
+pub struct CHANNEL10_R(crate::FieldReader<bool, CHANNEL10_A>);
 impl CHANNEL10_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CHANNEL10_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CHANNEL10_A {
@@ -821,15 +893,22 @@ impl CHANNEL10_R {
     #[doc = "Checks if the value of the field is `SECURE`"]
     #[inline(always)]
     pub fn is_secure(&self) -> bool {
-        *self == CHANNEL10_A::SECURE
+        **self == CHANNEL10_A::SECURE
     }
     #[doc = "Checks if the value of the field is `NONSECURE`"]
     #[inline(always)]
     pub fn is_non_secure(&self) -> bool {
-        *self == CHANNEL10_A::NONSECURE
+        **self == CHANNEL10_A::NONSECURE
     }
 }
-#[doc = "Write proxy for field `CHANNEL10`"]
+impl core::ops::Deref for CHANNEL10_R {
+    type Target = crate::FieldReader<bool, CHANNEL10_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CHANNEL10` writer - Select secure attribute"]
 pub struct CHANNEL10_W<'a> {
     w: &'a mut W,
 }
@@ -837,16 +916,14 @@ impl<'a> CHANNEL10_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: CHANNEL10_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Channel10 has its secure attribute set"]
+    #[doc = "Channel 10 has its secure attribute set"]
     #[inline(always)]
     pub fn secure(self) -> &'a mut W {
         self.variant(CHANNEL10_A::SECURE)
     }
-    #[doc = "Channel10 has its non-secure attribute set"]
+    #[doc = "Channel 10 has its non-secure attribute set"]
     #[inline(always)]
     pub fn non_secure(self) -> &'a mut W {
         self.variant(CHANNEL10_A::NONSECURE)
@@ -868,26 +945,26 @@ impl<'a> CHANNEL10_W<'a> {
         self.w
     }
 }
-#[doc = "Select secure attribute.\n\nValue on reset: 1"]
+#[doc = "Select secure attribute\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CHANNEL11_A {
-    #[doc = "1: Channel11 has its secure attribute set"]
-    SECURE,
-    #[doc = "0: Channel11 has its non-secure attribute set"]
-    NONSECURE,
+    #[doc = "1: Channel 11 has its secure attribute set"]
+    SECURE = 1,
+    #[doc = "0: Channel 11 has its non-secure attribute set"]
+    NONSECURE = 0,
 }
 impl From<CHANNEL11_A> for bool {
     #[inline(always)]
     fn from(variant: CHANNEL11_A) -> Self {
-        match variant {
-            CHANNEL11_A::SECURE => true,
-            CHANNEL11_A::NONSECURE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `CHANNEL11`"]
-pub type CHANNEL11_R = crate::R<bool, CHANNEL11_A>;
+#[doc = "Field `CHANNEL11` reader - Select secure attribute"]
+pub struct CHANNEL11_R(crate::FieldReader<bool, CHANNEL11_A>);
 impl CHANNEL11_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CHANNEL11_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CHANNEL11_A {
@@ -899,15 +976,22 @@ impl CHANNEL11_R {
     #[doc = "Checks if the value of the field is `SECURE`"]
     #[inline(always)]
     pub fn is_secure(&self) -> bool {
-        *self == CHANNEL11_A::SECURE
+        **self == CHANNEL11_A::SECURE
     }
     #[doc = "Checks if the value of the field is `NONSECURE`"]
     #[inline(always)]
     pub fn is_non_secure(&self) -> bool {
-        *self == CHANNEL11_A::NONSECURE
+        **self == CHANNEL11_A::NONSECURE
     }
 }
-#[doc = "Write proxy for field `CHANNEL11`"]
+impl core::ops::Deref for CHANNEL11_R {
+    type Target = crate::FieldReader<bool, CHANNEL11_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CHANNEL11` writer - Select secure attribute"]
 pub struct CHANNEL11_W<'a> {
     w: &'a mut W,
 }
@@ -915,16 +999,14 @@ impl<'a> CHANNEL11_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: CHANNEL11_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Channel11 has its secure attribute set"]
+    #[doc = "Channel 11 has its secure attribute set"]
     #[inline(always)]
     pub fn secure(self) -> &'a mut W {
         self.variant(CHANNEL11_A::SECURE)
     }
-    #[doc = "Channel11 has its non-secure attribute set"]
+    #[doc = "Channel 11 has its non-secure attribute set"]
     #[inline(always)]
     pub fn non_secure(self) -> &'a mut W {
         self.variant(CHANNEL11_A::NONSECURE)
@@ -946,26 +1028,26 @@ impl<'a> CHANNEL11_W<'a> {
         self.w
     }
 }
-#[doc = "Select secure attribute.\n\nValue on reset: 1"]
+#[doc = "Select secure attribute\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CHANNEL12_A {
-    #[doc = "1: Channel12 has its secure attribute set"]
-    SECURE,
-    #[doc = "0: Channel12 has its non-secure attribute set"]
-    NONSECURE,
+    #[doc = "1: Channel 12 has its secure attribute set"]
+    SECURE = 1,
+    #[doc = "0: Channel 12 has its non-secure attribute set"]
+    NONSECURE = 0,
 }
 impl From<CHANNEL12_A> for bool {
     #[inline(always)]
     fn from(variant: CHANNEL12_A) -> Self {
-        match variant {
-            CHANNEL12_A::SECURE => true,
-            CHANNEL12_A::NONSECURE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `CHANNEL12`"]
-pub type CHANNEL12_R = crate::R<bool, CHANNEL12_A>;
+#[doc = "Field `CHANNEL12` reader - Select secure attribute"]
+pub struct CHANNEL12_R(crate::FieldReader<bool, CHANNEL12_A>);
 impl CHANNEL12_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CHANNEL12_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CHANNEL12_A {
@@ -977,15 +1059,22 @@ impl CHANNEL12_R {
     #[doc = "Checks if the value of the field is `SECURE`"]
     #[inline(always)]
     pub fn is_secure(&self) -> bool {
-        *self == CHANNEL12_A::SECURE
+        **self == CHANNEL12_A::SECURE
     }
     #[doc = "Checks if the value of the field is `NONSECURE`"]
     #[inline(always)]
     pub fn is_non_secure(&self) -> bool {
-        *self == CHANNEL12_A::NONSECURE
+        **self == CHANNEL12_A::NONSECURE
     }
 }
-#[doc = "Write proxy for field `CHANNEL12`"]
+impl core::ops::Deref for CHANNEL12_R {
+    type Target = crate::FieldReader<bool, CHANNEL12_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CHANNEL12` writer - Select secure attribute"]
 pub struct CHANNEL12_W<'a> {
     w: &'a mut W,
 }
@@ -993,16 +1082,14 @@ impl<'a> CHANNEL12_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: CHANNEL12_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Channel12 has its secure attribute set"]
+    #[doc = "Channel 12 has its secure attribute set"]
     #[inline(always)]
     pub fn secure(self) -> &'a mut W {
         self.variant(CHANNEL12_A::SECURE)
     }
-    #[doc = "Channel12 has its non-secure attribute set"]
+    #[doc = "Channel 12 has its non-secure attribute set"]
     #[inline(always)]
     pub fn non_secure(self) -> &'a mut W {
         self.variant(CHANNEL12_A::NONSECURE)
@@ -1024,26 +1111,26 @@ impl<'a> CHANNEL12_W<'a> {
         self.w
     }
 }
-#[doc = "Select secure attribute.\n\nValue on reset: 1"]
+#[doc = "Select secure attribute\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CHANNEL13_A {
-    #[doc = "1: Channel13 has its secure attribute set"]
-    SECURE,
-    #[doc = "0: Channel13 has its non-secure attribute set"]
-    NONSECURE,
+    #[doc = "1: Channel 13 has its secure attribute set"]
+    SECURE = 1,
+    #[doc = "0: Channel 13 has its non-secure attribute set"]
+    NONSECURE = 0,
 }
 impl From<CHANNEL13_A> for bool {
     #[inline(always)]
     fn from(variant: CHANNEL13_A) -> Self {
-        match variant {
-            CHANNEL13_A::SECURE => true,
-            CHANNEL13_A::NONSECURE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `CHANNEL13`"]
-pub type CHANNEL13_R = crate::R<bool, CHANNEL13_A>;
+#[doc = "Field `CHANNEL13` reader - Select secure attribute"]
+pub struct CHANNEL13_R(crate::FieldReader<bool, CHANNEL13_A>);
 impl CHANNEL13_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CHANNEL13_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CHANNEL13_A {
@@ -1055,15 +1142,22 @@ impl CHANNEL13_R {
     #[doc = "Checks if the value of the field is `SECURE`"]
     #[inline(always)]
     pub fn is_secure(&self) -> bool {
-        *self == CHANNEL13_A::SECURE
+        **self == CHANNEL13_A::SECURE
     }
     #[doc = "Checks if the value of the field is `NONSECURE`"]
     #[inline(always)]
     pub fn is_non_secure(&self) -> bool {
-        *self == CHANNEL13_A::NONSECURE
+        **self == CHANNEL13_A::NONSECURE
     }
 }
-#[doc = "Write proxy for field `CHANNEL13`"]
+impl core::ops::Deref for CHANNEL13_R {
+    type Target = crate::FieldReader<bool, CHANNEL13_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CHANNEL13` writer - Select secure attribute"]
 pub struct CHANNEL13_W<'a> {
     w: &'a mut W,
 }
@@ -1071,16 +1165,14 @@ impl<'a> CHANNEL13_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: CHANNEL13_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Channel13 has its secure attribute set"]
+    #[doc = "Channel 13 has its secure attribute set"]
     #[inline(always)]
     pub fn secure(self) -> &'a mut W {
         self.variant(CHANNEL13_A::SECURE)
     }
-    #[doc = "Channel13 has its non-secure attribute set"]
+    #[doc = "Channel 13 has its non-secure attribute set"]
     #[inline(always)]
     pub fn non_secure(self) -> &'a mut W {
         self.variant(CHANNEL13_A::NONSECURE)
@@ -1102,26 +1194,26 @@ impl<'a> CHANNEL13_W<'a> {
         self.w
     }
 }
-#[doc = "Select secure attribute.\n\nValue on reset: 1"]
+#[doc = "Select secure attribute\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CHANNEL14_A {
-    #[doc = "1: Channel14 has its secure attribute set"]
-    SECURE,
-    #[doc = "0: Channel14 has its non-secure attribute set"]
-    NONSECURE,
+    #[doc = "1: Channel 14 has its secure attribute set"]
+    SECURE = 1,
+    #[doc = "0: Channel 14 has its non-secure attribute set"]
+    NONSECURE = 0,
 }
 impl From<CHANNEL14_A> for bool {
     #[inline(always)]
     fn from(variant: CHANNEL14_A) -> Self {
-        match variant {
-            CHANNEL14_A::SECURE => true,
-            CHANNEL14_A::NONSECURE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `CHANNEL14`"]
-pub type CHANNEL14_R = crate::R<bool, CHANNEL14_A>;
+#[doc = "Field `CHANNEL14` reader - Select secure attribute"]
+pub struct CHANNEL14_R(crate::FieldReader<bool, CHANNEL14_A>);
 impl CHANNEL14_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CHANNEL14_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CHANNEL14_A {
@@ -1133,15 +1225,22 @@ impl CHANNEL14_R {
     #[doc = "Checks if the value of the field is `SECURE`"]
     #[inline(always)]
     pub fn is_secure(&self) -> bool {
-        *self == CHANNEL14_A::SECURE
+        **self == CHANNEL14_A::SECURE
     }
     #[doc = "Checks if the value of the field is `NONSECURE`"]
     #[inline(always)]
     pub fn is_non_secure(&self) -> bool {
-        *self == CHANNEL14_A::NONSECURE
+        **self == CHANNEL14_A::NONSECURE
     }
 }
-#[doc = "Write proxy for field `CHANNEL14`"]
+impl core::ops::Deref for CHANNEL14_R {
+    type Target = crate::FieldReader<bool, CHANNEL14_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CHANNEL14` writer - Select secure attribute"]
 pub struct CHANNEL14_W<'a> {
     w: &'a mut W,
 }
@@ -1149,16 +1248,14 @@ impl<'a> CHANNEL14_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: CHANNEL14_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Channel14 has its secure attribute set"]
+    #[doc = "Channel 14 has its secure attribute set"]
     #[inline(always)]
     pub fn secure(self) -> &'a mut W {
         self.variant(CHANNEL14_A::SECURE)
     }
-    #[doc = "Channel14 has its non-secure attribute set"]
+    #[doc = "Channel 14 has its non-secure attribute set"]
     #[inline(always)]
     pub fn non_secure(self) -> &'a mut W {
         self.variant(CHANNEL14_A::NONSECURE)
@@ -1180,26 +1277,26 @@ impl<'a> CHANNEL14_W<'a> {
         self.w
     }
 }
-#[doc = "Select secure attribute.\n\nValue on reset: 1"]
+#[doc = "Select secure attribute\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CHANNEL15_A {
-    #[doc = "1: Channel15 has its secure attribute set"]
-    SECURE,
-    #[doc = "0: Channel15 has its non-secure attribute set"]
-    NONSECURE,
+    #[doc = "1: Channel 15 has its secure attribute set"]
+    SECURE = 1,
+    #[doc = "0: Channel 15 has its non-secure attribute set"]
+    NONSECURE = 0,
 }
 impl From<CHANNEL15_A> for bool {
     #[inline(always)]
     fn from(variant: CHANNEL15_A) -> Self {
-        match variant {
-            CHANNEL15_A::SECURE => true,
-            CHANNEL15_A::NONSECURE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `CHANNEL15`"]
-pub type CHANNEL15_R = crate::R<bool, CHANNEL15_A>;
+#[doc = "Field `CHANNEL15` reader - Select secure attribute"]
+pub struct CHANNEL15_R(crate::FieldReader<bool, CHANNEL15_A>);
 impl CHANNEL15_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CHANNEL15_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CHANNEL15_A {
@@ -1211,15 +1308,22 @@ impl CHANNEL15_R {
     #[doc = "Checks if the value of the field is `SECURE`"]
     #[inline(always)]
     pub fn is_secure(&self) -> bool {
-        *self == CHANNEL15_A::SECURE
+        **self == CHANNEL15_A::SECURE
     }
     #[doc = "Checks if the value of the field is `NONSECURE`"]
     #[inline(always)]
     pub fn is_non_secure(&self) -> bool {
-        *self == CHANNEL15_A::NONSECURE
+        **self == CHANNEL15_A::NONSECURE
     }
 }
-#[doc = "Write proxy for field `CHANNEL15`"]
+impl core::ops::Deref for CHANNEL15_R {
+    type Target = crate::FieldReader<bool, CHANNEL15_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CHANNEL15` writer - Select secure attribute"]
 pub struct CHANNEL15_W<'a> {
     w: &'a mut W,
 }
@@ -1227,16 +1331,14 @@ impl<'a> CHANNEL15_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: CHANNEL15_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Channel15 has its secure attribute set"]
+    #[doc = "Channel 15 has its secure attribute set"]
     #[inline(always)]
     pub fn secure(self) -> &'a mut W {
         self.variant(CHANNEL15_A::SECURE)
     }
-    #[doc = "Channel15 has its non-secure attribute set"]
+    #[doc = "Channel 15 has its non-secure attribute set"]
     #[inline(always)]
     pub fn non_secure(self) -> &'a mut W {
         self.variant(CHANNEL15_A::NONSECURE)
@@ -1258,26 +1360,26 @@ impl<'a> CHANNEL15_W<'a> {
         self.w
     }
 }
-#[doc = "Select secure attribute.\n\nValue on reset: 1"]
+#[doc = "Select secure attribute\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CHANNEL16_A {
-    #[doc = "1: Channel16 has its secure attribute set"]
-    SECURE,
-    #[doc = "0: Channel16 has its non-secure attribute set"]
-    NONSECURE,
+    #[doc = "1: Channel 16 has its secure attribute set"]
+    SECURE = 1,
+    #[doc = "0: Channel 16 has its non-secure attribute set"]
+    NONSECURE = 0,
 }
 impl From<CHANNEL16_A> for bool {
     #[inline(always)]
     fn from(variant: CHANNEL16_A) -> Self {
-        match variant {
-            CHANNEL16_A::SECURE => true,
-            CHANNEL16_A::NONSECURE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `CHANNEL16`"]
-pub type CHANNEL16_R = crate::R<bool, CHANNEL16_A>;
+#[doc = "Field `CHANNEL16` reader - Select secure attribute"]
+pub struct CHANNEL16_R(crate::FieldReader<bool, CHANNEL16_A>);
 impl CHANNEL16_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CHANNEL16_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CHANNEL16_A {
@@ -1289,15 +1391,22 @@ impl CHANNEL16_R {
     #[doc = "Checks if the value of the field is `SECURE`"]
     #[inline(always)]
     pub fn is_secure(&self) -> bool {
-        *self == CHANNEL16_A::SECURE
+        **self == CHANNEL16_A::SECURE
     }
     #[doc = "Checks if the value of the field is `NONSECURE`"]
     #[inline(always)]
     pub fn is_non_secure(&self) -> bool {
-        *self == CHANNEL16_A::NONSECURE
+        **self == CHANNEL16_A::NONSECURE
     }
 }
-#[doc = "Write proxy for field `CHANNEL16`"]
+impl core::ops::Deref for CHANNEL16_R {
+    type Target = crate::FieldReader<bool, CHANNEL16_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CHANNEL16` writer - Select secure attribute"]
 pub struct CHANNEL16_W<'a> {
     w: &'a mut W,
 }
@@ -1305,16 +1414,14 @@ impl<'a> CHANNEL16_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: CHANNEL16_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Channel16 has its secure attribute set"]
+    #[doc = "Channel 16 has its secure attribute set"]
     #[inline(always)]
     pub fn secure(self) -> &'a mut W {
         self.variant(CHANNEL16_A::SECURE)
     }
-    #[doc = "Channel16 has its non-secure attribute set"]
+    #[doc = "Channel 16 has its non-secure attribute set"]
     #[inline(always)]
     pub fn non_secure(self) -> &'a mut W {
         self.variant(CHANNEL16_A::NONSECURE)
@@ -1336,26 +1443,26 @@ impl<'a> CHANNEL16_W<'a> {
         self.w
     }
 }
-#[doc = "Select secure attribute.\n\nValue on reset: 1"]
+#[doc = "Select secure attribute\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CHANNEL17_A {
-    #[doc = "1: Channel17 has its secure attribute set"]
-    SECURE,
-    #[doc = "0: Channel17 has its non-secure attribute set"]
-    NONSECURE,
+    #[doc = "1: Channel 17 has its secure attribute set"]
+    SECURE = 1,
+    #[doc = "0: Channel 17 has its non-secure attribute set"]
+    NONSECURE = 0,
 }
 impl From<CHANNEL17_A> for bool {
     #[inline(always)]
     fn from(variant: CHANNEL17_A) -> Self {
-        match variant {
-            CHANNEL17_A::SECURE => true,
-            CHANNEL17_A::NONSECURE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `CHANNEL17`"]
-pub type CHANNEL17_R = crate::R<bool, CHANNEL17_A>;
+#[doc = "Field `CHANNEL17` reader - Select secure attribute"]
+pub struct CHANNEL17_R(crate::FieldReader<bool, CHANNEL17_A>);
 impl CHANNEL17_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CHANNEL17_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CHANNEL17_A {
@@ -1367,15 +1474,22 @@ impl CHANNEL17_R {
     #[doc = "Checks if the value of the field is `SECURE`"]
     #[inline(always)]
     pub fn is_secure(&self) -> bool {
-        *self == CHANNEL17_A::SECURE
+        **self == CHANNEL17_A::SECURE
     }
     #[doc = "Checks if the value of the field is `NONSECURE`"]
     #[inline(always)]
     pub fn is_non_secure(&self) -> bool {
-        *self == CHANNEL17_A::NONSECURE
+        **self == CHANNEL17_A::NONSECURE
     }
 }
-#[doc = "Write proxy for field `CHANNEL17`"]
+impl core::ops::Deref for CHANNEL17_R {
+    type Target = crate::FieldReader<bool, CHANNEL17_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CHANNEL17` writer - Select secure attribute"]
 pub struct CHANNEL17_W<'a> {
     w: &'a mut W,
 }
@@ -1383,16 +1497,14 @@ impl<'a> CHANNEL17_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: CHANNEL17_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Channel17 has its secure attribute set"]
+    #[doc = "Channel 17 has its secure attribute set"]
     #[inline(always)]
     pub fn secure(self) -> &'a mut W {
         self.variant(CHANNEL17_A::SECURE)
     }
-    #[doc = "Channel17 has its non-secure attribute set"]
+    #[doc = "Channel 17 has its non-secure attribute set"]
     #[inline(always)]
     pub fn non_secure(self) -> &'a mut W {
         self.variant(CHANNEL17_A::NONSECURE)
@@ -1414,26 +1526,26 @@ impl<'a> CHANNEL17_W<'a> {
         self.w
     }
 }
-#[doc = "Select secure attribute.\n\nValue on reset: 1"]
+#[doc = "Select secure attribute\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CHANNEL18_A {
-    #[doc = "1: Channel18 has its secure attribute set"]
-    SECURE,
-    #[doc = "0: Channel18 has its non-secure attribute set"]
-    NONSECURE,
+    #[doc = "1: Channel 18 has its secure attribute set"]
+    SECURE = 1,
+    #[doc = "0: Channel 18 has its non-secure attribute set"]
+    NONSECURE = 0,
 }
 impl From<CHANNEL18_A> for bool {
     #[inline(always)]
     fn from(variant: CHANNEL18_A) -> Self {
-        match variant {
-            CHANNEL18_A::SECURE => true,
-            CHANNEL18_A::NONSECURE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `CHANNEL18`"]
-pub type CHANNEL18_R = crate::R<bool, CHANNEL18_A>;
+#[doc = "Field `CHANNEL18` reader - Select secure attribute"]
+pub struct CHANNEL18_R(crate::FieldReader<bool, CHANNEL18_A>);
 impl CHANNEL18_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CHANNEL18_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CHANNEL18_A {
@@ -1445,15 +1557,22 @@ impl CHANNEL18_R {
     #[doc = "Checks if the value of the field is `SECURE`"]
     #[inline(always)]
     pub fn is_secure(&self) -> bool {
-        *self == CHANNEL18_A::SECURE
+        **self == CHANNEL18_A::SECURE
     }
     #[doc = "Checks if the value of the field is `NONSECURE`"]
     #[inline(always)]
     pub fn is_non_secure(&self) -> bool {
-        *self == CHANNEL18_A::NONSECURE
+        **self == CHANNEL18_A::NONSECURE
     }
 }
-#[doc = "Write proxy for field `CHANNEL18`"]
+impl core::ops::Deref for CHANNEL18_R {
+    type Target = crate::FieldReader<bool, CHANNEL18_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CHANNEL18` writer - Select secure attribute"]
 pub struct CHANNEL18_W<'a> {
     w: &'a mut W,
 }
@@ -1461,16 +1580,14 @@ impl<'a> CHANNEL18_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: CHANNEL18_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Channel18 has its secure attribute set"]
+    #[doc = "Channel 18 has its secure attribute set"]
     #[inline(always)]
     pub fn secure(self) -> &'a mut W {
         self.variant(CHANNEL18_A::SECURE)
     }
-    #[doc = "Channel18 has its non-secure attribute set"]
+    #[doc = "Channel 18 has its non-secure attribute set"]
     #[inline(always)]
     pub fn non_secure(self) -> &'a mut W {
         self.variant(CHANNEL18_A::NONSECURE)
@@ -1492,26 +1609,26 @@ impl<'a> CHANNEL18_W<'a> {
         self.w
     }
 }
-#[doc = "Select secure attribute.\n\nValue on reset: 1"]
+#[doc = "Select secure attribute\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CHANNEL19_A {
-    #[doc = "1: Channel19 has its secure attribute set"]
-    SECURE,
-    #[doc = "0: Channel19 has its non-secure attribute set"]
-    NONSECURE,
+    #[doc = "1: Channel 19 has its secure attribute set"]
+    SECURE = 1,
+    #[doc = "0: Channel 19 has its non-secure attribute set"]
+    NONSECURE = 0,
 }
 impl From<CHANNEL19_A> for bool {
     #[inline(always)]
     fn from(variant: CHANNEL19_A) -> Self {
-        match variant {
-            CHANNEL19_A::SECURE => true,
-            CHANNEL19_A::NONSECURE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `CHANNEL19`"]
-pub type CHANNEL19_R = crate::R<bool, CHANNEL19_A>;
+#[doc = "Field `CHANNEL19` reader - Select secure attribute"]
+pub struct CHANNEL19_R(crate::FieldReader<bool, CHANNEL19_A>);
 impl CHANNEL19_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CHANNEL19_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CHANNEL19_A {
@@ -1523,15 +1640,22 @@ impl CHANNEL19_R {
     #[doc = "Checks if the value of the field is `SECURE`"]
     #[inline(always)]
     pub fn is_secure(&self) -> bool {
-        *self == CHANNEL19_A::SECURE
+        **self == CHANNEL19_A::SECURE
     }
     #[doc = "Checks if the value of the field is `NONSECURE`"]
     #[inline(always)]
     pub fn is_non_secure(&self) -> bool {
-        *self == CHANNEL19_A::NONSECURE
+        **self == CHANNEL19_A::NONSECURE
     }
 }
-#[doc = "Write proxy for field `CHANNEL19`"]
+impl core::ops::Deref for CHANNEL19_R {
+    type Target = crate::FieldReader<bool, CHANNEL19_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CHANNEL19` writer - Select secure attribute"]
 pub struct CHANNEL19_W<'a> {
     w: &'a mut W,
 }
@@ -1539,16 +1663,14 @@ impl<'a> CHANNEL19_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: CHANNEL19_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Channel19 has its secure attribute set"]
+    #[doc = "Channel 19 has its secure attribute set"]
     #[inline(always)]
     pub fn secure(self) -> &'a mut W {
         self.variant(CHANNEL19_A::SECURE)
     }
-    #[doc = "Channel19 has its non-secure attribute set"]
+    #[doc = "Channel 19 has its non-secure attribute set"]
     #[inline(always)]
     pub fn non_secure(self) -> &'a mut W {
         self.variant(CHANNEL19_A::NONSECURE)
@@ -1570,26 +1692,26 @@ impl<'a> CHANNEL19_W<'a> {
         self.w
     }
 }
-#[doc = "Select secure attribute.\n\nValue on reset: 1"]
+#[doc = "Select secure attribute\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CHANNEL20_A {
-    #[doc = "1: Channel20 has its secure attribute set"]
-    SECURE,
-    #[doc = "0: Channel20 has its non-secure attribute set"]
-    NONSECURE,
+    #[doc = "1: Channel 20 has its secure attribute set"]
+    SECURE = 1,
+    #[doc = "0: Channel 20 has its non-secure attribute set"]
+    NONSECURE = 0,
 }
 impl From<CHANNEL20_A> for bool {
     #[inline(always)]
     fn from(variant: CHANNEL20_A) -> Self {
-        match variant {
-            CHANNEL20_A::SECURE => true,
-            CHANNEL20_A::NONSECURE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `CHANNEL20`"]
-pub type CHANNEL20_R = crate::R<bool, CHANNEL20_A>;
+#[doc = "Field `CHANNEL20` reader - Select secure attribute"]
+pub struct CHANNEL20_R(crate::FieldReader<bool, CHANNEL20_A>);
 impl CHANNEL20_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CHANNEL20_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CHANNEL20_A {
@@ -1601,15 +1723,22 @@ impl CHANNEL20_R {
     #[doc = "Checks if the value of the field is `SECURE`"]
     #[inline(always)]
     pub fn is_secure(&self) -> bool {
-        *self == CHANNEL20_A::SECURE
+        **self == CHANNEL20_A::SECURE
     }
     #[doc = "Checks if the value of the field is `NONSECURE`"]
     #[inline(always)]
     pub fn is_non_secure(&self) -> bool {
-        *self == CHANNEL20_A::NONSECURE
+        **self == CHANNEL20_A::NONSECURE
     }
 }
-#[doc = "Write proxy for field `CHANNEL20`"]
+impl core::ops::Deref for CHANNEL20_R {
+    type Target = crate::FieldReader<bool, CHANNEL20_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CHANNEL20` writer - Select secure attribute"]
 pub struct CHANNEL20_W<'a> {
     w: &'a mut W,
 }
@@ -1617,16 +1746,14 @@ impl<'a> CHANNEL20_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: CHANNEL20_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Channel20 has its secure attribute set"]
+    #[doc = "Channel 20 has its secure attribute set"]
     #[inline(always)]
     pub fn secure(self) -> &'a mut W {
         self.variant(CHANNEL20_A::SECURE)
     }
-    #[doc = "Channel20 has its non-secure attribute set"]
+    #[doc = "Channel 20 has its non-secure attribute set"]
     #[inline(always)]
     pub fn non_secure(self) -> &'a mut W {
         self.variant(CHANNEL20_A::NONSECURE)
@@ -1648,26 +1775,26 @@ impl<'a> CHANNEL20_W<'a> {
         self.w
     }
 }
-#[doc = "Select secure attribute.\n\nValue on reset: 1"]
+#[doc = "Select secure attribute\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CHANNEL21_A {
-    #[doc = "1: Channel21 has its secure attribute set"]
-    SECURE,
-    #[doc = "0: Channel21 has its non-secure attribute set"]
-    NONSECURE,
+    #[doc = "1: Channel 21 has its secure attribute set"]
+    SECURE = 1,
+    #[doc = "0: Channel 21 has its non-secure attribute set"]
+    NONSECURE = 0,
 }
 impl From<CHANNEL21_A> for bool {
     #[inline(always)]
     fn from(variant: CHANNEL21_A) -> Self {
-        match variant {
-            CHANNEL21_A::SECURE => true,
-            CHANNEL21_A::NONSECURE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `CHANNEL21`"]
-pub type CHANNEL21_R = crate::R<bool, CHANNEL21_A>;
+#[doc = "Field `CHANNEL21` reader - Select secure attribute"]
+pub struct CHANNEL21_R(crate::FieldReader<bool, CHANNEL21_A>);
 impl CHANNEL21_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CHANNEL21_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CHANNEL21_A {
@@ -1679,15 +1806,22 @@ impl CHANNEL21_R {
     #[doc = "Checks if the value of the field is `SECURE`"]
     #[inline(always)]
     pub fn is_secure(&self) -> bool {
-        *self == CHANNEL21_A::SECURE
+        **self == CHANNEL21_A::SECURE
     }
     #[doc = "Checks if the value of the field is `NONSECURE`"]
     #[inline(always)]
     pub fn is_non_secure(&self) -> bool {
-        *self == CHANNEL21_A::NONSECURE
+        **self == CHANNEL21_A::NONSECURE
     }
 }
-#[doc = "Write proxy for field `CHANNEL21`"]
+impl core::ops::Deref for CHANNEL21_R {
+    type Target = crate::FieldReader<bool, CHANNEL21_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CHANNEL21` writer - Select secure attribute"]
 pub struct CHANNEL21_W<'a> {
     w: &'a mut W,
 }
@@ -1695,16 +1829,14 @@ impl<'a> CHANNEL21_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: CHANNEL21_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Channel21 has its secure attribute set"]
+    #[doc = "Channel 21 has its secure attribute set"]
     #[inline(always)]
     pub fn secure(self) -> &'a mut W {
         self.variant(CHANNEL21_A::SECURE)
     }
-    #[doc = "Channel21 has its non-secure attribute set"]
+    #[doc = "Channel 21 has its non-secure attribute set"]
     #[inline(always)]
     pub fn non_secure(self) -> &'a mut W {
         self.variant(CHANNEL21_A::NONSECURE)
@@ -1726,26 +1858,26 @@ impl<'a> CHANNEL21_W<'a> {
         self.w
     }
 }
-#[doc = "Select secure attribute.\n\nValue on reset: 1"]
+#[doc = "Select secure attribute\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CHANNEL22_A {
-    #[doc = "1: Channel22 has its secure attribute set"]
-    SECURE,
-    #[doc = "0: Channel22 has its non-secure attribute set"]
-    NONSECURE,
+    #[doc = "1: Channel 22 has its secure attribute set"]
+    SECURE = 1,
+    #[doc = "0: Channel 22 has its non-secure attribute set"]
+    NONSECURE = 0,
 }
 impl From<CHANNEL22_A> for bool {
     #[inline(always)]
     fn from(variant: CHANNEL22_A) -> Self {
-        match variant {
-            CHANNEL22_A::SECURE => true,
-            CHANNEL22_A::NONSECURE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `CHANNEL22`"]
-pub type CHANNEL22_R = crate::R<bool, CHANNEL22_A>;
+#[doc = "Field `CHANNEL22` reader - Select secure attribute"]
+pub struct CHANNEL22_R(crate::FieldReader<bool, CHANNEL22_A>);
 impl CHANNEL22_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CHANNEL22_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CHANNEL22_A {
@@ -1757,15 +1889,22 @@ impl CHANNEL22_R {
     #[doc = "Checks if the value of the field is `SECURE`"]
     #[inline(always)]
     pub fn is_secure(&self) -> bool {
-        *self == CHANNEL22_A::SECURE
+        **self == CHANNEL22_A::SECURE
     }
     #[doc = "Checks if the value of the field is `NONSECURE`"]
     #[inline(always)]
     pub fn is_non_secure(&self) -> bool {
-        *self == CHANNEL22_A::NONSECURE
+        **self == CHANNEL22_A::NONSECURE
     }
 }
-#[doc = "Write proxy for field `CHANNEL22`"]
+impl core::ops::Deref for CHANNEL22_R {
+    type Target = crate::FieldReader<bool, CHANNEL22_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CHANNEL22` writer - Select secure attribute"]
 pub struct CHANNEL22_W<'a> {
     w: &'a mut W,
 }
@@ -1773,16 +1912,14 @@ impl<'a> CHANNEL22_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: CHANNEL22_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Channel22 has its secure attribute set"]
+    #[doc = "Channel 22 has its secure attribute set"]
     #[inline(always)]
     pub fn secure(self) -> &'a mut W {
         self.variant(CHANNEL22_A::SECURE)
     }
-    #[doc = "Channel22 has its non-secure attribute set"]
+    #[doc = "Channel 22 has its non-secure attribute set"]
     #[inline(always)]
     pub fn non_secure(self) -> &'a mut W {
         self.variant(CHANNEL22_A::NONSECURE)
@@ -1804,26 +1941,26 @@ impl<'a> CHANNEL22_W<'a> {
         self.w
     }
 }
-#[doc = "Select secure attribute.\n\nValue on reset: 1"]
+#[doc = "Select secure attribute\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CHANNEL23_A {
-    #[doc = "1: Channel23 has its secure attribute set"]
-    SECURE,
-    #[doc = "0: Channel23 has its non-secure attribute set"]
-    NONSECURE,
+    #[doc = "1: Channel 23 has its secure attribute set"]
+    SECURE = 1,
+    #[doc = "0: Channel 23 has its non-secure attribute set"]
+    NONSECURE = 0,
 }
 impl From<CHANNEL23_A> for bool {
     #[inline(always)]
     fn from(variant: CHANNEL23_A) -> Self {
-        match variant {
-            CHANNEL23_A::SECURE => true,
-            CHANNEL23_A::NONSECURE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `CHANNEL23`"]
-pub type CHANNEL23_R = crate::R<bool, CHANNEL23_A>;
+#[doc = "Field `CHANNEL23` reader - Select secure attribute"]
+pub struct CHANNEL23_R(crate::FieldReader<bool, CHANNEL23_A>);
 impl CHANNEL23_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CHANNEL23_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CHANNEL23_A {
@@ -1835,15 +1972,22 @@ impl CHANNEL23_R {
     #[doc = "Checks if the value of the field is `SECURE`"]
     #[inline(always)]
     pub fn is_secure(&self) -> bool {
-        *self == CHANNEL23_A::SECURE
+        **self == CHANNEL23_A::SECURE
     }
     #[doc = "Checks if the value of the field is `NONSECURE`"]
     #[inline(always)]
     pub fn is_non_secure(&self) -> bool {
-        *self == CHANNEL23_A::NONSECURE
+        **self == CHANNEL23_A::NONSECURE
     }
 }
-#[doc = "Write proxy for field `CHANNEL23`"]
+impl core::ops::Deref for CHANNEL23_R {
+    type Target = crate::FieldReader<bool, CHANNEL23_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CHANNEL23` writer - Select secure attribute"]
 pub struct CHANNEL23_W<'a> {
     w: &'a mut W,
 }
@@ -1851,16 +1995,14 @@ impl<'a> CHANNEL23_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: CHANNEL23_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Channel23 has its secure attribute set"]
+    #[doc = "Channel 23 has its secure attribute set"]
     #[inline(always)]
     pub fn secure(self) -> &'a mut W {
         self.variant(CHANNEL23_A::SECURE)
     }
-    #[doc = "Channel23 has its non-secure attribute set"]
+    #[doc = "Channel 23 has its non-secure attribute set"]
     #[inline(always)]
     pub fn non_secure(self) -> &'a mut W {
         self.variant(CHANNEL23_A::NONSECURE)
@@ -1882,26 +2024,26 @@ impl<'a> CHANNEL23_W<'a> {
         self.w
     }
 }
-#[doc = "Select secure attribute.\n\nValue on reset: 1"]
+#[doc = "Select secure attribute\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CHANNEL24_A {
-    #[doc = "1: Channel24 has its secure attribute set"]
-    SECURE,
-    #[doc = "0: Channel24 has its non-secure attribute set"]
-    NONSECURE,
+    #[doc = "1: Channel 24 has its secure attribute set"]
+    SECURE = 1,
+    #[doc = "0: Channel 24 has its non-secure attribute set"]
+    NONSECURE = 0,
 }
 impl From<CHANNEL24_A> for bool {
     #[inline(always)]
     fn from(variant: CHANNEL24_A) -> Self {
-        match variant {
-            CHANNEL24_A::SECURE => true,
-            CHANNEL24_A::NONSECURE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `CHANNEL24`"]
-pub type CHANNEL24_R = crate::R<bool, CHANNEL24_A>;
+#[doc = "Field `CHANNEL24` reader - Select secure attribute"]
+pub struct CHANNEL24_R(crate::FieldReader<bool, CHANNEL24_A>);
 impl CHANNEL24_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CHANNEL24_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CHANNEL24_A {
@@ -1913,15 +2055,22 @@ impl CHANNEL24_R {
     #[doc = "Checks if the value of the field is `SECURE`"]
     #[inline(always)]
     pub fn is_secure(&self) -> bool {
-        *self == CHANNEL24_A::SECURE
+        **self == CHANNEL24_A::SECURE
     }
     #[doc = "Checks if the value of the field is `NONSECURE`"]
     #[inline(always)]
     pub fn is_non_secure(&self) -> bool {
-        *self == CHANNEL24_A::NONSECURE
+        **self == CHANNEL24_A::NONSECURE
     }
 }
-#[doc = "Write proxy for field `CHANNEL24`"]
+impl core::ops::Deref for CHANNEL24_R {
+    type Target = crate::FieldReader<bool, CHANNEL24_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CHANNEL24` writer - Select secure attribute"]
 pub struct CHANNEL24_W<'a> {
     w: &'a mut W,
 }
@@ -1929,16 +2078,14 @@ impl<'a> CHANNEL24_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: CHANNEL24_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Channel24 has its secure attribute set"]
+    #[doc = "Channel 24 has its secure attribute set"]
     #[inline(always)]
     pub fn secure(self) -> &'a mut W {
         self.variant(CHANNEL24_A::SECURE)
     }
-    #[doc = "Channel24 has its non-secure attribute set"]
+    #[doc = "Channel 24 has its non-secure attribute set"]
     #[inline(always)]
     pub fn non_secure(self) -> &'a mut W {
         self.variant(CHANNEL24_A::NONSECURE)
@@ -1960,26 +2107,26 @@ impl<'a> CHANNEL24_W<'a> {
         self.w
     }
 }
-#[doc = "Select secure attribute.\n\nValue on reset: 1"]
+#[doc = "Select secure attribute\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CHANNEL25_A {
-    #[doc = "1: Channel25 has its secure attribute set"]
-    SECURE,
-    #[doc = "0: Channel25 has its non-secure attribute set"]
-    NONSECURE,
+    #[doc = "1: Channel 25 has its secure attribute set"]
+    SECURE = 1,
+    #[doc = "0: Channel 25 has its non-secure attribute set"]
+    NONSECURE = 0,
 }
 impl From<CHANNEL25_A> for bool {
     #[inline(always)]
     fn from(variant: CHANNEL25_A) -> Self {
-        match variant {
-            CHANNEL25_A::SECURE => true,
-            CHANNEL25_A::NONSECURE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `CHANNEL25`"]
-pub type CHANNEL25_R = crate::R<bool, CHANNEL25_A>;
+#[doc = "Field `CHANNEL25` reader - Select secure attribute"]
+pub struct CHANNEL25_R(crate::FieldReader<bool, CHANNEL25_A>);
 impl CHANNEL25_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CHANNEL25_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CHANNEL25_A {
@@ -1991,15 +2138,22 @@ impl CHANNEL25_R {
     #[doc = "Checks if the value of the field is `SECURE`"]
     #[inline(always)]
     pub fn is_secure(&self) -> bool {
-        *self == CHANNEL25_A::SECURE
+        **self == CHANNEL25_A::SECURE
     }
     #[doc = "Checks if the value of the field is `NONSECURE`"]
     #[inline(always)]
     pub fn is_non_secure(&self) -> bool {
-        *self == CHANNEL25_A::NONSECURE
+        **self == CHANNEL25_A::NONSECURE
     }
 }
-#[doc = "Write proxy for field `CHANNEL25`"]
+impl core::ops::Deref for CHANNEL25_R {
+    type Target = crate::FieldReader<bool, CHANNEL25_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CHANNEL25` writer - Select secure attribute"]
 pub struct CHANNEL25_W<'a> {
     w: &'a mut W,
 }
@@ -2007,16 +2161,14 @@ impl<'a> CHANNEL25_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: CHANNEL25_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Channel25 has its secure attribute set"]
+    #[doc = "Channel 25 has its secure attribute set"]
     #[inline(always)]
     pub fn secure(self) -> &'a mut W {
         self.variant(CHANNEL25_A::SECURE)
     }
-    #[doc = "Channel25 has its non-secure attribute set"]
+    #[doc = "Channel 25 has its non-secure attribute set"]
     #[inline(always)]
     pub fn non_secure(self) -> &'a mut W {
         self.variant(CHANNEL25_A::NONSECURE)
@@ -2038,26 +2190,26 @@ impl<'a> CHANNEL25_W<'a> {
         self.w
     }
 }
-#[doc = "Select secure attribute.\n\nValue on reset: 1"]
+#[doc = "Select secure attribute\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CHANNEL26_A {
-    #[doc = "1: Channel26 has its secure attribute set"]
-    SECURE,
-    #[doc = "0: Channel26 has its non-secure attribute set"]
-    NONSECURE,
+    #[doc = "1: Channel 26 has its secure attribute set"]
+    SECURE = 1,
+    #[doc = "0: Channel 26 has its non-secure attribute set"]
+    NONSECURE = 0,
 }
 impl From<CHANNEL26_A> for bool {
     #[inline(always)]
     fn from(variant: CHANNEL26_A) -> Self {
-        match variant {
-            CHANNEL26_A::SECURE => true,
-            CHANNEL26_A::NONSECURE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `CHANNEL26`"]
-pub type CHANNEL26_R = crate::R<bool, CHANNEL26_A>;
+#[doc = "Field `CHANNEL26` reader - Select secure attribute"]
+pub struct CHANNEL26_R(crate::FieldReader<bool, CHANNEL26_A>);
 impl CHANNEL26_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CHANNEL26_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CHANNEL26_A {
@@ -2069,15 +2221,22 @@ impl CHANNEL26_R {
     #[doc = "Checks if the value of the field is `SECURE`"]
     #[inline(always)]
     pub fn is_secure(&self) -> bool {
-        *self == CHANNEL26_A::SECURE
+        **self == CHANNEL26_A::SECURE
     }
     #[doc = "Checks if the value of the field is `NONSECURE`"]
     #[inline(always)]
     pub fn is_non_secure(&self) -> bool {
-        *self == CHANNEL26_A::NONSECURE
+        **self == CHANNEL26_A::NONSECURE
     }
 }
-#[doc = "Write proxy for field `CHANNEL26`"]
+impl core::ops::Deref for CHANNEL26_R {
+    type Target = crate::FieldReader<bool, CHANNEL26_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CHANNEL26` writer - Select secure attribute"]
 pub struct CHANNEL26_W<'a> {
     w: &'a mut W,
 }
@@ -2085,16 +2244,14 @@ impl<'a> CHANNEL26_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: CHANNEL26_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Channel26 has its secure attribute set"]
+    #[doc = "Channel 26 has its secure attribute set"]
     #[inline(always)]
     pub fn secure(self) -> &'a mut W {
         self.variant(CHANNEL26_A::SECURE)
     }
-    #[doc = "Channel26 has its non-secure attribute set"]
+    #[doc = "Channel 26 has its non-secure attribute set"]
     #[inline(always)]
     pub fn non_secure(self) -> &'a mut W {
         self.variant(CHANNEL26_A::NONSECURE)
@@ -2116,26 +2273,26 @@ impl<'a> CHANNEL26_W<'a> {
         self.w
     }
 }
-#[doc = "Select secure attribute.\n\nValue on reset: 1"]
+#[doc = "Select secure attribute\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CHANNEL27_A {
-    #[doc = "1: Channel27 has its secure attribute set"]
-    SECURE,
-    #[doc = "0: Channel27 has its non-secure attribute set"]
-    NONSECURE,
+    #[doc = "1: Channel 27 has its secure attribute set"]
+    SECURE = 1,
+    #[doc = "0: Channel 27 has its non-secure attribute set"]
+    NONSECURE = 0,
 }
 impl From<CHANNEL27_A> for bool {
     #[inline(always)]
     fn from(variant: CHANNEL27_A) -> Self {
-        match variant {
-            CHANNEL27_A::SECURE => true,
-            CHANNEL27_A::NONSECURE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `CHANNEL27`"]
-pub type CHANNEL27_R = crate::R<bool, CHANNEL27_A>;
+#[doc = "Field `CHANNEL27` reader - Select secure attribute"]
+pub struct CHANNEL27_R(crate::FieldReader<bool, CHANNEL27_A>);
 impl CHANNEL27_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CHANNEL27_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CHANNEL27_A {
@@ -2147,15 +2304,22 @@ impl CHANNEL27_R {
     #[doc = "Checks if the value of the field is `SECURE`"]
     #[inline(always)]
     pub fn is_secure(&self) -> bool {
-        *self == CHANNEL27_A::SECURE
+        **self == CHANNEL27_A::SECURE
     }
     #[doc = "Checks if the value of the field is `NONSECURE`"]
     #[inline(always)]
     pub fn is_non_secure(&self) -> bool {
-        *self == CHANNEL27_A::NONSECURE
+        **self == CHANNEL27_A::NONSECURE
     }
 }
-#[doc = "Write proxy for field `CHANNEL27`"]
+impl core::ops::Deref for CHANNEL27_R {
+    type Target = crate::FieldReader<bool, CHANNEL27_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CHANNEL27` writer - Select secure attribute"]
 pub struct CHANNEL27_W<'a> {
     w: &'a mut W,
 }
@@ -2163,16 +2327,14 @@ impl<'a> CHANNEL27_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: CHANNEL27_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Channel27 has its secure attribute set"]
+    #[doc = "Channel 27 has its secure attribute set"]
     #[inline(always)]
     pub fn secure(self) -> &'a mut W {
         self.variant(CHANNEL27_A::SECURE)
     }
-    #[doc = "Channel27 has its non-secure attribute set"]
+    #[doc = "Channel 27 has its non-secure attribute set"]
     #[inline(always)]
     pub fn non_secure(self) -> &'a mut W {
         self.variant(CHANNEL27_A::NONSECURE)
@@ -2194,26 +2356,26 @@ impl<'a> CHANNEL27_W<'a> {
         self.w
     }
 }
-#[doc = "Select secure attribute.\n\nValue on reset: 1"]
+#[doc = "Select secure attribute\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CHANNEL28_A {
-    #[doc = "1: Channel28 has its secure attribute set"]
-    SECURE,
-    #[doc = "0: Channel28 has its non-secure attribute set"]
-    NONSECURE,
+    #[doc = "1: Channel 28 has its secure attribute set"]
+    SECURE = 1,
+    #[doc = "0: Channel 28 has its non-secure attribute set"]
+    NONSECURE = 0,
 }
 impl From<CHANNEL28_A> for bool {
     #[inline(always)]
     fn from(variant: CHANNEL28_A) -> Self {
-        match variant {
-            CHANNEL28_A::SECURE => true,
-            CHANNEL28_A::NONSECURE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `CHANNEL28`"]
-pub type CHANNEL28_R = crate::R<bool, CHANNEL28_A>;
+#[doc = "Field `CHANNEL28` reader - Select secure attribute"]
+pub struct CHANNEL28_R(crate::FieldReader<bool, CHANNEL28_A>);
 impl CHANNEL28_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CHANNEL28_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CHANNEL28_A {
@@ -2225,15 +2387,22 @@ impl CHANNEL28_R {
     #[doc = "Checks if the value of the field is `SECURE`"]
     #[inline(always)]
     pub fn is_secure(&self) -> bool {
-        *self == CHANNEL28_A::SECURE
+        **self == CHANNEL28_A::SECURE
     }
     #[doc = "Checks if the value of the field is `NONSECURE`"]
     #[inline(always)]
     pub fn is_non_secure(&self) -> bool {
-        *self == CHANNEL28_A::NONSECURE
+        **self == CHANNEL28_A::NONSECURE
     }
 }
-#[doc = "Write proxy for field `CHANNEL28`"]
+impl core::ops::Deref for CHANNEL28_R {
+    type Target = crate::FieldReader<bool, CHANNEL28_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CHANNEL28` writer - Select secure attribute"]
 pub struct CHANNEL28_W<'a> {
     w: &'a mut W,
 }
@@ -2241,16 +2410,14 @@ impl<'a> CHANNEL28_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: CHANNEL28_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Channel28 has its secure attribute set"]
+    #[doc = "Channel 28 has its secure attribute set"]
     #[inline(always)]
     pub fn secure(self) -> &'a mut W {
         self.variant(CHANNEL28_A::SECURE)
     }
-    #[doc = "Channel28 has its non-secure attribute set"]
+    #[doc = "Channel 28 has its non-secure attribute set"]
     #[inline(always)]
     pub fn non_secure(self) -> &'a mut W {
         self.variant(CHANNEL28_A::NONSECURE)
@@ -2272,26 +2439,26 @@ impl<'a> CHANNEL28_W<'a> {
         self.w
     }
 }
-#[doc = "Select secure attribute.\n\nValue on reset: 1"]
+#[doc = "Select secure attribute\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CHANNEL29_A {
-    #[doc = "1: Channel29 has its secure attribute set"]
-    SECURE,
-    #[doc = "0: Channel29 has its non-secure attribute set"]
-    NONSECURE,
+    #[doc = "1: Channel 29 has its secure attribute set"]
+    SECURE = 1,
+    #[doc = "0: Channel 29 has its non-secure attribute set"]
+    NONSECURE = 0,
 }
 impl From<CHANNEL29_A> for bool {
     #[inline(always)]
     fn from(variant: CHANNEL29_A) -> Self {
-        match variant {
-            CHANNEL29_A::SECURE => true,
-            CHANNEL29_A::NONSECURE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `CHANNEL29`"]
-pub type CHANNEL29_R = crate::R<bool, CHANNEL29_A>;
+#[doc = "Field `CHANNEL29` reader - Select secure attribute"]
+pub struct CHANNEL29_R(crate::FieldReader<bool, CHANNEL29_A>);
 impl CHANNEL29_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CHANNEL29_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CHANNEL29_A {
@@ -2303,15 +2470,22 @@ impl CHANNEL29_R {
     #[doc = "Checks if the value of the field is `SECURE`"]
     #[inline(always)]
     pub fn is_secure(&self) -> bool {
-        *self == CHANNEL29_A::SECURE
+        **self == CHANNEL29_A::SECURE
     }
     #[doc = "Checks if the value of the field is `NONSECURE`"]
     #[inline(always)]
     pub fn is_non_secure(&self) -> bool {
-        *self == CHANNEL29_A::NONSECURE
+        **self == CHANNEL29_A::NONSECURE
     }
 }
-#[doc = "Write proxy for field `CHANNEL29`"]
+impl core::ops::Deref for CHANNEL29_R {
+    type Target = crate::FieldReader<bool, CHANNEL29_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CHANNEL29` writer - Select secure attribute"]
 pub struct CHANNEL29_W<'a> {
     w: &'a mut W,
 }
@@ -2319,16 +2493,14 @@ impl<'a> CHANNEL29_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: CHANNEL29_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Channel29 has its secure attribute set"]
+    #[doc = "Channel 29 has its secure attribute set"]
     #[inline(always)]
     pub fn secure(self) -> &'a mut W {
         self.variant(CHANNEL29_A::SECURE)
     }
-    #[doc = "Channel29 has its non-secure attribute set"]
+    #[doc = "Channel 29 has its non-secure attribute set"]
     #[inline(always)]
     pub fn non_secure(self) -> &'a mut W {
         self.variant(CHANNEL29_A::NONSECURE)
@@ -2350,26 +2522,26 @@ impl<'a> CHANNEL29_W<'a> {
         self.w
     }
 }
-#[doc = "Select secure attribute.\n\nValue on reset: 1"]
+#[doc = "Select secure attribute\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CHANNEL30_A {
-    #[doc = "1: Channel30 has its secure attribute set"]
-    SECURE,
-    #[doc = "0: Channel30 has its non-secure attribute set"]
-    NONSECURE,
+    #[doc = "1: Channel 30 has its secure attribute set"]
+    SECURE = 1,
+    #[doc = "0: Channel 30 has its non-secure attribute set"]
+    NONSECURE = 0,
 }
 impl From<CHANNEL30_A> for bool {
     #[inline(always)]
     fn from(variant: CHANNEL30_A) -> Self {
-        match variant {
-            CHANNEL30_A::SECURE => true,
-            CHANNEL30_A::NONSECURE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `CHANNEL30`"]
-pub type CHANNEL30_R = crate::R<bool, CHANNEL30_A>;
+#[doc = "Field `CHANNEL30` reader - Select secure attribute"]
+pub struct CHANNEL30_R(crate::FieldReader<bool, CHANNEL30_A>);
 impl CHANNEL30_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CHANNEL30_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CHANNEL30_A {
@@ -2381,15 +2553,22 @@ impl CHANNEL30_R {
     #[doc = "Checks if the value of the field is `SECURE`"]
     #[inline(always)]
     pub fn is_secure(&self) -> bool {
-        *self == CHANNEL30_A::SECURE
+        **self == CHANNEL30_A::SECURE
     }
     #[doc = "Checks if the value of the field is `NONSECURE`"]
     #[inline(always)]
     pub fn is_non_secure(&self) -> bool {
-        *self == CHANNEL30_A::NONSECURE
+        **self == CHANNEL30_A::NONSECURE
     }
 }
-#[doc = "Write proxy for field `CHANNEL30`"]
+impl core::ops::Deref for CHANNEL30_R {
+    type Target = crate::FieldReader<bool, CHANNEL30_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CHANNEL30` writer - Select secure attribute"]
 pub struct CHANNEL30_W<'a> {
     w: &'a mut W,
 }
@@ -2397,16 +2576,14 @@ impl<'a> CHANNEL30_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: CHANNEL30_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Channel30 has its secure attribute set"]
+    #[doc = "Channel 30 has its secure attribute set"]
     #[inline(always)]
     pub fn secure(self) -> &'a mut W {
         self.variant(CHANNEL30_A::SECURE)
     }
-    #[doc = "Channel30 has its non-secure attribute set"]
+    #[doc = "Channel 30 has its non-secure attribute set"]
     #[inline(always)]
     pub fn non_secure(self) -> &'a mut W {
         self.variant(CHANNEL30_A::NONSECURE)
@@ -2428,26 +2605,26 @@ impl<'a> CHANNEL30_W<'a> {
         self.w
     }
 }
-#[doc = "Select secure attribute.\n\nValue on reset: 1"]
+#[doc = "Select secure attribute\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CHANNEL31_A {
-    #[doc = "1: Channel31 has its secure attribute set"]
-    SECURE,
-    #[doc = "0: Channel31 has its non-secure attribute set"]
-    NONSECURE,
+    #[doc = "1: Channel 31 has its secure attribute set"]
+    SECURE = 1,
+    #[doc = "0: Channel 31 has its non-secure attribute set"]
+    NONSECURE = 0,
 }
 impl From<CHANNEL31_A> for bool {
     #[inline(always)]
     fn from(variant: CHANNEL31_A) -> Self {
-        match variant {
-            CHANNEL31_A::SECURE => true,
-            CHANNEL31_A::NONSECURE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `CHANNEL31`"]
-pub type CHANNEL31_R = crate::R<bool, CHANNEL31_A>;
+#[doc = "Field `CHANNEL31` reader - Select secure attribute"]
+pub struct CHANNEL31_R(crate::FieldReader<bool, CHANNEL31_A>);
 impl CHANNEL31_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CHANNEL31_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CHANNEL31_A {
@@ -2459,15 +2636,22 @@ impl CHANNEL31_R {
     #[doc = "Checks if the value of the field is `SECURE`"]
     #[inline(always)]
     pub fn is_secure(&self) -> bool {
-        *self == CHANNEL31_A::SECURE
+        **self == CHANNEL31_A::SECURE
     }
     #[doc = "Checks if the value of the field is `NONSECURE`"]
     #[inline(always)]
     pub fn is_non_secure(&self) -> bool {
-        *self == CHANNEL31_A::NONSECURE
+        **self == CHANNEL31_A::NONSECURE
     }
 }
-#[doc = "Write proxy for field `CHANNEL31`"]
+impl core::ops::Deref for CHANNEL31_R {
+    type Target = crate::FieldReader<bool, CHANNEL31_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CHANNEL31` writer - Select secure attribute"]
 pub struct CHANNEL31_W<'a> {
     w: &'a mut W,
 }
@@ -2475,16 +2659,14 @@ impl<'a> CHANNEL31_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: CHANNEL31_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Channel31 has its secure attribute set"]
+    #[doc = "Channel 31 has its secure attribute set"]
     #[inline(always)]
     pub fn secure(self) -> &'a mut W {
         self.variant(CHANNEL31_A::SECURE)
     }
-    #[doc = "Channel31 has its non-secure attribute set"]
+    #[doc = "Channel 31 has its non-secure attribute set"]
     #[inline(always)]
     pub fn non_secure(self) -> &'a mut W {
         self.variant(CHANNEL31_A::NONSECURE)
@@ -2507,326 +2689,351 @@ impl<'a> CHANNEL31_W<'a> {
     }
 }
 impl R {
-    #[doc = "Bit 0 - Select secure attribute."]
+    #[doc = "Bit 0 - Select secure attribute"]
     #[inline(always)]
     pub fn channel0(&self) -> CHANNEL0_R {
         CHANNEL0_R::new((self.bits & 0x01) != 0)
     }
-    #[doc = "Bit 1 - Select secure attribute."]
+    #[doc = "Bit 1 - Select secure attribute"]
     #[inline(always)]
     pub fn channel1(&self) -> CHANNEL1_R {
         CHANNEL1_R::new(((self.bits >> 1) & 0x01) != 0)
     }
-    #[doc = "Bit 2 - Select secure attribute."]
+    #[doc = "Bit 2 - Select secure attribute"]
     #[inline(always)]
     pub fn channel2(&self) -> CHANNEL2_R {
         CHANNEL2_R::new(((self.bits >> 2) & 0x01) != 0)
     }
-    #[doc = "Bit 3 - Select secure attribute."]
+    #[doc = "Bit 3 - Select secure attribute"]
     #[inline(always)]
     pub fn channel3(&self) -> CHANNEL3_R {
         CHANNEL3_R::new(((self.bits >> 3) & 0x01) != 0)
     }
-    #[doc = "Bit 4 - Select secure attribute."]
+    #[doc = "Bit 4 - Select secure attribute"]
     #[inline(always)]
     pub fn channel4(&self) -> CHANNEL4_R {
         CHANNEL4_R::new(((self.bits >> 4) & 0x01) != 0)
     }
-    #[doc = "Bit 5 - Select secure attribute."]
+    #[doc = "Bit 5 - Select secure attribute"]
     #[inline(always)]
     pub fn channel5(&self) -> CHANNEL5_R {
         CHANNEL5_R::new(((self.bits >> 5) & 0x01) != 0)
     }
-    #[doc = "Bit 6 - Select secure attribute."]
+    #[doc = "Bit 6 - Select secure attribute"]
     #[inline(always)]
     pub fn channel6(&self) -> CHANNEL6_R {
         CHANNEL6_R::new(((self.bits >> 6) & 0x01) != 0)
     }
-    #[doc = "Bit 7 - Select secure attribute."]
+    #[doc = "Bit 7 - Select secure attribute"]
     #[inline(always)]
     pub fn channel7(&self) -> CHANNEL7_R {
         CHANNEL7_R::new(((self.bits >> 7) & 0x01) != 0)
     }
-    #[doc = "Bit 8 - Select secure attribute."]
+    #[doc = "Bit 8 - Select secure attribute"]
     #[inline(always)]
     pub fn channel8(&self) -> CHANNEL8_R {
         CHANNEL8_R::new(((self.bits >> 8) & 0x01) != 0)
     }
-    #[doc = "Bit 9 - Select secure attribute."]
+    #[doc = "Bit 9 - Select secure attribute"]
     #[inline(always)]
     pub fn channel9(&self) -> CHANNEL9_R {
         CHANNEL9_R::new(((self.bits >> 9) & 0x01) != 0)
     }
-    #[doc = "Bit 10 - Select secure attribute."]
+    #[doc = "Bit 10 - Select secure attribute"]
     #[inline(always)]
     pub fn channel10(&self) -> CHANNEL10_R {
         CHANNEL10_R::new(((self.bits >> 10) & 0x01) != 0)
     }
-    #[doc = "Bit 11 - Select secure attribute."]
+    #[doc = "Bit 11 - Select secure attribute"]
     #[inline(always)]
     pub fn channel11(&self) -> CHANNEL11_R {
         CHANNEL11_R::new(((self.bits >> 11) & 0x01) != 0)
     }
-    #[doc = "Bit 12 - Select secure attribute."]
+    #[doc = "Bit 12 - Select secure attribute"]
     #[inline(always)]
     pub fn channel12(&self) -> CHANNEL12_R {
         CHANNEL12_R::new(((self.bits >> 12) & 0x01) != 0)
     }
-    #[doc = "Bit 13 - Select secure attribute."]
+    #[doc = "Bit 13 - Select secure attribute"]
     #[inline(always)]
     pub fn channel13(&self) -> CHANNEL13_R {
         CHANNEL13_R::new(((self.bits >> 13) & 0x01) != 0)
     }
-    #[doc = "Bit 14 - Select secure attribute."]
+    #[doc = "Bit 14 - Select secure attribute"]
     #[inline(always)]
     pub fn channel14(&self) -> CHANNEL14_R {
         CHANNEL14_R::new(((self.bits >> 14) & 0x01) != 0)
     }
-    #[doc = "Bit 15 - Select secure attribute."]
+    #[doc = "Bit 15 - Select secure attribute"]
     #[inline(always)]
     pub fn channel15(&self) -> CHANNEL15_R {
         CHANNEL15_R::new(((self.bits >> 15) & 0x01) != 0)
     }
-    #[doc = "Bit 16 - Select secure attribute."]
+    #[doc = "Bit 16 - Select secure attribute"]
     #[inline(always)]
     pub fn channel16(&self) -> CHANNEL16_R {
         CHANNEL16_R::new(((self.bits >> 16) & 0x01) != 0)
     }
-    #[doc = "Bit 17 - Select secure attribute."]
+    #[doc = "Bit 17 - Select secure attribute"]
     #[inline(always)]
     pub fn channel17(&self) -> CHANNEL17_R {
         CHANNEL17_R::new(((self.bits >> 17) & 0x01) != 0)
     }
-    #[doc = "Bit 18 - Select secure attribute."]
+    #[doc = "Bit 18 - Select secure attribute"]
     #[inline(always)]
     pub fn channel18(&self) -> CHANNEL18_R {
         CHANNEL18_R::new(((self.bits >> 18) & 0x01) != 0)
     }
-    #[doc = "Bit 19 - Select secure attribute."]
+    #[doc = "Bit 19 - Select secure attribute"]
     #[inline(always)]
     pub fn channel19(&self) -> CHANNEL19_R {
         CHANNEL19_R::new(((self.bits >> 19) & 0x01) != 0)
     }
-    #[doc = "Bit 20 - Select secure attribute."]
+    #[doc = "Bit 20 - Select secure attribute"]
     #[inline(always)]
     pub fn channel20(&self) -> CHANNEL20_R {
         CHANNEL20_R::new(((self.bits >> 20) & 0x01) != 0)
     }
-    #[doc = "Bit 21 - Select secure attribute."]
+    #[doc = "Bit 21 - Select secure attribute"]
     #[inline(always)]
     pub fn channel21(&self) -> CHANNEL21_R {
         CHANNEL21_R::new(((self.bits >> 21) & 0x01) != 0)
     }
-    #[doc = "Bit 22 - Select secure attribute."]
+    #[doc = "Bit 22 - Select secure attribute"]
     #[inline(always)]
     pub fn channel22(&self) -> CHANNEL22_R {
         CHANNEL22_R::new(((self.bits >> 22) & 0x01) != 0)
     }
-    #[doc = "Bit 23 - Select secure attribute."]
+    #[doc = "Bit 23 - Select secure attribute"]
     #[inline(always)]
     pub fn channel23(&self) -> CHANNEL23_R {
         CHANNEL23_R::new(((self.bits >> 23) & 0x01) != 0)
     }
-    #[doc = "Bit 24 - Select secure attribute."]
+    #[doc = "Bit 24 - Select secure attribute"]
     #[inline(always)]
     pub fn channel24(&self) -> CHANNEL24_R {
         CHANNEL24_R::new(((self.bits >> 24) & 0x01) != 0)
     }
-    #[doc = "Bit 25 - Select secure attribute."]
+    #[doc = "Bit 25 - Select secure attribute"]
     #[inline(always)]
     pub fn channel25(&self) -> CHANNEL25_R {
         CHANNEL25_R::new(((self.bits >> 25) & 0x01) != 0)
     }
-    #[doc = "Bit 26 - Select secure attribute."]
+    #[doc = "Bit 26 - Select secure attribute"]
     #[inline(always)]
     pub fn channel26(&self) -> CHANNEL26_R {
         CHANNEL26_R::new(((self.bits >> 26) & 0x01) != 0)
     }
-    #[doc = "Bit 27 - Select secure attribute."]
+    #[doc = "Bit 27 - Select secure attribute"]
     #[inline(always)]
     pub fn channel27(&self) -> CHANNEL27_R {
         CHANNEL27_R::new(((self.bits >> 27) & 0x01) != 0)
     }
-    #[doc = "Bit 28 - Select secure attribute."]
+    #[doc = "Bit 28 - Select secure attribute"]
     #[inline(always)]
     pub fn channel28(&self) -> CHANNEL28_R {
         CHANNEL28_R::new(((self.bits >> 28) & 0x01) != 0)
     }
-    #[doc = "Bit 29 - Select secure attribute."]
+    #[doc = "Bit 29 - Select secure attribute"]
     #[inline(always)]
     pub fn channel29(&self) -> CHANNEL29_R {
         CHANNEL29_R::new(((self.bits >> 29) & 0x01) != 0)
     }
-    #[doc = "Bit 30 - Select secure attribute."]
+    #[doc = "Bit 30 - Select secure attribute"]
     #[inline(always)]
     pub fn channel30(&self) -> CHANNEL30_R {
         CHANNEL30_R::new(((self.bits >> 30) & 0x01) != 0)
     }
-    #[doc = "Bit 31 - Select secure attribute."]
+    #[doc = "Bit 31 - Select secure attribute"]
     #[inline(always)]
     pub fn channel31(&self) -> CHANNEL31_R {
         CHANNEL31_R::new(((self.bits >> 31) & 0x01) != 0)
     }
 }
 impl W {
-    #[doc = "Bit 0 - Select secure attribute."]
+    #[doc = "Bit 0 - Select secure attribute"]
     #[inline(always)]
     pub fn channel0(&mut self) -> CHANNEL0_W {
         CHANNEL0_W { w: self }
     }
-    #[doc = "Bit 1 - Select secure attribute."]
+    #[doc = "Bit 1 - Select secure attribute"]
     #[inline(always)]
     pub fn channel1(&mut self) -> CHANNEL1_W {
         CHANNEL1_W { w: self }
     }
-    #[doc = "Bit 2 - Select secure attribute."]
+    #[doc = "Bit 2 - Select secure attribute"]
     #[inline(always)]
     pub fn channel2(&mut self) -> CHANNEL2_W {
         CHANNEL2_W { w: self }
     }
-    #[doc = "Bit 3 - Select secure attribute."]
+    #[doc = "Bit 3 - Select secure attribute"]
     #[inline(always)]
     pub fn channel3(&mut self) -> CHANNEL3_W {
         CHANNEL3_W { w: self }
     }
-    #[doc = "Bit 4 - Select secure attribute."]
+    #[doc = "Bit 4 - Select secure attribute"]
     #[inline(always)]
     pub fn channel4(&mut self) -> CHANNEL4_W {
         CHANNEL4_W { w: self }
     }
-    #[doc = "Bit 5 - Select secure attribute."]
+    #[doc = "Bit 5 - Select secure attribute"]
     #[inline(always)]
     pub fn channel5(&mut self) -> CHANNEL5_W {
         CHANNEL5_W { w: self }
     }
-    #[doc = "Bit 6 - Select secure attribute."]
+    #[doc = "Bit 6 - Select secure attribute"]
     #[inline(always)]
     pub fn channel6(&mut self) -> CHANNEL6_W {
         CHANNEL6_W { w: self }
     }
-    #[doc = "Bit 7 - Select secure attribute."]
+    #[doc = "Bit 7 - Select secure attribute"]
     #[inline(always)]
     pub fn channel7(&mut self) -> CHANNEL7_W {
         CHANNEL7_W { w: self }
     }
-    #[doc = "Bit 8 - Select secure attribute."]
+    #[doc = "Bit 8 - Select secure attribute"]
     #[inline(always)]
     pub fn channel8(&mut self) -> CHANNEL8_W {
         CHANNEL8_W { w: self }
     }
-    #[doc = "Bit 9 - Select secure attribute."]
+    #[doc = "Bit 9 - Select secure attribute"]
     #[inline(always)]
     pub fn channel9(&mut self) -> CHANNEL9_W {
         CHANNEL9_W { w: self }
     }
-    #[doc = "Bit 10 - Select secure attribute."]
+    #[doc = "Bit 10 - Select secure attribute"]
     #[inline(always)]
     pub fn channel10(&mut self) -> CHANNEL10_W {
         CHANNEL10_W { w: self }
     }
-    #[doc = "Bit 11 - Select secure attribute."]
+    #[doc = "Bit 11 - Select secure attribute"]
     #[inline(always)]
     pub fn channel11(&mut self) -> CHANNEL11_W {
         CHANNEL11_W { w: self }
     }
-    #[doc = "Bit 12 - Select secure attribute."]
+    #[doc = "Bit 12 - Select secure attribute"]
     #[inline(always)]
     pub fn channel12(&mut self) -> CHANNEL12_W {
         CHANNEL12_W { w: self }
     }
-    #[doc = "Bit 13 - Select secure attribute."]
+    #[doc = "Bit 13 - Select secure attribute"]
     #[inline(always)]
     pub fn channel13(&mut self) -> CHANNEL13_W {
         CHANNEL13_W { w: self }
     }
-    #[doc = "Bit 14 - Select secure attribute."]
+    #[doc = "Bit 14 - Select secure attribute"]
     #[inline(always)]
     pub fn channel14(&mut self) -> CHANNEL14_W {
         CHANNEL14_W { w: self }
     }
-    #[doc = "Bit 15 - Select secure attribute."]
+    #[doc = "Bit 15 - Select secure attribute"]
     #[inline(always)]
     pub fn channel15(&mut self) -> CHANNEL15_W {
         CHANNEL15_W { w: self }
     }
-    #[doc = "Bit 16 - Select secure attribute."]
+    #[doc = "Bit 16 - Select secure attribute"]
     #[inline(always)]
     pub fn channel16(&mut self) -> CHANNEL16_W {
         CHANNEL16_W { w: self }
     }
-    #[doc = "Bit 17 - Select secure attribute."]
+    #[doc = "Bit 17 - Select secure attribute"]
     #[inline(always)]
     pub fn channel17(&mut self) -> CHANNEL17_W {
         CHANNEL17_W { w: self }
     }
-    #[doc = "Bit 18 - Select secure attribute."]
+    #[doc = "Bit 18 - Select secure attribute"]
     #[inline(always)]
     pub fn channel18(&mut self) -> CHANNEL18_W {
         CHANNEL18_W { w: self }
     }
-    #[doc = "Bit 19 - Select secure attribute."]
+    #[doc = "Bit 19 - Select secure attribute"]
     #[inline(always)]
     pub fn channel19(&mut self) -> CHANNEL19_W {
         CHANNEL19_W { w: self }
     }
-    #[doc = "Bit 20 - Select secure attribute."]
+    #[doc = "Bit 20 - Select secure attribute"]
     #[inline(always)]
     pub fn channel20(&mut self) -> CHANNEL20_W {
         CHANNEL20_W { w: self }
     }
-    #[doc = "Bit 21 - Select secure attribute."]
+    #[doc = "Bit 21 - Select secure attribute"]
     #[inline(always)]
     pub fn channel21(&mut self) -> CHANNEL21_W {
         CHANNEL21_W { w: self }
     }
-    #[doc = "Bit 22 - Select secure attribute."]
+    #[doc = "Bit 22 - Select secure attribute"]
     #[inline(always)]
     pub fn channel22(&mut self) -> CHANNEL22_W {
         CHANNEL22_W { w: self }
     }
-    #[doc = "Bit 23 - Select secure attribute."]
+    #[doc = "Bit 23 - Select secure attribute"]
     #[inline(always)]
     pub fn channel23(&mut self) -> CHANNEL23_W {
         CHANNEL23_W { w: self }
     }
-    #[doc = "Bit 24 - Select secure attribute."]
+    #[doc = "Bit 24 - Select secure attribute"]
     #[inline(always)]
     pub fn channel24(&mut self) -> CHANNEL24_W {
         CHANNEL24_W { w: self }
     }
-    #[doc = "Bit 25 - Select secure attribute."]
+    #[doc = "Bit 25 - Select secure attribute"]
     #[inline(always)]
     pub fn channel25(&mut self) -> CHANNEL25_W {
         CHANNEL25_W { w: self }
     }
-    #[doc = "Bit 26 - Select secure attribute."]
+    #[doc = "Bit 26 - Select secure attribute"]
     #[inline(always)]
     pub fn channel26(&mut self) -> CHANNEL26_W {
         CHANNEL26_W { w: self }
     }
-    #[doc = "Bit 27 - Select secure attribute."]
+    #[doc = "Bit 27 - Select secure attribute"]
     #[inline(always)]
     pub fn channel27(&mut self) -> CHANNEL27_W {
         CHANNEL27_W { w: self }
     }
-    #[doc = "Bit 28 - Select secure attribute."]
+    #[doc = "Bit 28 - Select secure attribute"]
     #[inline(always)]
     pub fn channel28(&mut self) -> CHANNEL28_W {
         CHANNEL28_W { w: self }
     }
-    #[doc = "Bit 29 - Select secure attribute."]
+    #[doc = "Bit 29 - Select secure attribute"]
     #[inline(always)]
     pub fn channel29(&mut self) -> CHANNEL29_W {
         CHANNEL29_W { w: self }
     }
-    #[doc = "Bit 30 - Select secure attribute."]
+    #[doc = "Bit 30 - Select secure attribute"]
     #[inline(always)]
     pub fn channel30(&mut self) -> CHANNEL30_W {
         CHANNEL30_W { w: self }
     }
-    #[doc = "Bit 31 - Select secure attribute."]
+    #[doc = "Bit 31 - Select secure attribute"]
     #[inline(always)]
     pub fn channel31(&mut self) -> CHANNEL31_W {
         CHANNEL31_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Description cluster: Select between secure and non-secure attribute for the DPPI channels\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [perm](index.html) module"]
+pub struct PERM_SPEC;
+impl crate::RegisterSpec for PERM_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [perm::R](R) reader structure"]
+impl crate::Readable for PERM_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [perm::W](W) writer structure"]
+impl crate::Writable for PERM_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets PERM to value 0xffff_ffff"]
+impl crate::Resettable for PERM_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0xffff_ffff
     }
 }

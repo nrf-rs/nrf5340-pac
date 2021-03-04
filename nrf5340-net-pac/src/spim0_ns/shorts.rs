@@ -1,35 +1,57 @@
-#[doc = "Reader of register SHORTS"]
-pub type R = crate::R<u32, super::SHORTS>;
-#[doc = "Writer for register SHORTS"]
-pub type W = crate::W<u32, super::SHORTS>;
-#[doc = "Register SHORTS `reset()`'s with value 0"]
-impl crate::ResetValue for super::SHORTS {
-    type Type = u32;
+#[doc = "Register `SHORTS` reader"]
+pub struct R(crate::R<SHORTS_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<SHORTS_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<SHORTS_SPEC>> for R {
+    fn from(reader: crate::R<SHORTS_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `SHORTS` writer"]
+pub struct W(crate::W<SHORTS_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<SHORTS_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<SHORTS_SPEC>> for W {
+    fn from(writer: crate::W<SHORTS_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "Shortcut between event END and task START\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum END_START_A {
     #[doc = "0: Disable shortcut"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Enable shortcut"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<END_START_A> for bool {
     #[inline(always)]
     fn from(variant: END_START_A) -> Self {
-        match variant {
-            END_START_A::DISABLED => false,
-            END_START_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `END_START`"]
-pub type END_START_R = crate::R<bool, END_START_A>;
+#[doc = "Field `END_START` reader - Shortcut between event END and task START"]
+pub struct END_START_R(crate::FieldReader<bool, END_START_A>);
 impl END_START_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        END_START_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> END_START_A {
@@ -41,15 +63,22 @@ impl END_START_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == END_START_A::DISABLED
+        **self == END_START_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == END_START_A::ENABLED
+        **self == END_START_A::ENABLED
     }
 }
-#[doc = "Write proxy for field `END_START`"]
+impl core::ops::Deref for END_START_R {
+    type Target = crate::FieldReader<bool, END_START_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `END_START` writer - Shortcut between event END and task START"]
 pub struct END_START_W<'a> {
     w: &'a mut W,
 }
@@ -57,9 +86,7 @@ impl<'a> END_START_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: END_START_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disable shortcut"]
     #[inline(always)]
@@ -100,5 +127,30 @@ impl W {
     #[inline(always)]
     pub fn end_start(&mut self) -> END_START_W {
         END_START_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Shortcuts between local events and tasks\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [shorts](index.html) module"]
+pub struct SHORTS_SPEC;
+impl crate::RegisterSpec for SHORTS_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [shorts::R](R) reader structure"]
+impl crate::Readable for SHORTS_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [shorts::W](W) writer structure"]
+impl crate::Writable for SHORTS_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets SHORTS to value 0"]
+impl crate::Resettable for SHORTS_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

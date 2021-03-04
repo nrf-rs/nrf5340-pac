@@ -1,28 +1,36 @@
-#[doc = "Writer for register TASKS_CAL"]
-pub type W = crate::W<u32, super::TASKS_CAL>;
-#[doc = "Register TASKS_CAL `reset()`'s with value 0"]
-impl crate::ResetValue for super::TASKS_CAL {
-    type Type = u32;
+#[doc = "Register `TASKS_CAL` writer"]
+pub struct W(crate::W<TASKS_CAL_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<TASKS_CAL_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Start RCOSC32k calibration\n\nValue on reset: 0"]
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<TASKS_CAL_SPEC>> for W {
+    fn from(writer: crate::W<TASKS_CAL_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Start calibration of LFRC oscillator\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TASKS_CAL_AW {
     #[doc = "1: Trigger task"]
-    TRIGGER,
+    TRIGGER = 1,
 }
 impl From<TASKS_CAL_AW> for bool {
     #[inline(always)]
     fn from(variant: TASKS_CAL_AW) -> Self {
-        match variant {
-            TASKS_CAL_AW::TRIGGER => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Write proxy for field `TASKS_CAL`"]
+#[doc = "Field `TASKS_CAL` writer - Start calibration of LFRC oscillator"]
 pub struct TASKS_CAL_W<'a> {
     w: &'a mut W,
 }
@@ -30,9 +38,7 @@ impl<'a> TASKS_CAL_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: TASKS_CAL_AW) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Trigger task"]
     #[inline(always)]
@@ -57,9 +63,30 @@ impl<'a> TASKS_CAL_W<'a> {
     }
 }
 impl W {
-    #[doc = "Bit 0 - Start RCOSC32k calibration"]
+    #[doc = "Bit 0 - Start calibration of LFRC oscillator"]
     #[inline(always)]
     pub fn tasks_cal(&mut self) -> TASKS_CAL_W {
         TASKS_CAL_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Start calibration of LFRC oscillator\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [tasks_cal](index.html) module"]
+pub struct TASKS_CAL_SPEC;
+impl crate::RegisterSpec for TASKS_CAL_SPEC {
+    type Ux = u32;
+}
+#[doc = "`write(|w| ..)` method takes [tasks_cal::W](W) writer structure"]
+impl crate::Writable for TASKS_CAL_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets TASKS_CAL to value 0"]
+impl crate::Resettable for TASKS_CAL_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

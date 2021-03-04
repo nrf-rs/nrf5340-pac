@@ -1,31 +1,38 @@
-#[doc = "Writer for register ERASEALL"]
-pub type W = crate::W<u32, super::ERASEALL>;
-#[doc = "Register ERASEALL `reset()`'s with value 0"]
-impl crate::ResetValue for super::ERASEALL {
-    type Type = u32;
+#[doc = "Register `ERASEALL` writer"]
+pub struct W(crate::W<ERASEALL_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<ERASEALL_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Erase all non-volatile memory including UICR registers. Note that erasing must be enabled by setting CONFIG.WEN = Een before the non-volatile memory can be erased.\n\nValue on reset: 0"]
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<ERASEALL_SPEC>> for W {
+    fn from(writer: crate::W<ERASEALL_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Erase all non-volatile memory including UICR registers. Before the non-volatile memory can be erased, erasing must be enabled by setting CONFIG.WEN=Een.\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum ERASEALL_AW {
     #[doc = "0: No operation"]
-    NOOPERATION,
+    NOOPERATION = 0,
     #[doc = "1: Start chip erase"]
-    ERASE,
+    ERASE = 1,
 }
 impl From<ERASEALL_AW> for bool {
     #[inline(always)]
     fn from(variant: ERASEALL_AW) -> Self {
-        match variant {
-            ERASEALL_AW::NOOPERATION => false,
-            ERASEALL_AW::ERASE => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Write proxy for field `ERASEALL`"]
+#[doc = "Field `ERASEALL` writer - Erase all non-volatile memory including UICR registers. Before the non-volatile memory can be erased, erasing must be enabled by setting CONFIG.WEN=Een."]
 pub struct ERASEALL_W<'a> {
     w: &'a mut W,
 }
@@ -33,9 +40,7 @@ impl<'a> ERASEALL_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: ERASEALL_AW) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "No operation"]
     #[inline(always)]
@@ -65,9 +70,30 @@ impl<'a> ERASEALL_W<'a> {
     }
 }
 impl W {
-    #[doc = "Bit 0 - Erase all non-volatile memory including UICR registers. Note that erasing must be enabled by setting CONFIG.WEN = Een before the non-volatile memory can be erased."]
+    #[doc = "Bit 0 - Erase all non-volatile memory including UICR registers. Before the non-volatile memory can be erased, erasing must be enabled by setting CONFIG.WEN=Een."]
     #[inline(always)]
     pub fn eraseall(&mut self) -> ERASEALL_W {
         ERASEALL_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Register for erasing all non-volatile user memory\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [eraseall](index.html) module"]
+pub struct ERASEALL_SPEC;
+impl crate::RegisterSpec for ERASEALL_SPEC {
+    type Ux = u32;
+}
+#[doc = "`write(|w| ..)` method takes [eraseall::W](W) writer structure"]
+impl crate::Writable for ERASEALL_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets ERASEALL to value 0"]
+impl crate::Resettable for ERASEALL_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

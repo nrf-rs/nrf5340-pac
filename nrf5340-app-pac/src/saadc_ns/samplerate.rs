@@ -1,18 +1,52 @@
-#[doc = "Reader of register SAMPLERATE"]
-pub type R = crate::R<u32, super::SAMPLERATE>;
-#[doc = "Writer for register SAMPLERATE"]
-pub type W = crate::W<u32, super::SAMPLERATE>;
-#[doc = "Register SAMPLERATE `reset()`'s with value 0"]
-impl crate::ResetValue for super::SAMPLERATE {
-    type Type = u32;
+#[doc = "Register `SAMPLERATE` reader"]
+pub struct R(crate::R<SAMPLERATE_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<SAMPLERATE_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `CC`"]
-pub type CC_R = crate::R<u16, u16>;
-#[doc = "Write proxy for field `CC`"]
+impl core::convert::From<crate::R<SAMPLERATE_SPEC>> for R {
+    fn from(reader: crate::R<SAMPLERATE_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `SAMPLERATE` writer"]
+pub struct W(crate::W<SAMPLERATE_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<SAMPLERATE_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<SAMPLERATE_SPEC>> for W {
+    fn from(writer: crate::W<SAMPLERATE_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `CC` reader - Capture and compare value; sample rate is 16 MHz/CC"]
+pub struct CC_R(crate::FieldReader<u16, u16>);
+impl CC_R {
+    pub(crate) fn new(bits: u16) -> Self {
+        CC_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for CC_R {
+    type Target = crate::FieldReader<u16, u16>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CC` writer - Capture and compare value; sample rate is 16 MHz/CC"]
 pub struct CC_W<'a> {
     w: &'a mut W,
 }
@@ -28,22 +62,22 @@ impl<'a> CC_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum MODE_A {
     #[doc = "0: Rate is controlled from SAMPLE task"]
-    TASK,
+    TASK = 0,
     #[doc = "1: Rate is controlled from local timer (use CC to control the rate)"]
-    TIMERS,
+    TIMERS = 1,
 }
 impl From<MODE_A> for bool {
     #[inline(always)]
     fn from(variant: MODE_A) -> Self {
-        match variant {
-            MODE_A::TASK => false,
-            MODE_A::TIMERS => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `MODE`"]
-pub type MODE_R = crate::R<bool, MODE_A>;
+#[doc = "Field `MODE` reader - Select mode for sample rate control"]
+pub struct MODE_R(crate::FieldReader<bool, MODE_A>);
 impl MODE_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        MODE_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> MODE_A {
@@ -55,15 +89,22 @@ impl MODE_R {
     #[doc = "Checks if the value of the field is `TASK`"]
     #[inline(always)]
     pub fn is_task(&self) -> bool {
-        *self == MODE_A::TASK
+        **self == MODE_A::TASK
     }
     #[doc = "Checks if the value of the field is `TIMERS`"]
     #[inline(always)]
     pub fn is_timers(&self) -> bool {
-        *self == MODE_A::TIMERS
+        **self == MODE_A::TIMERS
     }
 }
-#[doc = "Write proxy for field `MODE`"]
+impl core::ops::Deref for MODE_R {
+    type Target = crate::FieldReader<bool, MODE_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `MODE` writer - Select mode for sample rate control"]
 pub struct MODE_W<'a> {
     w: &'a mut W,
 }
@@ -71,9 +112,7 @@ impl<'a> MODE_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: MODE_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Rate is controlled from SAMPLE task"]
     #[inline(always)]
@@ -103,7 +142,7 @@ impl<'a> MODE_W<'a> {
     }
 }
 impl R {
-    #[doc = "Bits 0:10 - Capture and compare value. Sample rate is 16 MHz/CC"]
+    #[doc = "Bits 0:10 - Capture and compare value; sample rate is 16 MHz/CC"]
     #[inline(always)]
     pub fn cc(&self) -> CC_R {
         CC_R::new((self.bits & 0x07ff) as u16)
@@ -115,7 +154,7 @@ impl R {
     }
 }
 impl W {
-    #[doc = "Bits 0:10 - Capture and compare value. Sample rate is 16 MHz/CC"]
+    #[doc = "Bits 0:10 - Capture and compare value; sample rate is 16 MHz/CC"]
     #[inline(always)]
     pub fn cc(&mut self) -> CC_W {
         CC_W { w: self }
@@ -124,5 +163,30 @@ impl W {
     #[inline(always)]
     pub fn mode(&mut self) -> MODE_W {
         MODE_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Controls normal or continuous sample rate\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [samplerate](index.html) module"]
+pub struct SAMPLERATE_SPEC;
+impl crate::RegisterSpec for SAMPLERATE_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [samplerate::R](R) reader structure"]
+impl crate::Readable for SAMPLERATE_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [samplerate::W](W) writer structure"]
+impl crate::Writable for SAMPLERATE_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets SAMPLERATE to value 0"]
+impl crate::Resettable for SAMPLERATE_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

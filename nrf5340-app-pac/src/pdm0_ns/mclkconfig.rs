@@ -1,35 +1,57 @@
-#[doc = "Reader of register MCLKCONFIG"]
-pub type R = crate::R<u32, super::MCLKCONFIG>;
-#[doc = "Writer for register MCLKCONFIG"]
-pub type W = crate::W<u32, super::MCLKCONFIG>;
-#[doc = "Register MCLKCONFIG `reset()`'s with value 0"]
-impl crate::ResetValue for super::MCLKCONFIG {
-    type Type = u32;
+#[doc = "Register `MCLKCONFIG` reader"]
+pub struct R(crate::R<MCLKCONFIG_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<MCLKCONFIG_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<MCLKCONFIG_SPEC>> for R {
+    fn from(reader: crate::R<MCLKCONFIG_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `MCLKCONFIG` writer"]
+pub struct W(crate::W<MCLKCONFIG_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<MCLKCONFIG_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<MCLKCONFIG_SPEC>> for W {
+    fn from(writer: crate::W<MCLKCONFIG_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "Master clock source selection\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum SRC_A {
-    #[doc = "0: 32MHz peripheral clock"]
-    PCLK32M,
+    #[doc = "0: 32 MHz peripheral clock"]
+    PCLK32M = 0,
     #[doc = "1: Audio PLL clock"]
-    ACLK,
+    ACLK = 1,
 }
 impl From<SRC_A> for bool {
     #[inline(always)]
     fn from(variant: SRC_A) -> Self {
-        match variant {
-            SRC_A::PCLK32M => false,
-            SRC_A::ACLK => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `SRC`"]
-pub type SRC_R = crate::R<bool, SRC_A>;
+#[doc = "Field `SRC` reader - Master clock source selection"]
+pub struct SRC_R(crate::FieldReader<bool, SRC_A>);
 impl SRC_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        SRC_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> SRC_A {
@@ -41,15 +63,22 @@ impl SRC_R {
     #[doc = "Checks if the value of the field is `PCLK32M`"]
     #[inline(always)]
     pub fn is_pclk32m(&self) -> bool {
-        *self == SRC_A::PCLK32M
+        **self == SRC_A::PCLK32M
     }
     #[doc = "Checks if the value of the field is `ACLK`"]
     #[inline(always)]
     pub fn is_aclk(&self) -> bool {
-        *self == SRC_A::ACLK
+        **self == SRC_A::ACLK
     }
 }
-#[doc = "Write proxy for field `SRC`"]
+impl core::ops::Deref for SRC_R {
+    type Target = crate::FieldReader<bool, SRC_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `SRC` writer - Master clock source selection"]
 pub struct SRC_W<'a> {
     w: &'a mut W,
 }
@@ -57,11 +86,9 @@ impl<'a> SRC_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: SRC_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "32MHz peripheral clock"]
+    #[doc = "32 MHz peripheral clock"]
     #[inline(always)]
     pub fn pclk32m(self) -> &'a mut W {
         self.variant(SRC_A::PCLK32M)
@@ -100,5 +127,30 @@ impl W {
     #[inline(always)]
     pub fn src(&mut self) -> SRC_W {
         SRC_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Master clock generator configuration\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [mclkconfig](index.html) module"]
+pub struct MCLKCONFIG_SPEC;
+impl crate::RegisterSpec for MCLKCONFIG_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [mclkconfig::R](R) reader structure"]
+impl crate::Readable for MCLKCONFIG_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [mclkconfig::W](W) writer structure"]
+impl crate::Writable for MCLKCONFIG_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets MCLKCONFIG to value 0"]
+impl crate::Resettable for MCLKCONFIG_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

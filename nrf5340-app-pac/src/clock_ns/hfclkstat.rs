@@ -1,25 +1,37 @@
-#[doc = "Reader of register HFCLKSTAT"]
-pub type R = crate::R<u32, super::HFCLKSTAT>;
+#[doc = "Register `HFCLKSTAT` reader"]
+pub struct R(crate::R<HFCLKSTAT_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<HFCLKSTAT_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<HFCLKSTAT_SPEC>> for R {
+    fn from(reader: crate::R<HFCLKSTAT_SPEC>) -> Self {
+        R(reader)
+    }
+}
 #[doc = "Active clock source\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum SRC_A {
-    #[doc = "0: HFCLK clock source: HFINT - 128 MHz on-chip oscillator"]
-    HFINT,
-    #[doc = "1: HFCLK clock source: HFXO - 128 MHz clock derived from external 32 MHz crystal oscillator"]
-    HFXO,
+    #[doc = "0: Clock source: HFINT - 128 MHz on-chip oscillator"]
+    HFINT = 0,
+    #[doc = "1: Clock source: HFXO - 128 MHz clock derived from external 32 MHz crystal oscillator"]
+    HFXO = 1,
 }
 impl From<SRC_A> for bool {
     #[inline(always)]
     fn from(variant: SRC_A) -> Self {
-        match variant {
-            SRC_A::HFINT => false,
-            SRC_A::HFXO => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `SRC`"]
-pub type SRC_R = crate::R<bool, SRC_A>;
+#[doc = "Field `SRC` reader - Active clock source"]
+pub struct SRC_R(crate::FieldReader<bool, SRC_A>);
 impl SRC_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        SRC_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> SRC_A {
@@ -31,34 +43,41 @@ impl SRC_R {
     #[doc = "Checks if the value of the field is `HFINT`"]
     #[inline(always)]
     pub fn is_hfint(&self) -> bool {
-        *self == SRC_A::HFINT
+        **self == SRC_A::HFINT
     }
     #[doc = "Checks if the value of the field is `HFXO`"]
     #[inline(always)]
     pub fn is_hfxo(&self) -> bool {
-        *self == SRC_A::HFXO
+        **self == SRC_A::HFXO
+    }
+}
+impl core::ops::Deref for SRC_R {
+    type Target = crate::FieldReader<bool, SRC_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "ALWAYSRUN activated\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum ALWAYSRUNNING_A {
     #[doc = "0: Automatic clock control enabled"]
-    NOTRUNNING,
+    NOTRUNNING = 0,
     #[doc = "1: Oscillator is always running"]
-    RUNNING,
+    RUNNING = 1,
 }
 impl From<ALWAYSRUNNING_A> for bool {
     #[inline(always)]
     fn from(variant: ALWAYSRUNNING_A) -> Self {
-        match variant {
-            ALWAYSRUNNING_A::NOTRUNNING => false,
-            ALWAYSRUNNING_A::RUNNING => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `ALWAYSRUNNING`"]
-pub type ALWAYSRUNNING_R = crate::R<bool, ALWAYSRUNNING_A>;
+#[doc = "Field `ALWAYSRUNNING` reader - ALWAYSRUN activated"]
+pub struct ALWAYSRUNNING_R(crate::FieldReader<bool, ALWAYSRUNNING_A>);
 impl ALWAYSRUNNING_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        ALWAYSRUNNING_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> ALWAYSRUNNING_A {
@@ -70,34 +89,41 @@ impl ALWAYSRUNNING_R {
     #[doc = "Checks if the value of the field is `NOTRUNNING`"]
     #[inline(always)]
     pub fn is_not_running(&self) -> bool {
-        *self == ALWAYSRUNNING_A::NOTRUNNING
+        **self == ALWAYSRUNNING_A::NOTRUNNING
     }
     #[doc = "Checks if the value of the field is `RUNNING`"]
     #[inline(always)]
     pub fn is_running(&self) -> bool {
-        *self == ALWAYSRUNNING_A::RUNNING
+        **self == ALWAYSRUNNING_A::RUNNING
+    }
+}
+impl core::ops::Deref for ALWAYSRUNNING_R {
+    type Target = crate::FieldReader<bool, ALWAYSRUNNING_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "HFCLK state\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum STATE_A {
     #[doc = "0: HFCLK not running"]
-    NOTRUNNING,
+    NOTRUNNING = 0,
     #[doc = "1: HFCLK running"]
-    RUNNING,
+    RUNNING = 1,
 }
 impl From<STATE_A> for bool {
     #[inline(always)]
     fn from(variant: STATE_A) -> Self {
-        match variant {
-            STATE_A::NOTRUNNING => false,
-            STATE_A::RUNNING => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `STATE`"]
-pub type STATE_R = crate::R<bool, STATE_A>;
+#[doc = "Field `STATE` reader - HFCLK state"]
+pub struct STATE_R(crate::FieldReader<bool, STATE_A>);
 impl STATE_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        STATE_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> STATE_A {
@@ -109,12 +135,19 @@ impl STATE_R {
     #[doc = "Checks if the value of the field is `NOTRUNNING`"]
     #[inline(always)]
     pub fn is_not_running(&self) -> bool {
-        *self == STATE_A::NOTRUNNING
+        **self == STATE_A::NOTRUNNING
     }
     #[doc = "Checks if the value of the field is `RUNNING`"]
     #[inline(always)]
     pub fn is_running(&self) -> bool {
-        *self == STATE_A::RUNNING
+        **self == STATE_A::RUNNING
+    }
+}
+impl core::ops::Deref for STATE_R {
+    type Target = crate::FieldReader<bool, STATE_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 impl R {
@@ -132,5 +165,21 @@ impl R {
     #[inline(always)]
     pub fn state(&self) -> STATE_R {
         STATE_R::new(((self.bits >> 16) & 0x01) != 0)
+    }
+}
+#[doc = "Status indicating which HFCLK128M/HFCLK64M source is running This register value in any CLOCK instance reflects status only due to configurations/actions in that CLOCK instance.\n\nThis register you can [`read`](crate::generic::Reg::read). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [hfclkstat](index.html) module"]
+pub struct HFCLKSTAT_SPEC;
+impl crate::RegisterSpec for HFCLKSTAT_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [hfclkstat::R](R) reader structure"]
+impl crate::Readable for HFCLKSTAT_SPEC {
+    type Reader = R;
+}
+#[doc = "`reset()` method sets HFCLKSTAT to value 0"]
+impl crate::Resettable for HFCLKSTAT_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

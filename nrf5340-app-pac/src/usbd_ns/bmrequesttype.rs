@@ -1,31 +1,42 @@
-#[doc = "Reader of register BMREQUESTTYPE"]
-pub type R = crate::R<u32, super::BMREQUESTTYPE>;
+#[doc = "Register `BMREQUESTTYPE` reader"]
+pub struct R(crate::R<BMREQUESTTYPE_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<BMREQUESTTYPE_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<BMREQUESTTYPE_SPEC>> for R {
+    fn from(reader: crate::R<BMREQUESTTYPE_SPEC>) -> Self {
+        R(reader)
+    }
+}
 #[doc = "Data transfer type\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
+#[repr(u8)]
 pub enum RECIPIENT_A {
     #[doc = "0: Device"]
-    DEVICE,
+    DEVICE = 0,
     #[doc = "1: Interface"]
-    INTERFACE,
+    INTERFACE = 1,
     #[doc = "2: Endpoint"]
-    ENDPOINT,
+    ENDPOINT = 2,
     #[doc = "3: Other"]
-    OTHER,
+    OTHER = 3,
 }
 impl From<RECIPIENT_A> for u8 {
     #[inline(always)]
     fn from(variant: RECIPIENT_A) -> Self {
-        match variant {
-            RECIPIENT_A::DEVICE => 0,
-            RECIPIENT_A::INTERFACE => 1,
-            RECIPIENT_A::ENDPOINT => 2,
-            RECIPIENT_A::OTHER => 3,
-        }
+        variant as _
     }
 }
-#[doc = "Reader of field `RECIPIENT`"]
-pub type RECIPIENT_R = crate::R<u8, RECIPIENT_A>;
+#[doc = "Field `RECIPIENT` reader - Data transfer type"]
+pub struct RECIPIENT_R(crate::FieldReader<u8, RECIPIENT_A>);
 impl RECIPIENT_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        RECIPIENT_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> crate::Variant<u8, RECIPIENT_A> {
@@ -41,47 +52,54 @@ impl RECIPIENT_R {
     #[doc = "Checks if the value of the field is `DEVICE`"]
     #[inline(always)]
     pub fn is_device(&self) -> bool {
-        *self == RECIPIENT_A::DEVICE
+        **self == RECIPIENT_A::DEVICE
     }
     #[doc = "Checks if the value of the field is `INTERFACE`"]
     #[inline(always)]
     pub fn is_interface(&self) -> bool {
-        *self == RECIPIENT_A::INTERFACE
+        **self == RECIPIENT_A::INTERFACE
     }
     #[doc = "Checks if the value of the field is `ENDPOINT`"]
     #[inline(always)]
     pub fn is_endpoint(&self) -> bool {
-        *self == RECIPIENT_A::ENDPOINT
+        **self == RECIPIENT_A::ENDPOINT
     }
     #[doc = "Checks if the value of the field is `OTHER`"]
     #[inline(always)]
     pub fn is_other(&self) -> bool {
-        *self == RECIPIENT_A::OTHER
+        **self == RECIPIENT_A::OTHER
+    }
+}
+impl core::ops::Deref for RECIPIENT_R {
+    type Target = crate::FieldReader<u8, RECIPIENT_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Data transfer type\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
+#[repr(u8)]
 pub enum TYPE_A {
     #[doc = "0: Standard"]
-    STANDARD,
+    STANDARD = 0,
     #[doc = "1: Class"]
-    CLASS,
+    CLASS = 1,
     #[doc = "2: Vendor"]
-    VENDOR,
+    VENDOR = 2,
 }
 impl From<TYPE_A> for u8 {
     #[inline(always)]
     fn from(variant: TYPE_A) -> Self {
-        match variant {
-            TYPE_A::STANDARD => 0,
-            TYPE_A::CLASS => 1,
-            TYPE_A::VENDOR => 2,
-        }
+        variant as _
     }
 }
-#[doc = "Reader of field `TYPE`"]
-pub type TYPE_R = crate::R<u8, TYPE_A>;
+#[doc = "Field `TYPE` reader - Data transfer type"]
+pub struct TYPE_R(crate::FieldReader<u8, TYPE_A>);
 impl TYPE_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        TYPE_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> crate::Variant<u8, TYPE_A> {
@@ -96,39 +114,46 @@ impl TYPE_R {
     #[doc = "Checks if the value of the field is `STANDARD`"]
     #[inline(always)]
     pub fn is_standard(&self) -> bool {
-        *self == TYPE_A::STANDARD
+        **self == TYPE_A::STANDARD
     }
     #[doc = "Checks if the value of the field is `CLASS`"]
     #[inline(always)]
     pub fn is_class(&self) -> bool {
-        *self == TYPE_A::CLASS
+        **self == TYPE_A::CLASS
     }
     #[doc = "Checks if the value of the field is `VENDOR`"]
     #[inline(always)]
     pub fn is_vendor(&self) -> bool {
-        *self == TYPE_A::VENDOR
+        **self == TYPE_A::VENDOR
+    }
+}
+impl core::ops::Deref for TYPE_R {
+    type Target = crate::FieldReader<u8, TYPE_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Data transfer direction\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DIRECTION_A {
     #[doc = "0: Host-to-device"]
-    HOSTTODEVICE,
+    HOSTTODEVICE = 0,
     #[doc = "1: Device-to-host"]
-    DEVICETOHOST,
+    DEVICETOHOST = 1,
 }
 impl From<DIRECTION_A> for bool {
     #[inline(always)]
     fn from(variant: DIRECTION_A) -> Self {
-        match variant {
-            DIRECTION_A::HOSTTODEVICE => false,
-            DIRECTION_A::DEVICETOHOST => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `DIRECTION`"]
-pub type DIRECTION_R = crate::R<bool, DIRECTION_A>;
+#[doc = "Field `DIRECTION` reader - Data transfer direction"]
+pub struct DIRECTION_R(crate::FieldReader<bool, DIRECTION_A>);
 impl DIRECTION_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DIRECTION_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> DIRECTION_A {
@@ -140,12 +165,19 @@ impl DIRECTION_R {
     #[doc = "Checks if the value of the field is `HOSTTODEVICE`"]
     #[inline(always)]
     pub fn is_host_to_device(&self) -> bool {
-        *self == DIRECTION_A::HOSTTODEVICE
+        **self == DIRECTION_A::HOSTTODEVICE
     }
     #[doc = "Checks if the value of the field is `DEVICETOHOST`"]
     #[inline(always)]
     pub fn is_device_to_host(&self) -> bool {
-        *self == DIRECTION_A::DEVICETOHOST
+        **self == DIRECTION_A::DEVICETOHOST
+    }
+}
+impl core::ops::Deref for DIRECTION_R {
+    type Target = crate::FieldReader<bool, DIRECTION_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 impl R {
@@ -163,5 +195,21 @@ impl R {
     #[inline(always)]
     pub fn direction(&self) -> DIRECTION_R {
         DIRECTION_R::new(((self.bits >> 7) & 0x01) != 0)
+    }
+}
+#[doc = "SETUP data, byte 0, bmRequestType\n\nThis register you can [`read`](crate::generic::Reg::read). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [bmrequesttype](index.html) module"]
+pub struct BMREQUESTTYPE_SPEC;
+impl crate::RegisterSpec for BMREQUESTTYPE_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [bmrequesttype::R](R) reader structure"]
+impl crate::Readable for BMREQUESTTYPE_SPEC {
+    type Reader = R;
+}
+#[doc = "`reset()` method sets BMREQUESTTYPE to value 0"]
+impl crate::Resettable for BMREQUESTTYPE_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

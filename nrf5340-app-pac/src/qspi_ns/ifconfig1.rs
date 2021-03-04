@@ -1,18 +1,52 @@
-#[doc = "Reader of register IFCONFIG1"]
-pub type R = crate::R<u32, super::IFCONFIG1>;
-#[doc = "Writer for register IFCONFIG1"]
-pub type W = crate::W<u32, super::IFCONFIG1>;
-#[doc = "Register IFCONFIG1 `reset()`'s with value 0x0004_0480"]
-impl crate::ResetValue for super::IFCONFIG1 {
-    type Type = u32;
+#[doc = "Register `IFCONFIG1` reader"]
+pub struct R(crate::R<IFCONFIG1_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<IFCONFIG1_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0x0004_0480
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `SCKDELAY`"]
-pub type SCKDELAY_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `SCKDELAY`"]
+impl core::convert::From<crate::R<IFCONFIG1_SPEC>> for R {
+    fn from(reader: crate::R<IFCONFIG1_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `IFCONFIG1` writer"]
+pub struct W(crate::W<IFCONFIG1_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<IFCONFIG1_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<IFCONFIG1_SPEC>> for W {
+    fn from(writer: crate::W<IFCONFIG1_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `SCKDELAY` reader - Minimum amount of time that the CSN pin must stay high before it can go low again. Value is specified in number of 16 MHz periods (62.5 ns)."]
+pub struct SCKDELAY_R(crate::FieldReader<u8, u8>);
+impl SCKDELAY_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        SCKDELAY_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for SCKDELAY_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `SCKDELAY` writer - Minimum amount of time that the CSN pin must stay high before it can go low again. Value is specified in number of 16 MHz periods (62.5 ns)."]
 pub struct SCKDELAY_W<'a> {
     w: &'a mut W,
 }
@@ -28,22 +62,22 @@ impl<'a> SCKDELAY_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DPMEN_A {
     #[doc = "0: Exit DPM."]
-    EXIT,
+    EXIT = 0,
     #[doc = "1: Enter DPM."]
-    ENTER,
+    ENTER = 1,
 }
 impl From<DPMEN_A> for bool {
     #[inline(always)]
     fn from(variant: DPMEN_A) -> Self {
-        match variant {
-            DPMEN_A::EXIT => false,
-            DPMEN_A::ENTER => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `DPMEN`"]
-pub type DPMEN_R = crate::R<bool, DPMEN_A>;
+#[doc = "Field `DPMEN` reader - Enter/exit deep power-down mode (DPM) for external flash memory."]
+pub struct DPMEN_R(crate::FieldReader<bool, DPMEN_A>);
 impl DPMEN_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DPMEN_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> DPMEN_A {
@@ -55,15 +89,22 @@ impl DPMEN_R {
     #[doc = "Checks if the value of the field is `EXIT`"]
     #[inline(always)]
     pub fn is_exit(&self) -> bool {
-        *self == DPMEN_A::EXIT
+        **self == DPMEN_A::EXIT
     }
     #[doc = "Checks if the value of the field is `ENTER`"]
     #[inline(always)]
     pub fn is_enter(&self) -> bool {
-        *self == DPMEN_A::ENTER
+        **self == DPMEN_A::ENTER
     }
 }
-#[doc = "Write proxy for field `DPMEN`"]
+impl core::ops::Deref for DPMEN_R {
+    type Target = crate::FieldReader<bool, DPMEN_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `DPMEN` writer - Enter/exit deep power-down mode (DPM) for external flash memory."]
 pub struct DPMEN_W<'a> {
     w: &'a mut W,
 }
@@ -71,9 +112,7 @@ impl<'a> DPMEN_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: DPMEN_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Exit DPM."]
     #[inline(always)]
@@ -106,22 +145,22 @@ impl<'a> DPMEN_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum SPIMODE_A {
     #[doc = "0: Mode 0: Data are captured on the clock rising edge and data is output on a falling edge. Base level of clock is 0 (CPOL=0, CPHA=0)."]
-    MODE0,
-    #[doc = "1: Mode 3: Data are captured on the clock falling edge and data is output on a rising edge. Base level of clock is 1 (CPOL=1, CPHA=1)."]
-    MODE3,
+    MODE0 = 0,
+    #[doc = "1: Mode 3: Data are captured on the clock rising edge and data is output on a falling edge. Base level of clock is 1 (CPOL=1, CPHA=1)."]
+    MODE3 = 1,
 }
 impl From<SPIMODE_A> for bool {
     #[inline(always)]
     fn from(variant: SPIMODE_A) -> Self {
-        match variant {
-            SPIMODE_A::MODE0 => false,
-            SPIMODE_A::MODE3 => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `SPIMODE`"]
-pub type SPIMODE_R = crate::R<bool, SPIMODE_A>;
+#[doc = "Field `SPIMODE` reader - Select SPI mode."]
+pub struct SPIMODE_R(crate::FieldReader<bool, SPIMODE_A>);
 impl SPIMODE_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        SPIMODE_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> SPIMODE_A {
@@ -133,15 +172,22 @@ impl SPIMODE_R {
     #[doc = "Checks if the value of the field is `MODE0`"]
     #[inline(always)]
     pub fn is_mode0(&self) -> bool {
-        *self == SPIMODE_A::MODE0
+        **self == SPIMODE_A::MODE0
     }
     #[doc = "Checks if the value of the field is `MODE3`"]
     #[inline(always)]
     pub fn is_mode3(&self) -> bool {
-        *self == SPIMODE_A::MODE3
+        **self == SPIMODE_A::MODE3
     }
 }
-#[doc = "Write proxy for field `SPIMODE`"]
+impl core::ops::Deref for SPIMODE_R {
+    type Target = crate::FieldReader<bool, SPIMODE_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `SPIMODE` writer - Select SPI mode."]
 pub struct SPIMODE_W<'a> {
     w: &'a mut W,
 }
@@ -149,16 +195,14 @@ impl<'a> SPIMODE_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: SPIMODE_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Mode 0: Data are captured on the clock rising edge and data is output on a falling edge. Base level of clock is 0 (CPOL=0, CPHA=0)."]
     #[inline(always)]
     pub fn mode0(self) -> &'a mut W {
         self.variant(SPIMODE_A::MODE0)
     }
-    #[doc = "Mode 3: Data are captured on the clock falling edge and data is output on a rising edge. Base level of clock is 1 (CPOL=1, CPHA=1)."]
+    #[doc = "Mode 3: Data are captured on the clock rising edge and data is output on a falling edge. Base level of clock is 1 (CPOL=1, CPHA=1)."]
     #[inline(always)]
     pub fn mode3(self) -> &'a mut W {
         self.variant(SPIMODE_A::MODE3)
@@ -180,9 +224,21 @@ impl<'a> SPIMODE_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `SCKFREQ`"]
-pub type SCKFREQ_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `SCKFREQ`"]
+#[doc = "Field `SCKFREQ` reader - SCK frequency is derived from PCLK192M with SCK frequency = PCLK192M / (2*(SCKFREQ + 1))."]
+pub struct SCKFREQ_R(crate::FieldReader<u8, u8>);
+impl SCKFREQ_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        SCKFREQ_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for SCKFREQ_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `SCKFREQ` writer - SCK frequency is derived from PCLK192M with SCK frequency = PCLK192M / (2*(SCKFREQ + 1))."]
 pub struct SCKFREQ_W<'a> {
     w: &'a mut W,
 }
@@ -210,7 +266,7 @@ impl R {
     pub fn spimode(&self) -> SPIMODE_R {
         SPIMODE_R::new(((self.bits >> 25) & 0x01) != 0)
     }
-    #[doc = "Bits 28:31 - SCK frequency is given as 96 MHz / (SCKFREQ + 1)."]
+    #[doc = "Bits 28:31 - SCK frequency is derived from PCLK192M with SCK frequency = PCLK192M / (2*(SCKFREQ + 1))."]
     #[inline(always)]
     pub fn sckfreq(&self) -> SCKFREQ_R {
         SCKFREQ_R::new(((self.bits >> 28) & 0x0f) as u8)
@@ -232,9 +288,34 @@ impl W {
     pub fn spimode(&mut self) -> SPIMODE_W {
         SPIMODE_W { w: self }
     }
-    #[doc = "Bits 28:31 - SCK frequency is given as 96 MHz / (SCKFREQ + 1)."]
+    #[doc = "Bits 28:31 - SCK frequency is derived from PCLK192M with SCK frequency = PCLK192M / (2*(SCKFREQ + 1))."]
     #[inline(always)]
     pub fn sckfreq(&mut self) -> SCKFREQ_W {
         SCKFREQ_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Interface configuration.\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [ifconfig1](index.html) module"]
+pub struct IFCONFIG1_SPEC;
+impl crate::RegisterSpec for IFCONFIG1_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [ifconfig1::R](R) reader structure"]
+impl crate::Readable for IFCONFIG1_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [ifconfig1::W](W) writer structure"]
+impl crate::Writable for IFCONFIG1_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets IFCONFIG1 to value 0x0004_0480"]
+impl crate::Resettable for IFCONFIG1_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0x0004_0480
     }
 }

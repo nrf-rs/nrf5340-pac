@@ -1,18 +1,52 @@
-#[doc = "Reader of register SUBSCRIBE_BCSTOP"]
-pub type R = crate::R<u32, super::SUBSCRIBE_BCSTOP>;
-#[doc = "Writer for register SUBSCRIBE_BCSTOP"]
-pub type W = crate::W<u32, super::SUBSCRIBE_BCSTOP>;
-#[doc = "Register SUBSCRIBE_BCSTOP `reset()`'s with value 0"]
-impl crate::ResetValue for super::SUBSCRIBE_BCSTOP {
-    type Type = u32;
+#[doc = "Register `SUBSCRIBE_BCSTOP` reader"]
+pub struct R(crate::R<SUBSCRIBE_BCSTOP_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<SUBSCRIBE_BCSTOP_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `CHIDX`"]
-pub type CHIDX_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `CHIDX`"]
+impl core::convert::From<crate::R<SUBSCRIBE_BCSTOP_SPEC>> for R {
+    fn from(reader: crate::R<SUBSCRIBE_BCSTOP_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `SUBSCRIBE_BCSTOP` writer"]
+pub struct W(crate::W<SUBSCRIBE_BCSTOP_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<SUBSCRIBE_BCSTOP_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<SUBSCRIBE_BCSTOP_SPEC>> for W {
+    fn from(writer: crate::W<SUBSCRIBE_BCSTOP_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `CHIDX` reader - DPPI channel that task BCSTOP will subscribe to"]
+pub struct CHIDX_R(crate::FieldReader<u8, u8>);
+impl CHIDX_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        CHIDX_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for CHIDX_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CHIDX` writer - DPPI channel that task BCSTOP will subscribe to"]
 pub struct CHIDX_W<'a> {
     w: &'a mut W,
 }
@@ -28,22 +62,22 @@ impl<'a> CHIDX_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum EN_A {
     #[doc = "0: Disable subscription"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Enable subscription"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<EN_A> for bool {
     #[inline(always)]
     fn from(variant: EN_A) -> Self {
-        match variant {
-            EN_A::DISABLED => false,
-            EN_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `EN`"]
-pub type EN_R = crate::R<bool, EN_A>;
+#[doc = "Field `EN` reader - "]
+pub struct EN_R(crate::FieldReader<bool, EN_A>);
 impl EN_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        EN_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> EN_A {
@@ -55,15 +89,22 @@ impl EN_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == EN_A::DISABLED
+        **self == EN_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == EN_A::ENABLED
+        **self == EN_A::ENABLED
     }
 }
-#[doc = "Write proxy for field `EN`"]
+impl core::ops::Deref for EN_R {
+    type Target = crate::FieldReader<bool, EN_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `EN` writer - "]
 pub struct EN_W<'a> {
     w: &'a mut W,
 }
@@ -71,9 +112,7 @@ impl<'a> EN_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: EN_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disable subscription"]
     #[inline(always)]
@@ -103,7 +142,7 @@ impl<'a> EN_W<'a> {
     }
 }
 impl R {
-    #[doc = "Bits 0:7 - Channel that task BCSTOP will subscribe to"]
+    #[doc = "Bits 0:7 - DPPI channel that task BCSTOP will subscribe to"]
     #[inline(always)]
     pub fn chidx(&self) -> CHIDX_R {
         CHIDX_R::new((self.bits & 0xff) as u8)
@@ -115,7 +154,7 @@ impl R {
     }
 }
 impl W {
-    #[doc = "Bits 0:7 - Channel that task BCSTOP will subscribe to"]
+    #[doc = "Bits 0:7 - DPPI channel that task BCSTOP will subscribe to"]
     #[inline(always)]
     pub fn chidx(&mut self) -> CHIDX_W {
         CHIDX_W { w: self }
@@ -124,5 +163,30 @@ impl W {
     #[inline(always)]
     pub fn en(&mut self) -> EN_W {
         EN_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Subscribe configuration for task BCSTOP\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [subscribe_bcstop](index.html) module"]
+pub struct SUBSCRIBE_BCSTOP_SPEC;
+impl crate::RegisterSpec for SUBSCRIBE_BCSTOP_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [subscribe_bcstop::R](R) reader structure"]
+impl crate::Readable for SUBSCRIBE_BCSTOP_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [subscribe_bcstop::W](W) writer structure"]
+impl crate::Writable for SUBSCRIBE_BCSTOP_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets SUBSCRIBE_BCSTOP to value 0"]
+impl crate::Resettable for SUBSCRIBE_BCSTOP_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

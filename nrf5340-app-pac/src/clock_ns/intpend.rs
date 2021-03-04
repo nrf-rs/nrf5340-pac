@@ -1,25 +1,37 @@
-#[doc = "Reader of register INTPEND"]
-pub type R = crate::R<u32, super::INTPEND>;
+#[doc = "Register `INTPEND` reader"]
+pub struct R(crate::R<INTPEND_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<INTPEND_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<INTPEND_SPEC>> for R {
+    fn from(reader: crate::R<INTPEND_SPEC>) -> Self {
+        R(reader)
+    }
+}
 #[doc = "Read pending status of interrupt for event HFCLKSTARTED\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum HFCLKSTARTED_A {
     #[doc = "0: Read: Not pending"]
-    NOTPENDING,
+    NOTPENDING = 0,
     #[doc = "1: Read: Pending"]
-    PENDING,
+    PENDING = 1,
 }
 impl From<HFCLKSTARTED_A> for bool {
     #[inline(always)]
     fn from(variant: HFCLKSTARTED_A) -> Self {
-        match variant {
-            HFCLKSTARTED_A::NOTPENDING => false,
-            HFCLKSTARTED_A::PENDING => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `HFCLKSTARTED`"]
-pub type HFCLKSTARTED_R = crate::R<bool, HFCLKSTARTED_A>;
+#[doc = "Field `HFCLKSTARTED` reader - Read pending status of interrupt for event HFCLKSTARTED"]
+pub struct HFCLKSTARTED_R(crate::FieldReader<bool, HFCLKSTARTED_A>);
 impl HFCLKSTARTED_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        HFCLKSTARTED_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> HFCLKSTARTED_A {
@@ -31,34 +43,41 @@ impl HFCLKSTARTED_R {
     #[doc = "Checks if the value of the field is `NOTPENDING`"]
     #[inline(always)]
     pub fn is_not_pending(&self) -> bool {
-        *self == HFCLKSTARTED_A::NOTPENDING
+        **self == HFCLKSTARTED_A::NOTPENDING
     }
     #[doc = "Checks if the value of the field is `PENDING`"]
     #[inline(always)]
     pub fn is_pending(&self) -> bool {
-        *self == HFCLKSTARTED_A::PENDING
+        **self == HFCLKSTARTED_A::PENDING
+    }
+}
+impl core::ops::Deref for HFCLKSTARTED_R {
+    type Target = crate::FieldReader<bool, HFCLKSTARTED_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Read pending status of interrupt for event LFCLKSTARTED\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum LFCLKSTARTED_A {
     #[doc = "0: Read: Not pending"]
-    NOTPENDING,
+    NOTPENDING = 0,
     #[doc = "1: Read: Pending"]
-    PENDING,
+    PENDING = 1,
 }
 impl From<LFCLKSTARTED_A> for bool {
     #[inline(always)]
     fn from(variant: LFCLKSTARTED_A) -> Self {
-        match variant {
-            LFCLKSTARTED_A::NOTPENDING => false,
-            LFCLKSTARTED_A::PENDING => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `LFCLKSTARTED`"]
-pub type LFCLKSTARTED_R = crate::R<bool, LFCLKSTARTED_A>;
+#[doc = "Field `LFCLKSTARTED` reader - Read pending status of interrupt for event LFCLKSTARTED"]
+pub struct LFCLKSTARTED_R(crate::FieldReader<bool, LFCLKSTARTED_A>);
 impl LFCLKSTARTED_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        LFCLKSTARTED_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> LFCLKSTARTED_A {
@@ -70,34 +89,41 @@ impl LFCLKSTARTED_R {
     #[doc = "Checks if the value of the field is `NOTPENDING`"]
     #[inline(always)]
     pub fn is_not_pending(&self) -> bool {
-        *self == LFCLKSTARTED_A::NOTPENDING
+        **self == LFCLKSTARTED_A::NOTPENDING
     }
     #[doc = "Checks if the value of the field is `PENDING`"]
     #[inline(always)]
     pub fn is_pending(&self) -> bool {
-        *self == LFCLKSTARTED_A::PENDING
+        **self == LFCLKSTARTED_A::PENDING
+    }
+}
+impl core::ops::Deref for LFCLKSTARTED_R {
+    type Target = crate::FieldReader<bool, LFCLKSTARTED_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Read pending status of interrupt for event DONE\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DONE_A {
     #[doc = "0: Read: Not pending"]
-    NOTPENDING,
+    NOTPENDING = 0,
     #[doc = "1: Read: Pending"]
-    PENDING,
+    PENDING = 1,
 }
 impl From<DONE_A> for bool {
     #[inline(always)]
     fn from(variant: DONE_A) -> Self {
-        match variant {
-            DONE_A::NOTPENDING => false,
-            DONE_A::PENDING => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `DONE`"]
-pub type DONE_R = crate::R<bool, DONE_A>;
+#[doc = "Field `DONE` reader - Read pending status of interrupt for event DONE"]
+pub struct DONE_R(crate::FieldReader<bool, DONE_A>);
 impl DONE_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DONE_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> DONE_A {
@@ -109,34 +135,41 @@ impl DONE_R {
     #[doc = "Checks if the value of the field is `NOTPENDING`"]
     #[inline(always)]
     pub fn is_not_pending(&self) -> bool {
-        *self == DONE_A::NOTPENDING
+        **self == DONE_A::NOTPENDING
     }
     #[doc = "Checks if the value of the field is `PENDING`"]
     #[inline(always)]
     pub fn is_pending(&self) -> bool {
-        *self == DONE_A::PENDING
+        **self == DONE_A::PENDING
+    }
+}
+impl core::ops::Deref for DONE_R {
+    type Target = crate::FieldReader<bool, DONE_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Read pending status of interrupt for event HFCLKAUDIOSTARTED\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum HFCLKAUDIOSTARTED_A {
     #[doc = "0: Read: Not pending"]
-    NOTPENDING,
+    NOTPENDING = 0,
     #[doc = "1: Read: Pending"]
-    PENDING,
+    PENDING = 1,
 }
 impl From<HFCLKAUDIOSTARTED_A> for bool {
     #[inline(always)]
     fn from(variant: HFCLKAUDIOSTARTED_A) -> Self {
-        match variant {
-            HFCLKAUDIOSTARTED_A::NOTPENDING => false,
-            HFCLKAUDIOSTARTED_A::PENDING => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `HFCLKAUDIOSTARTED`"]
-pub type HFCLKAUDIOSTARTED_R = crate::R<bool, HFCLKAUDIOSTARTED_A>;
+#[doc = "Field `HFCLKAUDIOSTARTED` reader - Read pending status of interrupt for event HFCLKAUDIOSTARTED"]
+pub struct HFCLKAUDIOSTARTED_R(crate::FieldReader<bool, HFCLKAUDIOSTARTED_A>);
 impl HFCLKAUDIOSTARTED_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        HFCLKAUDIOSTARTED_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> HFCLKAUDIOSTARTED_A {
@@ -148,34 +181,41 @@ impl HFCLKAUDIOSTARTED_R {
     #[doc = "Checks if the value of the field is `NOTPENDING`"]
     #[inline(always)]
     pub fn is_not_pending(&self) -> bool {
-        *self == HFCLKAUDIOSTARTED_A::NOTPENDING
+        **self == HFCLKAUDIOSTARTED_A::NOTPENDING
     }
     #[doc = "Checks if the value of the field is `PENDING`"]
     #[inline(always)]
     pub fn is_pending(&self) -> bool {
-        *self == HFCLKAUDIOSTARTED_A::PENDING
+        **self == HFCLKAUDIOSTARTED_A::PENDING
+    }
+}
+impl core::ops::Deref for HFCLKAUDIOSTARTED_R {
+    type Target = crate::FieldReader<bool, HFCLKAUDIOSTARTED_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Read pending status of interrupt for event HFCLK192MSTARTED\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum HFCLK192MSTARTED_A {
     #[doc = "0: Read: Not pending"]
-    NOTPENDING,
+    NOTPENDING = 0,
     #[doc = "1: Read: Pending"]
-    PENDING,
+    PENDING = 1,
 }
 impl From<HFCLK192MSTARTED_A> for bool {
     #[inline(always)]
     fn from(variant: HFCLK192MSTARTED_A) -> Self {
-        match variant {
-            HFCLK192MSTARTED_A::NOTPENDING => false,
-            HFCLK192MSTARTED_A::PENDING => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `HFCLK192MSTARTED`"]
-pub type HFCLK192MSTARTED_R = crate::R<bool, HFCLK192MSTARTED_A>;
+#[doc = "Field `HFCLK192MSTARTED` reader - Read pending status of interrupt for event HFCLK192MSTARTED"]
+pub struct HFCLK192MSTARTED_R(crate::FieldReader<bool, HFCLK192MSTARTED_A>);
 impl HFCLK192MSTARTED_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        HFCLK192MSTARTED_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> HFCLK192MSTARTED_A {
@@ -187,12 +227,19 @@ impl HFCLK192MSTARTED_R {
     #[doc = "Checks if the value of the field is `NOTPENDING`"]
     #[inline(always)]
     pub fn is_not_pending(&self) -> bool {
-        *self == HFCLK192MSTARTED_A::NOTPENDING
+        **self == HFCLK192MSTARTED_A::NOTPENDING
     }
     #[doc = "Checks if the value of the field is `PENDING`"]
     #[inline(always)]
     pub fn is_pending(&self) -> bool {
-        *self == HFCLK192MSTARTED_A::PENDING
+        **self == HFCLK192MSTARTED_A::PENDING
+    }
+}
+impl core::ops::Deref for HFCLK192MSTARTED_R {
+    type Target = crate::FieldReader<bool, HFCLK192MSTARTED_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 impl R {
@@ -220,5 +267,21 @@ impl R {
     #[inline(always)]
     pub fn hfclk192mstarted(&self) -> HFCLK192MSTARTED_R {
         HFCLK192MSTARTED_R::new(((self.bits >> 9) & 0x01) != 0)
+    }
+}
+#[doc = "Pending interrupts\n\nThis register you can [`read`](crate::generic::Reg::read). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [intpend](index.html) module"]
+pub struct INTPEND_SPEC;
+impl crate::RegisterSpec for INTPEND_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [intpend::R](R) reader structure"]
+impl crate::Readable for INTPEND_SPEC {
+    type Reader = R;
+}
+#[doc = "`reset()` method sets INTPEND to value 0"]
+impl crate::Resettable for INTPEND_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

@@ -1,38 +1,60 @@
-#[doc = "Reader of register LEN"]
-pub type R = crate::R<u32, super::LEN>;
-#[doc = "Writer for register LEN"]
-pub type W = crate::W<u32, super::LEN>;
-#[doc = "Register LEN `reset()`'s with value 0"]
-impl crate::ResetValue for super::LEN {
-    type Type = u32;
+#[doc = "Register `LEN` reader"]
+pub struct R(crate::R<LEN_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<LEN_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<LEN_SPEC>> for R {
+    fn from(reader: crate::R<LEN_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `LEN` writer"]
+pub struct W(crate::W<LEN_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<LEN_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<LEN_SPEC>> for W {
+    fn from(writer: crate::W<LEN_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "LEN\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
+#[repr(u8)]
 pub enum LEN_A {
     #[doc = "0: Erase 4 kB block (flash command 0x20)"]
-    _4KB,
+    _4KB = 0,
     #[doc = "1: Erase 64 kB block (flash command 0xD8)"]
-    _64KB,
+    _64KB = 1,
     #[doc = "2: Erase all (flash command 0xC7)"]
-    ALL,
+    ALL = 2,
 }
 impl From<LEN_A> for u8 {
     #[inline(always)]
     fn from(variant: LEN_A) -> Self {
-        match variant {
-            LEN_A::_4KB => 0,
-            LEN_A::_64KB => 1,
-            LEN_A::ALL => 2,
-        }
+        variant as _
     }
 }
-#[doc = "Reader of field `LEN`"]
-pub type LEN_R = crate::R<u8, LEN_A>;
+#[doc = "Field `LEN` reader - LEN"]
+pub struct LEN_R(crate::FieldReader<u8, LEN_A>);
 impl LEN_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        LEN_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> crate::Variant<u8, LEN_A> {
@@ -47,20 +69,27 @@ impl LEN_R {
     #[doc = "Checks if the value of the field is `_4KB`"]
     #[inline(always)]
     pub fn is_4kb(&self) -> bool {
-        *self == LEN_A::_4KB
+        **self == LEN_A::_4KB
     }
     #[doc = "Checks if the value of the field is `_64KB`"]
     #[inline(always)]
     pub fn is_64kb(&self) -> bool {
-        *self == LEN_A::_64KB
+        **self == LEN_A::_64KB
     }
     #[doc = "Checks if the value of the field is `ALL`"]
     #[inline(always)]
     pub fn is_all(&self) -> bool {
-        *self == LEN_A::ALL
+        **self == LEN_A::ALL
     }
 }
-#[doc = "Write proxy for field `LEN`"]
+impl core::ops::Deref for LEN_R {
+    type Target = crate::FieldReader<u8, LEN_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `LEN` writer - LEN"]
 pub struct LEN_W<'a> {
     w: &'a mut W,
 }
@@ -104,5 +133,30 @@ impl W {
     #[inline(always)]
     pub fn len(&mut self) -> LEN_W {
         LEN_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Size of block to be erased.\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [len](index.html) module"]
+pub struct LEN_SPEC;
+impl crate::RegisterSpec for LEN_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [len::R](R) reader structure"]
+impl crate::Readable for LEN_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [len::W](W) writer structure"]
+impl crate::Writable for LEN_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets LEN to value 0"]
+impl crate::Resettable for LEN_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

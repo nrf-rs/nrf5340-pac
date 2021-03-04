@@ -1,41 +1,62 @@
-#[doc = "Reader of register RESOLUTION"]
-pub type R = crate::R<u32, super::RESOLUTION>;
-#[doc = "Writer for register RESOLUTION"]
-pub type W = crate::W<u32, super::RESOLUTION>;
-#[doc = "Register RESOLUTION `reset()`'s with value 0x01"]
-impl crate::ResetValue for super::RESOLUTION {
-    type Type = u32;
+#[doc = "Register `RESOLUTION` reader"]
+pub struct R(crate::R<RESOLUTION_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<RESOLUTION_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0x01
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<RESOLUTION_SPEC>> for R {
+    fn from(reader: crate::R<RESOLUTION_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `RESOLUTION` writer"]
+pub struct W(crate::W<RESOLUTION_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<RESOLUTION_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<RESOLUTION_SPEC>> for W {
+    fn from(writer: crate::W<RESOLUTION_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "Set the resolution\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
+#[repr(u8)]
 pub enum VAL_A {
     #[doc = "0: 8 bit"]
-    _8BIT,
+    _8BIT = 0,
     #[doc = "1: 10 bit"]
-    _10BIT,
+    _10BIT = 1,
     #[doc = "2: 12 bit"]
-    _12BIT,
+    _12BIT = 2,
     #[doc = "3: 14 bit"]
-    _14BIT,
+    _14BIT = 3,
 }
 impl From<VAL_A> for u8 {
     #[inline(always)]
     fn from(variant: VAL_A) -> Self {
-        match variant {
-            VAL_A::_8BIT => 0,
-            VAL_A::_10BIT => 1,
-            VAL_A::_12BIT => 2,
-            VAL_A::_14BIT => 3,
-        }
+        variant as _
     }
 }
-#[doc = "Reader of field `VAL`"]
-pub type VAL_R = crate::R<u8, VAL_A>;
+#[doc = "Field `VAL` reader - Set the resolution"]
+pub struct VAL_R(crate::FieldReader<u8, VAL_A>);
 impl VAL_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        VAL_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> crate::Variant<u8, VAL_A> {
@@ -51,25 +72,32 @@ impl VAL_R {
     #[doc = "Checks if the value of the field is `_8BIT`"]
     #[inline(always)]
     pub fn is_8bit(&self) -> bool {
-        *self == VAL_A::_8BIT
+        **self == VAL_A::_8BIT
     }
     #[doc = "Checks if the value of the field is `_10BIT`"]
     #[inline(always)]
     pub fn is_10bit(&self) -> bool {
-        *self == VAL_A::_10BIT
+        **self == VAL_A::_10BIT
     }
     #[doc = "Checks if the value of the field is `_12BIT`"]
     #[inline(always)]
     pub fn is_12bit(&self) -> bool {
-        *self == VAL_A::_12BIT
+        **self == VAL_A::_12BIT
     }
     #[doc = "Checks if the value of the field is `_14BIT`"]
     #[inline(always)]
     pub fn is_14bit(&self) -> bool {
-        *self == VAL_A::_14BIT
+        **self == VAL_A::_14BIT
     }
 }
-#[doc = "Write proxy for field `VAL`"]
+impl core::ops::Deref for VAL_R {
+    type Target = crate::FieldReader<u8, VAL_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `VAL` writer - Set the resolution"]
 pub struct VAL_W<'a> {
     w: &'a mut W,
 }
@@ -118,5 +146,30 @@ impl W {
     #[inline(always)]
     pub fn val(&mut self) -> VAL_W {
         VAL_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Resolution configuration\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [resolution](index.html) module"]
+pub struct RESOLUTION_SPEC;
+impl crate::RegisterSpec for RESOLUTION_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [resolution::R](R) reader structure"]
+impl crate::Readable for RESOLUTION_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [resolution::W](W) writer structure"]
+impl crate::Writable for RESOLUTION_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets RESOLUTION to value 0x01"]
+impl crate::Resettable for RESOLUTION_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0x01
     }
 }

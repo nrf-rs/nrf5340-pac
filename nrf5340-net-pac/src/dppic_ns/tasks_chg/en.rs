@@ -1,28 +1,36 @@
-#[doc = "Writer for register EN"]
-pub type W = crate::W<u32, super::EN>;
-#[doc = "Register EN `reset()`'s with value 0"]
-impl crate::ResetValue for super::EN {
-    type Type = u32;
+#[doc = "Register `EN` writer"]
+pub struct W(crate::W<EN_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<EN_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<EN_SPEC>> for W {
+    fn from(writer: crate::W<EN_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "Enable channel group n\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum EN_AW {
     #[doc = "1: Trigger task"]
-    TRIGGER,
+    TRIGGER = 1,
 }
 impl From<EN_AW> for bool {
     #[inline(always)]
     fn from(variant: EN_AW) -> Self {
-        match variant {
-            EN_AW::TRIGGER => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Write proxy for field `EN`"]
+#[doc = "Field `EN` writer - Enable channel group n"]
 pub struct EN_W<'a> {
     w: &'a mut W,
 }
@@ -30,9 +38,7 @@ impl<'a> EN_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: EN_AW) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Trigger task"]
     #[inline(always)]
@@ -61,5 +67,26 @@ impl W {
     #[inline(always)]
     pub fn en(&mut self) -> EN_W {
         EN_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Description cluster: Enable channel group n\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [en](index.html) module"]
+pub struct EN_SPEC;
+impl crate::RegisterSpec for EN_SPEC {
+    type Ux = u32;
+}
+#[doc = "`write(|w| ..)` method takes [en::W](W) writer structure"]
+impl crate::Writable for EN_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets EN to value 0"]
+impl crate::Resettable for EN_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

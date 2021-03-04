@@ -1,18 +1,52 @@
-#[doc = "Reader of register OUTPTR"]
-pub type R = crate::R<u32, super::OUTPTR>;
-#[doc = "Writer for register OUTPTR"]
-pub type W = crate::W<u32, super::OUTPTR>;
-#[doc = "Register OUTPTR `reset()`'s with value 0"]
-impl crate::ResetValue for super::OUTPTR {
-    type Type = u32;
+#[doc = "Register `OUTPTR` reader"]
+pub struct R(crate::R<OUTPTR_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<OUTPTR_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `OUTPTR`"]
-pub type OUTPTR_R = crate::R<u32, u32>;
-#[doc = "Write proxy for field `OUTPTR`"]
+impl core::convert::From<crate::R<OUTPTR_SPEC>> for R {
+    fn from(reader: crate::R<OUTPTR_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `OUTPTR` writer"]
+pub struct W(crate::W<OUTPTR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<OUTPTR_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<OUTPTR_SPEC>> for W {
+    fn from(writer: crate::W<OUTPTR_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `OUTPTR` reader - Output pointer"]
+pub struct OUTPTR_R(crate::FieldReader<u32, u32>);
+impl OUTPTR_R {
+    pub(crate) fn new(bits: u32) -> Self {
+        OUTPTR_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OUTPTR_R {
+    type Target = crate::FieldReader<u32, u32>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OUTPTR` writer - Output pointer"]
 pub struct OUTPTR_W<'a> {
     w: &'a mut W,
 }
@@ -36,5 +70,30 @@ impl W {
     #[inline(always)]
     pub fn outptr(&mut self) -> OUTPTR_W {
         OUTPTR_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Output pointer\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [outptr](index.html) module"]
+pub struct OUTPTR_SPEC;
+impl crate::RegisterSpec for OUTPTR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [outptr::R](R) reader structure"]
+impl crate::Readable for OUTPTR_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [outptr::W](W) writer structure"]
+impl crate::Writable for OUTPTR_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets OUTPTR to value 0"]
+impl crate::Resettable for OUTPTR_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

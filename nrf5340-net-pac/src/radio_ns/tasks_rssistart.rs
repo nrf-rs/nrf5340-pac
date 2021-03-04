@@ -1,28 +1,36 @@
-#[doc = "Writer for register TASKS_RSSISTART"]
-pub type W = crate::W<u32, super::TASKS_RSSISTART>;
-#[doc = "Register TASKS_RSSISTART `reset()`'s with value 0"]
-impl crate::ResetValue for super::TASKS_RSSISTART {
-    type Type = u32;
+#[doc = "Register `TASKS_RSSISTART` writer"]
+pub struct W(crate::W<TASKS_RSSISTART_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<TASKS_RSSISTART_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<TASKS_RSSISTART_SPEC>> for W {
+    fn from(writer: crate::W<TASKS_RSSISTART_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "Start the RSSI and take one single sample of the receive signal strength\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TASKS_RSSISTART_AW {
     #[doc = "1: Trigger task"]
-    TRIGGER,
+    TRIGGER = 1,
 }
 impl From<TASKS_RSSISTART_AW> for bool {
     #[inline(always)]
     fn from(variant: TASKS_RSSISTART_AW) -> Self {
-        match variant {
-            TASKS_RSSISTART_AW::TRIGGER => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Write proxy for field `TASKS_RSSISTART`"]
+#[doc = "Field `TASKS_RSSISTART` writer - Start the RSSI and take one single sample of the receive signal strength"]
 pub struct TASKS_RSSISTART_W<'a> {
     w: &'a mut W,
 }
@@ -30,9 +38,7 @@ impl<'a> TASKS_RSSISTART_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: TASKS_RSSISTART_AW) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Trigger task"]
     #[inline(always)]
@@ -61,5 +67,26 @@ impl W {
     #[inline(always)]
     pub fn tasks_rssistart(&mut self) -> TASKS_RSSISTART_W {
         TASKS_RSSISTART_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Start the RSSI and take one single sample of the receive signal strength\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [tasks_rssistart](index.html) module"]
+pub struct TASKS_RSSISTART_SPEC;
+impl crate::RegisterSpec for TASKS_RSSISTART_SPEC {
+    type Ux = u32;
+}
+#[doc = "`write(|w| ..)` method takes [tasks_rssistart::W](W) writer structure"]
+impl crate::Writable for TASKS_RSSISTART_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets TASKS_RSSISTART to value 0"]
+impl crate::Resettable for TASKS_RSSISTART_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

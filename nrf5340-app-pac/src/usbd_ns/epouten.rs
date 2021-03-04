@@ -1,35 +1,57 @@
-#[doc = "Reader of register EPOUTEN"]
-pub type R = crate::R<u32, super::EPOUTEN>;
-#[doc = "Writer for register EPOUTEN"]
-pub type W = crate::W<u32, super::EPOUTEN>;
-#[doc = "Register EPOUTEN `reset()`'s with value 0x01"]
-impl crate::ResetValue for super::EPOUTEN {
-    type Type = u32;
+#[doc = "Register `EPOUTEN` reader"]
+pub struct R(crate::R<EPOUTEN_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<EPOUTEN_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0x01
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<EPOUTEN_SPEC>> for R {
+    fn from(reader: crate::R<EPOUTEN_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `EPOUTEN` writer"]
+pub struct W(crate::W<EPOUTEN_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<EPOUTEN_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<EPOUTEN_SPEC>> for W {
+    fn from(writer: crate::W<EPOUTEN_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "Enable OUT endpoint 0\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum OUT0_A {
     #[doc = "0: Disable endpoint OUT 0 (no response to OUT tokens)"]
-    DISABLE,
+    DISABLE = 0,
     #[doc = "1: Enable endpoint OUT 0 (response to OUT tokens)"]
-    ENABLE,
+    ENABLE = 1,
 }
 impl From<OUT0_A> for bool {
     #[inline(always)]
     fn from(variant: OUT0_A) -> Self {
-        match variant {
-            OUT0_A::DISABLE => false,
-            OUT0_A::ENABLE => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `OUT0`"]
-pub type OUT0_R = crate::R<bool, OUT0_A>;
+#[doc = "Field `OUT0` reader - Enable OUT endpoint 0"]
+pub struct OUT0_R(crate::FieldReader<bool, OUT0_A>);
 impl OUT0_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OUT0_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> OUT0_A {
@@ -41,15 +63,22 @@ impl OUT0_R {
     #[doc = "Checks if the value of the field is `DISABLE`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
-        *self == OUT0_A::DISABLE
+        **self == OUT0_A::DISABLE
     }
     #[doc = "Checks if the value of the field is `ENABLE`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
-        *self == OUT0_A::ENABLE
+        **self == OUT0_A::ENABLE
     }
 }
-#[doc = "Write proxy for field `OUT0`"]
+impl core::ops::Deref for OUT0_R {
+    type Target = crate::FieldReader<bool, OUT0_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OUT0` writer - Enable OUT endpoint 0"]
 pub struct OUT0_W<'a> {
     w: &'a mut W,
 }
@@ -57,9 +86,7 @@ impl<'a> OUT0_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: OUT0_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disable endpoint OUT 0 (no response to OUT tokens)"]
     #[inline(always)]
@@ -92,22 +119,22 @@ impl<'a> OUT0_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum OUT1_A {
     #[doc = "0: Disable endpoint OUT 1 (no response to OUT tokens)"]
-    DISABLE,
+    DISABLE = 0,
     #[doc = "1: Enable endpoint OUT 1 (response to OUT tokens)"]
-    ENABLE,
+    ENABLE = 1,
 }
 impl From<OUT1_A> for bool {
     #[inline(always)]
     fn from(variant: OUT1_A) -> Self {
-        match variant {
-            OUT1_A::DISABLE => false,
-            OUT1_A::ENABLE => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `OUT1`"]
-pub type OUT1_R = crate::R<bool, OUT1_A>;
+#[doc = "Field `OUT1` reader - Enable OUT endpoint 1"]
+pub struct OUT1_R(crate::FieldReader<bool, OUT1_A>);
 impl OUT1_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OUT1_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> OUT1_A {
@@ -119,15 +146,22 @@ impl OUT1_R {
     #[doc = "Checks if the value of the field is `DISABLE`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
-        *self == OUT1_A::DISABLE
+        **self == OUT1_A::DISABLE
     }
     #[doc = "Checks if the value of the field is `ENABLE`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
-        *self == OUT1_A::ENABLE
+        **self == OUT1_A::ENABLE
     }
 }
-#[doc = "Write proxy for field `OUT1`"]
+impl core::ops::Deref for OUT1_R {
+    type Target = crate::FieldReader<bool, OUT1_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OUT1` writer - Enable OUT endpoint 1"]
 pub struct OUT1_W<'a> {
     w: &'a mut W,
 }
@@ -135,9 +169,7 @@ impl<'a> OUT1_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: OUT1_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disable endpoint OUT 1 (no response to OUT tokens)"]
     #[inline(always)]
@@ -170,22 +202,22 @@ impl<'a> OUT1_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum OUT2_A {
     #[doc = "0: Disable endpoint OUT 2 (no response to OUT tokens)"]
-    DISABLE,
+    DISABLE = 0,
     #[doc = "1: Enable endpoint OUT 2 (response to OUT tokens)"]
-    ENABLE,
+    ENABLE = 1,
 }
 impl From<OUT2_A> for bool {
     #[inline(always)]
     fn from(variant: OUT2_A) -> Self {
-        match variant {
-            OUT2_A::DISABLE => false,
-            OUT2_A::ENABLE => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `OUT2`"]
-pub type OUT2_R = crate::R<bool, OUT2_A>;
+#[doc = "Field `OUT2` reader - Enable OUT endpoint 2"]
+pub struct OUT2_R(crate::FieldReader<bool, OUT2_A>);
 impl OUT2_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OUT2_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> OUT2_A {
@@ -197,15 +229,22 @@ impl OUT2_R {
     #[doc = "Checks if the value of the field is `DISABLE`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
-        *self == OUT2_A::DISABLE
+        **self == OUT2_A::DISABLE
     }
     #[doc = "Checks if the value of the field is `ENABLE`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
-        *self == OUT2_A::ENABLE
+        **self == OUT2_A::ENABLE
     }
 }
-#[doc = "Write proxy for field `OUT2`"]
+impl core::ops::Deref for OUT2_R {
+    type Target = crate::FieldReader<bool, OUT2_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OUT2` writer - Enable OUT endpoint 2"]
 pub struct OUT2_W<'a> {
     w: &'a mut W,
 }
@@ -213,9 +252,7 @@ impl<'a> OUT2_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: OUT2_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disable endpoint OUT 2 (no response to OUT tokens)"]
     #[inline(always)]
@@ -248,22 +285,22 @@ impl<'a> OUT2_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum OUT3_A {
     #[doc = "0: Disable endpoint OUT 3 (no response to OUT tokens)"]
-    DISABLE,
+    DISABLE = 0,
     #[doc = "1: Enable endpoint OUT 3 (response to OUT tokens)"]
-    ENABLE,
+    ENABLE = 1,
 }
 impl From<OUT3_A> for bool {
     #[inline(always)]
     fn from(variant: OUT3_A) -> Self {
-        match variant {
-            OUT3_A::DISABLE => false,
-            OUT3_A::ENABLE => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `OUT3`"]
-pub type OUT3_R = crate::R<bool, OUT3_A>;
+#[doc = "Field `OUT3` reader - Enable OUT endpoint 3"]
+pub struct OUT3_R(crate::FieldReader<bool, OUT3_A>);
 impl OUT3_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OUT3_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> OUT3_A {
@@ -275,15 +312,22 @@ impl OUT3_R {
     #[doc = "Checks if the value of the field is `DISABLE`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
-        *self == OUT3_A::DISABLE
+        **self == OUT3_A::DISABLE
     }
     #[doc = "Checks if the value of the field is `ENABLE`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
-        *self == OUT3_A::ENABLE
+        **self == OUT3_A::ENABLE
     }
 }
-#[doc = "Write proxy for field `OUT3`"]
+impl core::ops::Deref for OUT3_R {
+    type Target = crate::FieldReader<bool, OUT3_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OUT3` writer - Enable OUT endpoint 3"]
 pub struct OUT3_W<'a> {
     w: &'a mut W,
 }
@@ -291,9 +335,7 @@ impl<'a> OUT3_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: OUT3_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disable endpoint OUT 3 (no response to OUT tokens)"]
     #[inline(always)]
@@ -326,22 +368,22 @@ impl<'a> OUT3_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum OUT4_A {
     #[doc = "0: Disable endpoint OUT 4 (no response to OUT tokens)"]
-    DISABLE,
+    DISABLE = 0,
     #[doc = "1: Enable endpoint OUT 4 (response to OUT tokens)"]
-    ENABLE,
+    ENABLE = 1,
 }
 impl From<OUT4_A> for bool {
     #[inline(always)]
     fn from(variant: OUT4_A) -> Self {
-        match variant {
-            OUT4_A::DISABLE => false,
-            OUT4_A::ENABLE => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `OUT4`"]
-pub type OUT4_R = crate::R<bool, OUT4_A>;
+#[doc = "Field `OUT4` reader - Enable OUT endpoint 4"]
+pub struct OUT4_R(crate::FieldReader<bool, OUT4_A>);
 impl OUT4_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OUT4_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> OUT4_A {
@@ -353,15 +395,22 @@ impl OUT4_R {
     #[doc = "Checks if the value of the field is `DISABLE`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
-        *self == OUT4_A::DISABLE
+        **self == OUT4_A::DISABLE
     }
     #[doc = "Checks if the value of the field is `ENABLE`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
-        *self == OUT4_A::ENABLE
+        **self == OUT4_A::ENABLE
     }
 }
-#[doc = "Write proxy for field `OUT4`"]
+impl core::ops::Deref for OUT4_R {
+    type Target = crate::FieldReader<bool, OUT4_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OUT4` writer - Enable OUT endpoint 4"]
 pub struct OUT4_W<'a> {
     w: &'a mut W,
 }
@@ -369,9 +418,7 @@ impl<'a> OUT4_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: OUT4_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disable endpoint OUT 4 (no response to OUT tokens)"]
     #[inline(always)]
@@ -404,22 +451,22 @@ impl<'a> OUT4_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum OUT5_A {
     #[doc = "0: Disable endpoint OUT 5 (no response to OUT tokens)"]
-    DISABLE,
+    DISABLE = 0,
     #[doc = "1: Enable endpoint OUT 5 (response to OUT tokens)"]
-    ENABLE,
+    ENABLE = 1,
 }
 impl From<OUT5_A> for bool {
     #[inline(always)]
     fn from(variant: OUT5_A) -> Self {
-        match variant {
-            OUT5_A::DISABLE => false,
-            OUT5_A::ENABLE => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `OUT5`"]
-pub type OUT5_R = crate::R<bool, OUT5_A>;
+#[doc = "Field `OUT5` reader - Enable OUT endpoint 5"]
+pub struct OUT5_R(crate::FieldReader<bool, OUT5_A>);
 impl OUT5_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OUT5_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> OUT5_A {
@@ -431,15 +478,22 @@ impl OUT5_R {
     #[doc = "Checks if the value of the field is `DISABLE`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
-        *self == OUT5_A::DISABLE
+        **self == OUT5_A::DISABLE
     }
     #[doc = "Checks if the value of the field is `ENABLE`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
-        *self == OUT5_A::ENABLE
+        **self == OUT5_A::ENABLE
     }
 }
-#[doc = "Write proxy for field `OUT5`"]
+impl core::ops::Deref for OUT5_R {
+    type Target = crate::FieldReader<bool, OUT5_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OUT5` writer - Enable OUT endpoint 5"]
 pub struct OUT5_W<'a> {
     w: &'a mut W,
 }
@@ -447,9 +501,7 @@ impl<'a> OUT5_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: OUT5_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disable endpoint OUT 5 (no response to OUT tokens)"]
     #[inline(always)]
@@ -482,22 +534,22 @@ impl<'a> OUT5_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum OUT6_A {
     #[doc = "0: Disable endpoint OUT 6 (no response to OUT tokens)"]
-    DISABLE,
+    DISABLE = 0,
     #[doc = "1: Enable endpoint OUT 6 (response to OUT tokens)"]
-    ENABLE,
+    ENABLE = 1,
 }
 impl From<OUT6_A> for bool {
     #[inline(always)]
     fn from(variant: OUT6_A) -> Self {
-        match variant {
-            OUT6_A::DISABLE => false,
-            OUT6_A::ENABLE => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `OUT6`"]
-pub type OUT6_R = crate::R<bool, OUT6_A>;
+#[doc = "Field `OUT6` reader - Enable OUT endpoint 6"]
+pub struct OUT6_R(crate::FieldReader<bool, OUT6_A>);
 impl OUT6_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OUT6_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> OUT6_A {
@@ -509,15 +561,22 @@ impl OUT6_R {
     #[doc = "Checks if the value of the field is `DISABLE`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
-        *self == OUT6_A::DISABLE
+        **self == OUT6_A::DISABLE
     }
     #[doc = "Checks if the value of the field is `ENABLE`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
-        *self == OUT6_A::ENABLE
+        **self == OUT6_A::ENABLE
     }
 }
-#[doc = "Write proxy for field `OUT6`"]
+impl core::ops::Deref for OUT6_R {
+    type Target = crate::FieldReader<bool, OUT6_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OUT6` writer - Enable OUT endpoint 6"]
 pub struct OUT6_W<'a> {
     w: &'a mut W,
 }
@@ -525,9 +584,7 @@ impl<'a> OUT6_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: OUT6_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disable endpoint OUT 6 (no response to OUT tokens)"]
     #[inline(always)]
@@ -560,22 +617,22 @@ impl<'a> OUT6_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum OUT7_A {
     #[doc = "0: Disable endpoint OUT 7 (no response to OUT tokens)"]
-    DISABLE,
+    DISABLE = 0,
     #[doc = "1: Enable endpoint OUT 7 (response to OUT tokens)"]
-    ENABLE,
+    ENABLE = 1,
 }
 impl From<OUT7_A> for bool {
     #[inline(always)]
     fn from(variant: OUT7_A) -> Self {
-        match variant {
-            OUT7_A::DISABLE => false,
-            OUT7_A::ENABLE => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `OUT7`"]
-pub type OUT7_R = crate::R<bool, OUT7_A>;
+#[doc = "Field `OUT7` reader - Enable OUT endpoint 7"]
+pub struct OUT7_R(crate::FieldReader<bool, OUT7_A>);
 impl OUT7_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OUT7_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> OUT7_A {
@@ -587,15 +644,22 @@ impl OUT7_R {
     #[doc = "Checks if the value of the field is `DISABLE`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
-        *self == OUT7_A::DISABLE
+        **self == OUT7_A::DISABLE
     }
     #[doc = "Checks if the value of the field is `ENABLE`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
-        *self == OUT7_A::ENABLE
+        **self == OUT7_A::ENABLE
     }
 }
-#[doc = "Write proxy for field `OUT7`"]
+impl core::ops::Deref for OUT7_R {
+    type Target = crate::FieldReader<bool, OUT7_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OUT7` writer - Enable OUT endpoint 7"]
 pub struct OUT7_W<'a> {
     w: &'a mut W,
 }
@@ -603,9 +667,7 @@ impl<'a> OUT7_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: OUT7_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disable endpoint OUT 7 (no response to OUT tokens)"]
     #[inline(always)]
@@ -638,22 +700,22 @@ impl<'a> OUT7_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum ISOOUT_A {
     #[doc = "0: Disable ISO OUT endpoint 8"]
-    DISABLE,
+    DISABLE = 0,
     #[doc = "1: Enable ISO OUT endpoint 8"]
-    ENABLE,
+    ENABLE = 1,
 }
 impl From<ISOOUT_A> for bool {
     #[inline(always)]
     fn from(variant: ISOOUT_A) -> Self {
-        match variant {
-            ISOOUT_A::DISABLE => false,
-            ISOOUT_A::ENABLE => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `ISOOUT`"]
-pub type ISOOUT_R = crate::R<bool, ISOOUT_A>;
+#[doc = "Field `ISOOUT` reader - Enable ISO OUT endpoint 8"]
+pub struct ISOOUT_R(crate::FieldReader<bool, ISOOUT_A>);
 impl ISOOUT_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        ISOOUT_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> ISOOUT_A {
@@ -665,15 +727,22 @@ impl ISOOUT_R {
     #[doc = "Checks if the value of the field is `DISABLE`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
-        *self == ISOOUT_A::DISABLE
+        **self == ISOOUT_A::DISABLE
     }
     #[doc = "Checks if the value of the field is `ENABLE`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
-        *self == ISOOUT_A::ENABLE
+        **self == ISOOUT_A::ENABLE
     }
 }
-#[doc = "Write proxy for field `ISOOUT`"]
+impl core::ops::Deref for ISOOUT_R {
+    type Target = crate::FieldReader<bool, ISOOUT_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `ISOOUT` writer - Enable ISO OUT endpoint 8"]
 pub struct ISOOUT_W<'a> {
     w: &'a mut W,
 }
@@ -681,9 +750,7 @@ impl<'a> ISOOUT_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: ISOOUT_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disable ISO OUT endpoint 8"]
     #[inline(always)]
@@ -804,5 +871,30 @@ impl W {
     #[inline(always)]
     pub fn isoout(&mut self) -> ISOOUT_W {
         ISOOUT_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Endpoint OUT enable\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [epouten](index.html) module"]
+pub struct EPOUTEN_SPEC;
+impl crate::RegisterSpec for EPOUTEN_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [epouten::R](R) reader structure"]
+impl crate::Readable for EPOUTEN_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [epouten::W](W) writer structure"]
+impl crate::Writable for EPOUTEN_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets EPOUTEN to value 0x01"]
+impl crate::Resettable for EPOUTEN_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0x01
     }
 }

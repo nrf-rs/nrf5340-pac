@@ -1,37 +1,46 @@
-#[doc = "Reader of register DFESTATUS"]
-pub type R = crate::R<u32, super::DFESTATUS>;
+#[doc = "Register `DFESTATUS` reader"]
+pub struct R(crate::R<DFESTATUS_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<DFESTATUS_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<DFESTATUS_SPEC>> for R {
+    fn from(reader: crate::R<DFESTATUS_SPEC>) -> Self {
+        R(reader)
+    }
+}
 #[doc = "Internal state of switching state machine\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
+#[repr(u8)]
 pub enum SWITCHINGSTATE_A {
     #[doc = "0: Switching state Idle"]
-    IDLE,
+    IDLE = 0,
     #[doc = "1: Switching state Offset"]
-    OFFSET,
+    OFFSET = 1,
     #[doc = "2: Switching state Guard"]
-    GUARD,
+    GUARD = 2,
     #[doc = "3: Switching state Ref"]
-    REF,
+    REF = 3,
     #[doc = "4: Switching state Switching"]
-    SWITCHING,
+    SWITCHING = 4,
     #[doc = "5: Switching state Ending"]
-    ENDING,
+    ENDING = 5,
 }
 impl From<SWITCHINGSTATE_A> for u8 {
     #[inline(always)]
     fn from(variant: SWITCHINGSTATE_A) -> Self {
-        match variant {
-            SWITCHINGSTATE_A::IDLE => 0,
-            SWITCHINGSTATE_A::OFFSET => 1,
-            SWITCHINGSTATE_A::GUARD => 2,
-            SWITCHINGSTATE_A::REF => 3,
-            SWITCHINGSTATE_A::SWITCHING => 4,
-            SWITCHINGSTATE_A::ENDING => 5,
-        }
+        variant as _
     }
 }
-#[doc = "Reader of field `SWITCHINGSTATE`"]
-pub type SWITCHINGSTATE_R = crate::R<u8, SWITCHINGSTATE_A>;
+#[doc = "Field `SWITCHINGSTATE` reader - Internal state of switching state machine"]
+pub struct SWITCHINGSTATE_R(crate::FieldReader<u8, SWITCHINGSTATE_A>);
 impl SWITCHINGSTATE_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        SWITCHINGSTATE_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> crate::Variant<u8, SWITCHINGSTATE_A> {
@@ -49,54 +58,61 @@ impl SWITCHINGSTATE_R {
     #[doc = "Checks if the value of the field is `IDLE`"]
     #[inline(always)]
     pub fn is_idle(&self) -> bool {
-        *self == SWITCHINGSTATE_A::IDLE
+        **self == SWITCHINGSTATE_A::IDLE
     }
     #[doc = "Checks if the value of the field is `OFFSET`"]
     #[inline(always)]
     pub fn is_offset(&self) -> bool {
-        *self == SWITCHINGSTATE_A::OFFSET
+        **self == SWITCHINGSTATE_A::OFFSET
     }
     #[doc = "Checks if the value of the field is `GUARD`"]
     #[inline(always)]
     pub fn is_guard(&self) -> bool {
-        *self == SWITCHINGSTATE_A::GUARD
+        **self == SWITCHINGSTATE_A::GUARD
     }
     #[doc = "Checks if the value of the field is `REF`"]
     #[inline(always)]
     pub fn is_ref_(&self) -> bool {
-        *self == SWITCHINGSTATE_A::REF
+        **self == SWITCHINGSTATE_A::REF
     }
     #[doc = "Checks if the value of the field is `SWITCHING`"]
     #[inline(always)]
     pub fn is_switching(&self) -> bool {
-        *self == SWITCHINGSTATE_A::SWITCHING
+        **self == SWITCHINGSTATE_A::SWITCHING
     }
     #[doc = "Checks if the value of the field is `ENDING`"]
     #[inline(always)]
     pub fn is_ending(&self) -> bool {
-        *self == SWITCHINGSTATE_A::ENDING
+        **self == SWITCHINGSTATE_A::ENDING
+    }
+}
+impl core::ops::Deref for SWITCHINGSTATE_R {
+    type Target = crate::FieldReader<u8, SWITCHINGSTATE_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Internal state of sampling state machine\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum SAMPLINGSTATE_A {
     #[doc = "0: Sampling state Idle"]
-    IDLE,
+    IDLE = 0,
     #[doc = "1: Sampling state Sampling"]
-    SAMPLING,
+    SAMPLING = 1,
 }
 impl From<SAMPLINGSTATE_A> for bool {
     #[inline(always)]
     fn from(variant: SAMPLINGSTATE_A) -> Self {
-        match variant {
-            SAMPLINGSTATE_A::IDLE => false,
-            SAMPLINGSTATE_A::SAMPLING => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `SAMPLINGSTATE`"]
-pub type SAMPLINGSTATE_R = crate::R<bool, SAMPLINGSTATE_A>;
+#[doc = "Field `SAMPLINGSTATE` reader - Internal state of sampling state machine"]
+pub struct SAMPLINGSTATE_R(crate::FieldReader<bool, SAMPLINGSTATE_A>);
 impl SAMPLINGSTATE_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        SAMPLINGSTATE_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> SAMPLINGSTATE_A {
@@ -108,12 +124,19 @@ impl SAMPLINGSTATE_R {
     #[doc = "Checks if the value of the field is `IDLE`"]
     #[inline(always)]
     pub fn is_idle(&self) -> bool {
-        *self == SAMPLINGSTATE_A::IDLE
+        **self == SAMPLINGSTATE_A::IDLE
     }
     #[doc = "Checks if the value of the field is `SAMPLING`"]
     #[inline(always)]
     pub fn is_sampling(&self) -> bool {
-        *self == SAMPLINGSTATE_A::SAMPLING
+        **self == SAMPLINGSTATE_A::SAMPLING
+    }
+}
+impl core::ops::Deref for SAMPLINGSTATE_R {
+    type Target = crate::FieldReader<bool, SAMPLINGSTATE_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 impl R {
@@ -126,5 +149,21 @@ impl R {
     #[inline(always)]
     pub fn samplingstate(&self) -> SAMPLINGSTATE_R {
         SAMPLINGSTATE_R::new(((self.bits >> 4) & 0x01) != 0)
+    }
+}
+#[doc = "DFE status information\n\nThis register you can [`read`](crate::generic::Reg::read). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [dfestatus](index.html) module"]
+pub struct DFESTATUS_SPEC;
+impl crate::RegisterSpec for DFESTATUS_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [dfestatus::R](R) reader structure"]
+impl crate::Readable for DFESTATUS_SPEC {
+    type Reader = R;
+}
+#[doc = "`reset()` method sets DFESTATUS to value 0"]
+impl crate::Resettable for DFESTATUS_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

@@ -1,25 +1,37 @@
-#[doc = "Reader of register CTITRIGINSTATUS"]
-pub type R = crate::R<u32, super::CTITRIGINSTATUS>;
+#[doc = "Register `CTITRIGINSTATUS` reader"]
+pub struct R(crate::R<CTITRIGINSTATUS_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<CTITRIGINSTATUS_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<CTITRIGINSTATUS_SPEC>> for R {
+    fn from(reader: crate::R<CTITRIGINSTATUS_SPEC>) -> Self {
+        R(reader)
+    }
+}
 #[doc = "Processor Halted\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CPUHALTED_A {
-    #[doc = "1: Ctitrigin 0 is active"]
-    ACTIVE,
-    #[doc = "0: Ctitrigin 0 is inactive"]
-    INACTIVE,
+    #[doc = "1: Ctitrigin 0 is active."]
+    ACTIVE = 1,
+    #[doc = "0: Ctitrigin 0 is inactive."]
+    INACTIVE = 0,
 }
 impl From<CPUHALTED_A> for bool {
     #[inline(always)]
     fn from(variant: CPUHALTED_A) -> Self {
-        match variant {
-            CPUHALTED_A::ACTIVE => true,
-            CPUHALTED_A::INACTIVE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `CPUHALTED`"]
-pub type CPUHALTED_R = crate::R<bool, CPUHALTED_A>;
+#[doc = "Field `CPUHALTED` reader - Processor Halted"]
+pub struct CPUHALTED_R(crate::FieldReader<bool, CPUHALTED_A>);
 impl CPUHALTED_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CPUHALTED_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CPUHALTED_A {
@@ -31,34 +43,41 @@ impl CPUHALTED_R {
     #[doc = "Checks if the value of the field is `ACTIVE`"]
     #[inline(always)]
     pub fn is_active(&self) -> bool {
-        *self == CPUHALTED_A::ACTIVE
+        **self == CPUHALTED_A::ACTIVE
     }
     #[doc = "Checks if the value of the field is `INACTIVE`"]
     #[inline(always)]
     pub fn is_inactive(&self) -> bool {
-        *self == CPUHALTED_A::INACTIVE
+        **self == CPUHALTED_A::INACTIVE
+    }
+}
+impl core::ops::Deref for CPUHALTED_R {
+    type Target = crate::FieldReader<bool, CPUHALTED_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "DWT Comparator Output 0\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DWTCOMPOUT0_A {
-    #[doc = "1: Ctitrigin 1 is active"]
-    ACTIVE,
-    #[doc = "0: Ctitrigin 1 is inactive"]
-    INACTIVE,
+    #[doc = "1: Ctitrigin 1 is active."]
+    ACTIVE = 1,
+    #[doc = "0: Ctitrigin 1 is inactive."]
+    INACTIVE = 0,
 }
 impl From<DWTCOMPOUT0_A> for bool {
     #[inline(always)]
     fn from(variant: DWTCOMPOUT0_A) -> Self {
-        match variant {
-            DWTCOMPOUT0_A::ACTIVE => true,
-            DWTCOMPOUT0_A::INACTIVE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `DWTCOMPOUT0`"]
-pub type DWTCOMPOUT0_R = crate::R<bool, DWTCOMPOUT0_A>;
+#[doc = "Field `DWTCOMPOUT0` reader - DWT Comparator Output 0"]
+pub struct DWTCOMPOUT0_R(crate::FieldReader<bool, DWTCOMPOUT0_A>);
 impl DWTCOMPOUT0_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DWTCOMPOUT0_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> DWTCOMPOUT0_A {
@@ -70,34 +89,41 @@ impl DWTCOMPOUT0_R {
     #[doc = "Checks if the value of the field is `ACTIVE`"]
     #[inline(always)]
     pub fn is_active(&self) -> bool {
-        *self == DWTCOMPOUT0_A::ACTIVE
+        **self == DWTCOMPOUT0_A::ACTIVE
     }
     #[doc = "Checks if the value of the field is `INACTIVE`"]
     #[inline(always)]
     pub fn is_inactive(&self) -> bool {
-        *self == DWTCOMPOUT0_A::INACTIVE
+        **self == DWTCOMPOUT0_A::INACTIVE
+    }
+}
+impl core::ops::Deref for DWTCOMPOUT0_R {
+    type Target = crate::FieldReader<bool, DWTCOMPOUT0_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "DWT Comparator Output 1\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DWTCOMPOUT1_A {
-    #[doc = "1: Ctitrigin 2 is active"]
-    ACTIVE,
-    #[doc = "0: Ctitrigin 2 is inactive"]
-    INACTIVE,
+    #[doc = "1: Ctitrigin 2 is active."]
+    ACTIVE = 1,
+    #[doc = "0: Ctitrigin 2 is inactive."]
+    INACTIVE = 0,
 }
 impl From<DWTCOMPOUT1_A> for bool {
     #[inline(always)]
     fn from(variant: DWTCOMPOUT1_A) -> Self {
-        match variant {
-            DWTCOMPOUT1_A::ACTIVE => true,
-            DWTCOMPOUT1_A::INACTIVE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `DWTCOMPOUT1`"]
-pub type DWTCOMPOUT1_R = crate::R<bool, DWTCOMPOUT1_A>;
+#[doc = "Field `DWTCOMPOUT1` reader - DWT Comparator Output 1"]
+pub struct DWTCOMPOUT1_R(crate::FieldReader<bool, DWTCOMPOUT1_A>);
 impl DWTCOMPOUT1_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DWTCOMPOUT1_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> DWTCOMPOUT1_A {
@@ -109,34 +135,41 @@ impl DWTCOMPOUT1_R {
     #[doc = "Checks if the value of the field is `ACTIVE`"]
     #[inline(always)]
     pub fn is_active(&self) -> bool {
-        *self == DWTCOMPOUT1_A::ACTIVE
+        **self == DWTCOMPOUT1_A::ACTIVE
     }
     #[doc = "Checks if the value of the field is `INACTIVE`"]
     #[inline(always)]
     pub fn is_inactive(&self) -> bool {
-        *self == DWTCOMPOUT1_A::INACTIVE
+        **self == DWTCOMPOUT1_A::INACTIVE
+    }
+}
+impl core::ops::Deref for DWTCOMPOUT1_R {
+    type Target = crate::FieldReader<bool, DWTCOMPOUT1_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "DWT Comparator Output 2\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DWTCOMPOUT2_A {
-    #[doc = "1: Ctitrigin 3 is active"]
-    ACTIVE,
-    #[doc = "0: Ctitrigin 3 is inactive"]
-    INACTIVE,
+    #[doc = "1: Ctitrigin 3 is active."]
+    ACTIVE = 1,
+    #[doc = "0: Ctitrigin 3 is inactive."]
+    INACTIVE = 0,
 }
 impl From<DWTCOMPOUT2_A> for bool {
     #[inline(always)]
     fn from(variant: DWTCOMPOUT2_A) -> Self {
-        match variant {
-            DWTCOMPOUT2_A::ACTIVE => true,
-            DWTCOMPOUT2_A::INACTIVE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `DWTCOMPOUT2`"]
-pub type DWTCOMPOUT2_R = crate::R<bool, DWTCOMPOUT2_A>;
+#[doc = "Field `DWTCOMPOUT2` reader - DWT Comparator Output 2"]
+pub struct DWTCOMPOUT2_R(crate::FieldReader<bool, DWTCOMPOUT2_A>);
 impl DWTCOMPOUT2_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DWTCOMPOUT2_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> DWTCOMPOUT2_A {
@@ -148,34 +181,41 @@ impl DWTCOMPOUT2_R {
     #[doc = "Checks if the value of the field is `ACTIVE`"]
     #[inline(always)]
     pub fn is_active(&self) -> bool {
-        *self == DWTCOMPOUT2_A::ACTIVE
+        **self == DWTCOMPOUT2_A::ACTIVE
     }
     #[doc = "Checks if the value of the field is `INACTIVE`"]
     #[inline(always)]
     pub fn is_inactive(&self) -> bool {
-        *self == DWTCOMPOUT2_A::INACTIVE
+        **self == DWTCOMPOUT2_A::INACTIVE
+    }
+}
+impl core::ops::Deref for DWTCOMPOUT2_R {
+    type Target = crate::FieldReader<bool, DWTCOMPOUT2_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "N/A\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum UNUSED0_A {
-    #[doc = "1: Ctitrigin 4 is active"]
-    ACTIVE,
-    #[doc = "0: Ctitrigin 4 is inactive"]
-    INACTIVE,
+    #[doc = "1: Ctitrigin 4 is active."]
+    ACTIVE = 1,
+    #[doc = "0: Ctitrigin 4 is inactive."]
+    INACTIVE = 0,
 }
 impl From<UNUSED0_A> for bool {
     #[inline(always)]
     fn from(variant: UNUSED0_A) -> Self {
-        match variant {
-            UNUSED0_A::ACTIVE => true,
-            UNUSED0_A::INACTIVE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `UNUSED0`"]
-pub type UNUSED0_R = crate::R<bool, UNUSED0_A>;
+#[doc = "Field `UNUSED0` reader - N/A"]
+pub struct UNUSED0_R(crate::FieldReader<bool, UNUSED0_A>);
 impl UNUSED0_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        UNUSED0_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> UNUSED0_A {
@@ -187,34 +227,41 @@ impl UNUSED0_R {
     #[doc = "Checks if the value of the field is `ACTIVE`"]
     #[inline(always)]
     pub fn is_active(&self) -> bool {
-        *self == UNUSED0_A::ACTIVE
+        **self == UNUSED0_A::ACTIVE
     }
     #[doc = "Checks if the value of the field is `INACTIVE`"]
     #[inline(always)]
     pub fn is_inactive(&self) -> bool {
-        *self == UNUSED0_A::INACTIVE
+        **self == UNUSED0_A::INACTIVE
+    }
+}
+impl core::ops::Deref for UNUSED0_R {
+    type Target = crate::FieldReader<bool, UNUSED0_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "N/A\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum UNUSED1_A {
-    #[doc = "1: Ctitrigin 5 is active"]
-    ACTIVE,
-    #[doc = "0: Ctitrigin 5 is inactive"]
-    INACTIVE,
+    #[doc = "1: Ctitrigin 5 is active."]
+    ACTIVE = 1,
+    #[doc = "0: Ctitrigin 5 is inactive."]
+    INACTIVE = 0,
 }
 impl From<UNUSED1_A> for bool {
     #[inline(always)]
     fn from(variant: UNUSED1_A) -> Self {
-        match variant {
-            UNUSED1_A::ACTIVE => true,
-            UNUSED1_A::INACTIVE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `UNUSED1`"]
-pub type UNUSED1_R = crate::R<bool, UNUSED1_A>;
+#[doc = "Field `UNUSED1` reader - N/A"]
+pub struct UNUSED1_R(crate::FieldReader<bool, UNUSED1_A>);
 impl UNUSED1_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        UNUSED1_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> UNUSED1_A {
@@ -226,34 +273,41 @@ impl UNUSED1_R {
     #[doc = "Checks if the value of the field is `ACTIVE`"]
     #[inline(always)]
     pub fn is_active(&self) -> bool {
-        *self == UNUSED1_A::ACTIVE
+        **self == UNUSED1_A::ACTIVE
     }
     #[doc = "Checks if the value of the field is `INACTIVE`"]
     #[inline(always)]
     pub fn is_inactive(&self) -> bool {
-        *self == UNUSED1_A::INACTIVE
+        **self == UNUSED1_A::INACTIVE
+    }
+}
+impl core::ops::Deref for UNUSED1_R {
+    type Target = crate::FieldReader<bool, UNUSED1_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "N/A\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum UNUSED2_A {
-    #[doc = "1: Ctitrigin 6 is active"]
-    ACTIVE,
-    #[doc = "0: Ctitrigin 6 is inactive"]
-    INACTIVE,
+    #[doc = "1: Ctitrigin 6 is active."]
+    ACTIVE = 1,
+    #[doc = "0: Ctitrigin 6 is inactive."]
+    INACTIVE = 0,
 }
 impl From<UNUSED2_A> for bool {
     #[inline(always)]
     fn from(variant: UNUSED2_A) -> Self {
-        match variant {
-            UNUSED2_A::ACTIVE => true,
-            UNUSED2_A::INACTIVE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `UNUSED2`"]
-pub type UNUSED2_R = crate::R<bool, UNUSED2_A>;
+#[doc = "Field `UNUSED2` reader - N/A"]
+pub struct UNUSED2_R(crate::FieldReader<bool, UNUSED2_A>);
 impl UNUSED2_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        UNUSED2_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> UNUSED2_A {
@@ -265,34 +319,41 @@ impl UNUSED2_R {
     #[doc = "Checks if the value of the field is `ACTIVE`"]
     #[inline(always)]
     pub fn is_active(&self) -> bool {
-        *self == UNUSED2_A::ACTIVE
+        **self == UNUSED2_A::ACTIVE
     }
     #[doc = "Checks if the value of the field is `INACTIVE`"]
     #[inline(always)]
     pub fn is_inactive(&self) -> bool {
-        *self == UNUSED2_A::INACTIVE
+        **self == UNUSED2_A::INACTIVE
+    }
+}
+impl core::ops::Deref for UNUSED2_R {
+    type Target = crate::FieldReader<bool, UNUSED2_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "N/A\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum UNUSED3_A {
-    #[doc = "1: Ctitrigin 7 is active"]
-    ACTIVE,
-    #[doc = "0: Ctitrigin 7 is inactive"]
-    INACTIVE,
+    #[doc = "1: Ctitrigin 7 is active."]
+    ACTIVE = 1,
+    #[doc = "0: Ctitrigin 7 is inactive."]
+    INACTIVE = 0,
 }
 impl From<UNUSED3_A> for bool {
     #[inline(always)]
     fn from(variant: UNUSED3_A) -> Self {
-        match variant {
-            UNUSED3_A::ACTIVE => true,
-            UNUSED3_A::INACTIVE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `UNUSED3`"]
-pub type UNUSED3_R = crate::R<bool, UNUSED3_A>;
+#[doc = "Field `UNUSED3` reader - N/A"]
+pub struct UNUSED3_R(crate::FieldReader<bool, UNUSED3_A>);
 impl UNUSED3_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        UNUSED3_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> UNUSED3_A {
@@ -304,12 +365,19 @@ impl UNUSED3_R {
     #[doc = "Checks if the value of the field is `ACTIVE`"]
     #[inline(always)]
     pub fn is_active(&self) -> bool {
-        *self == UNUSED3_A::ACTIVE
+        **self == UNUSED3_A::ACTIVE
     }
     #[doc = "Checks if the value of the field is `INACTIVE`"]
     #[inline(always)]
     pub fn is_inactive(&self) -> bool {
-        *self == UNUSED3_A::INACTIVE
+        **self == UNUSED3_A::INACTIVE
+    }
+}
+impl core::ops::Deref for UNUSED3_R {
+    type Target = crate::FieldReader<bool, UNUSED3_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 impl R {
@@ -352,5 +420,21 @@ impl R {
     #[inline(always)]
     pub fn unused3(&self) -> UNUSED3_R {
         UNUSED3_R::new(((self.bits >> 7) & 0x01) != 0)
+    }
+}
+#[doc = "CTI Trigger In Status register\n\nThis register you can [`read`](crate::generic::Reg::read). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [ctitriginstatus](index.html) module"]
+pub struct CTITRIGINSTATUS_SPEC;
+impl crate::RegisterSpec for CTITRIGINSTATUS_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [ctitriginstatus::R](R) reader structure"]
+impl crate::Readable for CTITRIGINSTATUS_SPEC {
+    type Reader = R;
+}
+#[doc = "`reset()` method sets CTITRIGINSTATUS to value 0"]
+impl crate::Resettable for CTITRIGINSTATUS_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

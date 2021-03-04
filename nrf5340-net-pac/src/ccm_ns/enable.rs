@@ -1,35 +1,58 @@
-#[doc = "Reader of register ENABLE"]
-pub type R = crate::R<u32, super::ENABLE>;
-#[doc = "Writer for register ENABLE"]
-pub type W = crate::W<u32, super::ENABLE>;
-#[doc = "Register ENABLE `reset()`'s with value 0"]
-impl crate::ResetValue for super::ENABLE {
-    type Type = u32;
+#[doc = "Register `ENABLE` reader"]
+pub struct R(crate::R<ENABLE_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<ENABLE_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<ENABLE_SPEC>> for R {
+    fn from(reader: crate::R<ENABLE_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `ENABLE` writer"]
+pub struct W(crate::W<ENABLE_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<ENABLE_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<ENABLE_SPEC>> for W {
+    fn from(writer: crate::W<ENABLE_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "Enable or disable CCM\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
+#[repr(u8)]
 pub enum ENABLE_A {
     #[doc = "0: Disable"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "2: Enable"]
-    ENABLED,
+    ENABLED = 2,
 }
 impl From<ENABLE_A> for u8 {
     #[inline(always)]
     fn from(variant: ENABLE_A) -> Self {
-        match variant {
-            ENABLE_A::DISABLED => 0,
-            ENABLE_A::ENABLED => 2,
-        }
+        variant as _
     }
 }
-#[doc = "Reader of field `ENABLE`"]
-pub type ENABLE_R = crate::R<u8, ENABLE_A>;
+#[doc = "Field `ENABLE` reader - Enable or disable CCM"]
+pub struct ENABLE_R(crate::FieldReader<u8, ENABLE_A>);
 impl ENABLE_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        ENABLE_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> crate::Variant<u8, ENABLE_A> {
@@ -43,15 +66,22 @@ impl ENABLE_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == ENABLE_A::DISABLED
+        **self == ENABLE_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == ENABLE_A::ENABLED
+        **self == ENABLE_A::ENABLED
     }
 }
-#[doc = "Write proxy for field `ENABLE`"]
+impl core::ops::Deref for ENABLE_R {
+    type Target = crate::FieldReader<u8, ENABLE_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `ENABLE` writer - Enable or disable CCM"]
 pub struct ENABLE_W<'a> {
     w: &'a mut W,
 }
@@ -90,5 +120,30 @@ impl W {
     #[inline(always)]
     pub fn enable(&mut self) -> ENABLE_W {
         ENABLE_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Enable\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [enable](index.html) module"]
+pub struct ENABLE_SPEC;
+impl crate::RegisterSpec for ENABLE_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [enable::R](R) reader structure"]
+impl crate::Readable for ENABLE_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [enable::W](W) writer structure"]
+impl crate::Writable for ENABLE_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets ENABLE to value 0"]
+impl crate::Resettable for ENABLE_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

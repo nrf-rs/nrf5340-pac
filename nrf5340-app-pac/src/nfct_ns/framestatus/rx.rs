@@ -1,35 +1,57 @@
-#[doc = "Reader of register RX"]
-pub type R = crate::R<u32, super::RX>;
-#[doc = "Writer for register RX"]
-pub type W = crate::W<u32, super::RX>;
-#[doc = "Register RX `reset()`'s with value 0"]
-impl crate::ResetValue for super::RX {
-    type Type = u32;
+#[doc = "Register `RX` reader"]
+pub struct R(crate::R<RX_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<RX_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<RX_SPEC>> for R {
+    fn from(reader: crate::R<RX_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `RX` writer"]
+pub struct W(crate::W<RX_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<RX_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<RX_SPEC>> for W {
+    fn from(writer: crate::W<RX_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "No valid end of frame (EoF) detected\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CRCERROR_A {
     #[doc = "0: Valid CRC detected"]
-    CRCCORRECT,
+    CRCCORRECT = 0,
     #[doc = "1: CRC received does not match local check"]
-    CRCERROR,
+    CRCERROR = 1,
 }
 impl From<CRCERROR_A> for bool {
     #[inline(always)]
     fn from(variant: CRCERROR_A) -> Self {
-        match variant {
-            CRCERROR_A::CRCCORRECT => false,
-            CRCERROR_A::CRCERROR => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `CRCERROR`"]
-pub type CRCERROR_R = crate::R<bool, CRCERROR_A>;
+#[doc = "Field `CRCERROR` reader - No valid end of frame (EoF) detected"]
+pub struct CRCERROR_R(crate::FieldReader<bool, CRCERROR_A>);
 impl CRCERROR_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CRCERROR_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CRCERROR_A {
@@ -41,15 +63,22 @@ impl CRCERROR_R {
     #[doc = "Checks if the value of the field is `CRCCORRECT`"]
     #[inline(always)]
     pub fn is_crccorrect(&self) -> bool {
-        *self == CRCERROR_A::CRCCORRECT
+        **self == CRCERROR_A::CRCCORRECT
     }
     #[doc = "Checks if the value of the field is `CRCERROR`"]
     #[inline(always)]
     pub fn is_crcerror(&self) -> bool {
-        *self == CRCERROR_A::CRCERROR
+        **self == CRCERROR_A::CRCERROR
     }
 }
-#[doc = "Write proxy for field `CRCERROR`"]
+impl core::ops::Deref for CRCERROR_R {
+    type Target = crate::FieldReader<bool, CRCERROR_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CRCERROR` writer - No valid end of frame (EoF) detected"]
 pub struct CRCERROR_W<'a> {
     w: &'a mut W,
 }
@@ -57,9 +86,7 @@ impl<'a> CRCERROR_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: CRCERROR_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Valid CRC detected"]
     #[inline(always)]
@@ -92,22 +119,22 @@ impl<'a> CRCERROR_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum PARITYSTATUS_A {
     #[doc = "0: Frame received with parity OK"]
-    PARITYOK,
+    PARITYOK = 0,
     #[doc = "1: Frame received with parity error"]
-    PARITYERROR,
+    PARITYERROR = 1,
 }
 impl From<PARITYSTATUS_A> for bool {
     #[inline(always)]
     fn from(variant: PARITYSTATUS_A) -> Self {
-        match variant {
-            PARITYSTATUS_A::PARITYOK => false,
-            PARITYSTATUS_A::PARITYERROR => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `PARITYSTATUS`"]
-pub type PARITYSTATUS_R = crate::R<bool, PARITYSTATUS_A>;
+#[doc = "Field `PARITYSTATUS` reader - Parity status of received frame"]
+pub struct PARITYSTATUS_R(crate::FieldReader<bool, PARITYSTATUS_A>);
 impl PARITYSTATUS_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        PARITYSTATUS_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> PARITYSTATUS_A {
@@ -119,15 +146,22 @@ impl PARITYSTATUS_R {
     #[doc = "Checks if the value of the field is `PARITYOK`"]
     #[inline(always)]
     pub fn is_parity_ok(&self) -> bool {
-        *self == PARITYSTATUS_A::PARITYOK
+        **self == PARITYSTATUS_A::PARITYOK
     }
     #[doc = "Checks if the value of the field is `PARITYERROR`"]
     #[inline(always)]
     pub fn is_parity_error(&self) -> bool {
-        *self == PARITYSTATUS_A::PARITYERROR
+        **self == PARITYSTATUS_A::PARITYERROR
     }
 }
-#[doc = "Write proxy for field `PARITYSTATUS`"]
+impl core::ops::Deref for PARITYSTATUS_R {
+    type Target = crate::FieldReader<bool, PARITYSTATUS_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `PARITYSTATUS` writer - Parity status of received frame"]
 pub struct PARITYSTATUS_W<'a> {
     w: &'a mut W,
 }
@@ -135,9 +169,7 @@ impl<'a> PARITYSTATUS_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: PARITYSTATUS_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Frame received with parity OK"]
     #[inline(always)]
@@ -170,22 +202,22 @@ impl<'a> PARITYSTATUS_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum OVERRUN_A {
     #[doc = "0: No overrun detected"]
-    NOOVERRUN,
+    NOOVERRUN = 0,
     #[doc = "1: Overrun error"]
-    OVERRUN,
+    OVERRUN = 1,
 }
 impl From<OVERRUN_A> for bool {
     #[inline(always)]
     fn from(variant: OVERRUN_A) -> Self {
-        match variant {
-            OVERRUN_A::NOOVERRUN => false,
-            OVERRUN_A::OVERRUN => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `OVERRUN`"]
-pub type OVERRUN_R = crate::R<bool, OVERRUN_A>;
+#[doc = "Field `OVERRUN` reader - Overrun detected"]
+pub struct OVERRUN_R(crate::FieldReader<bool, OVERRUN_A>);
 impl OVERRUN_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OVERRUN_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> OVERRUN_A {
@@ -197,15 +229,22 @@ impl OVERRUN_R {
     #[doc = "Checks if the value of the field is `NOOVERRUN`"]
     #[inline(always)]
     pub fn is_no_overrun(&self) -> bool {
-        *self == OVERRUN_A::NOOVERRUN
+        **self == OVERRUN_A::NOOVERRUN
     }
     #[doc = "Checks if the value of the field is `OVERRUN`"]
     #[inline(always)]
     pub fn is_overrun(&self) -> bool {
-        *self == OVERRUN_A::OVERRUN
+        **self == OVERRUN_A::OVERRUN
     }
 }
-#[doc = "Write proxy for field `OVERRUN`"]
+impl core::ops::Deref for OVERRUN_R {
+    type Target = crate::FieldReader<bool, OVERRUN_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OVERRUN` writer - Overrun detected"]
 pub struct OVERRUN_W<'a> {
     w: &'a mut W,
 }
@@ -213,9 +252,7 @@ impl<'a> OVERRUN_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: OVERRUN_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "No overrun detected"]
     #[inline(always)]
@@ -276,5 +313,30 @@ impl W {
     #[inline(always)]
     pub fn overrun(&mut self) -> OVERRUN_W {
         OVERRUN_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Result of last incoming frame\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [rx](index.html) module"]
+pub struct RX_SPEC;
+impl crate::RegisterSpec for RX_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [rx::R](R) reader structure"]
+impl crate::Readable for RX_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [rx::W](W) writer structure"]
+impl crate::Writable for RX_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets RX to value 0"]
+impl crate::Resettable for RX_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

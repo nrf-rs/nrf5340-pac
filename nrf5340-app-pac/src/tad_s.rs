@@ -3,71 +3,47 @@
 pub struct RegisterBlock {
     _reserved0: [u8; 4usize],
     #[doc = "0x04 - Start all trace and debug clocks."]
-    pub clockstart: CLOCKSTART,
+    pub clockstart: crate::Reg<clockstart::CLOCKSTART_SPEC>,
     #[doc = "0x08 - Stop all trace and debug clocks."]
-    pub clockstop: CLOCKSTOP,
+    pub clockstop: crate::Reg<clockstop::CLOCKSTOP_SPEC>,
     _reserved2: [u8; 1268usize],
     #[doc = "0x500 - Enable debug domain and aquire selected GPIOs"]
-    pub enable: ENABLE,
+    pub enable: crate::Reg<enable::ENABLE_SPEC>,
     #[doc = "0x504 - Unspecified"]
     pub psel: PSEL,
-    #[doc = "0x518 - Clocking options for the Trace Port debug interface."]
-    pub traceportspeed: TRACEPORTSPEED,
+    #[doc = "0x518 - Clocking options for the Trace Port debug interface Reset behavior is the same as debug components"]
+    pub traceportspeed: crate::Reg<traceportspeed::TRACEPORTSPEED_SPEC>,
 }
 #[doc = r"Register block"]
 #[repr(C)]
 pub struct PSEL {
     #[doc = "0x00 - Pin configuration for TRACECLK"]
-    pub traceclk: self::psel::TRACECLK,
-    #[doc = "0x04 - Pin configuration for TRACEDATA\\[0\\] and SWO"]
-    pub tracedata0: self::psel::TRACEDATA0,
+    pub traceclk: crate::Reg<self::psel::traceclk::TRACECLK_SPEC>,
+    #[doc = "0x04 - Pin configuration for TRACEDATA\\[0\\]"]
+    pub tracedata0: crate::Reg<self::psel::tracedata0::TRACEDATA0_SPEC>,
     #[doc = "0x08 - Pin configuration for TRACEDATA\\[1\\]"]
-    pub tracedata1: self::psel::TRACEDATA1,
+    pub tracedata1: crate::Reg<self::psel::tracedata1::TRACEDATA1_SPEC>,
     #[doc = "0x0c - Pin configuration for TRACEDATA\\[2\\]"]
-    pub tracedata2: self::psel::TRACEDATA2,
+    pub tracedata2: crate::Reg<self::psel::tracedata2::TRACEDATA2_SPEC>,
     #[doc = "0x10 - Pin configuration for TRACEDATA\\[3\\]"]
-    pub tracedata3: self::psel::TRACEDATA3,
+    pub tracedata3: crate::Reg<self::psel::tracedata3::TRACEDATA3_SPEC>,
 }
 #[doc = r"Register block"]
 #[doc = "Unspecified"]
 pub mod psel;
-#[doc = "Start all trace and debug clocks.\n\nThis register you can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [clockstart](clockstart) module"]
-pub type CLOCKSTART = crate::Reg<u32, _CLOCKSTART>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _CLOCKSTART;
-#[doc = "`write(|w| ..)` method takes [clockstart::W](clockstart::W) writer structure"]
-impl crate::Writable for CLOCKSTART {}
+#[doc = "CLOCKSTART register accessor: an alias for `Reg<CLOCKSTART_SPEC>`"]
+pub type CLOCKSTART = crate::Reg<clockstart::CLOCKSTART_SPEC>;
 #[doc = "Start all trace and debug clocks."]
 pub mod clockstart;
-#[doc = "Stop all trace and debug clocks.\n\nThis register you can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [clockstop](clockstop) module"]
-pub type CLOCKSTOP = crate::Reg<u32, _CLOCKSTOP>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _CLOCKSTOP;
-#[doc = "`write(|w| ..)` method takes [clockstop::W](clockstop::W) writer structure"]
-impl crate::Writable for CLOCKSTOP {}
+#[doc = "CLOCKSTOP register accessor: an alias for `Reg<CLOCKSTOP_SPEC>`"]
+pub type CLOCKSTOP = crate::Reg<clockstop::CLOCKSTOP_SPEC>;
 #[doc = "Stop all trace and debug clocks."]
 pub mod clockstop;
-#[doc = "Enable debug domain and aquire selected GPIOs\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [enable](enable) module"]
-pub type ENABLE = crate::Reg<u32, _ENABLE>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _ENABLE;
-#[doc = "`read()` method returns [enable::R](enable::R) reader structure"]
-impl crate::Readable for ENABLE {}
-#[doc = "`write(|w| ..)` method takes [enable::W](enable::W) writer structure"]
-impl crate::Writable for ENABLE {}
+#[doc = "ENABLE register accessor: an alias for `Reg<ENABLE_SPEC>`"]
+pub type ENABLE = crate::Reg<enable::ENABLE_SPEC>;
 #[doc = "Enable debug domain and aquire selected GPIOs"]
 pub mod enable;
-#[doc = "Clocking options for the Trace Port debug interface.\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [traceportspeed](traceportspeed) module"]
-pub type TRACEPORTSPEED = crate::Reg<u32, _TRACEPORTSPEED>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _TRACEPORTSPEED;
-#[doc = "`read()` method returns [traceportspeed::R](traceportspeed::R) reader structure"]
-impl crate::Readable for TRACEPORTSPEED {}
-#[doc = "`write(|w| ..)` method takes [traceportspeed::W](traceportspeed::W) writer structure"]
-impl crate::Writable for TRACEPORTSPEED {}
-#[doc = "Clocking options for the Trace Port debug interface."]
+#[doc = "TRACEPORTSPEED register accessor: an alias for `Reg<TRACEPORTSPEED_SPEC>`"]
+pub type TRACEPORTSPEED = crate::Reg<traceportspeed::TRACEPORTSPEED_SPEC>;
+#[doc = "Clocking options for the Trace Port debug interface Reset behavior is the same as debug components"]
 pub mod traceportspeed;
