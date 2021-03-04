@@ -1,35 +1,57 @@
-#[doc = "Reader of register INTEN"]
-pub type R = crate::R<u32, super::INTEN>;
-#[doc = "Writer for register INTEN"]
-pub type W = crate::W<u32, super::INTEN>;
-#[doc = "Register INTEN `reset()`'s with value 0"]
-impl crate::ResetValue for super::INTEN {
-    type Type = u32;
+#[doc = "Register `INTEN` reader"]
+pub struct R(crate::R<INTEN_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<INTEN_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<INTEN_SPEC>> for R {
+    fn from(reader: crate::R<INTEN_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `INTEN` writer"]
+pub struct W(crate::W<INTEN_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<INTEN_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<INTEN_SPEC>> for W {
+    fn from(writer: crate::W<INTEN_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "Enable or disable interrupt for event CTS\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CTS_A {
     #[doc = "0: Disable"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Enable"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<CTS_A> for bool {
     #[inline(always)]
     fn from(variant: CTS_A) -> Self {
-        match variant {
-            CTS_A::DISABLED => false,
-            CTS_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `CTS`"]
-pub type CTS_R = crate::R<bool, CTS_A>;
+#[doc = "Field `CTS` reader - Enable or disable interrupt for event CTS"]
+pub struct CTS_R(crate::FieldReader<bool, CTS_A>);
 impl CTS_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CTS_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CTS_A {
@@ -41,15 +63,22 @@ impl CTS_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == CTS_A::DISABLED
+        **self == CTS_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == CTS_A::ENABLED
+        **self == CTS_A::ENABLED
     }
 }
-#[doc = "Write proxy for field `CTS`"]
+impl core::ops::Deref for CTS_R {
+    type Target = crate::FieldReader<bool, CTS_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CTS` writer - Enable or disable interrupt for event CTS"]
 pub struct CTS_W<'a> {
     w: &'a mut W,
 }
@@ -57,9 +86,7 @@ impl<'a> CTS_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: CTS_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disable"]
     #[inline(always)]
@@ -92,22 +119,22 @@ impl<'a> CTS_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum NCTS_A {
     #[doc = "0: Disable"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Enable"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<NCTS_A> for bool {
     #[inline(always)]
     fn from(variant: NCTS_A) -> Self {
-        match variant {
-            NCTS_A::DISABLED => false,
-            NCTS_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `NCTS`"]
-pub type NCTS_R = crate::R<bool, NCTS_A>;
+#[doc = "Field `NCTS` reader - Enable or disable interrupt for event NCTS"]
+pub struct NCTS_R(crate::FieldReader<bool, NCTS_A>);
 impl NCTS_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        NCTS_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> NCTS_A {
@@ -119,15 +146,22 @@ impl NCTS_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == NCTS_A::DISABLED
+        **self == NCTS_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == NCTS_A::ENABLED
+        **self == NCTS_A::ENABLED
     }
 }
-#[doc = "Write proxy for field `NCTS`"]
+impl core::ops::Deref for NCTS_R {
+    type Target = crate::FieldReader<bool, NCTS_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `NCTS` writer - Enable or disable interrupt for event NCTS"]
 pub struct NCTS_W<'a> {
     w: &'a mut W,
 }
@@ -135,9 +169,7 @@ impl<'a> NCTS_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: NCTS_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disable"]
     #[inline(always)]
@@ -170,22 +202,22 @@ impl<'a> NCTS_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum RXDRDY_A {
     #[doc = "0: Disable"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Enable"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<RXDRDY_A> for bool {
     #[inline(always)]
     fn from(variant: RXDRDY_A) -> Self {
-        match variant {
-            RXDRDY_A::DISABLED => false,
-            RXDRDY_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `RXDRDY`"]
-pub type RXDRDY_R = crate::R<bool, RXDRDY_A>;
+#[doc = "Field `RXDRDY` reader - Enable or disable interrupt for event RXDRDY"]
+pub struct RXDRDY_R(crate::FieldReader<bool, RXDRDY_A>);
 impl RXDRDY_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        RXDRDY_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> RXDRDY_A {
@@ -197,15 +229,22 @@ impl RXDRDY_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == RXDRDY_A::DISABLED
+        **self == RXDRDY_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == RXDRDY_A::ENABLED
+        **self == RXDRDY_A::ENABLED
     }
 }
-#[doc = "Write proxy for field `RXDRDY`"]
+impl core::ops::Deref for RXDRDY_R {
+    type Target = crate::FieldReader<bool, RXDRDY_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `RXDRDY` writer - Enable or disable interrupt for event RXDRDY"]
 pub struct RXDRDY_W<'a> {
     w: &'a mut W,
 }
@@ -213,9 +252,7 @@ impl<'a> RXDRDY_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: RXDRDY_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disable"]
     #[inline(always)]
@@ -248,22 +285,22 @@ impl<'a> RXDRDY_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum ENDRX_A {
     #[doc = "0: Disable"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Enable"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<ENDRX_A> for bool {
     #[inline(always)]
     fn from(variant: ENDRX_A) -> Self {
-        match variant {
-            ENDRX_A::DISABLED => false,
-            ENDRX_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `ENDRX`"]
-pub type ENDRX_R = crate::R<bool, ENDRX_A>;
+#[doc = "Field `ENDRX` reader - Enable or disable interrupt for event ENDRX"]
+pub struct ENDRX_R(crate::FieldReader<bool, ENDRX_A>);
 impl ENDRX_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        ENDRX_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> ENDRX_A {
@@ -275,15 +312,22 @@ impl ENDRX_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == ENDRX_A::DISABLED
+        **self == ENDRX_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == ENDRX_A::ENABLED
+        **self == ENDRX_A::ENABLED
     }
 }
-#[doc = "Write proxy for field `ENDRX`"]
+impl core::ops::Deref for ENDRX_R {
+    type Target = crate::FieldReader<bool, ENDRX_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `ENDRX` writer - Enable or disable interrupt for event ENDRX"]
 pub struct ENDRX_W<'a> {
     w: &'a mut W,
 }
@@ -291,9 +335,7 @@ impl<'a> ENDRX_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: ENDRX_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disable"]
     #[inline(always)]
@@ -326,22 +368,22 @@ impl<'a> ENDRX_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TXDRDY_A {
     #[doc = "0: Disable"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Enable"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<TXDRDY_A> for bool {
     #[inline(always)]
     fn from(variant: TXDRDY_A) -> Self {
-        match variant {
-            TXDRDY_A::DISABLED => false,
-            TXDRDY_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `TXDRDY`"]
-pub type TXDRDY_R = crate::R<bool, TXDRDY_A>;
+#[doc = "Field `TXDRDY` reader - Enable or disable interrupt for event TXDRDY"]
+pub struct TXDRDY_R(crate::FieldReader<bool, TXDRDY_A>);
 impl TXDRDY_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        TXDRDY_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> TXDRDY_A {
@@ -353,15 +395,22 @@ impl TXDRDY_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == TXDRDY_A::DISABLED
+        **self == TXDRDY_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == TXDRDY_A::ENABLED
+        **self == TXDRDY_A::ENABLED
     }
 }
-#[doc = "Write proxy for field `TXDRDY`"]
+impl core::ops::Deref for TXDRDY_R {
+    type Target = crate::FieldReader<bool, TXDRDY_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `TXDRDY` writer - Enable or disable interrupt for event TXDRDY"]
 pub struct TXDRDY_W<'a> {
     w: &'a mut W,
 }
@@ -369,9 +418,7 @@ impl<'a> TXDRDY_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: TXDRDY_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disable"]
     #[inline(always)]
@@ -404,22 +451,22 @@ impl<'a> TXDRDY_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum ENDTX_A {
     #[doc = "0: Disable"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Enable"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<ENDTX_A> for bool {
     #[inline(always)]
     fn from(variant: ENDTX_A) -> Self {
-        match variant {
-            ENDTX_A::DISABLED => false,
-            ENDTX_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `ENDTX`"]
-pub type ENDTX_R = crate::R<bool, ENDTX_A>;
+#[doc = "Field `ENDTX` reader - Enable or disable interrupt for event ENDTX"]
+pub struct ENDTX_R(crate::FieldReader<bool, ENDTX_A>);
 impl ENDTX_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        ENDTX_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> ENDTX_A {
@@ -431,15 +478,22 @@ impl ENDTX_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == ENDTX_A::DISABLED
+        **self == ENDTX_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == ENDTX_A::ENABLED
+        **self == ENDTX_A::ENABLED
     }
 }
-#[doc = "Write proxy for field `ENDTX`"]
+impl core::ops::Deref for ENDTX_R {
+    type Target = crate::FieldReader<bool, ENDTX_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `ENDTX` writer - Enable or disable interrupt for event ENDTX"]
 pub struct ENDTX_W<'a> {
     w: &'a mut W,
 }
@@ -447,9 +501,7 @@ impl<'a> ENDTX_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: ENDTX_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disable"]
     #[inline(always)]
@@ -482,22 +534,22 @@ impl<'a> ENDTX_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum ERROR_A {
     #[doc = "0: Disable"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Enable"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<ERROR_A> for bool {
     #[inline(always)]
     fn from(variant: ERROR_A) -> Self {
-        match variant {
-            ERROR_A::DISABLED => false,
-            ERROR_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `ERROR`"]
-pub type ERROR_R = crate::R<bool, ERROR_A>;
+#[doc = "Field `ERROR` reader - Enable or disable interrupt for event ERROR"]
+pub struct ERROR_R(crate::FieldReader<bool, ERROR_A>);
 impl ERROR_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        ERROR_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> ERROR_A {
@@ -509,15 +561,22 @@ impl ERROR_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == ERROR_A::DISABLED
+        **self == ERROR_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == ERROR_A::ENABLED
+        **self == ERROR_A::ENABLED
     }
 }
-#[doc = "Write proxy for field `ERROR`"]
+impl core::ops::Deref for ERROR_R {
+    type Target = crate::FieldReader<bool, ERROR_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `ERROR` writer - Enable or disable interrupt for event ERROR"]
 pub struct ERROR_W<'a> {
     w: &'a mut W,
 }
@@ -525,9 +584,7 @@ impl<'a> ERROR_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: ERROR_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disable"]
     #[inline(always)]
@@ -560,22 +617,22 @@ impl<'a> ERROR_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum RXTO_A {
     #[doc = "0: Disable"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Enable"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<RXTO_A> for bool {
     #[inline(always)]
     fn from(variant: RXTO_A) -> Self {
-        match variant {
-            RXTO_A::DISABLED => false,
-            RXTO_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `RXTO`"]
-pub type RXTO_R = crate::R<bool, RXTO_A>;
+#[doc = "Field `RXTO` reader - Enable or disable interrupt for event RXTO"]
+pub struct RXTO_R(crate::FieldReader<bool, RXTO_A>);
 impl RXTO_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        RXTO_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> RXTO_A {
@@ -587,15 +644,22 @@ impl RXTO_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == RXTO_A::DISABLED
+        **self == RXTO_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == RXTO_A::ENABLED
+        **self == RXTO_A::ENABLED
     }
 }
-#[doc = "Write proxy for field `RXTO`"]
+impl core::ops::Deref for RXTO_R {
+    type Target = crate::FieldReader<bool, RXTO_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `RXTO` writer - Enable or disable interrupt for event RXTO"]
 pub struct RXTO_W<'a> {
     w: &'a mut W,
 }
@@ -603,9 +667,7 @@ impl<'a> RXTO_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: RXTO_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disable"]
     #[inline(always)]
@@ -638,22 +700,22 @@ impl<'a> RXTO_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum RXSTARTED_A {
     #[doc = "0: Disable"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Enable"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<RXSTARTED_A> for bool {
     #[inline(always)]
     fn from(variant: RXSTARTED_A) -> Self {
-        match variant {
-            RXSTARTED_A::DISABLED => false,
-            RXSTARTED_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `RXSTARTED`"]
-pub type RXSTARTED_R = crate::R<bool, RXSTARTED_A>;
+#[doc = "Field `RXSTARTED` reader - Enable or disable interrupt for event RXSTARTED"]
+pub struct RXSTARTED_R(crate::FieldReader<bool, RXSTARTED_A>);
 impl RXSTARTED_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        RXSTARTED_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> RXSTARTED_A {
@@ -665,15 +727,22 @@ impl RXSTARTED_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == RXSTARTED_A::DISABLED
+        **self == RXSTARTED_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == RXSTARTED_A::ENABLED
+        **self == RXSTARTED_A::ENABLED
     }
 }
-#[doc = "Write proxy for field `RXSTARTED`"]
+impl core::ops::Deref for RXSTARTED_R {
+    type Target = crate::FieldReader<bool, RXSTARTED_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `RXSTARTED` writer - Enable or disable interrupt for event RXSTARTED"]
 pub struct RXSTARTED_W<'a> {
     w: &'a mut W,
 }
@@ -681,9 +750,7 @@ impl<'a> RXSTARTED_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: RXSTARTED_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disable"]
     #[inline(always)]
@@ -716,22 +783,22 @@ impl<'a> RXSTARTED_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TXSTARTED_A {
     #[doc = "0: Disable"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Enable"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<TXSTARTED_A> for bool {
     #[inline(always)]
     fn from(variant: TXSTARTED_A) -> Self {
-        match variant {
-            TXSTARTED_A::DISABLED => false,
-            TXSTARTED_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `TXSTARTED`"]
-pub type TXSTARTED_R = crate::R<bool, TXSTARTED_A>;
+#[doc = "Field `TXSTARTED` reader - Enable or disable interrupt for event TXSTARTED"]
+pub struct TXSTARTED_R(crate::FieldReader<bool, TXSTARTED_A>);
 impl TXSTARTED_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        TXSTARTED_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> TXSTARTED_A {
@@ -743,15 +810,22 @@ impl TXSTARTED_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == TXSTARTED_A::DISABLED
+        **self == TXSTARTED_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == TXSTARTED_A::ENABLED
+        **self == TXSTARTED_A::ENABLED
     }
 }
-#[doc = "Write proxy for field `TXSTARTED`"]
+impl core::ops::Deref for TXSTARTED_R {
+    type Target = crate::FieldReader<bool, TXSTARTED_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `TXSTARTED` writer - Enable or disable interrupt for event TXSTARTED"]
 pub struct TXSTARTED_W<'a> {
     w: &'a mut W,
 }
@@ -759,9 +833,7 @@ impl<'a> TXSTARTED_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: TXSTARTED_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disable"]
     #[inline(always)]
@@ -794,22 +866,22 @@ impl<'a> TXSTARTED_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TXSTOPPED_A {
     #[doc = "0: Disable"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Enable"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<TXSTOPPED_A> for bool {
     #[inline(always)]
     fn from(variant: TXSTOPPED_A) -> Self {
-        match variant {
-            TXSTOPPED_A::DISABLED => false,
-            TXSTOPPED_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `TXSTOPPED`"]
-pub type TXSTOPPED_R = crate::R<bool, TXSTOPPED_A>;
+#[doc = "Field `TXSTOPPED` reader - Enable or disable interrupt for event TXSTOPPED"]
+pub struct TXSTOPPED_R(crate::FieldReader<bool, TXSTOPPED_A>);
 impl TXSTOPPED_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        TXSTOPPED_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> TXSTOPPED_A {
@@ -821,15 +893,22 @@ impl TXSTOPPED_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == TXSTOPPED_A::DISABLED
+        **self == TXSTOPPED_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == TXSTOPPED_A::ENABLED
+        **self == TXSTOPPED_A::ENABLED
     }
 }
-#[doc = "Write proxy for field `TXSTOPPED`"]
+impl core::ops::Deref for TXSTOPPED_R {
+    type Target = crate::FieldReader<bool, TXSTOPPED_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `TXSTOPPED` writer - Enable or disable interrupt for event TXSTOPPED"]
 pub struct TXSTOPPED_W<'a> {
     w: &'a mut W,
 }
@@ -837,9 +916,7 @@ impl<'a> TXSTOPPED_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: TXSTOPPED_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disable"]
     #[inline(always)]
@@ -980,5 +1057,30 @@ impl W {
     #[inline(always)]
     pub fn txstopped(&mut self) -> TXSTOPPED_W {
         TXSTOPPED_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Enable or disable interrupt\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [inten](index.html) module"]
+pub struct INTEN_SPEC;
+impl crate::RegisterSpec for INTEN_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [inten::R](R) reader structure"]
+impl crate::Readable for INTEN_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [inten::W](W) writer structure"]
+impl crate::Writable for INTEN_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets INTEN to value 0"]
+impl crate::Resettable for INTEN_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

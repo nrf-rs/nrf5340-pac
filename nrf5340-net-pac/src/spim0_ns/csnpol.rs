@@ -1,35 +1,57 @@
-#[doc = "Reader of register CSNPOL"]
-pub type R = crate::R<u32, super::CSNPOL>;
-#[doc = "Writer for register CSNPOL"]
-pub type W = crate::W<u32, super::CSNPOL>;
-#[doc = "Register CSNPOL `reset()`'s with value 0"]
-impl crate::ResetValue for super::CSNPOL {
-    type Type = u32;
+#[doc = "Register `CSNPOL` reader"]
+pub struct R(crate::R<CSNPOL_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<CSNPOL_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<CSNPOL_SPEC>> for R {
+    fn from(reader: crate::R<CSNPOL_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `CSNPOL` writer"]
+pub struct W(crate::W<CSNPOL_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<CSNPOL_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<CSNPOL_SPEC>> for W {
+    fn from(writer: crate::W<CSNPOL_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "Polarity of CSN output\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CSNPOL_A {
     #[doc = "0: Active low (idle state high)"]
-    LOW,
+    LOW = 0,
     #[doc = "1: Active high (idle state low)"]
-    HIGH,
+    HIGH = 1,
 }
 impl From<CSNPOL_A> for bool {
     #[inline(always)]
     fn from(variant: CSNPOL_A) -> Self {
-        match variant {
-            CSNPOL_A::LOW => false,
-            CSNPOL_A::HIGH => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `CSNPOL`"]
-pub type CSNPOL_R = crate::R<bool, CSNPOL_A>;
+#[doc = "Field `CSNPOL` reader - Polarity of CSN output"]
+pub struct CSNPOL_R(crate::FieldReader<bool, CSNPOL_A>);
 impl CSNPOL_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CSNPOL_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CSNPOL_A {
@@ -41,15 +63,22 @@ impl CSNPOL_R {
     #[doc = "Checks if the value of the field is `LOW`"]
     #[inline(always)]
     pub fn is_low(&self) -> bool {
-        *self == CSNPOL_A::LOW
+        **self == CSNPOL_A::LOW
     }
     #[doc = "Checks if the value of the field is `HIGH`"]
     #[inline(always)]
     pub fn is_high(&self) -> bool {
-        *self == CSNPOL_A::HIGH
+        **self == CSNPOL_A::HIGH
     }
 }
-#[doc = "Write proxy for field `CSNPOL`"]
+impl core::ops::Deref for CSNPOL_R {
+    type Target = crate::FieldReader<bool, CSNPOL_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CSNPOL` writer - Polarity of CSN output"]
 pub struct CSNPOL_W<'a> {
     w: &'a mut W,
 }
@@ -57,9 +86,7 @@ impl<'a> CSNPOL_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: CSNPOL_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Active low (idle state high)"]
     #[inline(always)]
@@ -100,5 +127,30 @@ impl W {
     #[inline(always)]
     pub fn csnpol(&mut self) -> CSNPOL_W {
         CSNPOL_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Polarity of CSN output\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [csnpol](index.html) module"]
+pub struct CSNPOL_SPEC;
+impl crate::RegisterSpec for CSNPOL_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [csnpol::R](R) reader structure"]
+impl crate::Readable for CSNPOL_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [csnpol::W](W) writer structure"]
+impl crate::Writable for CSNPOL_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets CSNPOL to value 0"]
+impl crate::Resettable for CSNPOL_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

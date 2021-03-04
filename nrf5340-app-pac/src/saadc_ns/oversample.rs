@@ -1,56 +1,72 @@
-#[doc = "Reader of register OVERSAMPLE"]
-pub type R = crate::R<u32, super::OVERSAMPLE>;
-#[doc = "Writer for register OVERSAMPLE"]
-pub type W = crate::W<u32, super::OVERSAMPLE>;
-#[doc = "Register OVERSAMPLE `reset()`'s with value 0"]
-impl crate::ResetValue for super::OVERSAMPLE {
-    type Type = u32;
+#[doc = "Register `OVERSAMPLE` reader"]
+pub struct R(crate::R<OVERSAMPLE_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<OVERSAMPLE_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<OVERSAMPLE_SPEC>> for R {
+    fn from(reader: crate::R<OVERSAMPLE_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `OVERSAMPLE` writer"]
+pub struct W(crate::W<OVERSAMPLE_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<OVERSAMPLE_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<OVERSAMPLE_SPEC>> for W {
+    fn from(writer: crate::W<OVERSAMPLE_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "Oversample control\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
+#[repr(u8)]
 pub enum OVERSAMPLE_A {
     #[doc = "0: Bypass oversampling"]
-    BYPASS,
+    BYPASS = 0,
     #[doc = "1: Oversample 2x"]
-    OVER2X,
+    OVER2X = 1,
     #[doc = "2: Oversample 4x"]
-    OVER4X,
+    OVER4X = 2,
     #[doc = "3: Oversample 8x"]
-    OVER8X,
+    OVER8X = 3,
     #[doc = "4: Oversample 16x"]
-    OVER16X,
+    OVER16X = 4,
     #[doc = "5: Oversample 32x"]
-    OVER32X,
+    OVER32X = 5,
     #[doc = "6: Oversample 64x"]
-    OVER64X,
+    OVER64X = 6,
     #[doc = "7: Oversample 128x"]
-    OVER128X,
+    OVER128X = 7,
     #[doc = "8: Oversample 256x"]
-    OVER256X,
+    OVER256X = 8,
 }
 impl From<OVERSAMPLE_A> for u8 {
     #[inline(always)]
     fn from(variant: OVERSAMPLE_A) -> Self {
-        match variant {
-            OVERSAMPLE_A::BYPASS => 0,
-            OVERSAMPLE_A::OVER2X => 1,
-            OVERSAMPLE_A::OVER4X => 2,
-            OVERSAMPLE_A::OVER8X => 3,
-            OVERSAMPLE_A::OVER16X => 4,
-            OVERSAMPLE_A::OVER32X => 5,
-            OVERSAMPLE_A::OVER64X => 6,
-            OVERSAMPLE_A::OVER128X => 7,
-            OVERSAMPLE_A::OVER256X => 8,
-        }
+        variant as _
     }
 }
-#[doc = "Reader of field `OVERSAMPLE`"]
-pub type OVERSAMPLE_R = crate::R<u8, OVERSAMPLE_A>;
+#[doc = "Field `OVERSAMPLE` reader - Oversample control"]
+pub struct OVERSAMPLE_R(crate::FieldReader<u8, OVERSAMPLE_A>);
 impl OVERSAMPLE_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        OVERSAMPLE_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> crate::Variant<u8, OVERSAMPLE_A> {
@@ -71,50 +87,57 @@ impl OVERSAMPLE_R {
     #[doc = "Checks if the value of the field is `BYPASS`"]
     #[inline(always)]
     pub fn is_bypass(&self) -> bool {
-        *self == OVERSAMPLE_A::BYPASS
+        **self == OVERSAMPLE_A::BYPASS
     }
     #[doc = "Checks if the value of the field is `OVER2X`"]
     #[inline(always)]
     pub fn is_over2x(&self) -> bool {
-        *self == OVERSAMPLE_A::OVER2X
+        **self == OVERSAMPLE_A::OVER2X
     }
     #[doc = "Checks if the value of the field is `OVER4X`"]
     #[inline(always)]
     pub fn is_over4x(&self) -> bool {
-        *self == OVERSAMPLE_A::OVER4X
+        **self == OVERSAMPLE_A::OVER4X
     }
     #[doc = "Checks if the value of the field is `OVER8X`"]
     #[inline(always)]
     pub fn is_over8x(&self) -> bool {
-        *self == OVERSAMPLE_A::OVER8X
+        **self == OVERSAMPLE_A::OVER8X
     }
     #[doc = "Checks if the value of the field is `OVER16X`"]
     #[inline(always)]
     pub fn is_over16x(&self) -> bool {
-        *self == OVERSAMPLE_A::OVER16X
+        **self == OVERSAMPLE_A::OVER16X
     }
     #[doc = "Checks if the value of the field is `OVER32X`"]
     #[inline(always)]
     pub fn is_over32x(&self) -> bool {
-        *self == OVERSAMPLE_A::OVER32X
+        **self == OVERSAMPLE_A::OVER32X
     }
     #[doc = "Checks if the value of the field is `OVER64X`"]
     #[inline(always)]
     pub fn is_over64x(&self) -> bool {
-        *self == OVERSAMPLE_A::OVER64X
+        **self == OVERSAMPLE_A::OVER64X
     }
     #[doc = "Checks if the value of the field is `OVER128X`"]
     #[inline(always)]
     pub fn is_over128x(&self) -> bool {
-        *self == OVERSAMPLE_A::OVER128X
+        **self == OVERSAMPLE_A::OVER128X
     }
     #[doc = "Checks if the value of the field is `OVER256X`"]
     #[inline(always)]
     pub fn is_over256x(&self) -> bool {
-        *self == OVERSAMPLE_A::OVER256X
+        **self == OVERSAMPLE_A::OVER256X
     }
 }
-#[doc = "Write proxy for field `OVERSAMPLE`"]
+impl core::ops::Deref for OVERSAMPLE_R {
+    type Target = crate::FieldReader<u8, OVERSAMPLE_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OVERSAMPLE` writer - Oversample control"]
 pub struct OVERSAMPLE_W<'a> {
     w: &'a mut W,
 }
@@ -188,5 +211,30 @@ impl W {
     #[inline(always)]
     pub fn oversample(&mut self) -> OVERSAMPLE_W {
         OVERSAMPLE_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Oversampling configuration. OVERSAMPLE should not be combined with SCAN. The RESOLUTION is applied before averaging, thus for high OVERSAMPLE a higher RESOLUTION should be used.\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [oversample](index.html) module"]
+pub struct OVERSAMPLE_SPEC;
+impl crate::RegisterSpec for OVERSAMPLE_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [oversample::R](R) reader structure"]
+impl crate::Readable for OVERSAMPLE_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [oversample::W](W) writer structure"]
+impl crate::Writable for OVERSAMPLE_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets OVERSAMPLE to value 0"]
+impl crate::Resettable for OVERSAMPLE_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

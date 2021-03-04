@@ -1,38 +1,60 @@
-#[doc = "Reader of register CHANNELS"]
-pub type R = crate::R<u32, super::CHANNELS>;
-#[doc = "Writer for register CHANNELS"]
-pub type W = crate::W<u32, super::CHANNELS>;
-#[doc = "Register CHANNELS `reset()`'s with value 0"]
-impl crate::ResetValue for super::CHANNELS {
-    type Type = u32;
+#[doc = "Register `CHANNELS` reader"]
+pub struct R(crate::R<CHANNELS_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<CHANNELS_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<CHANNELS_SPEC>> for R {
+    fn from(reader: crate::R<CHANNELS_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `CHANNELS` writer"]
+pub struct W(crate::W<CHANNELS_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<CHANNELS_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<CHANNELS_SPEC>> for W {
+    fn from(writer: crate::W<CHANNELS_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "Enable channels\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
+#[repr(u8)]
 pub enum CHANNELS_A {
     #[doc = "0: Stereo."]
-    STEREO,
+    STEREO = 0,
     #[doc = "1: Left only."]
-    LEFT,
+    LEFT = 1,
     #[doc = "2: Right only."]
-    RIGHT,
+    RIGHT = 2,
 }
 impl From<CHANNELS_A> for u8 {
     #[inline(always)]
     fn from(variant: CHANNELS_A) -> Self {
-        match variant {
-            CHANNELS_A::STEREO => 0,
-            CHANNELS_A::LEFT => 1,
-            CHANNELS_A::RIGHT => 2,
-        }
+        variant as _
     }
 }
-#[doc = "Reader of field `CHANNELS`"]
-pub type CHANNELS_R = crate::R<u8, CHANNELS_A>;
+#[doc = "Field `CHANNELS` reader - Enable channels"]
+pub struct CHANNELS_R(crate::FieldReader<u8, CHANNELS_A>);
 impl CHANNELS_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        CHANNELS_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> crate::Variant<u8, CHANNELS_A> {
@@ -47,20 +69,27 @@ impl CHANNELS_R {
     #[doc = "Checks if the value of the field is `STEREO`"]
     #[inline(always)]
     pub fn is_stereo(&self) -> bool {
-        *self == CHANNELS_A::STEREO
+        **self == CHANNELS_A::STEREO
     }
     #[doc = "Checks if the value of the field is `LEFT`"]
     #[inline(always)]
     pub fn is_left(&self) -> bool {
-        *self == CHANNELS_A::LEFT
+        **self == CHANNELS_A::LEFT
     }
     #[doc = "Checks if the value of the field is `RIGHT`"]
     #[inline(always)]
     pub fn is_right(&self) -> bool {
-        *self == CHANNELS_A::RIGHT
+        **self == CHANNELS_A::RIGHT
     }
 }
-#[doc = "Write proxy for field `CHANNELS`"]
+impl core::ops::Deref for CHANNELS_R {
+    type Target = crate::FieldReader<u8, CHANNELS_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CHANNELS` writer - Enable channels"]
 pub struct CHANNELS_W<'a> {
     w: &'a mut W,
 }
@@ -104,5 +133,30 @@ impl W {
     #[inline(always)]
     pub fn channels(&mut self) -> CHANNELS_W {
         CHANNELS_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Enable channels\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [channels](index.html) module"]
+pub struct CHANNELS_SPEC;
+impl crate::RegisterSpec for CHANNELS_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [channels::R](R) reader structure"]
+impl crate::Readable for CHANNELS_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [channels::W](W) writer structure"]
+impl crate::Writable for CHANNELS_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets CHANNELS to value 0"]
+impl crate::Resettable for CHANNELS_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

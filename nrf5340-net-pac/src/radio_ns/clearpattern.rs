@@ -1,32 +1,55 @@
-#[doc = "Reader of register CLEARPATTERN"]
-pub type R = crate::R<u32, super::CLEARPATTERN>;
-#[doc = "Writer for register CLEARPATTERN"]
-pub type W = crate::W<u32, super::CLEARPATTERN>;
-#[doc = "Register CLEARPATTERN `reset()`'s with value 0"]
-impl crate::ResetValue for super::CLEARPATTERN {
-    type Type = u32;
+#[doc = "Register `CLEARPATTERN` reader"]
+pub struct R(crate::R<CLEARPATTERN_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<CLEARPATTERN_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<CLEARPATTERN_SPEC>> for R {
+    fn from(reader: crate::R<CLEARPATTERN_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `CLEARPATTERN` writer"]
+pub struct W(crate::W<CLEARPATTERN_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<CLEARPATTERN_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<CLEARPATTERN_SPEC>> for W {
+    fn from(writer: crate::W<CLEARPATTERN_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "Clears GPIO pattern array for antenna control\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CLEARPATTERN_A {
     #[doc = "1: Clear the GPIO pattern"]
-    CLEAR,
+    CLEAR = 1,
 }
 impl From<CLEARPATTERN_A> for bool {
     #[inline(always)]
     fn from(variant: CLEARPATTERN_A) -> Self {
-        match variant {
-            CLEARPATTERN_A::CLEAR => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `CLEARPATTERN`"]
-pub type CLEARPATTERN_R = crate::R<bool, CLEARPATTERN_A>;
+#[doc = "Field `CLEARPATTERN` reader - Clears GPIO pattern array for antenna control"]
+pub struct CLEARPATTERN_R(crate::FieldReader<bool, CLEARPATTERN_A>);
 impl CLEARPATTERN_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CLEARPATTERN_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> crate::Variant<bool, CLEARPATTERN_A> {
@@ -39,10 +62,17 @@ impl CLEARPATTERN_R {
     #[doc = "Checks if the value of the field is `CLEAR`"]
     #[inline(always)]
     pub fn is_clear(&self) -> bool {
-        *self == CLEARPATTERN_A::CLEAR
+        **self == CLEARPATTERN_A::CLEAR
     }
 }
-#[doc = "Write proxy for field `CLEARPATTERN`"]
+impl core::ops::Deref for CLEARPATTERN_R {
+    type Target = crate::FieldReader<bool, CLEARPATTERN_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CLEARPATTERN` writer - Clears GPIO pattern array for antenna control"]
 pub struct CLEARPATTERN_W<'a> {
     w: &'a mut W,
 }
@@ -50,9 +80,7 @@ impl<'a> CLEARPATTERN_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: CLEARPATTERN_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Clear the GPIO pattern"]
     #[inline(always)]
@@ -88,5 +116,30 @@ impl W {
     #[inline(always)]
     pub fn clearpattern(&mut self) -> CLEARPATTERN_W {
         CLEARPATTERN_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Clear the GPIO pattern array for antenna control\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [clearpattern](index.html) module"]
+pub struct CLEARPATTERN_SPEC;
+impl crate::RegisterSpec for CLEARPATTERN_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [clearpattern::R](R) reader structure"]
+impl crate::Readable for CLEARPATTERN_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [clearpattern::W](W) writer structure"]
+impl crate::Writable for CLEARPATTERN_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets CLEARPATTERN to value 0"]
+impl crate::Resettable for CLEARPATTERN_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

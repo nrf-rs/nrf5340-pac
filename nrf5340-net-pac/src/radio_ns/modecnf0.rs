@@ -1,35 +1,57 @@
-#[doc = "Reader of register MODECNF0"]
-pub type R = crate::R<u32, super::MODECNF0>;
-#[doc = "Writer for register MODECNF0"]
-pub type W = crate::W<u32, super::MODECNF0>;
-#[doc = "Register MODECNF0 `reset()`'s with value 0x0200"]
-impl crate::ResetValue for super::MODECNF0 {
-    type Type = u32;
+#[doc = "Register `MODECNF0` reader"]
+pub struct R(crate::R<MODECNF0_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<MODECNF0_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0x0200
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<MODECNF0_SPEC>> for R {
+    fn from(reader: crate::R<MODECNF0_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `MODECNF0` writer"]
+pub struct W(crate::W<MODECNF0_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<MODECNF0_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<MODECNF0_SPEC>> for W {
+    fn from(writer: crate::W<MODECNF0_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "Radio ramp-up time\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum RU_A {
     #[doc = "0: Default ramp-up time (tRXEN and tTXEN), compatible with firmware written for nRF51"]
-    DEFAULT,
-    #[doc = "1: Fast ramp-up (tRXEN,FAST and tTXEN,FAST), see electrical specification for more information"]
-    FAST,
+    DEFAULT = 0,
+    #[doc = "1: Fast ramp-up (tRXEN,FAST and tTXEN,FAST), see electrical specifications for more information"]
+    FAST = 1,
 }
 impl From<RU_A> for bool {
     #[inline(always)]
     fn from(variant: RU_A) -> Self {
-        match variant {
-            RU_A::DEFAULT => false,
-            RU_A::FAST => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `RU`"]
-pub type RU_R = crate::R<bool, RU_A>;
+#[doc = "Field `RU` reader - Radio ramp-up time"]
+pub struct RU_R(crate::FieldReader<bool, RU_A>);
 impl RU_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        RU_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> RU_A {
@@ -41,15 +63,22 @@ impl RU_R {
     #[doc = "Checks if the value of the field is `DEFAULT`"]
     #[inline(always)]
     pub fn is_default(&self) -> bool {
-        *self == RU_A::DEFAULT
+        **self == RU_A::DEFAULT
     }
     #[doc = "Checks if the value of the field is `FAST`"]
     #[inline(always)]
     pub fn is_fast(&self) -> bool {
-        *self == RU_A::FAST
+        **self == RU_A::FAST
     }
 }
-#[doc = "Write proxy for field `RU`"]
+impl core::ops::Deref for RU_R {
+    type Target = crate::FieldReader<bool, RU_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `RU` writer - Radio ramp-up time"]
 pub struct RU_W<'a> {
     w: &'a mut W,
 }
@@ -57,16 +86,14 @@ impl<'a> RU_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: RU_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Default ramp-up time (tRXEN and tTXEN), compatible with firmware written for nRF51"]
     #[inline(always)]
     pub fn default(self) -> &'a mut W {
         self.variant(RU_A::DEFAULT)
     }
-    #[doc = "Fast ramp-up (tRXEN,FAST and tTXEN,FAST), see electrical specification for more information"]
+    #[doc = "Fast ramp-up (tRXEN,FAST and tTXEN,FAST), see electrical specifications for more information"]
     #[inline(always)]
     pub fn fast(self) -> &'a mut W {
         self.variant(RU_A::FAST)
@@ -90,27 +117,27 @@ impl<'a> RU_W<'a> {
 }
 #[doc = "Default TX value\n\nValue on reset: 2"]
 #[derive(Clone, Copy, Debug, PartialEq)]
+#[repr(u8)]
 pub enum DTX_A {
     #[doc = "0: Transmit '1'"]
-    B1,
+    B1 = 0,
     #[doc = "1: Transmit '0'"]
-    B0,
+    B0 = 1,
     #[doc = "2: Transmit center frequency"]
-    CENTER,
+    CENTER = 2,
 }
 impl From<DTX_A> for u8 {
     #[inline(always)]
     fn from(variant: DTX_A) -> Self {
-        match variant {
-            DTX_A::B1 => 0,
-            DTX_A::B0 => 1,
-            DTX_A::CENTER => 2,
-        }
+        variant as _
     }
 }
-#[doc = "Reader of field `DTX`"]
-pub type DTX_R = crate::R<u8, DTX_A>;
+#[doc = "Field `DTX` reader - Default TX value"]
+pub struct DTX_R(crate::FieldReader<u8, DTX_A>);
 impl DTX_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        DTX_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> crate::Variant<u8, DTX_A> {
@@ -125,20 +152,27 @@ impl DTX_R {
     #[doc = "Checks if the value of the field is `B1`"]
     #[inline(always)]
     pub fn is_b1(&self) -> bool {
-        *self == DTX_A::B1
+        **self == DTX_A::B1
     }
     #[doc = "Checks if the value of the field is `B0`"]
     #[inline(always)]
     pub fn is_b0(&self) -> bool {
-        *self == DTX_A::B0
+        **self == DTX_A::B0
     }
     #[doc = "Checks if the value of the field is `CENTER`"]
     #[inline(always)]
     pub fn is_center(&self) -> bool {
-        *self == DTX_A::CENTER
+        **self == DTX_A::CENTER
     }
 }
-#[doc = "Write proxy for field `DTX`"]
+impl core::ops::Deref for DTX_R {
+    type Target = crate::FieldReader<u8, DTX_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `DTX` writer - Default TX value"]
 pub struct DTX_W<'a> {
     w: &'a mut W,
 }
@@ -192,5 +226,30 @@ impl W {
     #[inline(always)]
     pub fn dtx(&mut self) -> DTX_W {
         DTX_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Radio mode configuration register 0\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [modecnf0](index.html) module"]
+pub struct MODECNF0_SPEC;
+impl crate::RegisterSpec for MODECNF0_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [modecnf0::R](R) reader structure"]
+impl crate::Readable for MODECNF0_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [modecnf0::W](W) writer structure"]
+impl crate::Writable for MODECNF0_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets MODECNF0 to value 0x0200"]
+impl crate::Resettable for MODECNF0_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0x0200
     }
 }

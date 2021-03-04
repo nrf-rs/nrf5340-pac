@@ -1,35 +1,57 @@
-#[doc = "Reader of register INTENSET"]
-pub type R = crate::R<u32, super::INTENSET>;
-#[doc = "Writer for register INTENSET"]
-pub type W = crate::W<u32, super::INTENSET>;
-#[doc = "Register INTENSET `reset()`'s with value 0"]
-impl crate::ResetValue for super::INTENSET {
-    type Type = u32;
+#[doc = "Register `INTENSET` reader"]
+pub struct R(crate::R<INTENSET_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<INTENSET_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<INTENSET_SPEC>> for R {
+    fn from(reader: crate::R<INTENSET_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `INTENSET` writer"]
+pub struct W(crate::W<INTENSET_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<INTENSET_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<INTENSET_SPEC>> for W {
+    fn from(writer: crate::W<INTENSET_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "Write '1' to enable interrupt for event POFWARN\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum POFWARN_A {
     #[doc = "0: Read: Disabled"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Read: Enabled"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<POFWARN_A> for bool {
     #[inline(always)]
     fn from(variant: POFWARN_A) -> Self {
-        match variant {
-            POFWARN_A::DISABLED => false,
-            POFWARN_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `POFWARN`"]
-pub type POFWARN_R = crate::R<bool, POFWARN_A>;
+#[doc = "Field `POFWARN` reader - Write '1' to enable interrupt for event POFWARN"]
+pub struct POFWARN_R(crate::FieldReader<bool, POFWARN_A>);
 impl POFWARN_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        POFWARN_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> POFWARN_A {
@@ -41,29 +63,34 @@ impl POFWARN_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == POFWARN_A::DISABLED
+        **self == POFWARN_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == POFWARN_A::ENABLED
+        **self == POFWARN_A::ENABLED
+    }
+}
+impl core::ops::Deref for POFWARN_R {
+    type Target = crate::FieldReader<bool, POFWARN_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Write '1' to enable interrupt for event POFWARN\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum POFWARN_AW {
     #[doc = "1: Enable"]
-    SET,
+    SET = 1,
 }
 impl From<POFWARN_AW> for bool {
     #[inline(always)]
     fn from(variant: POFWARN_AW) -> Self {
-        match variant {
-            POFWARN_AW::SET => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Write proxy for field `POFWARN`"]
+#[doc = "Field `POFWARN` writer - Write '1' to enable interrupt for event POFWARN"]
 pub struct POFWARN_W<'a> {
     w: &'a mut W,
 }
@@ -71,9 +98,7 @@ impl<'a> POFWARN_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: POFWARN_AW) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Enable"]
     #[inline(always)]
@@ -101,22 +126,22 @@ impl<'a> POFWARN_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum SLEEPENTER_A {
     #[doc = "0: Read: Disabled"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Read: Enabled"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<SLEEPENTER_A> for bool {
     #[inline(always)]
     fn from(variant: SLEEPENTER_A) -> Self {
-        match variant {
-            SLEEPENTER_A::DISABLED => false,
-            SLEEPENTER_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `SLEEPENTER`"]
-pub type SLEEPENTER_R = crate::R<bool, SLEEPENTER_A>;
+#[doc = "Field `SLEEPENTER` reader - Write '1' to enable interrupt for event SLEEPENTER"]
+pub struct SLEEPENTER_R(crate::FieldReader<bool, SLEEPENTER_A>);
 impl SLEEPENTER_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        SLEEPENTER_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> SLEEPENTER_A {
@@ -128,29 +153,34 @@ impl SLEEPENTER_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == SLEEPENTER_A::DISABLED
+        **self == SLEEPENTER_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == SLEEPENTER_A::ENABLED
+        **self == SLEEPENTER_A::ENABLED
+    }
+}
+impl core::ops::Deref for SLEEPENTER_R {
+    type Target = crate::FieldReader<bool, SLEEPENTER_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Write '1' to enable interrupt for event SLEEPENTER\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum SLEEPENTER_AW {
     #[doc = "1: Enable"]
-    SET,
+    SET = 1,
 }
 impl From<SLEEPENTER_AW> for bool {
     #[inline(always)]
     fn from(variant: SLEEPENTER_AW) -> Self {
-        match variant {
-            SLEEPENTER_AW::SET => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Write proxy for field `SLEEPENTER`"]
+#[doc = "Field `SLEEPENTER` writer - Write '1' to enable interrupt for event SLEEPENTER"]
 pub struct SLEEPENTER_W<'a> {
     w: &'a mut W,
 }
@@ -158,9 +188,7 @@ impl<'a> SLEEPENTER_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: SLEEPENTER_AW) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Enable"]
     #[inline(always)]
@@ -188,22 +216,22 @@ impl<'a> SLEEPENTER_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum SLEEPEXIT_A {
     #[doc = "0: Read: Disabled"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Read: Enabled"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<SLEEPEXIT_A> for bool {
     #[inline(always)]
     fn from(variant: SLEEPEXIT_A) -> Self {
-        match variant {
-            SLEEPEXIT_A::DISABLED => false,
-            SLEEPEXIT_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `SLEEPEXIT`"]
-pub type SLEEPEXIT_R = crate::R<bool, SLEEPEXIT_A>;
+#[doc = "Field `SLEEPEXIT` reader - Write '1' to enable interrupt for event SLEEPEXIT"]
+pub struct SLEEPEXIT_R(crate::FieldReader<bool, SLEEPEXIT_A>);
 impl SLEEPEXIT_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        SLEEPEXIT_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> SLEEPEXIT_A {
@@ -215,29 +243,34 @@ impl SLEEPEXIT_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == SLEEPEXIT_A::DISABLED
+        **self == SLEEPEXIT_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == SLEEPEXIT_A::ENABLED
+        **self == SLEEPEXIT_A::ENABLED
+    }
+}
+impl core::ops::Deref for SLEEPEXIT_R {
+    type Target = crate::FieldReader<bool, SLEEPEXIT_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Write '1' to enable interrupt for event SLEEPEXIT\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum SLEEPEXIT_AW {
     #[doc = "1: Enable"]
-    SET,
+    SET = 1,
 }
 impl From<SLEEPEXIT_AW> for bool {
     #[inline(always)]
     fn from(variant: SLEEPEXIT_AW) -> Self {
-        match variant {
-            SLEEPEXIT_AW::SET => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Write proxy for field `SLEEPEXIT`"]
+#[doc = "Field `SLEEPEXIT` writer - Write '1' to enable interrupt for event SLEEPEXIT"]
 pub struct SLEEPEXIT_W<'a> {
     w: &'a mut W,
 }
@@ -245,9 +278,7 @@ impl<'a> SLEEPEXIT_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: SLEEPEXIT_AW) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Enable"]
     #[inline(always)]
@@ -303,5 +334,30 @@ impl W {
     #[inline(always)]
     pub fn sleepexit(&mut self) -> SLEEPEXIT_W {
         SLEEPEXIT_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Enable interrupt\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [intenset](index.html) module"]
+pub struct INTENSET_SPEC;
+impl crate::RegisterSpec for INTENSET_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [intenset::R](R) reader structure"]
+impl crate::Readable for INTENSET_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [intenset::W](W) writer structure"]
+impl crate::Writable for INTENSET_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets INTENSET to value 0"]
+impl crate::Resettable for INTENSET_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

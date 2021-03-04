@@ -1,35 +1,57 @@
-#[doc = "Reader of register PERM"]
-pub type R = crate::R<u32, super::PERM>;
-#[doc = "Writer for register PERM"]
-pub type W = crate::W<u32, super::PERM>;
-#[doc = "Register PERM `reset()`'s with value 0x17"]
-impl crate::ResetValue for super::PERM {
-    type Type = u32;
+#[doc = "Register `PERM` reader"]
+pub struct R(crate::R<PERM_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<PERM_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0x17
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<PERM_SPEC>> for R {
+    fn from(reader: crate::R<PERM_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `PERM` writer"]
+pub struct W(crate::W<PERM_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<PERM_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<PERM_SPEC>> for W {
+    fn from(writer: crate::W<PERM_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "Configure instruction fetch permissions from RAM region n\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum EXECUTE_A {
     #[doc = "1: Allow instruction fetches from RAM region n"]
-    ENABLE,
+    ENABLE = 1,
     #[doc = "0: Block instruction fetches from RAM region n"]
-    DISABLE,
+    DISABLE = 0,
 }
 impl From<EXECUTE_A> for bool {
     #[inline(always)]
     fn from(variant: EXECUTE_A) -> Self {
-        match variant {
-            EXECUTE_A::ENABLE => true,
-            EXECUTE_A::DISABLE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `EXECUTE`"]
-pub type EXECUTE_R = crate::R<bool, EXECUTE_A>;
+#[doc = "Field `EXECUTE` reader - Configure instruction fetch permissions from RAM region n"]
+pub struct EXECUTE_R(crate::FieldReader<bool, EXECUTE_A>);
 impl EXECUTE_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        EXECUTE_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> EXECUTE_A {
@@ -41,15 +63,22 @@ impl EXECUTE_R {
     #[doc = "Checks if the value of the field is `ENABLE`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
-        *self == EXECUTE_A::ENABLE
+        **self == EXECUTE_A::ENABLE
     }
     #[doc = "Checks if the value of the field is `DISABLE`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
-        *self == EXECUTE_A::DISABLE
+        **self == EXECUTE_A::DISABLE
     }
 }
-#[doc = "Write proxy for field `EXECUTE`"]
+impl core::ops::Deref for EXECUTE_R {
+    type Target = crate::FieldReader<bool, EXECUTE_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `EXECUTE` writer - Configure instruction fetch permissions from RAM region n"]
 pub struct EXECUTE_W<'a> {
     w: &'a mut W,
 }
@@ -57,9 +86,7 @@ impl<'a> EXECUTE_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: EXECUTE_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Allow instruction fetches from RAM region n"]
     #[inline(always)]
@@ -92,22 +119,22 @@ impl<'a> EXECUTE_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum WRITE_A {
     #[doc = "1: Allow write operation to RAM region n"]
-    ENABLE,
+    ENABLE = 1,
     #[doc = "0: Block write operation to RAM region n"]
-    DISABLE,
+    DISABLE = 0,
 }
 impl From<WRITE_A> for bool {
     #[inline(always)]
     fn from(variant: WRITE_A) -> Self {
-        match variant {
-            WRITE_A::ENABLE => true,
-            WRITE_A::DISABLE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `WRITE`"]
-pub type WRITE_R = crate::R<bool, WRITE_A>;
+#[doc = "Field `WRITE` reader - Configure write permission for RAM region n"]
+pub struct WRITE_R(crate::FieldReader<bool, WRITE_A>);
 impl WRITE_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        WRITE_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> WRITE_A {
@@ -119,15 +146,22 @@ impl WRITE_R {
     #[doc = "Checks if the value of the field is `ENABLE`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
-        *self == WRITE_A::ENABLE
+        **self == WRITE_A::ENABLE
     }
     #[doc = "Checks if the value of the field is `DISABLE`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
-        *self == WRITE_A::DISABLE
+        **self == WRITE_A::DISABLE
     }
 }
-#[doc = "Write proxy for field `WRITE`"]
+impl core::ops::Deref for WRITE_R {
+    type Target = crate::FieldReader<bool, WRITE_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `WRITE` writer - Configure write permission for RAM region n"]
 pub struct WRITE_W<'a> {
     w: &'a mut W,
 }
@@ -135,9 +169,7 @@ impl<'a> WRITE_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: WRITE_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Allow write operation to RAM region n"]
     #[inline(always)]
@@ -170,22 +202,22 @@ impl<'a> WRITE_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum READ_A {
     #[doc = "1: Allow read operation from RAM region n"]
-    ENABLE,
+    ENABLE = 1,
     #[doc = "0: Block read operation from RAM region n"]
-    DISABLE,
+    DISABLE = 0,
 }
 impl From<READ_A> for bool {
     #[inline(always)]
     fn from(variant: READ_A) -> Self {
-        match variant {
-            READ_A::ENABLE => true,
-            READ_A::DISABLE => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `READ`"]
-pub type READ_R = crate::R<bool, READ_A>;
+#[doc = "Field `READ` reader - Configure read permissions for RAM region n"]
+pub struct READ_R(crate::FieldReader<bool, READ_A>);
 impl READ_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        READ_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> READ_A {
@@ -197,15 +229,22 @@ impl READ_R {
     #[doc = "Checks if the value of the field is `ENABLE`"]
     #[inline(always)]
     pub fn is_enable(&self) -> bool {
-        *self == READ_A::ENABLE
+        **self == READ_A::ENABLE
     }
     #[doc = "Checks if the value of the field is `DISABLE`"]
     #[inline(always)]
     pub fn is_disable(&self) -> bool {
-        *self == READ_A::DISABLE
+        **self == READ_A::DISABLE
     }
 }
-#[doc = "Write proxy for field `READ`"]
+impl core::ops::Deref for READ_R {
+    type Target = crate::FieldReader<bool, READ_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `READ` writer - Configure read permissions for RAM region n"]
 pub struct READ_W<'a> {
     w: &'a mut W,
 }
@@ -213,9 +252,7 @@ impl<'a> READ_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: READ_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Allow read operation from RAM region n"]
     #[inline(always)]
@@ -248,22 +285,22 @@ impl<'a> READ_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum SECATTR_A {
     #[doc = "0: RAM region n security attribute is non-secure"]
-    NON_SECURE,
+    NON_SECURE = 0,
     #[doc = "1: RAM region n security attribute is secure"]
-    SECURE,
+    SECURE = 1,
 }
 impl From<SECATTR_A> for bool {
     #[inline(always)]
     fn from(variant: SECATTR_A) -> Self {
-        match variant {
-            SECATTR_A::NON_SECURE => false,
-            SECATTR_A::SECURE => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `SECATTR`"]
-pub type SECATTR_R = crate::R<bool, SECATTR_A>;
+#[doc = "Field `SECATTR` reader - Security attribute for RAM region n"]
+pub struct SECATTR_R(crate::FieldReader<bool, SECATTR_A>);
 impl SECATTR_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        SECATTR_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> SECATTR_A {
@@ -275,15 +312,22 @@ impl SECATTR_R {
     #[doc = "Checks if the value of the field is `NON_SECURE`"]
     #[inline(always)]
     pub fn is_non_secure(&self) -> bool {
-        *self == SECATTR_A::NON_SECURE
+        **self == SECATTR_A::NON_SECURE
     }
     #[doc = "Checks if the value of the field is `SECURE`"]
     #[inline(always)]
     pub fn is_secure(&self) -> bool {
-        *self == SECATTR_A::SECURE
+        **self == SECATTR_A::SECURE
     }
 }
-#[doc = "Write proxy for field `SECATTR`"]
+impl core::ops::Deref for SECATTR_R {
+    type Target = crate::FieldReader<bool, SECATTR_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `SECATTR` writer - Security attribute for RAM region n"]
 pub struct SECATTR_W<'a> {
     w: &'a mut W,
 }
@@ -291,9 +335,7 @@ impl<'a> SECATTR_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: SECATTR_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "RAM region n security attribute is non-secure"]
     #[inline(always)]
@@ -326,22 +368,22 @@ impl<'a> SECATTR_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum LOCK_A {
     #[doc = "0: This register can be updated"]
-    UNLOCKED,
+    UNLOCKED = 0,
     #[doc = "1: The content of this register can't be changed until the next reset"]
-    LOCKED,
+    LOCKED = 1,
 }
 impl From<LOCK_A> for bool {
     #[inline(always)]
     fn from(variant: LOCK_A) -> Self {
-        match variant {
-            LOCK_A::UNLOCKED => false,
-            LOCK_A::LOCKED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `LOCK`"]
-pub type LOCK_R = crate::R<bool, LOCK_A>;
+#[doc = "Field `LOCK` reader - "]
+pub struct LOCK_R(crate::FieldReader<bool, LOCK_A>);
 impl LOCK_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        LOCK_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> LOCK_A {
@@ -353,15 +395,22 @@ impl LOCK_R {
     #[doc = "Checks if the value of the field is `UNLOCKED`"]
     #[inline(always)]
     pub fn is_unlocked(&self) -> bool {
-        *self == LOCK_A::UNLOCKED
+        **self == LOCK_A::UNLOCKED
     }
     #[doc = "Checks if the value of the field is `LOCKED`"]
     #[inline(always)]
     pub fn is_locked(&self) -> bool {
-        *self == LOCK_A::LOCKED
+        **self == LOCK_A::LOCKED
     }
 }
-#[doc = "Write proxy for field `LOCK`"]
+impl core::ops::Deref for LOCK_R {
+    type Target = crate::FieldReader<bool, LOCK_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `LOCK` writer - "]
 pub struct LOCK_W<'a> {
     w: &'a mut W,
 }
@@ -369,9 +418,7 @@ impl<'a> LOCK_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: LOCK_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "This register can be updated"]
     #[inline(always)]
@@ -452,5 +499,30 @@ impl W {
     #[inline(always)]
     pub fn lock(&mut self) -> LOCK_W {
         LOCK_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Description cluster: Access permissions for RAM region n\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [perm](index.html) module"]
+pub struct PERM_SPEC;
+impl crate::RegisterSpec for PERM_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [perm::R](R) reader structure"]
+impl crate::Readable for PERM_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [perm::W](W) writer structure"]
+impl crate::Writable for PERM_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets PERM to value 0x17"]
+impl crate::Resettable for PERM_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0x17
     }
 }

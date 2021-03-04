@@ -1,29 +1,25 @@
-use self::keyslot::{KEY, CONFIG};
-
 #[doc = r"Register block"]
 #[repr(C)]
 pub struct RegisterBlock {
     #[doc = "0x00 - Access port protection"]
-    pub approtect: APPROTECT,
-    _reserved1: [u8; 8usize],
-    #[doc = "0x0c - Enable external circuitry to be supplied from VDD pin. Applicable in 'High voltage mode' only."]
-    pub extsupply: EXTSUPPLY,
-    #[doc = "0x10 - GPIO reference voltage / external output supply voltage in 'High voltage mode'."]
-    pub vreghvout: VREGHVOUT,
+    pub approtect: crate::Reg<approtect::APPROTECT_SPEC>,
+    _reserved1: [u8; 12usize],
+    #[doc = "0x10 - Output voltage from the high voltage (VREGH) regulator stage. The maximum output voltage from this stage is given as VDDH - VREGHDROP."]
+    pub vreghvout: crate::Reg<vreghvout::VREGHVOUT_SPEC>,
     #[doc = "0x14 - HFXO startup counter"]
-    pub hfxocnt: HFXOCNT,
-    _reserved4: [u8; 4usize],
+    pub hfxocnt: crate::Reg<hfxocnt::HFXOCNT_SPEC>,
+    _reserved3: [u8; 4usize],
     #[doc = "0x1c - Secure access port protection"]
-    pub secureapprotect: SECUREAPPROTECT,
+    pub secureapprotect: crate::Reg<secureapprotect::SECUREAPPROTECT_SPEC>,
     #[doc = "0x20 - Erase protection"]
-    pub eraseprotect: ERASEPROTECT,
+    pub eraseprotect: crate::Reg<eraseprotect::ERASEPROTECT_SPEC>,
     #[doc = "0x24 - SW-DP Target instance"]
-    pub tinstance: TINSTANCE,
+    pub tinstance: crate::Reg<tinstance::TINSTANCE_SPEC>,
     #[doc = "0x28 - Setting of pins dedicated to NFC functionality: NFC antenna or GPIO"]
-    pub nfcpins: NFCPINS,
-    _reserved8: [u8; 212usize],
+    pub nfcpins: crate::Reg<nfcpins::NFCPINS_SPEC>,
+    _reserved7: [u8; 212usize],
     #[doc = "0x100 - Description collection: One time programmable memory"]
-    pub otp: [OTP; 192],
+    pub otp: [crate::Reg<otp::OTP_SPEC>; 192],
     #[doc = "0x400 - Unspecified"]
     pub keyslot: KEYSLOT,
 }
@@ -31,109 +27,42 @@ pub struct RegisterBlock {
 #[repr(C)]
 pub struct KEYSLOT {
     #[doc = "0x00 - Unspecified"]
-    pub config: [CONFIG; 128],
+    pub config: [self::keyslot::CONFIG; 128],
     #[doc = "0x400 - Unspecified"]
-    pub key: [KEY; 128],
+    pub key: [self::keyslot::KEY; 128],
 }
 #[doc = r"Register block"]
 #[doc = "Unspecified"]
 pub mod keyslot;
-#[doc = "Access port protection\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [approtect](approtect) module"]
-pub type APPROTECT = crate::Reg<u32, _APPROTECT>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _APPROTECT;
-#[doc = "`read()` method returns [approtect::R](approtect::R) reader structure"]
-impl crate::Readable for APPROTECT {}
-#[doc = "`write(|w| ..)` method takes [approtect::W](approtect::W) writer structure"]
-impl crate::Writable for APPROTECT {}
+#[doc = "APPROTECT register accessor: an alias for `Reg<APPROTECT_SPEC>`"]
+pub type APPROTECT = crate::Reg<approtect::APPROTECT_SPEC>;
 #[doc = "Access port protection"]
 pub mod approtect;
-#[doc = "Enable external circuitry to be supplied from VDD pin. Applicable in 'High voltage mode' only.\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [extsupply](extsupply) module"]
-pub type EXTSUPPLY = crate::Reg<u32, _EXTSUPPLY>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _EXTSUPPLY;
-#[doc = "`read()` method returns [extsupply::R](extsupply::R) reader structure"]
-impl crate::Readable for EXTSUPPLY {}
-#[doc = "`write(|w| ..)` method takes [extsupply::W](extsupply::W) writer structure"]
-impl crate::Writable for EXTSUPPLY {}
-#[doc = "Enable external circuitry to be supplied from VDD pin. Applicable in 'High voltage mode' only."]
-pub mod extsupply;
-#[doc = "GPIO reference voltage / external output supply voltage in 'High voltage mode'.\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [vreghvout](vreghvout) module"]
-pub type VREGHVOUT = crate::Reg<u32, _VREGHVOUT>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _VREGHVOUT;
-#[doc = "`read()` method returns [vreghvout::R](vreghvout::R) reader structure"]
-impl crate::Readable for VREGHVOUT {}
-#[doc = "`write(|w| ..)` method takes [vreghvout::W](vreghvout::W) writer structure"]
-impl crate::Writable for VREGHVOUT {}
-#[doc = "GPIO reference voltage / external output supply voltage in 'High voltage mode'."]
+#[doc = "VREGHVOUT register accessor: an alias for `Reg<VREGHVOUT_SPEC>`"]
+pub type VREGHVOUT = crate::Reg<vreghvout::VREGHVOUT_SPEC>;
+#[doc = "Output voltage from the high voltage (VREGH) regulator stage. The maximum output voltage from this stage is given as VDDH - VREGHDROP."]
 pub mod vreghvout;
-#[doc = "HFXO startup counter\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [hfxocnt](hfxocnt) module"]
-pub type HFXOCNT = crate::Reg<u32, _HFXOCNT>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _HFXOCNT;
-#[doc = "`read()` method returns [hfxocnt::R](hfxocnt::R) reader structure"]
-impl crate::Readable for HFXOCNT {}
-#[doc = "`write(|w| ..)` method takes [hfxocnt::W](hfxocnt::W) writer structure"]
-impl crate::Writable for HFXOCNT {}
+#[doc = "HFXOCNT register accessor: an alias for `Reg<HFXOCNT_SPEC>`"]
+pub type HFXOCNT = crate::Reg<hfxocnt::HFXOCNT_SPEC>;
 #[doc = "HFXO startup counter"]
 pub mod hfxocnt;
-#[doc = "Secure access port protection\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [secureapprotect](secureapprotect) module"]
-pub type SECUREAPPROTECT = crate::Reg<u32, _SECUREAPPROTECT>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _SECUREAPPROTECT;
-#[doc = "`read()` method returns [secureapprotect::R](secureapprotect::R) reader structure"]
-impl crate::Readable for SECUREAPPROTECT {}
-#[doc = "`write(|w| ..)` method takes [secureapprotect::W](secureapprotect::W) writer structure"]
-impl crate::Writable for SECUREAPPROTECT {}
+#[doc = "SECUREAPPROTECT register accessor: an alias for `Reg<SECUREAPPROTECT_SPEC>`"]
+pub type SECUREAPPROTECT = crate::Reg<secureapprotect::SECUREAPPROTECT_SPEC>;
 #[doc = "Secure access port protection"]
 pub mod secureapprotect;
-#[doc = "Erase protection\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [eraseprotect](eraseprotect) module"]
-pub type ERASEPROTECT = crate::Reg<u32, _ERASEPROTECT>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _ERASEPROTECT;
-#[doc = "`read()` method returns [eraseprotect::R](eraseprotect::R) reader structure"]
-impl crate::Readable for ERASEPROTECT {}
-#[doc = "`write(|w| ..)` method takes [eraseprotect::W](eraseprotect::W) writer structure"]
-impl crate::Writable for ERASEPROTECT {}
+#[doc = "ERASEPROTECT register accessor: an alias for `Reg<ERASEPROTECT_SPEC>`"]
+pub type ERASEPROTECT = crate::Reg<eraseprotect::ERASEPROTECT_SPEC>;
 #[doc = "Erase protection"]
 pub mod eraseprotect;
-#[doc = "SW-DP Target instance\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [tinstance](tinstance) module"]
-pub type TINSTANCE = crate::Reg<u32, _TINSTANCE>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _TINSTANCE;
-#[doc = "`read()` method returns [tinstance::R](tinstance::R) reader structure"]
-impl crate::Readable for TINSTANCE {}
-#[doc = "`write(|w| ..)` method takes [tinstance::W](tinstance::W) writer structure"]
-impl crate::Writable for TINSTANCE {}
+#[doc = "TINSTANCE register accessor: an alias for `Reg<TINSTANCE_SPEC>`"]
+pub type TINSTANCE = crate::Reg<tinstance::TINSTANCE_SPEC>;
 #[doc = "SW-DP Target instance"]
 pub mod tinstance;
-#[doc = "Setting of pins dedicated to NFC functionality: NFC antenna or GPIO\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [nfcpins](nfcpins) module"]
-pub type NFCPINS = crate::Reg<u32, _NFCPINS>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _NFCPINS;
-#[doc = "`read()` method returns [nfcpins::R](nfcpins::R) reader structure"]
-impl crate::Readable for NFCPINS {}
-#[doc = "`write(|w| ..)` method takes [nfcpins::W](nfcpins::W) writer structure"]
-impl crate::Writable for NFCPINS {}
+#[doc = "NFCPINS register accessor: an alias for `Reg<NFCPINS_SPEC>`"]
+pub type NFCPINS = crate::Reg<nfcpins::NFCPINS_SPEC>;
 #[doc = "Setting of pins dedicated to NFC functionality: NFC antenna or GPIO"]
 pub mod nfcpins;
-#[doc = "Description collection: One time programmable memory\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [otp](otp) module"]
-pub type OTP = crate::Reg<u32, _OTP>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _OTP;
-#[doc = "`read()` method returns [otp::R](otp::R) reader structure"]
-impl crate::Readable for OTP {}
-#[doc = "`write(|w| ..)` method takes [otp::W](otp::W) writer structure"]
-impl crate::Writable for OTP {}
+#[doc = "OTP register accessor: an alias for `Reg<OTP_SPEC>`"]
+pub type OTP = crate::Reg<otp::OTP_SPEC>;
 #[doc = "Description collection: One time programmable memory"]
 pub mod otp;

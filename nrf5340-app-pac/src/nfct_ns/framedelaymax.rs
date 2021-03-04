@@ -1,18 +1,52 @@
-#[doc = "Reader of register FRAMEDELAYMAX"]
-pub type R = crate::R<u32, super::FRAMEDELAYMAX>;
-#[doc = "Writer for register FRAMEDELAYMAX"]
-pub type W = crate::W<u32, super::FRAMEDELAYMAX>;
-#[doc = "Register FRAMEDELAYMAX `reset()`'s with value 0x1000"]
-impl crate::ResetValue for super::FRAMEDELAYMAX {
-    type Type = u32;
+#[doc = "Register `FRAMEDELAYMAX` reader"]
+pub struct R(crate::R<FRAMEDELAYMAX_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<FRAMEDELAYMAX_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0x1000
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `FRAMEDELAYMAX`"]
-pub type FRAMEDELAYMAX_R = crate::R<u32, u32>;
-#[doc = "Write proxy for field `FRAMEDELAYMAX`"]
+impl core::convert::From<crate::R<FRAMEDELAYMAX_SPEC>> for R {
+    fn from(reader: crate::R<FRAMEDELAYMAX_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `FRAMEDELAYMAX` writer"]
+pub struct W(crate::W<FRAMEDELAYMAX_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<FRAMEDELAYMAX_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<FRAMEDELAYMAX_SPEC>> for W {
+    fn from(writer: crate::W<FRAMEDELAYMAX_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `FRAMEDELAYMAX` reader - Maximum frame delay in number of 13.56 MHz clock cycles"]
+pub struct FRAMEDELAYMAX_R(crate::FieldReader<u32, u32>);
+impl FRAMEDELAYMAX_R {
+    pub(crate) fn new(bits: u32) -> Self {
+        FRAMEDELAYMAX_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for FRAMEDELAYMAX_R {
+    type Target = crate::FieldReader<u32, u32>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `FRAMEDELAYMAX` writer - Maximum frame delay in number of 13.56 MHz clock cycles"]
 pub struct FRAMEDELAYMAX_W<'a> {
     w: &'a mut W,
 }
@@ -25,16 +59,41 @@ impl<'a> FRAMEDELAYMAX_W<'a> {
     }
 }
 impl R {
-    #[doc = "Bits 0:19 - Maximum frame delay in number of 13.56 MHz clocks"]
+    #[doc = "Bits 0:19 - Maximum frame delay in number of 13.56 MHz clock cycles"]
     #[inline(always)]
     pub fn framedelaymax(&self) -> FRAMEDELAYMAX_R {
         FRAMEDELAYMAX_R::new((self.bits & 0x000f_ffff) as u32)
     }
 }
 impl W {
-    #[doc = "Bits 0:19 - Maximum frame delay in number of 13.56 MHz clocks"]
+    #[doc = "Bits 0:19 - Maximum frame delay in number of 13.56 MHz clock cycles"]
     #[inline(always)]
     pub fn framedelaymax(&mut self) -> FRAMEDELAYMAX_W {
         FRAMEDELAYMAX_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Maximum frame delay\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [framedelaymax](index.html) module"]
+pub struct FRAMEDELAYMAX_SPEC;
+impl crate::RegisterSpec for FRAMEDELAYMAX_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [framedelaymax::R](R) reader structure"]
+impl crate::Readable for FRAMEDELAYMAX_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [framedelaymax::W](W) writer structure"]
+impl crate::Writable for FRAMEDELAYMAX_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets FRAMEDELAYMAX to value 0x1000"]
+impl crate::Resettable for FRAMEDELAYMAX_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0x1000
     }
 }

@@ -1,22 +1,8 @@
-#[doc = "Lock register APPROTECT.DISABLE from being written to until next reset\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [lock](lock) module"]
-pub type LOCK = crate::Reg<u32, _LOCK>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _LOCK;
-#[doc = "`read()` method returns [lock::R](lock::R) reader structure"]
-impl crate::Readable for LOCK {}
-#[doc = "`write(|w| ..)` method takes [lock::W](lock::W) writer structure"]
-impl crate::Writable for LOCK {}
-#[doc = "Lock register APPROTECT.DISABLE from being written to until next reset"]
+#[doc = "LOCK register accessor: an alias for `Reg<LOCK_SPEC>`"]
+pub type LOCK = crate::Reg<lock::LOCK_SPEC>;
+#[doc = "This register locks the APPROTECT.DISABLE register from being written to until next reset."]
 pub mod lock;
-#[doc = "Disable APPROTECT and enable debug access to non-secure mode\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [disable](disable) module"]
-pub type DISABLE = crate::Reg<u32, _DISABLE>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _DISABLE;
-#[doc = "`read()` method returns [disable::R](disable::R) reader structure"]
-impl crate::Readable for DISABLE {}
-#[doc = "`write(|w| ..)` method takes [disable::W](disable::W) writer structure"]
-impl crate::Writable for DISABLE {}
-#[doc = "Disable APPROTECT and enable debug access to non-secure mode"]
+#[doc = "DISABLE register accessor: an alias for `Reg<DISABLE_SPEC>`"]
+pub type DISABLE = crate::Reg<disable::DISABLE_SPEC>;
+#[doc = "This register disables the APPROTECT register and enables debug access to non-secure mode."]
 pub mod disable;

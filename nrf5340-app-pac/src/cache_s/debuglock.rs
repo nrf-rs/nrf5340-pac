@@ -1,35 +1,57 @@
-#[doc = "Reader of register DEBUGLOCK"]
-pub type R = crate::R<u32, super::DEBUGLOCK>;
-#[doc = "Writer for register DEBUGLOCK"]
-pub type W = crate::W<u32, super::DEBUGLOCK>;
-#[doc = "Register DEBUGLOCK `reset()`'s with value 0"]
-impl crate::ResetValue for super::DEBUGLOCK {
-    type Type = u32;
+#[doc = "Register `DEBUGLOCK` reader"]
+pub struct R(crate::R<DEBUGLOCK_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<DEBUGLOCK_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<DEBUGLOCK_SPEC>> for R {
+    fn from(reader: crate::R<DEBUGLOCK_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `DEBUGLOCK` writer"]
+pub struct W(crate::W<DEBUGLOCK_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<DEBUGLOCK_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<DEBUGLOCK_SPEC>> for W {
+    fn from(writer: crate::W<DEBUGLOCK_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "Lock debug mode\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DEBUGLOCK_A {
     #[doc = "0: Debug mode unlocked"]
-    UNLOCKED,
+    UNLOCKED = 0,
     #[doc = "1: Debug mode locked"]
-    LOCKED,
+    LOCKED = 1,
 }
 impl From<DEBUGLOCK_A> for bool {
     #[inline(always)]
     fn from(variant: DEBUGLOCK_A) -> Self {
-        match variant {
-            DEBUGLOCK_A::UNLOCKED => false,
-            DEBUGLOCK_A::LOCKED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `DEBUGLOCK`"]
-pub type DEBUGLOCK_R = crate::R<bool, DEBUGLOCK_A>;
+#[doc = "Field `DEBUGLOCK` reader - Lock debug mode"]
+pub struct DEBUGLOCK_R(crate::FieldReader<bool, DEBUGLOCK_A>);
 impl DEBUGLOCK_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DEBUGLOCK_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> DEBUGLOCK_A {
@@ -41,15 +63,22 @@ impl DEBUGLOCK_R {
     #[doc = "Checks if the value of the field is `UNLOCKED`"]
     #[inline(always)]
     pub fn is_unlocked(&self) -> bool {
-        *self == DEBUGLOCK_A::UNLOCKED
+        **self == DEBUGLOCK_A::UNLOCKED
     }
     #[doc = "Checks if the value of the field is `LOCKED`"]
     #[inline(always)]
     pub fn is_locked(&self) -> bool {
-        *self == DEBUGLOCK_A::LOCKED
+        **self == DEBUGLOCK_A::LOCKED
     }
 }
-#[doc = "Write proxy for field `DEBUGLOCK`"]
+impl core::ops::Deref for DEBUGLOCK_R {
+    type Target = crate::FieldReader<bool, DEBUGLOCK_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `DEBUGLOCK` writer - Lock debug mode"]
 pub struct DEBUGLOCK_W<'a> {
     w: &'a mut W,
 }
@@ -57,9 +86,7 @@ impl<'a> DEBUGLOCK_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: DEBUGLOCK_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Debug mode unlocked"]
     #[inline(always)]
@@ -100,5 +127,30 @@ impl W {
     #[inline(always)]
     pub fn debuglock(&mut self) -> DEBUGLOCK_W {
         DEBUGLOCK_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Lock debug mode.\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [debuglock](index.html) module"]
+pub struct DEBUGLOCK_SPEC;
+impl crate::RegisterSpec for DEBUGLOCK_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [debuglock::R](R) reader structure"]
+impl crate::Readable for DEBUGLOCK_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [debuglock::W](W) writer structure"]
+impl crate::Writable for DEBUGLOCK_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets DEBUGLOCK to value 0"]
+impl crate::Resettable for DEBUGLOCK_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

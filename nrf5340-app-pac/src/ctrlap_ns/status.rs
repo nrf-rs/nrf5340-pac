@@ -1,25 +1,129 @@
-#[doc = "Reader of register STATUS"]
-pub type R = crate::R<u32, super::STATUS>;
+#[doc = "Register `STATUS` reader"]
+pub struct R(crate::R<STATUS_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<STATUS_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<STATUS_SPEC>> for R {
+    fn from(reader: crate::R<STATUS_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Status bit for UICR part of access port protection at last reset.\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum UICRAPPROTECT_A {
+    #[doc = "0: APPROTECT was enabled in UICR"]
+    ENABLED = 0,
+    #[doc = "1: APPROTECT wasdisabled in UICR"]
+    DISABLED = 1,
+}
+impl From<UICRAPPROTECT_A> for bool {
+    #[inline(always)]
+    fn from(variant: UICRAPPROTECT_A) -> Self {
+        variant as u8 != 0
+    }
+}
+#[doc = "Field `UICRAPPROTECT` reader - Status bit for UICR part of access port protection at last reset."]
+pub struct UICRAPPROTECT_R(crate::FieldReader<bool, UICRAPPROTECT_A>);
+impl UICRAPPROTECT_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        UICRAPPROTECT_R(crate::FieldReader::new(bits))
+    }
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> UICRAPPROTECT_A {
+        match self.bits {
+            false => UICRAPPROTECT_A::ENABLED,
+            true => UICRAPPROTECT_A::DISABLED,
+        }
+    }
+    #[doc = "Checks if the value of the field is `ENABLED`"]
+    #[inline(always)]
+    pub fn is_enabled(&self) -> bool {
+        **self == UICRAPPROTECT_A::ENABLED
+    }
+    #[doc = "Checks if the value of the field is `DISABLED`"]
+    #[inline(always)]
+    pub fn is_disabled(&self) -> bool {
+        **self == UICRAPPROTECT_A::DISABLED
+    }
+}
+impl core::ops::Deref for UICRAPPROTECT_R {
+    type Target = crate::FieldReader<bool, UICRAPPROTECT_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Status bit for UICR part of secure access port protection at last reset.\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum UICRSECUREAPPROTECT_A {
+    #[doc = "0: SECUREAPPROTECT was enabled in UICR"]
+    ENABLED = 0,
+    #[doc = "1: SECUREAPPROTECT was disabled in UICR"]
+    DISABLED = 1,
+}
+impl From<UICRSECUREAPPROTECT_A> for bool {
+    #[inline(always)]
+    fn from(variant: UICRSECUREAPPROTECT_A) -> Self {
+        variant as u8 != 0
+    }
+}
+#[doc = "Field `UICRSECUREAPPROTECT` reader - Status bit for UICR part of secure access port protection at last reset."]
+pub struct UICRSECUREAPPROTECT_R(crate::FieldReader<bool, UICRSECUREAPPROTECT_A>);
+impl UICRSECUREAPPROTECT_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        UICRSECUREAPPROTECT_R(crate::FieldReader::new(bits))
+    }
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> UICRSECUREAPPROTECT_A {
+        match self.bits {
+            false => UICRSECUREAPPROTECT_A::ENABLED,
+            true => UICRSECUREAPPROTECT_A::DISABLED,
+        }
+    }
+    #[doc = "Checks if the value of the field is `ENABLED`"]
+    #[inline(always)]
+    pub fn is_enabled(&self) -> bool {
+        **self == UICRSECUREAPPROTECT_A::ENABLED
+    }
+    #[doc = "Checks if the value of the field is `DISABLED`"]
+    #[inline(always)]
+    pub fn is_disabled(&self) -> bool {
+        **self == UICRSECUREAPPROTECT_A::DISABLED
+    }
+}
+impl core::ops::Deref for UICRSECUREAPPROTECT_R {
+    type Target = crate::FieldReader<bool, UICRSECUREAPPROTECT_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Status bit for device debug interface mode\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DBGIFACEMODE_A {
     #[doc = "0: No debugger attached"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Debugger is attached and device is in debug interface mode"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<DBGIFACEMODE_A> for bool {
     #[inline(always)]
     fn from(variant: DBGIFACEMODE_A) -> Self {
-        match variant {
-            DBGIFACEMODE_A::DISABLED => false,
-            DBGIFACEMODE_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `DBGIFACEMODE`"]
-pub type DBGIFACEMODE_R = crate::R<bool, DBGIFACEMODE_A>;
+#[doc = "Field `DBGIFACEMODE` reader - Status bit for device debug interface mode"]
+pub struct DBGIFACEMODE_R(crate::FieldReader<bool, DBGIFACEMODE_A>);
 impl DBGIFACEMODE_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DBGIFACEMODE_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> DBGIFACEMODE_A {
@@ -31,106 +135,51 @@ impl DBGIFACEMODE_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == DBGIFACEMODE_A::DISABLED
+        **self == DBGIFACEMODE_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == DBGIFACEMODE_A::ENABLED
+        **self == DBGIFACEMODE_A::ENABLED
     }
 }
-#[doc = "Status bit for access port protection in non-secure mode\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum APPROTECT_A {
-    #[doc = "0: Non-secure mode access port protection is currently disabled"]
-    DISABLED,
-    #[doc = "1: Non-secure mode access port protection is currently enabled"]
-    ENABLED,
-}
-impl From<APPROTECT_A> for bool {
+impl core::ops::Deref for DBGIFACEMODE_R {
+    type Target = crate::FieldReader<bool, DBGIFACEMODE_A>;
     #[inline(always)]
-    fn from(variant: APPROTECT_A) -> Self {
-        match variant {
-            APPROTECT_A::DISABLED => false,
-            APPROTECT_A::ENABLED => true,
-        }
-    }
-}
-#[doc = "Reader of field `APPROTECT`"]
-pub type APPROTECT_R = crate::R<bool, APPROTECT_A>;
-impl APPROTECT_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> APPROTECT_A {
-        match self.bits {
-            false => APPROTECT_A::DISABLED,
-            true => APPROTECT_A::ENABLED,
-        }
-    }
-    #[doc = "Checks if the value of the field is `DISABLED`"]
-    #[inline(always)]
-    pub fn is_disabled(&self) -> bool {
-        *self == APPROTECT_A::DISABLED
-    }
-    #[doc = "Checks if the value of the field is `ENABLED`"]
-    #[inline(always)]
-    pub fn is_enabled(&self) -> bool {
-        *self == APPROTECT_A::ENABLED
-    }
-}
-#[doc = "Status bit for access port protection in secure mode\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SECUREAPPROTECT_A {
-    #[doc = "0: Secure mode access port protection is currently disabled"]
-    DISABLED,
-    #[doc = "1: Secure mode access port protection is currently enabled"]
-    ENABLED,
-}
-impl From<SECUREAPPROTECT_A> for bool {
-    #[inline(always)]
-    fn from(variant: SECUREAPPROTECT_A) -> Self {
-        match variant {
-            SECUREAPPROTECT_A::DISABLED => false,
-            SECUREAPPROTECT_A::ENABLED => true,
-        }
-    }
-}
-#[doc = "Reader of field `SECUREAPPROTECT`"]
-pub type SECUREAPPROTECT_R = crate::R<bool, SECUREAPPROTECT_A>;
-impl SECUREAPPROTECT_R {
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SECUREAPPROTECT_A {
-        match self.bits {
-            false => SECUREAPPROTECT_A::DISABLED,
-            true => SECUREAPPROTECT_A::ENABLED,
-        }
-    }
-    #[doc = "Checks if the value of the field is `DISABLED`"]
-    #[inline(always)]
-    pub fn is_disabled(&self) -> bool {
-        *self == SECUREAPPROTECT_A::DISABLED
-    }
-    #[doc = "Checks if the value of the field is `ENABLED`"]
-    #[inline(always)]
-    pub fn is_enabled(&self) -> bool {
-        *self == SECUREAPPROTECT_A::ENABLED
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 impl R {
-    #[doc = "Bit 0 - Status bit for device debug interface mode"]
+    #[doc = "Bit 0 - Status bit for UICR part of access port protection at last reset."]
+    #[inline(always)]
+    pub fn uicrapprotect(&self) -> UICRAPPROTECT_R {
+        UICRAPPROTECT_R::new((self.bits & 0x01) != 0)
+    }
+    #[doc = "Bit 1 - Status bit for UICR part of secure access port protection at last reset."]
+    #[inline(always)]
+    pub fn uicrsecureapprotect(&self) -> UICRSECUREAPPROTECT_R {
+        UICRSECUREAPPROTECT_R::new(((self.bits >> 1) & 0x01) != 0)
+    }
+    #[doc = "Bit 2 - Status bit for device debug interface mode"]
     #[inline(always)]
     pub fn dbgifacemode(&self) -> DBGIFACEMODE_R {
-        DBGIFACEMODE_R::new((self.bits & 0x01) != 0)
+        DBGIFACEMODE_R::new(((self.bits >> 2) & 0x01) != 0)
     }
-    #[doc = "Bit 1 - Status bit for access port protection in non-secure mode"]
+}
+#[doc = "Status bits for CTRL-AP peripheral.\n\nThis register you can [`read`](crate::generic::Reg::read). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [status](index.html) module"]
+pub struct STATUS_SPEC;
+impl crate::RegisterSpec for STATUS_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [status::R](R) reader structure"]
+impl crate::Readable for STATUS_SPEC {
+    type Reader = R;
+}
+#[doc = "`reset()` method sets STATUS to value 0"]
+impl crate::Resettable for STATUS_SPEC {
     #[inline(always)]
-    pub fn approtect(&self) -> APPROTECT_R {
-        APPROTECT_R::new(((self.bits >> 1) & 0x01) != 0)
-    }
-    #[doc = "Bit 2 - Status bit for access port protection in secure mode"]
-    #[inline(always)]
-    pub fn secureapprotect(&self) -> SECUREAPPROTECT_R {
-        SECUREAPPROTECT_R::new(((self.bits >> 2) & 0x01) != 0)
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

@@ -1,35 +1,57 @@
-#[doc = "Reader of register CONFIG"]
-pub type R = crate::R<u32, super::CONFIG>;
-#[doc = "Writer for register CONFIG"]
-pub type W = crate::W<u32, super::CONFIG>;
-#[doc = "Register CONFIG `reset()`'s with value 0x01"]
-impl crate::ResetValue for super::CONFIG {
-    type Type = u32;
+#[doc = "Register `CONFIG` reader"]
+pub struct R(crate::R<CONFIG_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<CONFIG_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0x01
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<CONFIG_SPEC>> for R {
+    fn from(reader: crate::R<CONFIG_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `CONFIG` writer"]
+pub struct W(crate::W<CONFIG_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<CONFIG_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<CONFIG_SPEC>> for W {
+    fn from(writer: crate::W<CONFIG_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "Enable or disable address matching on ADDRESS\\[0\\]\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum ADDRESS0_A {
     #[doc = "0: Disabled"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Enabled"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<ADDRESS0_A> for bool {
     #[inline(always)]
     fn from(variant: ADDRESS0_A) -> Self {
-        match variant {
-            ADDRESS0_A::DISABLED => false,
-            ADDRESS0_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `ADDRESS0`"]
-pub type ADDRESS0_R = crate::R<bool, ADDRESS0_A>;
+#[doc = "Field `ADDRESS0` reader - Enable or disable address matching on ADDRESS\\[0\\]"]
+pub struct ADDRESS0_R(crate::FieldReader<bool, ADDRESS0_A>);
 impl ADDRESS0_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        ADDRESS0_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> ADDRESS0_A {
@@ -41,15 +63,22 @@ impl ADDRESS0_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == ADDRESS0_A::DISABLED
+        **self == ADDRESS0_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == ADDRESS0_A::ENABLED
+        **self == ADDRESS0_A::ENABLED
     }
 }
-#[doc = "Write proxy for field `ADDRESS0`"]
+impl core::ops::Deref for ADDRESS0_R {
+    type Target = crate::FieldReader<bool, ADDRESS0_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `ADDRESS0` writer - Enable or disable address matching on ADDRESS\\[0\\]"]
 pub struct ADDRESS0_W<'a> {
     w: &'a mut W,
 }
@@ -57,9 +86,7 @@ impl<'a> ADDRESS0_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: ADDRESS0_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disabled"]
     #[inline(always)]
@@ -92,22 +119,22 @@ impl<'a> ADDRESS0_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum ADDRESS1_A {
     #[doc = "0: Disabled"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Enabled"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<ADDRESS1_A> for bool {
     #[inline(always)]
     fn from(variant: ADDRESS1_A) -> Self {
-        match variant {
-            ADDRESS1_A::DISABLED => false,
-            ADDRESS1_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `ADDRESS1`"]
-pub type ADDRESS1_R = crate::R<bool, ADDRESS1_A>;
+#[doc = "Field `ADDRESS1` reader - Enable or disable address matching on ADDRESS\\[1\\]"]
+pub struct ADDRESS1_R(crate::FieldReader<bool, ADDRESS1_A>);
 impl ADDRESS1_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        ADDRESS1_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> ADDRESS1_A {
@@ -119,15 +146,22 @@ impl ADDRESS1_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == ADDRESS1_A::DISABLED
+        **self == ADDRESS1_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == ADDRESS1_A::ENABLED
+        **self == ADDRESS1_A::ENABLED
     }
 }
-#[doc = "Write proxy for field `ADDRESS1`"]
+impl core::ops::Deref for ADDRESS1_R {
+    type Target = crate::FieldReader<bool, ADDRESS1_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `ADDRESS1` writer - Enable or disable address matching on ADDRESS\\[1\\]"]
 pub struct ADDRESS1_W<'a> {
     w: &'a mut W,
 }
@@ -135,9 +169,7 @@ impl<'a> ADDRESS1_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: ADDRESS1_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disabled"]
     #[inline(always)]
@@ -188,5 +220,30 @@ impl W {
     #[inline(always)]
     pub fn address1(&mut self) -> ADDRESS1_W {
         ADDRESS1_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Configuration register for the address match mechanism\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [config](index.html) module"]
+pub struct CONFIG_SPEC;
+impl crate::RegisterSpec for CONFIG_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [config::R](R) reader structure"]
+impl crate::Readable for CONFIG_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [config::W](W) writer structure"]
+impl crate::Writable for CONFIG_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets CONFIG to value 0x01"]
+impl crate::Resettable for CONFIG_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0x01
     }
 }

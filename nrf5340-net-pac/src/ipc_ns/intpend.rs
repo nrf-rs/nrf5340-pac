@@ -1,25 +1,37 @@
-#[doc = "Reader of register INTPEND"]
-pub type R = crate::R<u32, super::INTPEND>;
+#[doc = "Register `INTPEND` reader"]
+pub struct R(crate::R<INTPEND_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<INTPEND_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<INTPEND_SPEC>> for R {
+    fn from(reader: crate::R<INTPEND_SPEC>) -> Self {
+        R(reader)
+    }
+}
 #[doc = "Read pending status of interrupt for event RECEIVE\\[0\\]\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum RECEIVE0_A {
     #[doc = "0: Read: Not pending"]
-    NOTPENDING,
+    NOTPENDING = 0,
     #[doc = "1: Read: Pending"]
-    PENDING,
+    PENDING = 1,
 }
 impl From<RECEIVE0_A> for bool {
     #[inline(always)]
     fn from(variant: RECEIVE0_A) -> Self {
-        match variant {
-            RECEIVE0_A::NOTPENDING => false,
-            RECEIVE0_A::PENDING => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `RECEIVE0`"]
-pub type RECEIVE0_R = crate::R<bool, RECEIVE0_A>;
+#[doc = "Field `RECEIVE0` reader - Read pending status of interrupt for event RECEIVE\\[0\\]"]
+pub struct RECEIVE0_R(crate::FieldReader<bool, RECEIVE0_A>);
 impl RECEIVE0_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        RECEIVE0_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> RECEIVE0_A {
@@ -31,34 +43,41 @@ impl RECEIVE0_R {
     #[doc = "Checks if the value of the field is `NOTPENDING`"]
     #[inline(always)]
     pub fn is_not_pending(&self) -> bool {
-        *self == RECEIVE0_A::NOTPENDING
+        **self == RECEIVE0_A::NOTPENDING
     }
     #[doc = "Checks if the value of the field is `PENDING`"]
     #[inline(always)]
     pub fn is_pending(&self) -> bool {
-        *self == RECEIVE0_A::PENDING
+        **self == RECEIVE0_A::PENDING
+    }
+}
+impl core::ops::Deref for RECEIVE0_R {
+    type Target = crate::FieldReader<bool, RECEIVE0_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Read pending status of interrupt for event RECEIVE\\[1\\]\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum RECEIVE1_A {
     #[doc = "0: Read: Not pending"]
-    NOTPENDING,
+    NOTPENDING = 0,
     #[doc = "1: Read: Pending"]
-    PENDING,
+    PENDING = 1,
 }
 impl From<RECEIVE1_A> for bool {
     #[inline(always)]
     fn from(variant: RECEIVE1_A) -> Self {
-        match variant {
-            RECEIVE1_A::NOTPENDING => false,
-            RECEIVE1_A::PENDING => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `RECEIVE1`"]
-pub type RECEIVE1_R = crate::R<bool, RECEIVE1_A>;
+#[doc = "Field `RECEIVE1` reader - Read pending status of interrupt for event RECEIVE\\[1\\]"]
+pub struct RECEIVE1_R(crate::FieldReader<bool, RECEIVE1_A>);
 impl RECEIVE1_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        RECEIVE1_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> RECEIVE1_A {
@@ -70,34 +89,41 @@ impl RECEIVE1_R {
     #[doc = "Checks if the value of the field is `NOTPENDING`"]
     #[inline(always)]
     pub fn is_not_pending(&self) -> bool {
-        *self == RECEIVE1_A::NOTPENDING
+        **self == RECEIVE1_A::NOTPENDING
     }
     #[doc = "Checks if the value of the field is `PENDING`"]
     #[inline(always)]
     pub fn is_pending(&self) -> bool {
-        *self == RECEIVE1_A::PENDING
+        **self == RECEIVE1_A::PENDING
+    }
+}
+impl core::ops::Deref for RECEIVE1_R {
+    type Target = crate::FieldReader<bool, RECEIVE1_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Read pending status of interrupt for event RECEIVE\\[2\\]\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum RECEIVE2_A {
     #[doc = "0: Read: Not pending"]
-    NOTPENDING,
+    NOTPENDING = 0,
     #[doc = "1: Read: Pending"]
-    PENDING,
+    PENDING = 1,
 }
 impl From<RECEIVE2_A> for bool {
     #[inline(always)]
     fn from(variant: RECEIVE2_A) -> Self {
-        match variant {
-            RECEIVE2_A::NOTPENDING => false,
-            RECEIVE2_A::PENDING => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `RECEIVE2`"]
-pub type RECEIVE2_R = crate::R<bool, RECEIVE2_A>;
+#[doc = "Field `RECEIVE2` reader - Read pending status of interrupt for event RECEIVE\\[2\\]"]
+pub struct RECEIVE2_R(crate::FieldReader<bool, RECEIVE2_A>);
 impl RECEIVE2_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        RECEIVE2_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> RECEIVE2_A {
@@ -109,34 +135,41 @@ impl RECEIVE2_R {
     #[doc = "Checks if the value of the field is `NOTPENDING`"]
     #[inline(always)]
     pub fn is_not_pending(&self) -> bool {
-        *self == RECEIVE2_A::NOTPENDING
+        **self == RECEIVE2_A::NOTPENDING
     }
     #[doc = "Checks if the value of the field is `PENDING`"]
     #[inline(always)]
     pub fn is_pending(&self) -> bool {
-        *self == RECEIVE2_A::PENDING
+        **self == RECEIVE2_A::PENDING
+    }
+}
+impl core::ops::Deref for RECEIVE2_R {
+    type Target = crate::FieldReader<bool, RECEIVE2_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Read pending status of interrupt for event RECEIVE\\[3\\]\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum RECEIVE3_A {
     #[doc = "0: Read: Not pending"]
-    NOTPENDING,
+    NOTPENDING = 0,
     #[doc = "1: Read: Pending"]
-    PENDING,
+    PENDING = 1,
 }
 impl From<RECEIVE3_A> for bool {
     #[inline(always)]
     fn from(variant: RECEIVE3_A) -> Self {
-        match variant {
-            RECEIVE3_A::NOTPENDING => false,
-            RECEIVE3_A::PENDING => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `RECEIVE3`"]
-pub type RECEIVE3_R = crate::R<bool, RECEIVE3_A>;
+#[doc = "Field `RECEIVE3` reader - Read pending status of interrupt for event RECEIVE\\[3\\]"]
+pub struct RECEIVE3_R(crate::FieldReader<bool, RECEIVE3_A>);
 impl RECEIVE3_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        RECEIVE3_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> RECEIVE3_A {
@@ -148,34 +181,41 @@ impl RECEIVE3_R {
     #[doc = "Checks if the value of the field is `NOTPENDING`"]
     #[inline(always)]
     pub fn is_not_pending(&self) -> bool {
-        *self == RECEIVE3_A::NOTPENDING
+        **self == RECEIVE3_A::NOTPENDING
     }
     #[doc = "Checks if the value of the field is `PENDING`"]
     #[inline(always)]
     pub fn is_pending(&self) -> bool {
-        *self == RECEIVE3_A::PENDING
+        **self == RECEIVE3_A::PENDING
+    }
+}
+impl core::ops::Deref for RECEIVE3_R {
+    type Target = crate::FieldReader<bool, RECEIVE3_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Read pending status of interrupt for event RECEIVE\\[4\\]\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum RECEIVE4_A {
     #[doc = "0: Read: Not pending"]
-    NOTPENDING,
+    NOTPENDING = 0,
     #[doc = "1: Read: Pending"]
-    PENDING,
+    PENDING = 1,
 }
 impl From<RECEIVE4_A> for bool {
     #[inline(always)]
     fn from(variant: RECEIVE4_A) -> Self {
-        match variant {
-            RECEIVE4_A::NOTPENDING => false,
-            RECEIVE4_A::PENDING => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `RECEIVE4`"]
-pub type RECEIVE4_R = crate::R<bool, RECEIVE4_A>;
+#[doc = "Field `RECEIVE4` reader - Read pending status of interrupt for event RECEIVE\\[4\\]"]
+pub struct RECEIVE4_R(crate::FieldReader<bool, RECEIVE4_A>);
 impl RECEIVE4_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        RECEIVE4_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> RECEIVE4_A {
@@ -187,34 +227,41 @@ impl RECEIVE4_R {
     #[doc = "Checks if the value of the field is `NOTPENDING`"]
     #[inline(always)]
     pub fn is_not_pending(&self) -> bool {
-        *self == RECEIVE4_A::NOTPENDING
+        **self == RECEIVE4_A::NOTPENDING
     }
     #[doc = "Checks if the value of the field is `PENDING`"]
     #[inline(always)]
     pub fn is_pending(&self) -> bool {
-        *self == RECEIVE4_A::PENDING
+        **self == RECEIVE4_A::PENDING
+    }
+}
+impl core::ops::Deref for RECEIVE4_R {
+    type Target = crate::FieldReader<bool, RECEIVE4_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Read pending status of interrupt for event RECEIVE\\[5\\]\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum RECEIVE5_A {
     #[doc = "0: Read: Not pending"]
-    NOTPENDING,
+    NOTPENDING = 0,
     #[doc = "1: Read: Pending"]
-    PENDING,
+    PENDING = 1,
 }
 impl From<RECEIVE5_A> for bool {
     #[inline(always)]
     fn from(variant: RECEIVE5_A) -> Self {
-        match variant {
-            RECEIVE5_A::NOTPENDING => false,
-            RECEIVE5_A::PENDING => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `RECEIVE5`"]
-pub type RECEIVE5_R = crate::R<bool, RECEIVE5_A>;
+#[doc = "Field `RECEIVE5` reader - Read pending status of interrupt for event RECEIVE\\[5\\]"]
+pub struct RECEIVE5_R(crate::FieldReader<bool, RECEIVE5_A>);
 impl RECEIVE5_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        RECEIVE5_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> RECEIVE5_A {
@@ -226,34 +273,41 @@ impl RECEIVE5_R {
     #[doc = "Checks if the value of the field is `NOTPENDING`"]
     #[inline(always)]
     pub fn is_not_pending(&self) -> bool {
-        *self == RECEIVE5_A::NOTPENDING
+        **self == RECEIVE5_A::NOTPENDING
     }
     #[doc = "Checks if the value of the field is `PENDING`"]
     #[inline(always)]
     pub fn is_pending(&self) -> bool {
-        *self == RECEIVE5_A::PENDING
+        **self == RECEIVE5_A::PENDING
+    }
+}
+impl core::ops::Deref for RECEIVE5_R {
+    type Target = crate::FieldReader<bool, RECEIVE5_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Read pending status of interrupt for event RECEIVE\\[6\\]\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum RECEIVE6_A {
     #[doc = "0: Read: Not pending"]
-    NOTPENDING,
+    NOTPENDING = 0,
     #[doc = "1: Read: Pending"]
-    PENDING,
+    PENDING = 1,
 }
 impl From<RECEIVE6_A> for bool {
     #[inline(always)]
     fn from(variant: RECEIVE6_A) -> Self {
-        match variant {
-            RECEIVE6_A::NOTPENDING => false,
-            RECEIVE6_A::PENDING => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `RECEIVE6`"]
-pub type RECEIVE6_R = crate::R<bool, RECEIVE6_A>;
+#[doc = "Field `RECEIVE6` reader - Read pending status of interrupt for event RECEIVE\\[6\\]"]
+pub struct RECEIVE6_R(crate::FieldReader<bool, RECEIVE6_A>);
 impl RECEIVE6_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        RECEIVE6_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> RECEIVE6_A {
@@ -265,34 +319,41 @@ impl RECEIVE6_R {
     #[doc = "Checks if the value of the field is `NOTPENDING`"]
     #[inline(always)]
     pub fn is_not_pending(&self) -> bool {
-        *self == RECEIVE6_A::NOTPENDING
+        **self == RECEIVE6_A::NOTPENDING
     }
     #[doc = "Checks if the value of the field is `PENDING`"]
     #[inline(always)]
     pub fn is_pending(&self) -> bool {
-        *self == RECEIVE6_A::PENDING
+        **self == RECEIVE6_A::PENDING
+    }
+}
+impl core::ops::Deref for RECEIVE6_R {
+    type Target = crate::FieldReader<bool, RECEIVE6_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Read pending status of interrupt for event RECEIVE\\[7\\]\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum RECEIVE7_A {
     #[doc = "0: Read: Not pending"]
-    NOTPENDING,
+    NOTPENDING = 0,
     #[doc = "1: Read: Pending"]
-    PENDING,
+    PENDING = 1,
 }
 impl From<RECEIVE7_A> for bool {
     #[inline(always)]
     fn from(variant: RECEIVE7_A) -> Self {
-        match variant {
-            RECEIVE7_A::NOTPENDING => false,
-            RECEIVE7_A::PENDING => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `RECEIVE7`"]
-pub type RECEIVE7_R = crate::R<bool, RECEIVE7_A>;
+#[doc = "Field `RECEIVE7` reader - Read pending status of interrupt for event RECEIVE\\[7\\]"]
+pub struct RECEIVE7_R(crate::FieldReader<bool, RECEIVE7_A>);
 impl RECEIVE7_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        RECEIVE7_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> RECEIVE7_A {
@@ -304,34 +365,41 @@ impl RECEIVE7_R {
     #[doc = "Checks if the value of the field is `NOTPENDING`"]
     #[inline(always)]
     pub fn is_not_pending(&self) -> bool {
-        *self == RECEIVE7_A::NOTPENDING
+        **self == RECEIVE7_A::NOTPENDING
     }
     #[doc = "Checks if the value of the field is `PENDING`"]
     #[inline(always)]
     pub fn is_pending(&self) -> bool {
-        *self == RECEIVE7_A::PENDING
+        **self == RECEIVE7_A::PENDING
+    }
+}
+impl core::ops::Deref for RECEIVE7_R {
+    type Target = crate::FieldReader<bool, RECEIVE7_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Read pending status of interrupt for event RECEIVE\\[8\\]\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum RECEIVE8_A {
     #[doc = "0: Read: Not pending"]
-    NOTPENDING,
+    NOTPENDING = 0,
     #[doc = "1: Read: Pending"]
-    PENDING,
+    PENDING = 1,
 }
 impl From<RECEIVE8_A> for bool {
     #[inline(always)]
     fn from(variant: RECEIVE8_A) -> Self {
-        match variant {
-            RECEIVE8_A::NOTPENDING => false,
-            RECEIVE8_A::PENDING => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `RECEIVE8`"]
-pub type RECEIVE8_R = crate::R<bool, RECEIVE8_A>;
+#[doc = "Field `RECEIVE8` reader - Read pending status of interrupt for event RECEIVE\\[8\\]"]
+pub struct RECEIVE8_R(crate::FieldReader<bool, RECEIVE8_A>);
 impl RECEIVE8_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        RECEIVE8_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> RECEIVE8_A {
@@ -343,34 +411,41 @@ impl RECEIVE8_R {
     #[doc = "Checks if the value of the field is `NOTPENDING`"]
     #[inline(always)]
     pub fn is_not_pending(&self) -> bool {
-        *self == RECEIVE8_A::NOTPENDING
+        **self == RECEIVE8_A::NOTPENDING
     }
     #[doc = "Checks if the value of the field is `PENDING`"]
     #[inline(always)]
     pub fn is_pending(&self) -> bool {
-        *self == RECEIVE8_A::PENDING
+        **self == RECEIVE8_A::PENDING
+    }
+}
+impl core::ops::Deref for RECEIVE8_R {
+    type Target = crate::FieldReader<bool, RECEIVE8_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Read pending status of interrupt for event RECEIVE\\[9\\]\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum RECEIVE9_A {
     #[doc = "0: Read: Not pending"]
-    NOTPENDING,
+    NOTPENDING = 0,
     #[doc = "1: Read: Pending"]
-    PENDING,
+    PENDING = 1,
 }
 impl From<RECEIVE9_A> for bool {
     #[inline(always)]
     fn from(variant: RECEIVE9_A) -> Self {
-        match variant {
-            RECEIVE9_A::NOTPENDING => false,
-            RECEIVE9_A::PENDING => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `RECEIVE9`"]
-pub type RECEIVE9_R = crate::R<bool, RECEIVE9_A>;
+#[doc = "Field `RECEIVE9` reader - Read pending status of interrupt for event RECEIVE\\[9\\]"]
+pub struct RECEIVE9_R(crate::FieldReader<bool, RECEIVE9_A>);
 impl RECEIVE9_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        RECEIVE9_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> RECEIVE9_A {
@@ -382,34 +457,41 @@ impl RECEIVE9_R {
     #[doc = "Checks if the value of the field is `NOTPENDING`"]
     #[inline(always)]
     pub fn is_not_pending(&self) -> bool {
-        *self == RECEIVE9_A::NOTPENDING
+        **self == RECEIVE9_A::NOTPENDING
     }
     #[doc = "Checks if the value of the field is `PENDING`"]
     #[inline(always)]
     pub fn is_pending(&self) -> bool {
-        *self == RECEIVE9_A::PENDING
+        **self == RECEIVE9_A::PENDING
+    }
+}
+impl core::ops::Deref for RECEIVE9_R {
+    type Target = crate::FieldReader<bool, RECEIVE9_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Read pending status of interrupt for event RECEIVE\\[10\\]\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum RECEIVE10_A {
     #[doc = "0: Read: Not pending"]
-    NOTPENDING,
+    NOTPENDING = 0,
     #[doc = "1: Read: Pending"]
-    PENDING,
+    PENDING = 1,
 }
 impl From<RECEIVE10_A> for bool {
     #[inline(always)]
     fn from(variant: RECEIVE10_A) -> Self {
-        match variant {
-            RECEIVE10_A::NOTPENDING => false,
-            RECEIVE10_A::PENDING => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `RECEIVE10`"]
-pub type RECEIVE10_R = crate::R<bool, RECEIVE10_A>;
+#[doc = "Field `RECEIVE10` reader - Read pending status of interrupt for event RECEIVE\\[10\\]"]
+pub struct RECEIVE10_R(crate::FieldReader<bool, RECEIVE10_A>);
 impl RECEIVE10_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        RECEIVE10_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> RECEIVE10_A {
@@ -421,34 +503,41 @@ impl RECEIVE10_R {
     #[doc = "Checks if the value of the field is `NOTPENDING`"]
     #[inline(always)]
     pub fn is_not_pending(&self) -> bool {
-        *self == RECEIVE10_A::NOTPENDING
+        **self == RECEIVE10_A::NOTPENDING
     }
     #[doc = "Checks if the value of the field is `PENDING`"]
     #[inline(always)]
     pub fn is_pending(&self) -> bool {
-        *self == RECEIVE10_A::PENDING
+        **self == RECEIVE10_A::PENDING
+    }
+}
+impl core::ops::Deref for RECEIVE10_R {
+    type Target = crate::FieldReader<bool, RECEIVE10_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Read pending status of interrupt for event RECEIVE\\[11\\]\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum RECEIVE11_A {
     #[doc = "0: Read: Not pending"]
-    NOTPENDING,
+    NOTPENDING = 0,
     #[doc = "1: Read: Pending"]
-    PENDING,
+    PENDING = 1,
 }
 impl From<RECEIVE11_A> for bool {
     #[inline(always)]
     fn from(variant: RECEIVE11_A) -> Self {
-        match variant {
-            RECEIVE11_A::NOTPENDING => false,
-            RECEIVE11_A::PENDING => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `RECEIVE11`"]
-pub type RECEIVE11_R = crate::R<bool, RECEIVE11_A>;
+#[doc = "Field `RECEIVE11` reader - Read pending status of interrupt for event RECEIVE\\[11\\]"]
+pub struct RECEIVE11_R(crate::FieldReader<bool, RECEIVE11_A>);
 impl RECEIVE11_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        RECEIVE11_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> RECEIVE11_A {
@@ -460,34 +549,41 @@ impl RECEIVE11_R {
     #[doc = "Checks if the value of the field is `NOTPENDING`"]
     #[inline(always)]
     pub fn is_not_pending(&self) -> bool {
-        *self == RECEIVE11_A::NOTPENDING
+        **self == RECEIVE11_A::NOTPENDING
     }
     #[doc = "Checks if the value of the field is `PENDING`"]
     #[inline(always)]
     pub fn is_pending(&self) -> bool {
-        *self == RECEIVE11_A::PENDING
+        **self == RECEIVE11_A::PENDING
+    }
+}
+impl core::ops::Deref for RECEIVE11_R {
+    type Target = crate::FieldReader<bool, RECEIVE11_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Read pending status of interrupt for event RECEIVE\\[12\\]\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum RECEIVE12_A {
     #[doc = "0: Read: Not pending"]
-    NOTPENDING,
+    NOTPENDING = 0,
     #[doc = "1: Read: Pending"]
-    PENDING,
+    PENDING = 1,
 }
 impl From<RECEIVE12_A> for bool {
     #[inline(always)]
     fn from(variant: RECEIVE12_A) -> Self {
-        match variant {
-            RECEIVE12_A::NOTPENDING => false,
-            RECEIVE12_A::PENDING => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `RECEIVE12`"]
-pub type RECEIVE12_R = crate::R<bool, RECEIVE12_A>;
+#[doc = "Field `RECEIVE12` reader - Read pending status of interrupt for event RECEIVE\\[12\\]"]
+pub struct RECEIVE12_R(crate::FieldReader<bool, RECEIVE12_A>);
 impl RECEIVE12_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        RECEIVE12_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> RECEIVE12_A {
@@ -499,34 +595,41 @@ impl RECEIVE12_R {
     #[doc = "Checks if the value of the field is `NOTPENDING`"]
     #[inline(always)]
     pub fn is_not_pending(&self) -> bool {
-        *self == RECEIVE12_A::NOTPENDING
+        **self == RECEIVE12_A::NOTPENDING
     }
     #[doc = "Checks if the value of the field is `PENDING`"]
     #[inline(always)]
     pub fn is_pending(&self) -> bool {
-        *self == RECEIVE12_A::PENDING
+        **self == RECEIVE12_A::PENDING
+    }
+}
+impl core::ops::Deref for RECEIVE12_R {
+    type Target = crate::FieldReader<bool, RECEIVE12_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Read pending status of interrupt for event RECEIVE\\[13\\]\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum RECEIVE13_A {
     #[doc = "0: Read: Not pending"]
-    NOTPENDING,
+    NOTPENDING = 0,
     #[doc = "1: Read: Pending"]
-    PENDING,
+    PENDING = 1,
 }
 impl From<RECEIVE13_A> for bool {
     #[inline(always)]
     fn from(variant: RECEIVE13_A) -> Self {
-        match variant {
-            RECEIVE13_A::NOTPENDING => false,
-            RECEIVE13_A::PENDING => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `RECEIVE13`"]
-pub type RECEIVE13_R = crate::R<bool, RECEIVE13_A>;
+#[doc = "Field `RECEIVE13` reader - Read pending status of interrupt for event RECEIVE\\[13\\]"]
+pub struct RECEIVE13_R(crate::FieldReader<bool, RECEIVE13_A>);
 impl RECEIVE13_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        RECEIVE13_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> RECEIVE13_A {
@@ -538,34 +641,41 @@ impl RECEIVE13_R {
     #[doc = "Checks if the value of the field is `NOTPENDING`"]
     #[inline(always)]
     pub fn is_not_pending(&self) -> bool {
-        *self == RECEIVE13_A::NOTPENDING
+        **self == RECEIVE13_A::NOTPENDING
     }
     #[doc = "Checks if the value of the field is `PENDING`"]
     #[inline(always)]
     pub fn is_pending(&self) -> bool {
-        *self == RECEIVE13_A::PENDING
+        **self == RECEIVE13_A::PENDING
+    }
+}
+impl core::ops::Deref for RECEIVE13_R {
+    type Target = crate::FieldReader<bool, RECEIVE13_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Read pending status of interrupt for event RECEIVE\\[14\\]\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum RECEIVE14_A {
     #[doc = "0: Read: Not pending"]
-    NOTPENDING,
+    NOTPENDING = 0,
     #[doc = "1: Read: Pending"]
-    PENDING,
+    PENDING = 1,
 }
 impl From<RECEIVE14_A> for bool {
     #[inline(always)]
     fn from(variant: RECEIVE14_A) -> Self {
-        match variant {
-            RECEIVE14_A::NOTPENDING => false,
-            RECEIVE14_A::PENDING => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `RECEIVE14`"]
-pub type RECEIVE14_R = crate::R<bool, RECEIVE14_A>;
+#[doc = "Field `RECEIVE14` reader - Read pending status of interrupt for event RECEIVE\\[14\\]"]
+pub struct RECEIVE14_R(crate::FieldReader<bool, RECEIVE14_A>);
 impl RECEIVE14_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        RECEIVE14_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> RECEIVE14_A {
@@ -577,34 +687,41 @@ impl RECEIVE14_R {
     #[doc = "Checks if the value of the field is `NOTPENDING`"]
     #[inline(always)]
     pub fn is_not_pending(&self) -> bool {
-        *self == RECEIVE14_A::NOTPENDING
+        **self == RECEIVE14_A::NOTPENDING
     }
     #[doc = "Checks if the value of the field is `PENDING`"]
     #[inline(always)]
     pub fn is_pending(&self) -> bool {
-        *self == RECEIVE14_A::PENDING
+        **self == RECEIVE14_A::PENDING
+    }
+}
+impl core::ops::Deref for RECEIVE14_R {
+    type Target = crate::FieldReader<bool, RECEIVE14_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Read pending status of interrupt for event RECEIVE\\[15\\]\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum RECEIVE15_A {
     #[doc = "0: Read: Not pending"]
-    NOTPENDING,
+    NOTPENDING = 0,
     #[doc = "1: Read: Pending"]
-    PENDING,
+    PENDING = 1,
 }
 impl From<RECEIVE15_A> for bool {
     #[inline(always)]
     fn from(variant: RECEIVE15_A) -> Self {
-        match variant {
-            RECEIVE15_A::NOTPENDING => false,
-            RECEIVE15_A::PENDING => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `RECEIVE15`"]
-pub type RECEIVE15_R = crate::R<bool, RECEIVE15_A>;
+#[doc = "Field `RECEIVE15` reader - Read pending status of interrupt for event RECEIVE\\[15\\]"]
+pub struct RECEIVE15_R(crate::FieldReader<bool, RECEIVE15_A>);
 impl RECEIVE15_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        RECEIVE15_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> RECEIVE15_A {
@@ -616,12 +733,19 @@ impl RECEIVE15_R {
     #[doc = "Checks if the value of the field is `NOTPENDING`"]
     #[inline(always)]
     pub fn is_not_pending(&self) -> bool {
-        *self == RECEIVE15_A::NOTPENDING
+        **self == RECEIVE15_A::NOTPENDING
     }
     #[doc = "Checks if the value of the field is `PENDING`"]
     #[inline(always)]
     pub fn is_pending(&self) -> bool {
-        *self == RECEIVE15_A::PENDING
+        **self == RECEIVE15_A::PENDING
+    }
+}
+impl core::ops::Deref for RECEIVE15_R {
+    type Target = crate::FieldReader<bool, RECEIVE15_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 impl R {
@@ -704,5 +828,21 @@ impl R {
     #[inline(always)]
     pub fn receive15(&self) -> RECEIVE15_R {
         RECEIVE15_R::new(((self.bits >> 15) & 0x01) != 0)
+    }
+}
+#[doc = "Pending interrupts\n\nThis register you can [`read`](crate::generic::Reg::read). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [intpend](index.html) module"]
+pub struct INTPEND_SPEC;
+impl crate::RegisterSpec for INTPEND_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [intpend::R](R) reader structure"]
+impl crate::Readable for INTPEND_SPEC {
+    type Reader = R;
+}
+#[doc = "`reset()` method sets INTPEND to value 0"]
+impl crate::Resettable for INTPEND_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

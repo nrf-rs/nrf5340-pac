@@ -2,131 +2,67 @@
 #[repr(C)]
 pub struct RegisterBlock {
     #[doc = "0x00 - Push a key slot over secure APB"]
-    pub tasks_push_keyslot: TASKS_PUSH_KEYSLOT,
+    pub tasks_push_keyslot: crate::Reg<tasks_push_keyslot::TASKS_PUSH_KEYSLOT_SPEC>,
     _reserved1: [u8; 252usize],
     #[doc = "0x100 - Key slot successfully pushed over secure APB"]
-    pub events_keyslot_pushed: EVENTS_KEYSLOT_PUSHED,
+    pub events_keyslot_pushed: crate::Reg<events_keyslot_pushed::EVENTS_KEYSLOT_PUSHED_SPEC>,
     #[doc = "0x104 - Key slot has been revoked and cannot be tasked for selection"]
-    pub events_keyslot_revoked: EVENTS_KEYSLOT_REVOKED,
+    pub events_keyslot_revoked: crate::Reg<events_keyslot_revoked::EVENTS_KEYSLOT_REVOKED_SPEC>,
     #[doc = "0x108 - No key slot selected, no destination address defined, or error during push operation"]
-    pub events_keyslot_error: EVENTS_KEYSLOT_ERROR,
+    pub events_keyslot_error: crate::Reg<events_keyslot_error::EVENTS_KEYSLOT_ERROR_SPEC>,
     _reserved4: [u8; 500usize],
     #[doc = "0x300 - Enable or disable interrupt"]
-    pub inten: INTEN,
+    pub inten: crate::Reg<inten::INTEN_SPEC>,
     #[doc = "0x304 - Enable interrupt"]
-    pub intenset: INTENSET,
+    pub intenset: crate::Reg<intenset::INTENSET_SPEC>,
     #[doc = "0x308 - Disable interrupt"]
-    pub intenclr: INTENCLR,
+    pub intenclr: crate::Reg<intenclr::INTENCLR_SPEC>,
     #[doc = "0x30c - Pending interrupts"]
-    pub intpend: INTPEND,
+    pub intpend: crate::Reg<intpend::INTPEND_SPEC>,
     _reserved8: [u8; 252usize],
     #[doc = "0x40c - Status bits for KMU operation"]
-    pub status: STATUS,
+    pub status: crate::Reg<status::STATUS_SPEC>,
     _reserved9: [u8; 240usize],
     #[doc = "0x500 - Select key slot to be read over AHB or pushed over secure APB when TASKS_PUSH_KEYSLOT is started"]
-    pub selectkeyslot: SELECTKEYSLOT,
+    pub selectkeyslot: crate::Reg<selectkeyslot::SELECTKEYSLOT_SPEC>,
 }
-#[doc = "Push a key slot over secure APB\n\nThis register you can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [tasks_push_keyslot](tasks_push_keyslot) module"]
-pub type TASKS_PUSH_KEYSLOT = crate::Reg<u32, _TASKS_PUSH_KEYSLOT>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _TASKS_PUSH_KEYSLOT;
-#[doc = "`write(|w| ..)` method takes [tasks_push_keyslot::W](tasks_push_keyslot::W) writer structure"]
-impl crate::Writable for TASKS_PUSH_KEYSLOT {}
+#[doc = "TASKS_PUSH_KEYSLOT register accessor: an alias for `Reg<TASKS_PUSH_KEYSLOT_SPEC>`"]
+pub type TASKS_PUSH_KEYSLOT = crate::Reg<tasks_push_keyslot::TASKS_PUSH_KEYSLOT_SPEC>;
 #[doc = "Push a key slot over secure APB"]
 pub mod tasks_push_keyslot;
-#[doc = "Key slot successfully pushed over secure APB\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [events_keyslot_pushed](events_keyslot_pushed) module"]
-pub type EVENTS_KEYSLOT_PUSHED = crate::Reg<u32, _EVENTS_KEYSLOT_PUSHED>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _EVENTS_KEYSLOT_PUSHED;
-#[doc = "`read()` method returns [events_keyslot_pushed::R](events_keyslot_pushed::R) reader structure"]
-impl crate::Readable for EVENTS_KEYSLOT_PUSHED {}
-#[doc = "`write(|w| ..)` method takes [events_keyslot_pushed::W](events_keyslot_pushed::W) writer structure"]
-impl crate::Writable for EVENTS_KEYSLOT_PUSHED {}
+#[doc = "EVENTS_KEYSLOT_PUSHED register accessor: an alias for `Reg<EVENTS_KEYSLOT_PUSHED_SPEC>`"]
+pub type EVENTS_KEYSLOT_PUSHED = crate::Reg<events_keyslot_pushed::EVENTS_KEYSLOT_PUSHED_SPEC>;
 #[doc = "Key slot successfully pushed over secure APB"]
 pub mod events_keyslot_pushed;
-#[doc = "Key slot has been revoked and cannot be tasked for selection\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [events_keyslot_revoked](events_keyslot_revoked) module"]
-pub type EVENTS_KEYSLOT_REVOKED = crate::Reg<u32, _EVENTS_KEYSLOT_REVOKED>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _EVENTS_KEYSLOT_REVOKED;
-#[doc = "`read()` method returns [events_keyslot_revoked::R](events_keyslot_revoked::R) reader structure"]
-impl crate::Readable for EVENTS_KEYSLOT_REVOKED {}
-#[doc = "`write(|w| ..)` method takes [events_keyslot_revoked::W](events_keyslot_revoked::W) writer structure"]
-impl crate::Writable for EVENTS_KEYSLOT_REVOKED {}
+#[doc = "EVENTS_KEYSLOT_REVOKED register accessor: an alias for `Reg<EVENTS_KEYSLOT_REVOKED_SPEC>`"]
+pub type EVENTS_KEYSLOT_REVOKED = crate::Reg<events_keyslot_revoked::EVENTS_KEYSLOT_REVOKED_SPEC>;
 #[doc = "Key slot has been revoked and cannot be tasked for selection"]
 pub mod events_keyslot_revoked;
-#[doc = "No key slot selected, no destination address defined, or error during push operation\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [events_keyslot_error](events_keyslot_error) module"]
-pub type EVENTS_KEYSLOT_ERROR = crate::Reg<u32, _EVENTS_KEYSLOT_ERROR>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _EVENTS_KEYSLOT_ERROR;
-#[doc = "`read()` method returns [events_keyslot_error::R](events_keyslot_error::R) reader structure"]
-impl crate::Readable for EVENTS_KEYSLOT_ERROR {}
-#[doc = "`write(|w| ..)` method takes [events_keyslot_error::W](events_keyslot_error::W) writer structure"]
-impl crate::Writable for EVENTS_KEYSLOT_ERROR {}
+#[doc = "EVENTS_KEYSLOT_ERROR register accessor: an alias for `Reg<EVENTS_KEYSLOT_ERROR_SPEC>`"]
+pub type EVENTS_KEYSLOT_ERROR = crate::Reg<events_keyslot_error::EVENTS_KEYSLOT_ERROR_SPEC>;
 #[doc = "No key slot selected, no destination address defined, or error during push operation"]
 pub mod events_keyslot_error;
-#[doc = "Enable or disable interrupt\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [inten](inten) module"]
-pub type INTEN = crate::Reg<u32, _INTEN>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _INTEN;
-#[doc = "`read()` method returns [inten::R](inten::R) reader structure"]
-impl crate::Readable for INTEN {}
-#[doc = "`write(|w| ..)` method takes [inten::W](inten::W) writer structure"]
-impl crate::Writable for INTEN {}
+#[doc = "INTEN register accessor: an alias for `Reg<INTEN_SPEC>`"]
+pub type INTEN = crate::Reg<inten::INTEN_SPEC>;
 #[doc = "Enable or disable interrupt"]
 pub mod inten;
-#[doc = "Enable interrupt\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [intenset](intenset) module"]
-pub type INTENSET = crate::Reg<u32, _INTENSET>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _INTENSET;
-#[doc = "`read()` method returns [intenset::R](intenset::R) reader structure"]
-impl crate::Readable for INTENSET {}
-#[doc = "`write(|w| ..)` method takes [intenset::W](intenset::W) writer structure"]
-impl crate::Writable for INTENSET {}
+#[doc = "INTENSET register accessor: an alias for `Reg<INTENSET_SPEC>`"]
+pub type INTENSET = crate::Reg<intenset::INTENSET_SPEC>;
 #[doc = "Enable interrupt"]
 pub mod intenset;
-#[doc = "Disable interrupt\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [intenclr](intenclr) module"]
-pub type INTENCLR = crate::Reg<u32, _INTENCLR>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _INTENCLR;
-#[doc = "`read()` method returns [intenclr::R](intenclr::R) reader structure"]
-impl crate::Readable for INTENCLR {}
-#[doc = "`write(|w| ..)` method takes [intenclr::W](intenclr::W) writer structure"]
-impl crate::Writable for INTENCLR {}
+#[doc = "INTENCLR register accessor: an alias for `Reg<INTENCLR_SPEC>`"]
+pub type INTENCLR = crate::Reg<intenclr::INTENCLR_SPEC>;
 #[doc = "Disable interrupt"]
 pub mod intenclr;
-#[doc = "Pending interrupts\n\nThis register you can [`read`](crate::generic::Reg::read). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [intpend](intpend) module"]
-pub type INTPEND = crate::Reg<u32, _INTPEND>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _INTPEND;
-#[doc = "`read()` method returns [intpend::R](intpend::R) reader structure"]
-impl crate::Readable for INTPEND {}
+#[doc = "INTPEND register accessor: an alias for `Reg<INTPEND_SPEC>`"]
+pub type INTPEND = crate::Reg<intpend::INTPEND_SPEC>;
 #[doc = "Pending interrupts"]
 pub mod intpend;
-#[doc = "Status bits for KMU operation\n\nThis register you can [`read`](crate::generic::Reg::read). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [status](status) module"]
-pub type STATUS = crate::Reg<u32, _STATUS>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _STATUS;
-#[doc = "`read()` method returns [status::R](status::R) reader structure"]
-impl crate::Readable for STATUS {}
+#[doc = "STATUS register accessor: an alias for `Reg<STATUS_SPEC>`"]
+pub type STATUS = crate::Reg<status::STATUS_SPEC>;
 #[doc = "Status bits for KMU operation"]
 pub mod status;
-#[doc = "Select key slot to be read over AHB or pushed over secure APB when TASKS_PUSH_KEYSLOT is started\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [selectkeyslot](selectkeyslot) module"]
-pub type SELECTKEYSLOT = crate::Reg<u32, _SELECTKEYSLOT>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _SELECTKEYSLOT;
-#[doc = "`read()` method returns [selectkeyslot::R](selectkeyslot::R) reader structure"]
-impl crate::Readable for SELECTKEYSLOT {}
-#[doc = "`write(|w| ..)` method takes [selectkeyslot::W](selectkeyslot::W) writer structure"]
-impl crate::Writable for SELECTKEYSLOT {}
+#[doc = "SELECTKEYSLOT register accessor: an alias for `Reg<SELECTKEYSLOT_SPEC>`"]
+pub type SELECTKEYSLOT = crate::Reg<selectkeyslot::SELECTKEYSLOT_SPEC>;
 #[doc = "Select key slot to be read over AHB or pushed over secure APB when TASKS_PUSH_KEYSLOT is started"]
 pub mod selectkeyslot;

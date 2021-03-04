@@ -1,35 +1,57 @@
-#[doc = "Reader of register FORCEOFF"]
-pub type R = crate::R<u32, super::FORCEOFF>;
-#[doc = "Writer for register FORCEOFF"]
-pub type W = crate::W<u32, super::FORCEOFF>;
-#[doc = "Register FORCEOFF `reset()`'s with value 0x01"]
-impl crate::ResetValue for super::FORCEOFF {
-    type Type = u32;
+#[doc = "Register `FORCEOFF` reader"]
+pub struct R(crate::R<FORCEOFF_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<FORCEOFF_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0x01
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Force off power and clock in Network core\n\nValue on reset: 1"]
+impl core::convert::From<crate::R<FORCEOFF_SPEC>> for R {
+    fn from(reader: crate::R<FORCEOFF_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `FORCEOFF` writer"]
+pub struct W(crate::W<FORCEOFF_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<FORCEOFF_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<FORCEOFF_SPEC>> for W {
+    fn from(writer: crate::W<FORCEOFF_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Force network core off\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum FORCEOFF_A {
-    #[doc = "0: Release force off signal"]
-    RELEASE,
-    #[doc = "1: Hold force off signal"]
-    HOLD,
+    #[doc = "0: Release Force-OFF"]
+    RELEASE = 0,
+    #[doc = "1: Hold Force-OFF"]
+    HOLD = 1,
 }
 impl From<FORCEOFF_A> for bool {
     #[inline(always)]
     fn from(variant: FORCEOFF_A) -> Self {
-        match variant {
-            FORCEOFF_A::RELEASE => false,
-            FORCEOFF_A::HOLD => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `FORCEOFF`"]
-pub type FORCEOFF_R = crate::R<bool, FORCEOFF_A>;
+#[doc = "Field `FORCEOFF` reader - Force network core off"]
+pub struct FORCEOFF_R(crate::FieldReader<bool, FORCEOFF_A>);
 impl FORCEOFF_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        FORCEOFF_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> FORCEOFF_A {
@@ -41,15 +63,22 @@ impl FORCEOFF_R {
     #[doc = "Checks if the value of the field is `RELEASE`"]
     #[inline(always)]
     pub fn is_release(&self) -> bool {
-        *self == FORCEOFF_A::RELEASE
+        **self == FORCEOFF_A::RELEASE
     }
     #[doc = "Checks if the value of the field is `HOLD`"]
     #[inline(always)]
     pub fn is_hold(&self) -> bool {
-        *self == FORCEOFF_A::HOLD
+        **self == FORCEOFF_A::HOLD
     }
 }
-#[doc = "Write proxy for field `FORCEOFF`"]
+impl core::ops::Deref for FORCEOFF_R {
+    type Target = crate::FieldReader<bool, FORCEOFF_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `FORCEOFF` writer - Force network core off"]
 pub struct FORCEOFF_W<'a> {
     w: &'a mut W,
 }
@@ -57,16 +86,14 @@ impl<'a> FORCEOFF_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: FORCEOFF_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
-    #[doc = "Release force off signal"]
+    #[doc = "Release Force-OFF"]
     #[inline(always)]
     pub fn release(self) -> &'a mut W {
         self.variant(FORCEOFF_A::RELEASE)
     }
-    #[doc = "Hold force off signal"]
+    #[doc = "Hold Force-OFF"]
     #[inline(always)]
     pub fn hold(self) -> &'a mut W {
         self.variant(FORCEOFF_A::HOLD)
@@ -89,16 +116,41 @@ impl<'a> FORCEOFF_W<'a> {
     }
 }
 impl R {
-    #[doc = "Bit 0 - Force off power and clock in Network core"]
+    #[doc = "Bit 0 - Force network core off"]
     #[inline(always)]
     pub fn forceoff(&self) -> FORCEOFF_R {
         FORCEOFF_R::new((self.bits & 0x01) != 0)
     }
 }
 impl W {
-    #[doc = "Bit 0 - Force off power and clock in Network core"]
+    #[doc = "Bit 0 - Force network core off"]
     #[inline(always)]
     pub fn forceoff(&mut self) -> FORCEOFF_W {
         FORCEOFF_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Force network core off\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [forceoff](index.html) module"]
+pub struct FORCEOFF_SPEC;
+impl crate::RegisterSpec for FORCEOFF_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [forceoff::R](R) reader structure"]
+impl crate::Readable for FORCEOFF_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [forceoff::W](W) writer structure"]
+impl crate::Writable for FORCEOFF_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets FORCEOFF to value 0x01"]
+impl crate::Resettable for FORCEOFF_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0x01
     }
 }

@@ -1,41 +1,62 @@
-#[doc = "Reader of register ISOURCE"]
-pub type R = crate::R<u32, super::ISOURCE>;
-#[doc = "Writer for register ISOURCE"]
-pub type W = crate::W<u32, super::ISOURCE>;
-#[doc = "Register ISOURCE `reset()`'s with value 0"]
-impl crate::ResetValue for super::ISOURCE {
-    type Type = u32;
+#[doc = "Register `ISOURCE` reader"]
+pub struct R(crate::R<ISOURCE_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<ISOURCE_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<ISOURCE_SPEC>> for R {
+    fn from(reader: crate::R<ISOURCE_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `ISOURCE` writer"]
+pub struct W(crate::W<ISOURCE_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<ISOURCE_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<ISOURCE_SPEC>> for W {
+    fn from(writer: crate::W<ISOURCE_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "Comparator hysteresis\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
+#[repr(u8)]
 pub enum ISOURCE_A {
     #[doc = "0: Current source disabled"]
-    OFF,
+    OFF = 0,
     #[doc = "1: Current source enabled (+/- 2.5 uA)"]
-    IEN2MA5,
+    IEN2MA5 = 1,
     #[doc = "2: Current source enabled (+/- 5 uA)"]
-    IEN5MA,
+    IEN5MA = 2,
     #[doc = "3: Current source enabled (+/- 10 uA)"]
-    IEN10MA,
+    IEN10MA = 3,
 }
 impl From<ISOURCE_A> for u8 {
     #[inline(always)]
     fn from(variant: ISOURCE_A) -> Self {
-        match variant {
-            ISOURCE_A::OFF => 0,
-            ISOURCE_A::IEN2MA5 => 1,
-            ISOURCE_A::IEN5MA => 2,
-            ISOURCE_A::IEN10MA => 3,
-        }
+        variant as _
     }
 }
-#[doc = "Reader of field `ISOURCE`"]
-pub type ISOURCE_R = crate::R<u8, ISOURCE_A>;
+#[doc = "Field `ISOURCE` reader - Comparator hysteresis"]
+pub struct ISOURCE_R(crate::FieldReader<u8, ISOURCE_A>);
 impl ISOURCE_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        ISOURCE_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> ISOURCE_A {
@@ -50,25 +71,32 @@ impl ISOURCE_R {
     #[doc = "Checks if the value of the field is `OFF`"]
     #[inline(always)]
     pub fn is_off(&self) -> bool {
-        *self == ISOURCE_A::OFF
+        **self == ISOURCE_A::OFF
     }
     #[doc = "Checks if the value of the field is `IEN2MA5`"]
     #[inline(always)]
     pub fn is_ien2m_a5(&self) -> bool {
-        *self == ISOURCE_A::IEN2MA5
+        **self == ISOURCE_A::IEN2MA5
     }
     #[doc = "Checks if the value of the field is `IEN5MA`"]
     #[inline(always)]
     pub fn is_ien5m_a(&self) -> bool {
-        *self == ISOURCE_A::IEN5MA
+        **self == ISOURCE_A::IEN5MA
     }
     #[doc = "Checks if the value of the field is `IEN10MA`"]
     #[inline(always)]
     pub fn is_ien10m_a(&self) -> bool {
-        *self == ISOURCE_A::IEN10MA
+        **self == ISOURCE_A::IEN10MA
     }
 }
-#[doc = "Write proxy for field `ISOURCE`"]
+impl core::ops::Deref for ISOURCE_R {
+    type Target = crate::FieldReader<u8, ISOURCE_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `ISOURCE` writer - Comparator hysteresis"]
 pub struct ISOURCE_W<'a> {
     w: &'a mut W,
 }
@@ -76,9 +104,7 @@ impl<'a> ISOURCE_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: ISOURCE_A) -> &'a mut W {
-        {
-            self.bits(variant.into())
-        }
+        self.bits(variant.into())
     }
     #[doc = "Current source disabled"]
     #[inline(always)]
@@ -119,5 +145,30 @@ impl W {
     #[inline(always)]
     pub fn isource(&mut self) -> ISOURCE_W {
         ISOURCE_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Current source select on analog input\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [isource](index.html) module"]
+pub struct ISOURCE_SPEC;
+impl crate::RegisterSpec for ISOURCE_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [isource::R](R) reader structure"]
+impl crate::Readable for ISOURCE_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [isource::W](W) writer structure"]
+impl crate::Writable for ISOURCE_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets ISOURCE to value 0"]
+impl crate::Resettable for ISOURCE_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

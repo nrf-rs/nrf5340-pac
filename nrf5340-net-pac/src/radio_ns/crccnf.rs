@@ -1,41 +1,62 @@
-#[doc = "Reader of register CRCCNF"]
-pub type R = crate::R<u32, super::CRCCNF>;
-#[doc = "Writer for register CRCCNF"]
-pub type W = crate::W<u32, super::CRCCNF>;
-#[doc = "Register CRCCNF `reset()`'s with value 0"]
-impl crate::ResetValue for super::CRCCNF {
-    type Type = u32;
+#[doc = "Register `CRCCNF` reader"]
+pub struct R(crate::R<CRCCNF_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<CRCCNF_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "CRC length in number of bytes.\n\nValue on reset: 0"]
+impl core::convert::From<crate::R<CRCCNF_SPEC>> for R {
+    fn from(reader: crate::R<CRCCNF_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `CRCCNF` writer"]
+pub struct W(crate::W<CRCCNF_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<CRCCNF_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<CRCCNF_SPEC>> for W {
+    fn from(writer: crate::W<CRCCNF_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "CRC length in number of bytes For MODE Ble_LR125Kbit and Ble_LR500Kbit, only LEN set to 3 is supported\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
+#[repr(u8)]
 pub enum LEN_A {
     #[doc = "0: CRC length is zero and CRC calculation is disabled"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: CRC length is one byte and CRC calculation is enabled"]
-    ONE,
+    ONE = 1,
     #[doc = "2: CRC length is two bytes and CRC calculation is enabled"]
-    TWO,
+    TWO = 2,
     #[doc = "3: CRC length is three bytes and CRC calculation is enabled"]
-    THREE,
+    THREE = 3,
 }
 impl From<LEN_A> for u8 {
     #[inline(always)]
     fn from(variant: LEN_A) -> Self {
-        match variant {
-            LEN_A::DISABLED => 0,
-            LEN_A::ONE => 1,
-            LEN_A::TWO => 2,
-            LEN_A::THREE => 3,
-        }
+        variant as _
     }
 }
-#[doc = "Reader of field `LEN`"]
-pub type LEN_R = crate::R<u8, LEN_A>;
+#[doc = "Field `LEN` reader - CRC length in number of bytes For MODE Ble_LR125Kbit and Ble_LR500Kbit, only LEN set to 3 is supported"]
+pub struct LEN_R(crate::FieldReader<u8, LEN_A>);
 impl LEN_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        LEN_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> LEN_A {
@@ -50,25 +71,32 @@ impl LEN_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == LEN_A::DISABLED
+        **self == LEN_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ONE`"]
     #[inline(always)]
     pub fn is_one(&self) -> bool {
-        *self == LEN_A::ONE
+        **self == LEN_A::ONE
     }
     #[doc = "Checks if the value of the field is `TWO`"]
     #[inline(always)]
     pub fn is_two(&self) -> bool {
-        *self == LEN_A::TWO
+        **self == LEN_A::TWO
     }
     #[doc = "Checks if the value of the field is `THREE`"]
     #[inline(always)]
     pub fn is_three(&self) -> bool {
-        *self == LEN_A::THREE
+        **self == LEN_A::THREE
     }
 }
-#[doc = "Write proxy for field `LEN`"]
+impl core::ops::Deref for LEN_R {
+    type Target = crate::FieldReader<u8, LEN_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `LEN` writer - CRC length in number of bytes For MODE Ble_LR125Kbit and Ble_LR500Kbit, only LEN set to 3 is supported"]
 pub struct LEN_W<'a> {
     w: &'a mut W,
 }
@@ -76,9 +104,7 @@ impl<'a> LEN_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: LEN_A) -> &'a mut W {
-        {
-            self.bits(variant.into())
-        }
+        self.bits(variant.into())
     }
     #[doc = "CRC length is zero and CRC calculation is disabled"]
     #[inline(always)]
@@ -109,27 +135,27 @@ impl<'a> LEN_W<'a> {
 }
 #[doc = "Include or exclude packet address field out of CRC calculation.\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
+#[repr(u8)]
 pub enum SKIPADDR_A {
     #[doc = "0: CRC calculation includes address field"]
-    INCLUDE,
+    INCLUDE = 0,
     #[doc = "1: CRC calculation does not include address field. The CRC calculation will start at the first byte after the address."]
-    SKIP,
+    SKIP = 1,
     #[doc = "2: CRC calculation as per 802.15.4 standard. Starting at first byte after length field."]
-    IEEE802154,
+    IEEE802154 = 2,
 }
 impl From<SKIPADDR_A> for u8 {
     #[inline(always)]
     fn from(variant: SKIPADDR_A) -> Self {
-        match variant {
-            SKIPADDR_A::INCLUDE => 0,
-            SKIPADDR_A::SKIP => 1,
-            SKIPADDR_A::IEEE802154 => 2,
-        }
+        variant as _
     }
 }
-#[doc = "Reader of field `SKIPADDR`"]
-pub type SKIPADDR_R = crate::R<u8, SKIPADDR_A>;
+#[doc = "Field `SKIPADDR` reader - Include or exclude packet address field out of CRC calculation."]
+pub struct SKIPADDR_R(crate::FieldReader<u8, SKIPADDR_A>);
 impl SKIPADDR_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        SKIPADDR_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> crate::Variant<u8, SKIPADDR_A> {
@@ -144,20 +170,27 @@ impl SKIPADDR_R {
     #[doc = "Checks if the value of the field is `INCLUDE`"]
     #[inline(always)]
     pub fn is_include(&self) -> bool {
-        *self == SKIPADDR_A::INCLUDE
+        **self == SKIPADDR_A::INCLUDE
     }
     #[doc = "Checks if the value of the field is `SKIP`"]
     #[inline(always)]
     pub fn is_skip(&self) -> bool {
-        *self == SKIPADDR_A::SKIP
+        **self == SKIPADDR_A::SKIP
     }
     #[doc = "Checks if the value of the field is `IEEE802154`"]
     #[inline(always)]
     pub fn is_ieee802154(&self) -> bool {
-        *self == SKIPADDR_A::IEEE802154
+        **self == SKIPADDR_A::IEEE802154
     }
 }
-#[doc = "Write proxy for field `SKIPADDR`"]
+impl core::ops::Deref for SKIPADDR_R {
+    type Target = crate::FieldReader<u8, SKIPADDR_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `SKIPADDR` writer - Include or exclude packet address field out of CRC calculation."]
 pub struct SKIPADDR_W<'a> {
     w: &'a mut W,
 }
@@ -190,7 +223,7 @@ impl<'a> SKIPADDR_W<'a> {
     }
 }
 impl R {
-    #[doc = "Bits 0:1 - CRC length in number of bytes."]
+    #[doc = "Bits 0:1 - CRC length in number of bytes For MODE Ble_LR125Kbit and Ble_LR500Kbit, only LEN set to 3 is supported"]
     #[inline(always)]
     pub fn len(&self) -> LEN_R {
         LEN_R::new((self.bits & 0x03) as u8)
@@ -202,7 +235,7 @@ impl R {
     }
 }
 impl W {
-    #[doc = "Bits 0:1 - CRC length in number of bytes."]
+    #[doc = "Bits 0:1 - CRC length in number of bytes For MODE Ble_LR125Kbit and Ble_LR500Kbit, only LEN set to 3 is supported"]
     #[inline(always)]
     pub fn len(&mut self) -> LEN_W {
         LEN_W { w: self }
@@ -211,5 +244,30 @@ impl W {
     #[inline(always)]
     pub fn skipaddr(&mut self) -> SKIPADDR_W {
         SKIPADDR_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "CRC configuration\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [crccnf](index.html) module"]
+pub struct CRCCNF_SPEC;
+impl crate::RegisterSpec for CRCCNF_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [crccnf::R](R) reader structure"]
+impl crate::Readable for CRCCNF_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [crccnf::W](W) writer structure"]
+impl crate::Writable for CRCCNF_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets CRCCNF to value 0"]
+impl crate::Resettable for CRCCNF_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

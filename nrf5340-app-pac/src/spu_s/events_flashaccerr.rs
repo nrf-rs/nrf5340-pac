@@ -1,35 +1,57 @@
-#[doc = "Reader of register EVENTS_FLASHACCERR"]
-pub type R = crate::R<u32, super::EVENTS_FLASHACCERR>;
-#[doc = "Writer for register EVENTS_FLASHACCERR"]
-pub type W = crate::W<u32, super::EVENTS_FLASHACCERR>;
-#[doc = "Register EVENTS_FLASHACCERR `reset()`'s with value 0"]
-impl crate::ResetValue for super::EVENTS_FLASHACCERR {
-    type Type = u32;
+#[doc = "Register `EVENTS_FLASHACCERR` reader"]
+pub struct R(crate::R<EVENTS_FLASHACCERR_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<EVENTS_FLASHACCERR_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<EVENTS_FLASHACCERR_SPEC>> for R {
+    fn from(reader: crate::R<EVENTS_FLASHACCERR_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `EVENTS_FLASHACCERR` writer"]
+pub struct W(crate::W<EVENTS_FLASHACCERR_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<EVENTS_FLASHACCERR_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<EVENTS_FLASHACCERR_SPEC>> for W {
+    fn from(writer: crate::W<EVENTS_FLASHACCERR_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "A security violation has been detected for the flash memory space\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum EVENTS_FLASHACCERR_A {
     #[doc = "0: Event not generated"]
-    NOTGENERATED,
+    NOTGENERATED = 0,
     #[doc = "1: Event generated"]
-    GENERATED,
+    GENERATED = 1,
 }
 impl From<EVENTS_FLASHACCERR_A> for bool {
     #[inline(always)]
     fn from(variant: EVENTS_FLASHACCERR_A) -> Self {
-        match variant {
-            EVENTS_FLASHACCERR_A::NOTGENERATED => false,
-            EVENTS_FLASHACCERR_A::GENERATED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `EVENTS_FLASHACCERR`"]
-pub type EVENTS_FLASHACCERR_R = crate::R<bool, EVENTS_FLASHACCERR_A>;
+#[doc = "Field `EVENTS_FLASHACCERR` reader - A security violation has been detected for the flash memory space"]
+pub struct EVENTS_FLASHACCERR_R(crate::FieldReader<bool, EVENTS_FLASHACCERR_A>);
 impl EVENTS_FLASHACCERR_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        EVENTS_FLASHACCERR_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> EVENTS_FLASHACCERR_A {
@@ -41,15 +63,22 @@ impl EVENTS_FLASHACCERR_R {
     #[doc = "Checks if the value of the field is `NOTGENERATED`"]
     #[inline(always)]
     pub fn is_not_generated(&self) -> bool {
-        *self == EVENTS_FLASHACCERR_A::NOTGENERATED
+        **self == EVENTS_FLASHACCERR_A::NOTGENERATED
     }
     #[doc = "Checks if the value of the field is `GENERATED`"]
     #[inline(always)]
     pub fn is_generated(&self) -> bool {
-        *self == EVENTS_FLASHACCERR_A::GENERATED
+        **self == EVENTS_FLASHACCERR_A::GENERATED
     }
 }
-#[doc = "Write proxy for field `EVENTS_FLASHACCERR`"]
+impl core::ops::Deref for EVENTS_FLASHACCERR_R {
+    type Target = crate::FieldReader<bool, EVENTS_FLASHACCERR_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `EVENTS_FLASHACCERR` writer - A security violation has been detected for the flash memory space"]
 pub struct EVENTS_FLASHACCERR_W<'a> {
     w: &'a mut W,
 }
@@ -57,9 +86,7 @@ impl<'a> EVENTS_FLASHACCERR_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: EVENTS_FLASHACCERR_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Event not generated"]
     #[inline(always)]
@@ -100,5 +127,30 @@ impl W {
     #[inline(always)]
     pub fn events_flashaccerr(&mut self) -> EVENTS_FLASHACCERR_W {
         EVENTS_FLASHACCERR_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "A security violation has been detected for the flash memory space\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [events_flashaccerr](index.html) module"]
+pub struct EVENTS_FLASHACCERR_SPEC;
+impl crate::RegisterSpec for EVENTS_FLASHACCERR_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [events_flashaccerr::R](R) reader structure"]
+impl crate::Readable for EVENTS_FLASHACCERR_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [events_flashaccerr::W](W) writer structure"]
+impl crate::Writable for EVENTS_FLASHACCERR_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets EVENTS_FLASHACCERR to value 0"]
+impl crate::Resettable for EVENTS_FLASHACCERR_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

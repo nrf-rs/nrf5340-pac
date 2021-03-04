@@ -1,5 +1,3 @@
-use self::set::WAY;
-
 #[doc = r"Register block"]
 #[repr(C)]
 pub struct RegisterBlock {
@@ -775,7 +773,7 @@ pub struct RegisterBlock {
 #[repr(C)]
 pub struct SET {
     #[doc = "0x00 - Unspecified"]
-    pub way: [WAY; 2],
+    pub way: [self::set::WAY; 2],
 }
 #[doc = r"Register block"]
 #[doc = "Unspecified"]

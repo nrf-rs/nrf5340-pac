@@ -1,41 +1,62 @@
-#[doc = "Reader of register FRAMEDELAYMODE"]
-pub type R = crate::R<u32, super::FRAMEDELAYMODE>;
-#[doc = "Writer for register FRAMEDELAYMODE"]
-pub type W = crate::W<u32, super::FRAMEDELAYMODE>;
-#[doc = "Register FRAMEDELAYMODE `reset()`'s with value 0x01"]
-impl crate::ResetValue for super::FRAMEDELAYMODE {
-    type Type = u32;
+#[doc = "Register `FRAMEDELAYMODE` reader"]
+pub struct R(crate::R<FRAMEDELAYMODE_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<FRAMEDELAYMODE_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0x01
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<FRAMEDELAYMODE_SPEC>> for R {
+    fn from(reader: crate::R<FRAMEDELAYMODE_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `FRAMEDELAYMODE` writer"]
+pub struct W(crate::W<FRAMEDELAYMODE_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<FRAMEDELAYMODE_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<FRAMEDELAYMODE_SPEC>> for W {
+    fn from(writer: crate::W<FRAMEDELAYMODE_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "Configuration register for the Frame Delay Timer\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
+#[repr(u8)]
 pub enum FRAMEDELAYMODE_A {
     #[doc = "0: Transmission is independent of frame timer and will start when the STARTTX task is triggered. No timeout."]
-    FREERUN,
+    FREERUN = 0,
     #[doc = "1: Frame is transmitted between FRAMEDELAYMIN and FRAMEDELAYMAX"]
-    WINDOW,
+    WINDOW = 1,
     #[doc = "2: Frame is transmitted exactly at FRAMEDELAYMAX"]
-    EXACTVAL,
+    EXACTVAL = 2,
     #[doc = "3: Frame is transmitted on a bit grid between FRAMEDELAYMIN and FRAMEDELAYMAX"]
-    WINDOWGRID,
+    WINDOWGRID = 3,
 }
 impl From<FRAMEDELAYMODE_A> for u8 {
     #[inline(always)]
     fn from(variant: FRAMEDELAYMODE_A) -> Self {
-        match variant {
-            FRAMEDELAYMODE_A::FREERUN => 0,
-            FRAMEDELAYMODE_A::WINDOW => 1,
-            FRAMEDELAYMODE_A::EXACTVAL => 2,
-            FRAMEDELAYMODE_A::WINDOWGRID => 3,
-        }
+        variant as _
     }
 }
-#[doc = "Reader of field `FRAMEDELAYMODE`"]
-pub type FRAMEDELAYMODE_R = crate::R<u8, FRAMEDELAYMODE_A>;
+#[doc = "Field `FRAMEDELAYMODE` reader - Configuration register for the Frame Delay Timer"]
+pub struct FRAMEDELAYMODE_R(crate::FieldReader<u8, FRAMEDELAYMODE_A>);
 impl FRAMEDELAYMODE_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        FRAMEDELAYMODE_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> FRAMEDELAYMODE_A {
@@ -50,25 +71,32 @@ impl FRAMEDELAYMODE_R {
     #[doc = "Checks if the value of the field is `FREERUN`"]
     #[inline(always)]
     pub fn is_free_run(&self) -> bool {
-        *self == FRAMEDELAYMODE_A::FREERUN
+        **self == FRAMEDELAYMODE_A::FREERUN
     }
     #[doc = "Checks if the value of the field is `WINDOW`"]
     #[inline(always)]
     pub fn is_window(&self) -> bool {
-        *self == FRAMEDELAYMODE_A::WINDOW
+        **self == FRAMEDELAYMODE_A::WINDOW
     }
     #[doc = "Checks if the value of the field is `EXACTVAL`"]
     #[inline(always)]
     pub fn is_exact_val(&self) -> bool {
-        *self == FRAMEDELAYMODE_A::EXACTVAL
+        **self == FRAMEDELAYMODE_A::EXACTVAL
     }
     #[doc = "Checks if the value of the field is `WINDOWGRID`"]
     #[inline(always)]
     pub fn is_window_grid(&self) -> bool {
-        *self == FRAMEDELAYMODE_A::WINDOWGRID
+        **self == FRAMEDELAYMODE_A::WINDOWGRID
     }
 }
-#[doc = "Write proxy for field `FRAMEDELAYMODE`"]
+impl core::ops::Deref for FRAMEDELAYMODE_R {
+    type Target = crate::FieldReader<u8, FRAMEDELAYMODE_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `FRAMEDELAYMODE` writer - Configuration register for the Frame Delay Timer"]
 pub struct FRAMEDELAYMODE_W<'a> {
     w: &'a mut W,
 }
@@ -76,9 +104,7 @@ impl<'a> FRAMEDELAYMODE_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: FRAMEDELAYMODE_A) -> &'a mut W {
-        {
-            self.bits(variant.into())
-        }
+        self.bits(variant.into())
     }
     #[doc = "Transmission is independent of frame timer and will start when the STARTTX task is triggered. No timeout."]
     #[inline(always)]
@@ -119,5 +145,30 @@ impl W {
     #[inline(always)]
     pub fn framedelaymode(&mut self) -> FRAMEDELAYMODE_W {
         FRAMEDELAYMODE_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Configuration register for the Frame Delay Timer\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [framedelaymode](index.html) module"]
+pub struct FRAMEDELAYMODE_SPEC;
+impl crate::RegisterSpec for FRAMEDELAYMODE_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [framedelaymode::R](R) reader structure"]
+impl crate::Readable for FRAMEDELAYMODE_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [framedelaymode::W](W) writer structure"]
+impl crate::Writable for FRAMEDELAYMODE_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets FRAMEDELAYMODE to value 0x01"]
+impl crate::Resettable for FRAMEDELAYMODE_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0x01
     }
 }

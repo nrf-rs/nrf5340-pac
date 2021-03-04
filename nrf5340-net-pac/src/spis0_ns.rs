@@ -3,49 +3,49 @@
 pub struct RegisterBlock {
     _reserved0: [u8; 36usize],
     #[doc = "0x24 - Acquire SPI semaphore"]
-    pub tasks_acquire: TASKS_ACQUIRE,
+    pub tasks_acquire: crate::Reg<tasks_acquire::TASKS_ACQUIRE_SPEC>,
     #[doc = "0x28 - Release SPI semaphore, enabling the SPI slave to acquire it"]
-    pub tasks_release: TASKS_RELEASE,
+    pub tasks_release: crate::Reg<tasks_release::TASKS_RELEASE_SPEC>,
     _reserved2: [u8; 120usize],
     #[doc = "0xa4 - Subscribe configuration for task ACQUIRE"]
-    pub subscribe_acquire: SUBSCRIBE_ACQUIRE,
+    pub subscribe_acquire: crate::Reg<subscribe_acquire::SUBSCRIBE_ACQUIRE_SPEC>,
     #[doc = "0xa8 - Subscribe configuration for task RELEASE"]
-    pub subscribe_release: SUBSCRIBE_RELEASE,
+    pub subscribe_release: crate::Reg<subscribe_release::SUBSCRIBE_RELEASE_SPEC>,
     _reserved4: [u8; 88usize],
     #[doc = "0x104 - Granted transaction completed"]
-    pub events_end: EVENTS_END,
+    pub events_end: crate::Reg<events_end::EVENTS_END_SPEC>,
     _reserved5: [u8; 8usize],
     #[doc = "0x110 - End of RXD buffer reached"]
-    pub events_endrx: EVENTS_ENDRX,
+    pub events_endrx: crate::Reg<events_endrx::EVENTS_ENDRX_SPEC>,
     _reserved6: [u8; 20usize],
     #[doc = "0x128 - Semaphore acquired"]
-    pub events_acquired: EVENTS_ACQUIRED,
+    pub events_acquired: crate::Reg<events_acquired::EVENTS_ACQUIRED_SPEC>,
     _reserved7: [u8; 88usize],
     #[doc = "0x184 - Publish configuration for event END"]
-    pub publish_end: PUBLISH_END,
+    pub publish_end: crate::Reg<publish_end::PUBLISH_END_SPEC>,
     _reserved8: [u8; 8usize],
     #[doc = "0x190 - Publish configuration for event ENDRX"]
-    pub publish_endrx: PUBLISH_ENDRX,
+    pub publish_endrx: crate::Reg<publish_endrx::PUBLISH_ENDRX_SPEC>,
     _reserved9: [u8; 20usize],
     #[doc = "0x1a8 - Publish configuration for event ACQUIRED"]
-    pub publish_acquired: PUBLISH_ACQUIRED,
+    pub publish_acquired: crate::Reg<publish_acquired::PUBLISH_ACQUIRED_SPEC>,
     _reserved10: [u8; 84usize],
     #[doc = "0x200 - Shortcuts between local events and tasks"]
-    pub shorts: SHORTS,
+    pub shorts: crate::Reg<shorts::SHORTS_SPEC>,
     _reserved11: [u8; 256usize],
     #[doc = "0x304 - Enable interrupt"]
-    pub intenset: INTENSET,
+    pub intenset: crate::Reg<intenset::INTENSET_SPEC>,
     #[doc = "0x308 - Disable interrupt"]
-    pub intenclr: INTENCLR,
+    pub intenclr: crate::Reg<intenclr::INTENCLR_SPEC>,
     _reserved13: [u8; 244usize],
     #[doc = "0x400 - Semaphore status register"]
-    pub semstat: SEMSTAT,
+    pub semstat: crate::Reg<semstat::SEMSTAT_SPEC>,
     _reserved14: [u8; 60usize],
     #[doc = "0x440 - Status from last transaction"]
-    pub status: STATUS,
+    pub status: crate::Reg<status::STATUS_SPEC>,
     _reserved15: [u8; 188usize],
     #[doc = "0x500 - Enable SPI slave"]
-    pub enable: ENABLE,
+    pub enable: crate::Reg<enable::ENABLE_SPEC>,
     _reserved16: [u8; 4usize],
     #[doc = "0x508 - Unspecified"]
     pub psel: PSEL,
@@ -55,25 +55,25 @@ pub struct RegisterBlock {
     #[doc = "0x544 - Unspecified"]
     pub txd: TXD,
     #[doc = "0x554 - Configuration register"]
-    pub config: CONFIG,
+    pub config: crate::Reg<config::CONFIG_SPEC>,
     _reserved20: [u8; 4usize],
     #[doc = "0x55c - Default character. Character clocked out in case of an ignored transaction."]
-    pub def: DEF,
+    pub def: crate::Reg<def::DEF_SPEC>,
     _reserved21: [u8; 96usize],
     #[doc = "0x5c0 - Over-read character"]
-    pub orc: ORC,
+    pub orc: crate::Reg<orc::ORC_SPEC>,
 }
 #[doc = r"Register block"]
 #[repr(C)]
 pub struct PSEL {
     #[doc = "0x00 - Pin select for SCK"]
-    pub sck: self::psel::SCK,
+    pub sck: crate::Reg<self::psel::sck::SCK_SPEC>,
     #[doc = "0x04 - Pin select for MISO signal"]
-    pub miso: self::psel::MISO,
+    pub miso: crate::Reg<self::psel::miso::MISO_SPEC>,
     #[doc = "0x08 - Pin select for MOSI signal"]
-    pub mosi: self::psel::MOSI,
+    pub mosi: crate::Reg<self::psel::mosi::MOSI_SPEC>,
     #[doc = "0x0c - Pin select for CSN signal"]
-    pub csn: self::psel::CSN,
+    pub csn: crate::Reg<self::psel::csn::CSN_SPEC>,
 }
 #[doc = r"Register block"]
 #[doc = "Unspecified"]
@@ -82,13 +82,13 @@ pub mod psel;
 #[repr(C)]
 pub struct RXD {
     #[doc = "0x00 - RXD data pointer"]
-    pub ptr: self::rxd::PTR,
+    pub ptr: crate::Reg<self::rxd::ptr::PTR_SPEC>,
     #[doc = "0x04 - Maximum number of bytes in receive buffer"]
-    pub maxcnt: self::rxd::MAXCNT,
+    pub maxcnt: crate::Reg<self::rxd::maxcnt::MAXCNT_SPEC>,
     #[doc = "0x08 - Number of bytes received in last granted transaction"]
-    pub amount: self::rxd::AMOUNT,
+    pub amount: crate::Reg<self::rxd::amount::AMOUNT_SPEC>,
     #[doc = "0x0c - EasyDMA list type"]
-    pub list: self::rxd::LIST,
+    pub list: crate::Reg<self::rxd::list::LIST_SPEC>,
 }
 #[doc = r"Register block"]
 #[doc = "Unspecified"]
@@ -97,217 +97,90 @@ pub mod rxd;
 #[repr(C)]
 pub struct TXD {
     #[doc = "0x00 - TXD data pointer"]
-    pub ptr: self::txd::PTR,
+    pub ptr: crate::Reg<self::txd::ptr::PTR_SPEC>,
     #[doc = "0x04 - Maximum number of bytes in transmit buffer"]
-    pub maxcnt: self::txd::MAXCNT,
+    pub maxcnt: crate::Reg<self::txd::maxcnt::MAXCNT_SPEC>,
     #[doc = "0x08 - Number of bytes transmitted in last granted transaction"]
-    pub amount: self::txd::AMOUNT,
+    pub amount: crate::Reg<self::txd::amount::AMOUNT_SPEC>,
     #[doc = "0x0c - EasyDMA list type"]
-    pub list: self::txd::LIST,
+    pub list: crate::Reg<self::txd::list::LIST_SPEC>,
 }
 #[doc = r"Register block"]
 #[doc = "Unspecified"]
 pub mod txd;
-#[doc = "Acquire SPI semaphore\n\nThis register you can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [tasks_acquire](tasks_acquire) module"]
-pub type TASKS_ACQUIRE = crate::Reg<u32, _TASKS_ACQUIRE>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _TASKS_ACQUIRE;
-#[doc = "`write(|w| ..)` method takes [tasks_acquire::W](tasks_acquire::W) writer structure"]
-impl crate::Writable for TASKS_ACQUIRE {}
+#[doc = "TASKS_ACQUIRE register accessor: an alias for `Reg<TASKS_ACQUIRE_SPEC>`"]
+pub type TASKS_ACQUIRE = crate::Reg<tasks_acquire::TASKS_ACQUIRE_SPEC>;
 #[doc = "Acquire SPI semaphore"]
 pub mod tasks_acquire;
-#[doc = "Release SPI semaphore, enabling the SPI slave to acquire it\n\nThis register you can [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [tasks_release](tasks_release) module"]
-pub type TASKS_RELEASE = crate::Reg<u32, _TASKS_RELEASE>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _TASKS_RELEASE;
-#[doc = "`write(|w| ..)` method takes [tasks_release::W](tasks_release::W) writer structure"]
-impl crate::Writable for TASKS_RELEASE {}
+#[doc = "TASKS_RELEASE register accessor: an alias for `Reg<TASKS_RELEASE_SPEC>`"]
+pub type TASKS_RELEASE = crate::Reg<tasks_release::TASKS_RELEASE_SPEC>;
 #[doc = "Release SPI semaphore, enabling the SPI slave to acquire it"]
 pub mod tasks_release;
-#[doc = "Subscribe configuration for task ACQUIRE\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [subscribe_acquire](subscribe_acquire) module"]
-pub type SUBSCRIBE_ACQUIRE = crate::Reg<u32, _SUBSCRIBE_ACQUIRE>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _SUBSCRIBE_ACQUIRE;
-#[doc = "`read()` method returns [subscribe_acquire::R](subscribe_acquire::R) reader structure"]
-impl crate::Readable for SUBSCRIBE_ACQUIRE {}
-#[doc = "`write(|w| ..)` method takes [subscribe_acquire::W](subscribe_acquire::W) writer structure"]
-impl crate::Writable for SUBSCRIBE_ACQUIRE {}
+#[doc = "SUBSCRIBE_ACQUIRE register accessor: an alias for `Reg<SUBSCRIBE_ACQUIRE_SPEC>`"]
+pub type SUBSCRIBE_ACQUIRE = crate::Reg<subscribe_acquire::SUBSCRIBE_ACQUIRE_SPEC>;
 #[doc = "Subscribe configuration for task ACQUIRE"]
 pub mod subscribe_acquire;
-#[doc = "Subscribe configuration for task RELEASE\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [subscribe_release](subscribe_release) module"]
-pub type SUBSCRIBE_RELEASE = crate::Reg<u32, _SUBSCRIBE_RELEASE>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _SUBSCRIBE_RELEASE;
-#[doc = "`read()` method returns [subscribe_release::R](subscribe_release::R) reader structure"]
-impl crate::Readable for SUBSCRIBE_RELEASE {}
-#[doc = "`write(|w| ..)` method takes [subscribe_release::W](subscribe_release::W) writer structure"]
-impl crate::Writable for SUBSCRIBE_RELEASE {}
+#[doc = "SUBSCRIBE_RELEASE register accessor: an alias for `Reg<SUBSCRIBE_RELEASE_SPEC>`"]
+pub type SUBSCRIBE_RELEASE = crate::Reg<subscribe_release::SUBSCRIBE_RELEASE_SPEC>;
 #[doc = "Subscribe configuration for task RELEASE"]
 pub mod subscribe_release;
-#[doc = "Granted transaction completed\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [events_end](events_end) module"]
-pub type EVENTS_END = crate::Reg<u32, _EVENTS_END>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _EVENTS_END;
-#[doc = "`read()` method returns [events_end::R](events_end::R) reader structure"]
-impl crate::Readable for EVENTS_END {}
-#[doc = "`write(|w| ..)` method takes [events_end::W](events_end::W) writer structure"]
-impl crate::Writable for EVENTS_END {}
+#[doc = "EVENTS_END register accessor: an alias for `Reg<EVENTS_END_SPEC>`"]
+pub type EVENTS_END = crate::Reg<events_end::EVENTS_END_SPEC>;
 #[doc = "Granted transaction completed"]
 pub mod events_end;
-#[doc = "End of RXD buffer reached\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [events_endrx](events_endrx) module"]
-pub type EVENTS_ENDRX = crate::Reg<u32, _EVENTS_ENDRX>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _EVENTS_ENDRX;
-#[doc = "`read()` method returns [events_endrx::R](events_endrx::R) reader structure"]
-impl crate::Readable for EVENTS_ENDRX {}
-#[doc = "`write(|w| ..)` method takes [events_endrx::W](events_endrx::W) writer structure"]
-impl crate::Writable for EVENTS_ENDRX {}
+#[doc = "EVENTS_ENDRX register accessor: an alias for `Reg<EVENTS_ENDRX_SPEC>`"]
+pub type EVENTS_ENDRX = crate::Reg<events_endrx::EVENTS_ENDRX_SPEC>;
 #[doc = "End of RXD buffer reached"]
 pub mod events_endrx;
-#[doc = "Semaphore acquired\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [events_acquired](events_acquired) module"]
-pub type EVENTS_ACQUIRED = crate::Reg<u32, _EVENTS_ACQUIRED>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _EVENTS_ACQUIRED;
-#[doc = "`read()` method returns [events_acquired::R](events_acquired::R) reader structure"]
-impl crate::Readable for EVENTS_ACQUIRED {}
-#[doc = "`write(|w| ..)` method takes [events_acquired::W](events_acquired::W) writer structure"]
-impl crate::Writable for EVENTS_ACQUIRED {}
+#[doc = "EVENTS_ACQUIRED register accessor: an alias for `Reg<EVENTS_ACQUIRED_SPEC>`"]
+pub type EVENTS_ACQUIRED = crate::Reg<events_acquired::EVENTS_ACQUIRED_SPEC>;
 #[doc = "Semaphore acquired"]
 pub mod events_acquired;
-#[doc = "Publish configuration for event END\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [publish_end](publish_end) module"]
-pub type PUBLISH_END = crate::Reg<u32, _PUBLISH_END>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _PUBLISH_END;
-#[doc = "`read()` method returns [publish_end::R](publish_end::R) reader structure"]
-impl crate::Readable for PUBLISH_END {}
-#[doc = "`write(|w| ..)` method takes [publish_end::W](publish_end::W) writer structure"]
-impl crate::Writable for PUBLISH_END {}
+#[doc = "PUBLISH_END register accessor: an alias for `Reg<PUBLISH_END_SPEC>`"]
+pub type PUBLISH_END = crate::Reg<publish_end::PUBLISH_END_SPEC>;
 #[doc = "Publish configuration for event END"]
 pub mod publish_end;
-#[doc = "Publish configuration for event ENDRX\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [publish_endrx](publish_endrx) module"]
-pub type PUBLISH_ENDRX = crate::Reg<u32, _PUBLISH_ENDRX>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _PUBLISH_ENDRX;
-#[doc = "`read()` method returns [publish_endrx::R](publish_endrx::R) reader structure"]
-impl crate::Readable for PUBLISH_ENDRX {}
-#[doc = "`write(|w| ..)` method takes [publish_endrx::W](publish_endrx::W) writer structure"]
-impl crate::Writable for PUBLISH_ENDRX {}
+#[doc = "PUBLISH_ENDRX register accessor: an alias for `Reg<PUBLISH_ENDRX_SPEC>`"]
+pub type PUBLISH_ENDRX = crate::Reg<publish_endrx::PUBLISH_ENDRX_SPEC>;
 #[doc = "Publish configuration for event ENDRX"]
 pub mod publish_endrx;
-#[doc = "Publish configuration for event ACQUIRED\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [publish_acquired](publish_acquired) module"]
-pub type PUBLISH_ACQUIRED = crate::Reg<u32, _PUBLISH_ACQUIRED>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _PUBLISH_ACQUIRED;
-#[doc = "`read()` method returns [publish_acquired::R](publish_acquired::R) reader structure"]
-impl crate::Readable for PUBLISH_ACQUIRED {}
-#[doc = "`write(|w| ..)` method takes [publish_acquired::W](publish_acquired::W) writer structure"]
-impl crate::Writable for PUBLISH_ACQUIRED {}
+#[doc = "PUBLISH_ACQUIRED register accessor: an alias for `Reg<PUBLISH_ACQUIRED_SPEC>`"]
+pub type PUBLISH_ACQUIRED = crate::Reg<publish_acquired::PUBLISH_ACQUIRED_SPEC>;
 #[doc = "Publish configuration for event ACQUIRED"]
 pub mod publish_acquired;
-#[doc = "Shortcuts between local events and tasks\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [shorts](shorts) module"]
-pub type SHORTS = crate::Reg<u32, _SHORTS>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _SHORTS;
-#[doc = "`read()` method returns [shorts::R](shorts::R) reader structure"]
-impl crate::Readable for SHORTS {}
-#[doc = "`write(|w| ..)` method takes [shorts::W](shorts::W) writer structure"]
-impl crate::Writable for SHORTS {}
+#[doc = "SHORTS register accessor: an alias for `Reg<SHORTS_SPEC>`"]
+pub type SHORTS = crate::Reg<shorts::SHORTS_SPEC>;
 #[doc = "Shortcuts between local events and tasks"]
 pub mod shorts;
-#[doc = "Enable interrupt\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [intenset](intenset) module"]
-pub type INTENSET = crate::Reg<u32, _INTENSET>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _INTENSET;
-#[doc = "`read()` method returns [intenset::R](intenset::R) reader structure"]
-impl crate::Readable for INTENSET {}
-#[doc = "`write(|w| ..)` method takes [intenset::W](intenset::W) writer structure"]
-impl crate::Writable for INTENSET {}
+#[doc = "INTENSET register accessor: an alias for `Reg<INTENSET_SPEC>`"]
+pub type INTENSET = crate::Reg<intenset::INTENSET_SPEC>;
 #[doc = "Enable interrupt"]
 pub mod intenset;
-#[doc = "Disable interrupt\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [intenclr](intenclr) module"]
-pub type INTENCLR = crate::Reg<u32, _INTENCLR>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _INTENCLR;
-#[doc = "`read()` method returns [intenclr::R](intenclr::R) reader structure"]
-impl crate::Readable for INTENCLR {}
-#[doc = "`write(|w| ..)` method takes [intenclr::W](intenclr::W) writer structure"]
-impl crate::Writable for INTENCLR {}
+#[doc = "INTENCLR register accessor: an alias for `Reg<INTENCLR_SPEC>`"]
+pub type INTENCLR = crate::Reg<intenclr::INTENCLR_SPEC>;
 #[doc = "Disable interrupt"]
 pub mod intenclr;
-#[doc = "Semaphore status register\n\nThis register you can [`read`](crate::generic::Reg::read). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [semstat](semstat) module"]
-pub type SEMSTAT = crate::Reg<u32, _SEMSTAT>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _SEMSTAT;
-#[doc = "`read()` method returns [semstat::R](semstat::R) reader structure"]
-impl crate::Readable for SEMSTAT {}
+#[doc = "SEMSTAT register accessor: an alias for `Reg<SEMSTAT_SPEC>`"]
+pub type SEMSTAT = crate::Reg<semstat::SEMSTAT_SPEC>;
 #[doc = "Semaphore status register"]
 pub mod semstat;
-#[doc = "Status from last transaction\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [status](status) module"]
-pub type STATUS = crate::Reg<u32, _STATUS>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _STATUS;
-#[doc = "`read()` method returns [status::R](status::R) reader structure"]
-impl crate::Readable for STATUS {}
-#[doc = "`write(|w| ..)` method takes [status::W](status::W) writer structure"]
-impl crate::Writable for STATUS {}
+#[doc = "STATUS register accessor: an alias for `Reg<STATUS_SPEC>`"]
+pub type STATUS = crate::Reg<status::STATUS_SPEC>;
 #[doc = "Status from last transaction"]
 pub mod status;
-#[doc = "Enable SPI slave\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [enable](enable) module"]
-pub type ENABLE = crate::Reg<u32, _ENABLE>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _ENABLE;
-#[doc = "`read()` method returns [enable::R](enable::R) reader structure"]
-impl crate::Readable for ENABLE {}
-#[doc = "`write(|w| ..)` method takes [enable::W](enable::W) writer structure"]
-impl crate::Writable for ENABLE {}
+#[doc = "ENABLE register accessor: an alias for `Reg<ENABLE_SPEC>`"]
+pub type ENABLE = crate::Reg<enable::ENABLE_SPEC>;
 #[doc = "Enable SPI slave"]
 pub mod enable;
-#[doc = "Configuration register\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [config](config) module"]
-pub type CONFIG = crate::Reg<u32, _CONFIG>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _CONFIG;
-#[doc = "`read()` method returns [config::R](config::R) reader structure"]
-impl crate::Readable for CONFIG {}
-#[doc = "`write(|w| ..)` method takes [config::W](config::W) writer structure"]
-impl crate::Writable for CONFIG {}
+#[doc = "CONFIG register accessor: an alias for `Reg<CONFIG_SPEC>`"]
+pub type CONFIG = crate::Reg<config::CONFIG_SPEC>;
 #[doc = "Configuration register"]
 pub mod config;
-#[doc = "Default character. Character clocked out in case of an ignored transaction.\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [def](def) module"]
-pub type DEF = crate::Reg<u32, _DEF>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _DEF;
-#[doc = "`read()` method returns [def::R](def::R) reader structure"]
-impl crate::Readable for DEF {}
-#[doc = "`write(|w| ..)` method takes [def::W](def::W) writer structure"]
-impl crate::Writable for DEF {}
+#[doc = "DEF register accessor: an alias for `Reg<DEF_SPEC>`"]
+pub type DEF = crate::Reg<def::DEF_SPEC>;
 #[doc = "Default character. Character clocked out in case of an ignored transaction."]
 pub mod def;
-#[doc = "Over-read character\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [orc](orc) module"]
-pub type ORC = crate::Reg<u32, _ORC>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _ORC;
-#[doc = "`read()` method returns [orc::R](orc::R) reader structure"]
-impl crate::Readable for ORC {}
-#[doc = "`write(|w| ..)` method takes [orc::W](orc::W) writer structure"]
-impl crate::Writable for ORC {}
+#[doc = "ORC register accessor: an alias for `Reg<ORC_SPEC>`"]
+pub type ORC = crate::Reg<orc::ORC_SPEC>;
 #[doc = "Over-read character"]
 pub mod orc;

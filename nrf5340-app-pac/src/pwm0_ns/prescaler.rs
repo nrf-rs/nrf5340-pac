@@ -1,53 +1,70 @@
-#[doc = "Reader of register PRESCALER"]
-pub type R = crate::R<u32, super::PRESCALER>;
-#[doc = "Writer for register PRESCALER"]
-pub type W = crate::W<u32, super::PRESCALER>;
-#[doc = "Register PRESCALER `reset()`'s with value 0"]
-impl crate::ResetValue for super::PRESCALER {
-    type Type = u32;
+#[doc = "Register `PRESCALER` reader"]
+pub struct R(crate::R<PRESCALER_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<PRESCALER_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<PRESCALER_SPEC>> for R {
+    fn from(reader: crate::R<PRESCALER_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `PRESCALER` writer"]
+pub struct W(crate::W<PRESCALER_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<PRESCALER_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<PRESCALER_SPEC>> for W {
+    fn from(writer: crate::W<PRESCALER_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "Prescaler of PWM_CLK\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
+#[repr(u8)]
 pub enum PRESCALER_A {
     #[doc = "0: Divide by 1 (16 MHz)"]
-    DIV_1,
+    DIV_1 = 0,
     #[doc = "1: Divide by 2 (8 MHz)"]
-    DIV_2,
+    DIV_2 = 1,
     #[doc = "2: Divide by 4 (4 MHz)"]
-    DIV_4,
+    DIV_4 = 2,
     #[doc = "3: Divide by 8 (2 MHz)"]
-    DIV_8,
+    DIV_8 = 3,
     #[doc = "4: Divide by 16 (1 MHz)"]
-    DIV_16,
+    DIV_16 = 4,
     #[doc = "5: Divide by 32 (500 kHz)"]
-    DIV_32,
+    DIV_32 = 5,
     #[doc = "6: Divide by 64 (250 kHz)"]
-    DIV_64,
+    DIV_64 = 6,
     #[doc = "7: Divide by 128 (125 kHz)"]
-    DIV_128,
+    DIV_128 = 7,
 }
 impl From<PRESCALER_A> for u8 {
     #[inline(always)]
     fn from(variant: PRESCALER_A) -> Self {
-        match variant {
-            PRESCALER_A::DIV_1 => 0,
-            PRESCALER_A::DIV_2 => 1,
-            PRESCALER_A::DIV_4 => 2,
-            PRESCALER_A::DIV_8 => 3,
-            PRESCALER_A::DIV_16 => 4,
-            PRESCALER_A::DIV_32 => 5,
-            PRESCALER_A::DIV_64 => 6,
-            PRESCALER_A::DIV_128 => 7,
-        }
+        variant as _
     }
 }
-#[doc = "Reader of field `PRESCALER`"]
-pub type PRESCALER_R = crate::R<u8, PRESCALER_A>;
+#[doc = "Field `PRESCALER` reader - Prescaler of PWM_CLK"]
+pub struct PRESCALER_R(crate::FieldReader<u8, PRESCALER_A>);
 impl PRESCALER_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        PRESCALER_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> PRESCALER_A {
@@ -66,45 +83,52 @@ impl PRESCALER_R {
     #[doc = "Checks if the value of the field is `DIV_1`"]
     #[inline(always)]
     pub fn is_div_1(&self) -> bool {
-        *self == PRESCALER_A::DIV_1
+        **self == PRESCALER_A::DIV_1
     }
     #[doc = "Checks if the value of the field is `DIV_2`"]
     #[inline(always)]
     pub fn is_div_2(&self) -> bool {
-        *self == PRESCALER_A::DIV_2
+        **self == PRESCALER_A::DIV_2
     }
     #[doc = "Checks if the value of the field is `DIV_4`"]
     #[inline(always)]
     pub fn is_div_4(&self) -> bool {
-        *self == PRESCALER_A::DIV_4
+        **self == PRESCALER_A::DIV_4
     }
     #[doc = "Checks if the value of the field is `DIV_8`"]
     #[inline(always)]
     pub fn is_div_8(&self) -> bool {
-        *self == PRESCALER_A::DIV_8
+        **self == PRESCALER_A::DIV_8
     }
     #[doc = "Checks if the value of the field is `DIV_16`"]
     #[inline(always)]
     pub fn is_div_16(&self) -> bool {
-        *self == PRESCALER_A::DIV_16
+        **self == PRESCALER_A::DIV_16
     }
     #[doc = "Checks if the value of the field is `DIV_32`"]
     #[inline(always)]
     pub fn is_div_32(&self) -> bool {
-        *self == PRESCALER_A::DIV_32
+        **self == PRESCALER_A::DIV_32
     }
     #[doc = "Checks if the value of the field is `DIV_64`"]
     #[inline(always)]
     pub fn is_div_64(&self) -> bool {
-        *self == PRESCALER_A::DIV_64
+        **self == PRESCALER_A::DIV_64
     }
     #[doc = "Checks if the value of the field is `DIV_128`"]
     #[inline(always)]
     pub fn is_div_128(&self) -> bool {
-        *self == PRESCALER_A::DIV_128
+        **self == PRESCALER_A::DIV_128
     }
 }
-#[doc = "Write proxy for field `PRESCALER`"]
+impl core::ops::Deref for PRESCALER_R {
+    type Target = crate::FieldReader<u8, PRESCALER_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `PRESCALER` writer - Prescaler of PWM_CLK"]
 pub struct PRESCALER_W<'a> {
     w: &'a mut W,
 }
@@ -112,9 +136,7 @@ impl<'a> PRESCALER_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: PRESCALER_A) -> &'a mut W {
-        {
-            self.bits(variant.into())
-        }
+        self.bits(variant.into())
     }
     #[doc = "Divide by 1 (16 MHz)"]
     #[inline(always)]
@@ -175,5 +197,30 @@ impl W {
     #[inline(always)]
     pub fn prescaler(&mut self) -> PRESCALER_W {
         PRESCALER_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Configuration for PWM_CLK\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [prescaler](index.html) module"]
+pub struct PRESCALER_SPEC;
+impl crate::RegisterSpec for PRESCALER_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [prescaler::R](R) reader structure"]
+impl crate::Readable for PRESCALER_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [prescaler::W](W) writer structure"]
+impl crate::Writable for PRESCALER_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets PRESCALER to value 0"]
+impl crate::Resettable for PRESCALER_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

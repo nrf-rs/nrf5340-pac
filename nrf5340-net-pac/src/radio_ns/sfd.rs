@@ -1,18 +1,52 @@
-#[doc = "Reader of register SFD"]
-pub type R = crate::R<u32, super::SFD>;
-#[doc = "Writer for register SFD"]
-pub type W = crate::W<u32, super::SFD>;
-#[doc = "Register SFD `reset()`'s with value 0xa7"]
-impl crate::ResetValue for super::SFD {
-    type Type = u32;
+#[doc = "Register `SFD` reader"]
+pub struct R(crate::R<SFD_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<SFD_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0xa7
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `SFD`"]
-pub type SFD_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `SFD`"]
+impl core::convert::From<crate::R<SFD_SPEC>> for R {
+    fn from(reader: crate::R<SFD_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `SFD` writer"]
+pub struct W(crate::W<SFD_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<SFD_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<SFD_SPEC>> for W {
+    fn from(writer: crate::W<SFD_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `SFD` reader - IEEE 802.15.4 start of frame delimiter"]
+pub struct SFD_R(crate::FieldReader<u8, u8>);
+impl SFD_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        SFD_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for SFD_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `SFD` writer - IEEE 802.15.4 start of frame delimiter"]
 pub struct SFD_W<'a> {
     w: &'a mut W,
 }
@@ -36,5 +70,30 @@ impl W {
     #[inline(always)]
     pub fn sfd(&mut self) -> SFD_W {
         SFD_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "IEEE 802.15.4 start of frame delimiter\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [sfd](index.html) module"]
+pub struct SFD_SPEC;
+impl crate::RegisterSpec for SFD_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [sfd::R](R) reader structure"]
+impl crate::Readable for SFD_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [sfd::W](W) writer structure"]
+impl crate::Writable for SFD_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets SFD to value 0xa7"]
+impl crate::Resettable for SFD_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0xa7
     }
 }

@@ -1,47 +1,66 @@
-#[doc = "Reader of register PDMCLKCTRL"]
-pub type R = crate::R<u32, super::PDMCLKCTRL>;
-#[doc = "Writer for register PDMCLKCTRL"]
-pub type W = crate::W<u32, super::PDMCLKCTRL>;
-#[doc = "Register PDMCLKCTRL `reset()`'s with value 0x0840_0000"]
-impl crate::ResetValue for super::PDMCLKCTRL {
-    type Type = u32;
+#[doc = "Register `PDMCLKCTRL` reader"]
+pub struct R(crate::R<PDMCLKCTRL_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<PDMCLKCTRL_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0x0840_0000
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "PDM_CLK frequency configuration Enumerations are deprecated, use PDMCLKCTRL equation to find the register value. The 12 least significant bits of the register are ignored and shall be set to zero.\n\nValue on reset: 138412032"]
+impl core::convert::From<crate::R<PDMCLKCTRL_SPEC>> for R {
+    fn from(reader: crate::R<PDMCLKCTRL_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `PDMCLKCTRL` writer"]
+pub struct W(crate::W<PDMCLKCTRL_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<PDMCLKCTRL_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<PDMCLKCTRL_SPEC>> for W {
+    fn from(writer: crate::W<PDMCLKCTRL_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "PDM_CLK frequency configuration. Enumerations are deprecated, use PDMCLKCTRL equation to find the register value. The 12 least significant bits of the register are ignored and shall be set to zero.\n\nValue on reset: 138412032"]
 #[derive(Clone, Copy, Debug, PartialEq)]
+#[repr(u32)]
 pub enum FREQ_A {
     #[doc = "134217728: PDM_CLK = 32 MHz / 32 = 1.000 MHz"]
-    _1000K,
+    _1000K = 134217728,
     #[doc = "138412032: PDM_CLK = 32 MHz / 31 = 1.032 MHz. Nominal clock for RATIO=Ratio64."]
-    DEFAULT,
+    DEFAULT = 138412032,
     #[doc = "142606336: PDM_CLK = 32 MHz / 30 = 1.067 MHz"]
-    _1067K,
+    _1067K = 142606336,
     #[doc = "159383552: PDM_CLK = 32 MHz / 26 = 1.231 MHz"]
-    _1231K,
+    _1231K = 159383552,
     #[doc = "167772160: PDM_CLK = 32 MHz / 25 = 1.280 MHz. Nominal clock for RATIO=Ratio80."]
-    _1280K,
+    _1280K = 167772160,
     #[doc = "176160768: PDM_CLK = 32 MHz / 24 = 1.333 MHz"]
-    _1333K,
+    _1333K = 176160768,
 }
 impl From<FREQ_A> for u32 {
     #[inline(always)]
     fn from(variant: FREQ_A) -> Self {
-        match variant {
-            FREQ_A::_1000K => 134217728,
-            FREQ_A::DEFAULT => 138412032,
-            FREQ_A::_1067K => 142606336,
-            FREQ_A::_1231K => 159383552,
-            FREQ_A::_1280K => 167772160,
-            FREQ_A::_1333K => 176160768,
-        }
+        variant as _
     }
 }
-#[doc = "Reader of field `FREQ`"]
-pub type FREQ_R = crate::R<u32, FREQ_A>;
+#[doc = "Field `FREQ` reader - PDM_CLK frequency configuration. Enumerations are deprecated, use PDMCLKCTRL equation to find the register value. The 12 least significant bits of the register are ignored and shall be set to zero."]
+pub struct FREQ_R(crate::FieldReader<u32, FREQ_A>);
 impl FREQ_R {
+    pub(crate) fn new(bits: u32) -> Self {
+        FREQ_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> crate::Variant<u32, FREQ_A> {
@@ -59,35 +78,42 @@ impl FREQ_R {
     #[doc = "Checks if the value of the field is `_1000K`"]
     #[inline(always)]
     pub fn is_1000k(&self) -> bool {
-        *self == FREQ_A::_1000K
+        **self == FREQ_A::_1000K
     }
     #[doc = "Checks if the value of the field is `DEFAULT`"]
     #[inline(always)]
     pub fn is_default(&self) -> bool {
-        *self == FREQ_A::DEFAULT
+        **self == FREQ_A::DEFAULT
     }
     #[doc = "Checks if the value of the field is `_1067K`"]
     #[inline(always)]
     pub fn is_1067k(&self) -> bool {
-        *self == FREQ_A::_1067K
+        **self == FREQ_A::_1067K
     }
     #[doc = "Checks if the value of the field is `_1231K`"]
     #[inline(always)]
     pub fn is_1231k(&self) -> bool {
-        *self == FREQ_A::_1231K
+        **self == FREQ_A::_1231K
     }
     #[doc = "Checks if the value of the field is `_1280K`"]
     #[inline(always)]
     pub fn is_1280k(&self) -> bool {
-        *self == FREQ_A::_1280K
+        **self == FREQ_A::_1280K
     }
     #[doc = "Checks if the value of the field is `_1333K`"]
     #[inline(always)]
     pub fn is_1333k(&self) -> bool {
-        *self == FREQ_A::_1333K
+        **self == FREQ_A::_1333K
     }
 }
-#[doc = "Write proxy for field `FREQ`"]
+impl core::ops::Deref for FREQ_R {
+    type Target = crate::FieldReader<u32, FREQ_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `FREQ` writer - PDM_CLK frequency configuration. Enumerations are deprecated, use PDMCLKCTRL equation to find the register value. The 12 least significant bits of the register are ignored and shall be set to zero."]
 pub struct FREQ_W<'a> {
     w: &'a mut W,
 }
@@ -135,16 +161,41 @@ impl<'a> FREQ_W<'a> {
     }
 }
 impl R {
-    #[doc = "Bits 0:31 - PDM_CLK frequency configuration Enumerations are deprecated, use PDMCLKCTRL equation to find the register value. The 12 least significant bits of the register are ignored and shall be set to zero."]
+    #[doc = "Bits 0:31 - PDM_CLK frequency configuration. Enumerations are deprecated, use PDMCLKCTRL equation to find the register value. The 12 least significant bits of the register are ignored and shall be set to zero."]
     #[inline(always)]
     pub fn freq(&self) -> FREQ_R {
         FREQ_R::new((self.bits & 0xffff_ffff) as u32)
     }
 }
 impl W {
-    #[doc = "Bits 0:31 - PDM_CLK frequency configuration Enumerations are deprecated, use PDMCLKCTRL equation to find the register value. The 12 least significant bits of the register are ignored and shall be set to zero."]
+    #[doc = "Bits 0:31 - PDM_CLK frequency configuration. Enumerations are deprecated, use PDMCLKCTRL equation to find the register value. The 12 least significant bits of the register are ignored and shall be set to zero."]
     #[inline(always)]
     pub fn freq(&mut self) -> FREQ_W {
         FREQ_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "PDM clock generator control\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [pdmclkctrl](index.html) module"]
+pub struct PDMCLKCTRL_SPEC;
+impl crate::RegisterSpec for PDMCLKCTRL_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [pdmclkctrl::R](R) reader structure"]
+impl crate::Readable for PDMCLKCTRL_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [pdmclkctrl::W](W) writer structure"]
+impl crate::Writable for PDMCLKCTRL_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets PDMCLKCTRL to value 0x0840_0000"]
+impl crate::Resettable for PDMCLKCTRL_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0x0840_0000
     }
 }

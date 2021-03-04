@@ -1,56 +1,72 @@
-#[doc = "Reader of register RATIO"]
-pub type R = crate::R<u32, super::RATIO>;
-#[doc = "Writer for register RATIO"]
-pub type W = crate::W<u32, super::RATIO>;
-#[doc = "Register RATIO `reset()`'s with value 0x06"]
-impl crate::ResetValue for super::RATIO {
-    type Type = u32;
+#[doc = "Register `RATIO` reader"]
+pub struct R(crate::R<RATIO_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<RATIO_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0x06
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<RATIO_SPEC>> for R {
+    fn from(reader: crate::R<RATIO_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `RATIO` writer"]
+pub struct W(crate::W<RATIO_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<RATIO_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<RATIO_SPEC>> for W {
+    fn from(writer: crate::W<RATIO_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "MCK / LRCK ratio\n\nValue on reset: 6"]
 #[derive(Clone, Copy, Debug, PartialEq)]
+#[repr(u8)]
 pub enum RATIO_A {
     #[doc = "0: LRCK = MCK / 32"]
-    _32X,
+    _32X = 0,
     #[doc = "1: LRCK = MCK / 48"]
-    _48X,
+    _48X = 1,
     #[doc = "2: LRCK = MCK / 64"]
-    _64X,
+    _64X = 2,
     #[doc = "3: LRCK = MCK / 96"]
-    _96X,
+    _96X = 3,
     #[doc = "4: LRCK = MCK / 128"]
-    _128X,
+    _128X = 4,
     #[doc = "5: LRCK = MCK / 192"]
-    _192X,
+    _192X = 5,
     #[doc = "6: LRCK = MCK / 256"]
-    _256X,
+    _256X = 6,
     #[doc = "7: LRCK = MCK / 384"]
-    _384X,
+    _384X = 7,
     #[doc = "8: LRCK = MCK / 512"]
-    _512X,
+    _512X = 8,
 }
 impl From<RATIO_A> for u8 {
     #[inline(always)]
     fn from(variant: RATIO_A) -> Self {
-        match variant {
-            RATIO_A::_32X => 0,
-            RATIO_A::_48X => 1,
-            RATIO_A::_64X => 2,
-            RATIO_A::_96X => 3,
-            RATIO_A::_128X => 4,
-            RATIO_A::_192X => 5,
-            RATIO_A::_256X => 6,
-            RATIO_A::_384X => 7,
-            RATIO_A::_512X => 8,
-        }
+        variant as _
     }
 }
-#[doc = "Reader of field `RATIO`"]
-pub type RATIO_R = crate::R<u8, RATIO_A>;
+#[doc = "Field `RATIO` reader - MCK / LRCK ratio"]
+pub struct RATIO_R(crate::FieldReader<u8, RATIO_A>);
 impl RATIO_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        RATIO_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> crate::Variant<u8, RATIO_A> {
@@ -71,50 +87,57 @@ impl RATIO_R {
     #[doc = "Checks if the value of the field is `_32X`"]
     #[inline(always)]
     pub fn is_32x(&self) -> bool {
-        *self == RATIO_A::_32X
+        **self == RATIO_A::_32X
     }
     #[doc = "Checks if the value of the field is `_48X`"]
     #[inline(always)]
     pub fn is_48x(&self) -> bool {
-        *self == RATIO_A::_48X
+        **self == RATIO_A::_48X
     }
     #[doc = "Checks if the value of the field is `_64X`"]
     #[inline(always)]
     pub fn is_64x(&self) -> bool {
-        *self == RATIO_A::_64X
+        **self == RATIO_A::_64X
     }
     #[doc = "Checks if the value of the field is `_96X`"]
     #[inline(always)]
     pub fn is_96x(&self) -> bool {
-        *self == RATIO_A::_96X
+        **self == RATIO_A::_96X
     }
     #[doc = "Checks if the value of the field is `_128X`"]
     #[inline(always)]
     pub fn is_128x(&self) -> bool {
-        *self == RATIO_A::_128X
+        **self == RATIO_A::_128X
     }
     #[doc = "Checks if the value of the field is `_192X`"]
     #[inline(always)]
     pub fn is_192x(&self) -> bool {
-        *self == RATIO_A::_192X
+        **self == RATIO_A::_192X
     }
     #[doc = "Checks if the value of the field is `_256X`"]
     #[inline(always)]
     pub fn is_256x(&self) -> bool {
-        *self == RATIO_A::_256X
+        **self == RATIO_A::_256X
     }
     #[doc = "Checks if the value of the field is `_384X`"]
     #[inline(always)]
     pub fn is_384x(&self) -> bool {
-        *self == RATIO_A::_384X
+        **self == RATIO_A::_384X
     }
     #[doc = "Checks if the value of the field is `_512X`"]
     #[inline(always)]
     pub fn is_512x(&self) -> bool {
-        *self == RATIO_A::_512X
+        **self == RATIO_A::_512X
     }
 }
-#[doc = "Write proxy for field `RATIO`"]
+impl core::ops::Deref for RATIO_R {
+    type Target = crate::FieldReader<u8, RATIO_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `RATIO` writer - MCK / LRCK ratio"]
 pub struct RATIO_W<'a> {
     w: &'a mut W,
 }
@@ -188,5 +211,30 @@ impl W {
     #[inline(always)]
     pub fn ratio(&mut self) -> RATIO_W {
         RATIO_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "MCK / LRCK ratio\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [ratio](index.html) module"]
+pub struct RATIO_SPEC;
+impl crate::RegisterSpec for RATIO_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [ratio::R](R) reader structure"]
+impl crate::Readable for RATIO_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [ratio::W](W) writer structure"]
+impl crate::Writable for RATIO_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets RATIO to value 0x06"]
+impl crate::Resettable for RATIO_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0x06
     }
 }

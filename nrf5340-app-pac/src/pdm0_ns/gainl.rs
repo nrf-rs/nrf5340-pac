@@ -1,38 +1,60 @@
-#[doc = "Reader of register GAINL"]
-pub type R = crate::R<u32, super::GAINL>;
-#[doc = "Writer for register GAINL"]
-pub type W = crate::W<u32, super::GAINL>;
-#[doc = "Register GAINL `reset()`'s with value 0x28"]
-impl crate::ResetValue for super::GAINL {
-    type Type = u32;
+#[doc = "Register `GAINL` reader"]
+pub struct R(crate::R<GAINL_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<GAINL_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0x28
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<GAINL_SPEC>> for R {
+    fn from(reader: crate::R<GAINL_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `GAINL` writer"]
+pub struct W(crate::W<GAINL_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<GAINL_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<GAINL_SPEC>> for W {
+    fn from(writer: crate::W<GAINL_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "Left output gain adjustment, in 0.5 dB steps, around the default module gain (see electrical parameters) 0x00 -20 dB gain adjust 0x01 -19.5 dB gain adjust (...) 0x27 -0.5 dB gain adjust 0x28 0 dB gain adjust 0x29 +0.5 dB gain adjust (...) 0x4F +19.5 dB gain adjust 0x50 +20 dB gain adjust\n\nValue on reset: 40"]
 #[derive(Clone, Copy, Debug, PartialEq)]
+#[repr(u8)]
 pub enum GAINL_A {
-    #[doc = "0: -20dB gain adjustment (minimum)"]
-    MINGAIN,
-    #[doc = "40: 0dB gain adjustment"]
-    DEFAULTGAIN,
-    #[doc = "80: +20dB gain adjustment (maximum)"]
-    MAXGAIN,
+    #[doc = "0: -20 dB gain adjustment (minimum)"]
+    MINGAIN = 0,
+    #[doc = "40: 0 dB gain adjustment"]
+    DEFAULTGAIN = 40,
+    #[doc = "80: +20 dB gain adjustment (maximum)"]
+    MAXGAIN = 80,
 }
 impl From<GAINL_A> for u8 {
     #[inline(always)]
     fn from(variant: GAINL_A) -> Self {
-        match variant {
-            GAINL_A::MINGAIN => 0,
-            GAINL_A::DEFAULTGAIN => 40,
-            GAINL_A::MAXGAIN => 80,
-        }
+        variant as _
     }
 }
-#[doc = "Reader of field `GAINL`"]
-pub type GAINL_R = crate::R<u8, GAINL_A>;
+#[doc = "Field `GAINL` reader - Left output gain adjustment, in 0.5 dB steps, around the default module gain (see electrical parameters) 0x00 -20 dB gain adjust 0x01 -19.5 dB gain adjust (...) 0x27 -0.5 dB gain adjust 0x28 0 dB gain adjust 0x29 +0.5 dB gain adjust (...) 0x4F +19.5 dB gain adjust 0x50 +20 dB gain adjust"]
+pub struct GAINL_R(crate::FieldReader<u8, GAINL_A>);
 impl GAINL_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        GAINL_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> crate::Variant<u8, GAINL_A> {
@@ -47,20 +69,27 @@ impl GAINL_R {
     #[doc = "Checks if the value of the field is `MINGAIN`"]
     #[inline(always)]
     pub fn is_min_gain(&self) -> bool {
-        *self == GAINL_A::MINGAIN
+        **self == GAINL_A::MINGAIN
     }
     #[doc = "Checks if the value of the field is `DEFAULTGAIN`"]
     #[inline(always)]
     pub fn is_default_gain(&self) -> bool {
-        *self == GAINL_A::DEFAULTGAIN
+        **self == GAINL_A::DEFAULTGAIN
     }
     #[doc = "Checks if the value of the field is `MAXGAIN`"]
     #[inline(always)]
     pub fn is_max_gain(&self) -> bool {
-        *self == GAINL_A::MAXGAIN
+        **self == GAINL_A::MAXGAIN
     }
 }
-#[doc = "Write proxy for field `GAINL`"]
+impl core::ops::Deref for GAINL_R {
+    type Target = crate::FieldReader<u8, GAINL_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `GAINL` writer - Left output gain adjustment, in 0.5 dB steps, around the default module gain (see electrical parameters) 0x00 -20 dB gain adjust 0x01 -19.5 dB gain adjust (...) 0x27 -0.5 dB gain adjust 0x28 0 dB gain adjust 0x29 +0.5 dB gain adjust (...) 0x4F +19.5 dB gain adjust 0x50 +20 dB gain adjust"]
 pub struct GAINL_W<'a> {
     w: &'a mut W,
 }
@@ -70,17 +99,17 @@ impl<'a> GAINL_W<'a> {
     pub fn variant(self, variant: GAINL_A) -> &'a mut W {
         unsafe { self.bits(variant.into()) }
     }
-    #[doc = "-20dB gain adjustment (minimum)"]
+    #[doc = "-20 dB gain adjustment (minimum)"]
     #[inline(always)]
     pub fn min_gain(self) -> &'a mut W {
         self.variant(GAINL_A::MINGAIN)
     }
-    #[doc = "0dB gain adjustment"]
+    #[doc = "0 dB gain adjustment"]
     #[inline(always)]
     pub fn default_gain(self) -> &'a mut W {
         self.variant(GAINL_A::DEFAULTGAIN)
     }
-    #[doc = "+20dB gain adjustment (maximum)"]
+    #[doc = "+20 dB gain adjustment (maximum)"]
     #[inline(always)]
     pub fn max_gain(self) -> &'a mut W {
         self.variant(GAINL_A::MAXGAIN)
@@ -104,5 +133,30 @@ impl W {
     #[inline(always)]
     pub fn gainl(&mut self) -> GAINL_W {
         GAINL_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Left output gain adjustment\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [gainl](index.html) module"]
+pub struct GAINL_SPEC;
+impl crate::RegisterSpec for GAINL_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [gainl::R](R) reader structure"]
+impl crate::Readable for GAINL_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [gainl::W](W) writer structure"]
+impl crate::Writable for GAINL_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets GAINL to value 0x28"]
+impl crate::Resettable for GAINL_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0x28
     }
 }

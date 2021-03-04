@@ -1,18 +1,52 @@
-#[doc = "Reader of register PREFIX0"]
-pub type R = crate::R<u32, super::PREFIX0>;
-#[doc = "Writer for register PREFIX0"]
-pub type W = crate::W<u32, super::PREFIX0>;
-#[doc = "Register PREFIX0 `reset()`'s with value 0"]
-impl crate::ResetValue for super::PREFIX0 {
-    type Type = u32;
+#[doc = "Register `PREFIX0` reader"]
+pub struct R(crate::R<PREFIX0_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<PREFIX0_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `AP0`"]
-pub type AP0_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `AP0`"]
+impl core::convert::From<crate::R<PREFIX0_SPEC>> for R {
+    fn from(reader: crate::R<PREFIX0_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `PREFIX0` writer"]
+pub struct W(crate::W<PREFIX0_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<PREFIX0_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<PREFIX0_SPEC>> for W {
+    fn from(writer: crate::W<PREFIX0_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `AP0` reader - Address prefix 0."]
+pub struct AP0_R(crate::FieldReader<u8, u8>);
+impl AP0_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        AP0_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for AP0_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `AP0` writer - Address prefix 0."]
 pub struct AP0_W<'a> {
     w: &'a mut W,
 }
@@ -24,9 +58,21 @@ impl<'a> AP0_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `AP1`"]
-pub type AP1_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `AP1`"]
+#[doc = "Field `AP1` reader - Address prefix 1."]
+pub struct AP1_R(crate::FieldReader<u8, u8>);
+impl AP1_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        AP1_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for AP1_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `AP1` writer - Address prefix 1."]
 pub struct AP1_W<'a> {
     w: &'a mut W,
 }
@@ -38,9 +84,21 @@ impl<'a> AP1_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `AP2`"]
-pub type AP2_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `AP2`"]
+#[doc = "Field `AP2` reader - Address prefix 2."]
+pub struct AP2_R(crate::FieldReader<u8, u8>);
+impl AP2_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        AP2_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for AP2_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `AP2` writer - Address prefix 2."]
 pub struct AP2_W<'a> {
     w: &'a mut W,
 }
@@ -52,9 +110,21 @@ impl<'a> AP2_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `AP3`"]
-pub type AP3_R = crate::R<u8, u8>;
-#[doc = "Write proxy for field `AP3`"]
+#[doc = "Field `AP3` reader - Address prefix 3."]
+pub struct AP3_R(crate::FieldReader<u8, u8>);
+impl AP3_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        AP3_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for AP3_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `AP3` writer - Address prefix 3."]
 pub struct AP3_W<'a> {
     w: &'a mut W,
 }
@@ -108,5 +178,30 @@ impl W {
     #[inline(always)]
     pub fn ap3(&mut self) -> AP3_W {
         AP3_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Prefixes bytes for logical addresses 0-3\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [prefix0](index.html) module"]
+pub struct PREFIX0_SPEC;
+impl crate::RegisterSpec for PREFIX0_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [prefix0::R](R) reader structure"]
+impl crate::Readable for PREFIX0_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [prefix0::W](W) writer structure"]
+impl crate::Writable for PREFIX0_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets PREFIX0 to value 0"]
+impl crate::Resettable for PREFIX0_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

@@ -1,35 +1,57 @@
-#[doc = "Reader of register POWER"]
-pub type R = crate::R<u32, super::POWER>;
-#[doc = "Writer for register POWER"]
-pub type W = crate::W<u32, super::POWER>;
-#[doc = "Register POWER `reset()`'s with value 0x01"]
-impl crate::ResetValue for super::POWER {
-    type Type = u32;
+#[doc = "Register `POWER` reader"]
+pub struct R(crate::R<POWER_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<POWER_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0x01
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<POWER_SPEC>> for R {
+    fn from(reader: crate::R<POWER_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `POWER` writer"]
+pub struct W(crate::W<POWER_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<POWER_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<POWER_SPEC>> for W {
+    fn from(writer: crate::W<POWER_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "Peripheral power control. The peripheral and its registers will be reset to its initial state by switching the peripheral off and then back on again.\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum POWER_A {
     #[doc = "0: Peripheral is powered off"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Peripheral is powered on"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<POWER_A> for bool {
     #[inline(always)]
     fn from(variant: POWER_A) -> Self {
-        match variant {
-            POWER_A::DISABLED => false,
-            POWER_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `POWER`"]
-pub type POWER_R = crate::R<bool, POWER_A>;
+#[doc = "Field `POWER` reader - Peripheral power control. The peripheral and its registers will be reset to its initial state by switching the peripheral off and then back on again."]
+pub struct POWER_R(crate::FieldReader<bool, POWER_A>);
 impl POWER_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        POWER_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> POWER_A {
@@ -41,15 +63,22 @@ impl POWER_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == POWER_A::DISABLED
+        **self == POWER_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == POWER_A::ENABLED
+        **self == POWER_A::ENABLED
     }
 }
-#[doc = "Write proxy for field `POWER`"]
+impl core::ops::Deref for POWER_R {
+    type Target = crate::FieldReader<bool, POWER_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `POWER` writer - Peripheral power control. The peripheral and its registers will be reset to its initial state by switching the peripheral off and then back on again."]
 pub struct POWER_W<'a> {
     w: &'a mut W,
 }
@@ -57,9 +86,7 @@ impl<'a> POWER_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: POWER_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Peripheral is powered off"]
     #[inline(always)]
@@ -100,5 +127,30 @@ impl W {
     #[inline(always)]
     pub fn power(&mut self) -> POWER_W {
         POWER_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Peripheral power control\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [power](index.html) module"]
+pub struct POWER_SPEC;
+impl crate::RegisterSpec for POWER_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [power::R](R) reader structure"]
+impl crate::Readable for POWER_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [power::W](W) writer structure"]
+impl crate::Writable for POWER_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets POWER to value 0x01"]
+impl crate::Resettable for POWER_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0x01
     }
 }

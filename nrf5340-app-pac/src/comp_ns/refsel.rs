@@ -1,44 +1,64 @@
-#[doc = "Reader of register REFSEL"]
-pub type R = crate::R<u32, super::REFSEL>;
-#[doc = "Writer for register REFSEL"]
-pub type W = crate::W<u32, super::REFSEL>;
-#[doc = "Register REFSEL `reset()`'s with value 0x04"]
-impl crate::ResetValue for super::REFSEL {
-    type Type = u32;
+#[doc = "Register `REFSEL` reader"]
+pub struct R(crate::R<REFSEL_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<REFSEL_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0x04
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<REFSEL_SPEC>> for R {
+    fn from(reader: crate::R<REFSEL_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `REFSEL` writer"]
+pub struct W(crate::W<REFSEL_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<REFSEL_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<REFSEL_SPEC>> for W {
+    fn from(writer: crate::W<REFSEL_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "Reference select\n\nValue on reset: 4"]
 #[derive(Clone, Copy, Debug, PartialEq)]
+#[repr(u8)]
 pub enum REFSEL_A {
     #[doc = "0: VREF = internal 1.2 V reference (VDD &gt;= 1.7 V)"]
-    INT1V2,
+    INT1V2 = 0,
     #[doc = "1: VREF = internal 1.8 V reference (VDD &gt;= VREF + 0.2 V)"]
-    INT1V8,
+    INT1V8 = 1,
     #[doc = "2: VREF = internal 2.4 V reference (VDD &gt;= VREF + 0.2 V)"]
-    INT2V4,
+    INT2V4 = 2,
     #[doc = "4: VREF = VDD"]
-    VDD,
+    VDD = 4,
     #[doc = "5: VREF = AREF"]
-    AREF,
+    AREF = 5,
 }
 impl From<REFSEL_A> for u8 {
     #[inline(always)]
     fn from(variant: REFSEL_A) -> Self {
-        match variant {
-            REFSEL_A::INT1V2 => 0,
-            REFSEL_A::INT1V8 => 1,
-            REFSEL_A::INT2V4 => 2,
-            REFSEL_A::VDD => 4,
-            REFSEL_A::AREF => 5,
-        }
+        variant as _
     }
 }
-#[doc = "Reader of field `REFSEL`"]
-pub type REFSEL_R = crate::R<u8, REFSEL_A>;
+#[doc = "Field `REFSEL` reader - Reference select"]
+pub struct REFSEL_R(crate::FieldReader<u8, REFSEL_A>);
 impl REFSEL_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        REFSEL_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> crate::Variant<u8, REFSEL_A> {
@@ -55,30 +75,37 @@ impl REFSEL_R {
     #[doc = "Checks if the value of the field is `INT1V2`"]
     #[inline(always)]
     pub fn is_int1v2(&self) -> bool {
-        *self == REFSEL_A::INT1V2
+        **self == REFSEL_A::INT1V2
     }
     #[doc = "Checks if the value of the field is `INT1V8`"]
     #[inline(always)]
     pub fn is_int1v8(&self) -> bool {
-        *self == REFSEL_A::INT1V8
+        **self == REFSEL_A::INT1V8
     }
     #[doc = "Checks if the value of the field is `INT2V4`"]
     #[inline(always)]
     pub fn is_int2v4(&self) -> bool {
-        *self == REFSEL_A::INT2V4
+        **self == REFSEL_A::INT2V4
     }
     #[doc = "Checks if the value of the field is `VDD`"]
     #[inline(always)]
     pub fn is_vdd(&self) -> bool {
-        *self == REFSEL_A::VDD
+        **self == REFSEL_A::VDD
     }
     #[doc = "Checks if the value of the field is `AREF`"]
     #[inline(always)]
     pub fn is_aref(&self) -> bool {
-        *self == REFSEL_A::AREF
+        **self == REFSEL_A::AREF
     }
 }
-#[doc = "Write proxy for field `REFSEL`"]
+impl core::ops::Deref for REFSEL_R {
+    type Target = crate::FieldReader<u8, REFSEL_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `REFSEL` writer - Reference select"]
 pub struct REFSEL_W<'a> {
     w: &'a mut W,
 }
@@ -132,5 +159,30 @@ impl W {
     #[inline(always)]
     pub fn refsel(&mut self) -> REFSEL_W {
         REFSEL_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Reference source select for single-ended mode\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [refsel](index.html) module"]
+pub struct REFSEL_SPEC;
+impl crate::RegisterSpec for REFSEL_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [refsel::R](R) reader structure"]
+impl crate::Readable for REFSEL_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [refsel::W](W) writer structure"]
+impl crate::Writable for REFSEL_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets REFSEL to value 0x04"]
+impl crate::Resettable for REFSEL_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0x04
     }
 }

@@ -1,35 +1,57 @@
-#[doc = "Reader of register STALLSTAT"]
-pub type R = crate::R<u32, super::STALLSTAT>;
-#[doc = "Writer for register STALLSTAT"]
-pub type W = crate::W<u32, super::STALLSTAT>;
-#[doc = "Register STALLSTAT `reset()`'s with value 0"]
-impl crate::ResetValue for super::STALLSTAT {
-    type Type = u32;
+#[doc = "Register `STALLSTAT` reader"]
+pub struct R(crate::R<STALLSTAT_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<STALLSTAT_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<STALLSTAT_SPEC>> for R {
+    fn from(reader: crate::R<STALLSTAT_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `STALLSTAT` writer"]
+pub struct W(crate::W<STALLSTAT_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<STALLSTAT_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<STALLSTAT_SPEC>> for W {
+    fn from(writer: crate::W<STALLSTAT_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "Stall status for EasyDMA RAM reads\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TX_A {
     #[doc = "0: No stall"]
-    NOSTALL,
+    NOSTALL = 0,
     #[doc = "1: A stall has occurred"]
-    STALL,
+    STALL = 1,
 }
 impl From<TX_A> for bool {
     #[inline(always)]
     fn from(variant: TX_A) -> Self {
-        match variant {
-            TX_A::NOSTALL => false,
-            TX_A::STALL => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `TX`"]
-pub type TX_R = crate::R<bool, TX_A>;
+#[doc = "Field `TX` reader - Stall status for EasyDMA RAM reads"]
+pub struct TX_R(crate::FieldReader<bool, TX_A>);
 impl TX_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        TX_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> TX_A {
@@ -41,15 +63,22 @@ impl TX_R {
     #[doc = "Checks if the value of the field is `NOSTALL`"]
     #[inline(always)]
     pub fn is_nostall(&self) -> bool {
-        *self == TX_A::NOSTALL
+        **self == TX_A::NOSTALL
     }
     #[doc = "Checks if the value of the field is `STALL`"]
     #[inline(always)]
     pub fn is_stall(&self) -> bool {
-        *self == TX_A::STALL
+        **self == TX_A::STALL
     }
 }
-#[doc = "Write proxy for field `TX`"]
+impl core::ops::Deref for TX_R {
+    type Target = crate::FieldReader<bool, TX_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `TX` writer - Stall status for EasyDMA RAM reads"]
 pub struct TX_W<'a> {
     w: &'a mut W,
 }
@@ -57,9 +86,7 @@ impl<'a> TX_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: TX_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "No stall"]
     #[inline(always)]
@@ -92,22 +119,22 @@ impl<'a> TX_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum RX_A {
     #[doc = "0: No stall"]
-    NOSTALL,
+    NOSTALL = 0,
     #[doc = "1: A stall has occurred"]
-    STALL,
+    STALL = 1,
 }
 impl From<RX_A> for bool {
     #[inline(always)]
     fn from(variant: RX_A) -> Self {
-        match variant {
-            RX_A::NOSTALL => false,
-            RX_A::STALL => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `RX`"]
-pub type RX_R = crate::R<bool, RX_A>;
+#[doc = "Field `RX` reader - Stall status for EasyDMA RAM writes"]
+pub struct RX_R(crate::FieldReader<bool, RX_A>);
 impl RX_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        RX_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> RX_A {
@@ -119,15 +146,22 @@ impl RX_R {
     #[doc = "Checks if the value of the field is `NOSTALL`"]
     #[inline(always)]
     pub fn is_nostall(&self) -> bool {
-        *self == RX_A::NOSTALL
+        **self == RX_A::NOSTALL
     }
     #[doc = "Checks if the value of the field is `STALL`"]
     #[inline(always)]
     pub fn is_stall(&self) -> bool {
-        *self == RX_A::STALL
+        **self == RX_A::STALL
     }
 }
-#[doc = "Write proxy for field `RX`"]
+impl core::ops::Deref for RX_R {
+    type Target = crate::FieldReader<bool, RX_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `RX` writer - Stall status for EasyDMA RAM writes"]
 pub struct RX_W<'a> {
     w: &'a mut W,
 }
@@ -135,9 +169,7 @@ impl<'a> RX_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: RX_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "No stall"]
     #[inline(always)]
@@ -188,5 +220,30 @@ impl W {
     #[inline(always)]
     pub fn rx(&mut self) -> RX_W {
         RX_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Stall status for EasyDMA RAM accesses. The fields in this register are set to STALL by hardware whenever a stall occurres and can be cleared (set to NOSTALL) by the CPU.\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [stallstat](index.html) module"]
+pub struct STALLSTAT_SPEC;
+impl crate::RegisterSpec for STALLSTAT_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [stallstat::R](R) reader structure"]
+impl crate::Readable for STALLSTAT_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [stallstat::W](W) writer structure"]
+impl crate::Writable for STALLSTAT_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets STALLSTAT to value 0"]
+impl crate::Resettable for STALLSTAT_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

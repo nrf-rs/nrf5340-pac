@@ -1,18 +1,52 @@
-#[doc = "Reader of register A5"]
-pub type R = crate::R<u32, super::A5>;
-#[doc = "Writer for register A5"]
-pub type W = crate::W<u32, super::A5>;
-#[doc = "Register A5 `reset()`'s with value 0x04b7"]
-impl crate::ResetValue for super::A5 {
-    type Type = u32;
+#[doc = "Register `A5` reader"]
+pub struct R(crate::R<A5_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<A5_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0x04b7
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
-#[doc = "Reader of field `A5`"]
-pub type A5_R = crate::R<u16, u16>;
-#[doc = "Write proxy for field `A5`"]
+impl core::convert::From<crate::R<A5_SPEC>> for R {
+    fn from(reader: crate::R<A5_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `A5` writer"]
+pub struct W(crate::W<A5_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<A5_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<A5_SPEC>> for W {
+    fn from(writer: crate::W<A5_SPEC>) -> Self {
+        W(writer)
+    }
+}
+#[doc = "Field `A5` reader - Slope of sixth piecewise linear function"]
+pub struct A5_R(crate::FieldReader<u16, u16>);
+impl A5_R {
+    pub(crate) fn new(bits: u16) -> Self {
+        A5_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for A5_R {
+    type Target = crate::FieldReader<u16, u16>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `A5` writer - Slope of sixth piecewise linear function"]
 pub struct A5_W<'a> {
     w: &'a mut W,
 }
@@ -25,16 +59,41 @@ impl<'a> A5_W<'a> {
     }
 }
 impl R {
-    #[doc = "Bits 0:11 - Slope of 6th piece wise linear function"]
+    #[doc = "Bits 0:11 - Slope of sixth piecewise linear function"]
     #[inline(always)]
     pub fn a5(&self) -> A5_R {
         A5_R::new((self.bits & 0x0fff) as u16)
     }
 }
 impl W {
-    #[doc = "Bits 0:11 - Slope of 6th piece wise linear function"]
+    #[doc = "Bits 0:11 - Slope of sixth piecewise linear function"]
     #[inline(always)]
     pub fn a5(&mut self) -> A5_W {
         A5_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Slope of sixth piecewise linear function\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [a5](index.html) module"]
+pub struct A5_SPEC;
+impl crate::RegisterSpec for A5_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [a5::R](R) reader structure"]
+impl crate::Readable for A5_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [a5::W](W) writer structure"]
+impl crate::Writable for A5_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets A5 to value 0x04b7"]
+impl crate::Resettable for A5_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0x04b7
     }
 }

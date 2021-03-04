@@ -1,32 +1,56 @@
-#[doc = "Reader of register TRACEDATA0"]
-pub type R = crate::R<u32, super::TRACEDATA0>;
-#[doc = "Writer for register TRACEDATA0"]
-pub type W = crate::W<u32, super::TRACEDATA0>;
-#[doc = "Register TRACEDATA0 `reset()`'s with value 0xffff_ffff"]
-impl crate::ResetValue for super::TRACEDATA0 {
-    type Type = u32;
+#[doc = "Register `TRACEDATA0` reader"]
+pub struct R(crate::R<TRACEDATA0_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<TRACEDATA0_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0xffff_ffff
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<TRACEDATA0_SPEC>> for R {
+    fn from(reader: crate::R<TRACEDATA0_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `TRACEDATA0` writer"]
+pub struct W(crate::W<TRACEDATA0_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<TRACEDATA0_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<TRACEDATA0_SPEC>> for W {
+    fn from(writer: crate::W<TRACEDATA0_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "Pin number\n\nValue on reset: 31"]
 #[derive(Clone, Copy, Debug, PartialEq)]
+#[repr(u8)]
 pub enum PIN_A {
-    #[doc = "11: TRACEDATA0/SWO pin"]
-    TRACEDATA0,
+    #[doc = "11: TRACEDATA0 pin"]
+    TRACEDATA0 = 11,
 }
 impl From<PIN_A> for u8 {
     #[inline(always)]
     fn from(variant: PIN_A) -> Self {
-        match variant {
-            PIN_A::TRACEDATA0 => 11,
-        }
+        variant as _
     }
 }
-#[doc = "Reader of field `PIN`"]
-pub type PIN_R = crate::R<u8, PIN_A>;
+#[doc = "Field `PIN` reader - Pin number"]
+pub struct PIN_R(crate::FieldReader<u8, PIN_A>);
 impl PIN_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        PIN_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> crate::Variant<u8, PIN_A> {
@@ -39,10 +63,17 @@ impl PIN_R {
     #[doc = "Checks if the value of the field is `TRACEDATA0`"]
     #[inline(always)]
     pub fn is_tracedata0(&self) -> bool {
-        *self == PIN_A::TRACEDATA0
+        **self == PIN_A::TRACEDATA0
     }
 }
-#[doc = "Write proxy for field `PIN`"]
+impl core::ops::Deref for PIN_R {
+    type Target = crate::FieldReader<u8, PIN_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `PIN` writer - Pin number"]
 pub struct PIN_W<'a> {
     w: &'a mut W,
 }
@@ -52,7 +83,7 @@ impl<'a> PIN_W<'a> {
     pub fn variant(self, variant: PIN_A) -> &'a mut W {
         unsafe { self.bits(variant.into()) }
     }
-    #[doc = "TRACEDATA0/SWO pin"]
+    #[doc = "TRACEDATA0 pin"]
     #[inline(always)]
     pub fn tracedata0(self) -> &'a mut W {
         self.variant(PIN_A::TRACEDATA0)
@@ -68,22 +99,22 @@ impl<'a> PIN_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum CONNECT_A {
     #[doc = "1: Disconnect"]
-    DISCONNECTED,
+    DISCONNECTED = 1,
     #[doc = "0: Connect"]
-    CONNECTED,
+    CONNECTED = 0,
 }
 impl From<CONNECT_A> for bool {
     #[inline(always)]
     fn from(variant: CONNECT_A) -> Self {
-        match variant {
-            CONNECT_A::DISCONNECTED => true,
-            CONNECT_A::CONNECTED => false,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `CONNECT`"]
-pub type CONNECT_R = crate::R<bool, CONNECT_A>;
+#[doc = "Field `CONNECT` reader - Connection"]
+pub struct CONNECT_R(crate::FieldReader<bool, CONNECT_A>);
 impl CONNECT_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        CONNECT_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> CONNECT_A {
@@ -95,15 +126,22 @@ impl CONNECT_R {
     #[doc = "Checks if the value of the field is `DISCONNECTED`"]
     #[inline(always)]
     pub fn is_disconnected(&self) -> bool {
-        *self == CONNECT_A::DISCONNECTED
+        **self == CONNECT_A::DISCONNECTED
     }
     #[doc = "Checks if the value of the field is `CONNECTED`"]
     #[inline(always)]
     pub fn is_connected(&self) -> bool {
-        *self == CONNECT_A::CONNECTED
+        **self == CONNECT_A::CONNECTED
     }
 }
-#[doc = "Write proxy for field `CONNECT`"]
+impl core::ops::Deref for CONNECT_R {
+    type Target = crate::FieldReader<bool, CONNECT_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `CONNECT` writer - Connection"]
 pub struct CONNECT_W<'a> {
     w: &'a mut W,
 }
@@ -111,9 +149,7 @@ impl<'a> CONNECT_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: CONNECT_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disconnect"]
     #[inline(always)]
@@ -164,5 +200,30 @@ impl W {
     #[inline(always)]
     pub fn connect(&mut self) -> CONNECT_W {
         CONNECT_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Pin configuration for TRACEDATA\\[0\\]\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [tracedata0](index.html) module"]
+pub struct TRACEDATA0_SPEC;
+impl crate::RegisterSpec for TRACEDATA0_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [tracedata0::R](R) reader structure"]
+impl crate::Readable for TRACEDATA0_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [tracedata0::W](W) writer structure"]
+impl crate::Writable for TRACEDATA0_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets TRACEDATA0 to value 0xffff_ffff"]
+impl crate::Resettable for TRACEDATA0_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0xffff_ffff
     }
 }

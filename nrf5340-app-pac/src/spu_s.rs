@@ -3,30 +3,30 @@
 pub struct RegisterBlock {
     _reserved0: [u8; 256usize],
     #[doc = "0x100 - A security violation has been detected for the RAM memory space"]
-    pub events_ramaccerr: EVENTS_RAMACCERR,
+    pub events_ramaccerr: crate::Reg<events_ramaccerr::EVENTS_RAMACCERR_SPEC>,
     #[doc = "0x104 - A security violation has been detected for the flash memory space"]
-    pub events_flashaccerr: EVENTS_FLASHACCERR,
+    pub events_flashaccerr: crate::Reg<events_flashaccerr::EVENTS_FLASHACCERR_SPEC>,
     #[doc = "0x108 - A security violation has been detected on one or several peripherals"]
-    pub events_periphaccerr: EVENTS_PERIPHACCERR,
+    pub events_periphaccerr: crate::Reg<events_periphaccerr::EVENTS_PERIPHACCERR_SPEC>,
     _reserved3: [u8; 116usize],
     #[doc = "0x180 - Publish configuration for event RAMACCERR"]
-    pub publish_ramaccerr: PUBLISH_RAMACCERR,
+    pub publish_ramaccerr: crate::Reg<publish_ramaccerr::PUBLISH_RAMACCERR_SPEC>,
     #[doc = "0x184 - Publish configuration for event FLASHACCERR"]
-    pub publish_flashaccerr: PUBLISH_FLASHACCERR,
+    pub publish_flashaccerr: crate::Reg<publish_flashaccerr::PUBLISH_FLASHACCERR_SPEC>,
     #[doc = "0x188 - Publish configuration for event PERIPHACCERR"]
-    pub publish_periphaccerr: PUBLISH_PERIPHACCERR,
+    pub publish_periphaccerr: crate::Reg<publish_periphaccerr::PUBLISH_PERIPHACCERR_SPEC>,
     _reserved6: [u8; 372usize],
     #[doc = "0x300 - Enable or disable interrupt"]
-    pub inten: INTEN,
+    pub inten: crate::Reg<inten::INTEN_SPEC>,
     #[doc = "0x304 - Enable interrupt"]
-    pub intenset: INTENSET,
+    pub intenset: crate::Reg<intenset::INTENSET_SPEC>,
     #[doc = "0x308 - Disable interrupt"]
-    pub intenclr: INTENCLR,
+    pub intenclr: crate::Reg<intenclr::INTENCLR_SPEC>,
     _reserved9: [u8; 244usize],
     #[doc = "0x400 - Show implemented features for the current device"]
-    pub cap: CAP,
+    pub cap: crate::Reg<cap::CAP_SPEC>,
     #[doc = "0x404 - Configure bits to lock down CPU features at runtime"]
-    pub cpulock: CPULOCK,
+    pub cpulock: crate::Reg<cpulock::CPULOCK_SPEC>,
     _reserved11: [u8; 56usize],
     #[doc = "0x440 - Unspecified"]
     pub extdomain: [EXTDOMAIN; 1],
@@ -54,7 +54,7 @@ pub struct RegisterBlock {
 #[repr(C)]
 pub struct EXTDOMAIN {
     #[doc = "0x00 - Description cluster: Access for bus access generated from the external domain n List capabilities of the external domain n"]
-    pub perm: self::extdomain::PERM,
+    pub perm: crate::Reg<self::extdomain::perm::PERM_SPEC>,
 }
 #[doc = r"Register block"]
 #[doc = "Unspecified"]
@@ -62,10 +62,10 @@ pub mod extdomain;
 #[doc = r"Register block"]
 #[repr(C)]
 pub struct DPPI {
-    #[doc = "0x00 - Description cluster: Select between secure and non-secure attribute for the DPPI channels."]
-    pub perm: self::dppi::PERM,
+    #[doc = "0x00 - Description cluster: Select between secure and non-secure attribute for the DPPI channels"]
+    pub perm: crate::Reg<self::dppi::perm::PERM_SPEC>,
     #[doc = "0x04 - Description cluster: Prevent further modification of the corresponding PERM register"]
-    pub lock: self::dppi::LOCK,
+    pub lock: crate::Reg<self::dppi::lock::LOCK_SPEC>,
 }
 #[doc = r"Register block"]
 #[doc = "Unspecified"]
@@ -73,10 +73,10 @@ pub mod dppi;
 #[doc = r"Register block"]
 #[repr(C)]
 pub struct GPIOPORT {
-    #[doc = "0x00 - Description cluster: Select between secure and non-secure attribute for pins 0 to 31 of port n."]
-    pub perm: self::gpioport::PERM,
+    #[doc = "0x00 - Description cluster: Select between secure and non-secure attribute for pins 0 to 31 of port n"]
+    pub perm: crate::Reg<self::gpioport::perm::PERM_SPEC>,
     #[doc = "0x04 - Description cluster: Prevent further modification of the corresponding PERM register"]
-    pub lock: self::gpioport::LOCK,
+    pub lock: crate::Reg<self::gpioport::lock::LOCK_SPEC>,
 }
 #[doc = r"Register block"]
 #[doc = "Unspecified"]
@@ -85,9 +85,9 @@ pub mod gpioport;
 #[repr(C)]
 pub struct FLASHNSC {
     #[doc = "0x00 - Description cluster: Define which flash region can contain the non-secure callable (NSC) region n"]
-    pub region: self::flashnsc::REGION,
+    pub region: crate::Reg<self::flashnsc::region::REGION_SPEC>,
     #[doc = "0x04 - Description cluster: Define the size of the non-secure callable (NSC) region n"]
-    pub size: self::flashnsc::SIZE,
+    pub size: crate::Reg<self::flashnsc::size::SIZE_SPEC>,
 }
 #[doc = r"Register block"]
 #[doc = "Unspecified"]
@@ -96,9 +96,9 @@ pub mod flashnsc;
 #[repr(C)]
 pub struct RAMNSC {
     #[doc = "0x00 - Description cluster: Define which RAM region can contain the non-secure callable (NSC) region n"]
-    pub region: self::ramnsc::REGION,
+    pub region: crate::Reg<self::ramnsc::region::REGION_SPEC>,
     #[doc = "0x04 - Description cluster: Define the size of the non-secure callable (NSC) region n"]
-    pub size: self::ramnsc::SIZE,
+    pub size: crate::Reg<self::ramnsc::size::SIZE_SPEC>,
 }
 #[doc = r"Register block"]
 #[doc = "Unspecified"]
@@ -107,7 +107,7 @@ pub mod ramnsc;
 #[repr(C)]
 pub struct FLASHREGION {
     #[doc = "0x00 - Description cluster: Access permissions for flash region n"]
-    pub perm: self::flashregion::PERM,
+    pub perm: crate::Reg<self::flashregion::perm::PERM_SPEC>,
 }
 #[doc = r"Register block"]
 #[doc = "Unspecified"]
@@ -116,7 +116,7 @@ pub mod flashregion;
 #[repr(C)]
 pub struct RAMREGION {
     #[doc = "0x00 - Description cluster: Access permissions for RAM region n"]
-    pub perm: self::ramregion::PERM,
+    pub perm: crate::Reg<self::ramregion::perm::PERM_SPEC>,
 }
 #[doc = r"Register block"]
 #[doc = "Unspecified"]
@@ -125,127 +125,52 @@ pub mod ramregion;
 #[repr(C)]
 pub struct PERIPHID {
     #[doc = "0x00 - Description cluster: List capabilities and access permissions for the peripheral with ID n"]
-    pub perm: self::periphid::PERM,
+    pub perm: crate::Reg<self::periphid::perm::PERM_SPEC>,
 }
 #[doc = r"Register block"]
 #[doc = "Unspecified"]
 pub mod periphid;
-#[doc = "A security violation has been detected for the RAM memory space\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [events_ramaccerr](events_ramaccerr) module"]
-pub type EVENTS_RAMACCERR = crate::Reg<u32, _EVENTS_RAMACCERR>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _EVENTS_RAMACCERR;
-#[doc = "`read()` method returns [events_ramaccerr::R](events_ramaccerr::R) reader structure"]
-impl crate::Readable for EVENTS_RAMACCERR {}
-#[doc = "`write(|w| ..)` method takes [events_ramaccerr::W](events_ramaccerr::W) writer structure"]
-impl crate::Writable for EVENTS_RAMACCERR {}
+#[doc = "EVENTS_RAMACCERR register accessor: an alias for `Reg<EVENTS_RAMACCERR_SPEC>`"]
+pub type EVENTS_RAMACCERR = crate::Reg<events_ramaccerr::EVENTS_RAMACCERR_SPEC>;
 #[doc = "A security violation has been detected for the RAM memory space"]
 pub mod events_ramaccerr;
-#[doc = "A security violation has been detected for the flash memory space\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [events_flashaccerr](events_flashaccerr) module"]
-pub type EVENTS_FLASHACCERR = crate::Reg<u32, _EVENTS_FLASHACCERR>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _EVENTS_FLASHACCERR;
-#[doc = "`read()` method returns [events_flashaccerr::R](events_flashaccerr::R) reader structure"]
-impl crate::Readable for EVENTS_FLASHACCERR {}
-#[doc = "`write(|w| ..)` method takes [events_flashaccerr::W](events_flashaccerr::W) writer structure"]
-impl crate::Writable for EVENTS_FLASHACCERR {}
+#[doc = "EVENTS_FLASHACCERR register accessor: an alias for `Reg<EVENTS_FLASHACCERR_SPEC>`"]
+pub type EVENTS_FLASHACCERR = crate::Reg<events_flashaccerr::EVENTS_FLASHACCERR_SPEC>;
 #[doc = "A security violation has been detected for the flash memory space"]
 pub mod events_flashaccerr;
-#[doc = "A security violation has been detected on one or several peripherals\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [events_periphaccerr](events_periphaccerr) module"]
-pub type EVENTS_PERIPHACCERR = crate::Reg<u32, _EVENTS_PERIPHACCERR>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _EVENTS_PERIPHACCERR;
-#[doc = "`read()` method returns [events_periphaccerr::R](events_periphaccerr::R) reader structure"]
-impl crate::Readable for EVENTS_PERIPHACCERR {}
-#[doc = "`write(|w| ..)` method takes [events_periphaccerr::W](events_periphaccerr::W) writer structure"]
-impl crate::Writable for EVENTS_PERIPHACCERR {}
+#[doc = "EVENTS_PERIPHACCERR register accessor: an alias for `Reg<EVENTS_PERIPHACCERR_SPEC>`"]
+pub type EVENTS_PERIPHACCERR = crate::Reg<events_periphaccerr::EVENTS_PERIPHACCERR_SPEC>;
 #[doc = "A security violation has been detected on one or several peripherals"]
 pub mod events_periphaccerr;
-#[doc = "Publish configuration for event RAMACCERR\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [publish_ramaccerr](publish_ramaccerr) module"]
-pub type PUBLISH_RAMACCERR = crate::Reg<u32, _PUBLISH_RAMACCERR>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _PUBLISH_RAMACCERR;
-#[doc = "`read()` method returns [publish_ramaccerr::R](publish_ramaccerr::R) reader structure"]
-impl crate::Readable for PUBLISH_RAMACCERR {}
-#[doc = "`write(|w| ..)` method takes [publish_ramaccerr::W](publish_ramaccerr::W) writer structure"]
-impl crate::Writable for PUBLISH_RAMACCERR {}
+#[doc = "PUBLISH_RAMACCERR register accessor: an alias for `Reg<PUBLISH_RAMACCERR_SPEC>`"]
+pub type PUBLISH_RAMACCERR = crate::Reg<publish_ramaccerr::PUBLISH_RAMACCERR_SPEC>;
 #[doc = "Publish configuration for event RAMACCERR"]
 pub mod publish_ramaccerr;
-#[doc = "Publish configuration for event FLASHACCERR\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [publish_flashaccerr](publish_flashaccerr) module"]
-pub type PUBLISH_FLASHACCERR = crate::Reg<u32, _PUBLISH_FLASHACCERR>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _PUBLISH_FLASHACCERR;
-#[doc = "`read()` method returns [publish_flashaccerr::R](publish_flashaccerr::R) reader structure"]
-impl crate::Readable for PUBLISH_FLASHACCERR {}
-#[doc = "`write(|w| ..)` method takes [publish_flashaccerr::W](publish_flashaccerr::W) writer structure"]
-impl crate::Writable for PUBLISH_FLASHACCERR {}
+#[doc = "PUBLISH_FLASHACCERR register accessor: an alias for `Reg<PUBLISH_FLASHACCERR_SPEC>`"]
+pub type PUBLISH_FLASHACCERR = crate::Reg<publish_flashaccerr::PUBLISH_FLASHACCERR_SPEC>;
 #[doc = "Publish configuration for event FLASHACCERR"]
 pub mod publish_flashaccerr;
-#[doc = "Publish configuration for event PERIPHACCERR\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [publish_periphaccerr](publish_periphaccerr) module"]
-pub type PUBLISH_PERIPHACCERR = crate::Reg<u32, _PUBLISH_PERIPHACCERR>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _PUBLISH_PERIPHACCERR;
-#[doc = "`read()` method returns [publish_periphaccerr::R](publish_periphaccerr::R) reader structure"]
-impl crate::Readable for PUBLISH_PERIPHACCERR {}
-#[doc = "`write(|w| ..)` method takes [publish_periphaccerr::W](publish_periphaccerr::W) writer structure"]
-impl crate::Writable for PUBLISH_PERIPHACCERR {}
+#[doc = "PUBLISH_PERIPHACCERR register accessor: an alias for `Reg<PUBLISH_PERIPHACCERR_SPEC>`"]
+pub type PUBLISH_PERIPHACCERR = crate::Reg<publish_periphaccerr::PUBLISH_PERIPHACCERR_SPEC>;
 #[doc = "Publish configuration for event PERIPHACCERR"]
 pub mod publish_periphaccerr;
-#[doc = "Enable or disable interrupt\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [inten](inten) module"]
-pub type INTEN = crate::Reg<u32, _INTEN>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _INTEN;
-#[doc = "`read()` method returns [inten::R](inten::R) reader structure"]
-impl crate::Readable for INTEN {}
-#[doc = "`write(|w| ..)` method takes [inten::W](inten::W) writer structure"]
-impl crate::Writable for INTEN {}
+#[doc = "INTEN register accessor: an alias for `Reg<INTEN_SPEC>`"]
+pub type INTEN = crate::Reg<inten::INTEN_SPEC>;
 #[doc = "Enable or disable interrupt"]
 pub mod inten;
-#[doc = "Enable interrupt\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [intenset](intenset) module"]
-pub type INTENSET = crate::Reg<u32, _INTENSET>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _INTENSET;
-#[doc = "`read()` method returns [intenset::R](intenset::R) reader structure"]
-impl crate::Readable for INTENSET {}
-#[doc = "`write(|w| ..)` method takes [intenset::W](intenset::W) writer structure"]
-impl crate::Writable for INTENSET {}
+#[doc = "INTENSET register accessor: an alias for `Reg<INTENSET_SPEC>`"]
+pub type INTENSET = crate::Reg<intenset::INTENSET_SPEC>;
 #[doc = "Enable interrupt"]
 pub mod intenset;
-#[doc = "Disable interrupt\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [intenclr](intenclr) module"]
-pub type INTENCLR = crate::Reg<u32, _INTENCLR>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _INTENCLR;
-#[doc = "`read()` method returns [intenclr::R](intenclr::R) reader structure"]
-impl crate::Readable for INTENCLR {}
-#[doc = "`write(|w| ..)` method takes [intenclr::W](intenclr::W) writer structure"]
-impl crate::Writable for INTENCLR {}
+#[doc = "INTENCLR register accessor: an alias for `Reg<INTENCLR_SPEC>`"]
+pub type INTENCLR = crate::Reg<intenclr::INTENCLR_SPEC>;
 #[doc = "Disable interrupt"]
 pub mod intenclr;
-#[doc = "Show implemented features for the current device\n\nThis register you can [`read`](crate::generic::Reg::read). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [cap](cap) module"]
-pub type CAP = crate::Reg<u32, _CAP>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _CAP;
-#[doc = "`read()` method returns [cap::R](cap::R) reader structure"]
-impl crate::Readable for CAP {}
+#[doc = "CAP register accessor: an alias for `Reg<CAP_SPEC>`"]
+pub type CAP = crate::Reg<cap::CAP_SPEC>;
 #[doc = "Show implemented features for the current device"]
 pub mod cap;
-#[doc = "Configure bits to lock down CPU features at runtime\n\nThis register you can [`read`](crate::generic::Reg::read), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about avaliable fields see [cpulock](cpulock) module"]
-pub type CPULOCK = crate::Reg<u32, _CPULOCK>;
-#[allow(missing_docs)]
-#[doc(hidden)]
-pub struct _CPULOCK;
-#[doc = "`read()` method returns [cpulock::R](cpulock::R) reader structure"]
-impl crate::Readable for CPULOCK {}
-#[doc = "`write(|w| ..)` method takes [cpulock::W](cpulock::W) writer structure"]
-impl crate::Writable for CPULOCK {}
+#[doc = "CPULOCK register accessor: an alias for `Reg<CPULOCK_SPEC>`"]
+pub type CPULOCK = crate::Reg<cpulock::CPULOCK_SPEC>;
 #[doc = "Configure bits to lock down CPU features at runtime"]
 pub mod cpulock;

@@ -1,35 +1,57 @@
-#[doc = "Reader of register EVTEN"]
-pub type R = crate::R<u32, super::EVTEN>;
-#[doc = "Writer for register EVTEN"]
-pub type W = crate::W<u32, super::EVTEN>;
-#[doc = "Register EVTEN `reset()`'s with value 0"]
-impl crate::ResetValue for super::EVTEN {
-    type Type = u32;
+#[doc = "Register `EVTEN` reader"]
+pub struct R(crate::R<EVTEN_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<EVTEN_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<EVTEN_SPEC>> for R {
+    fn from(reader: crate::R<EVTEN_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `EVTEN` writer"]
+pub struct W(crate::W<EVTEN_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<EVTEN_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<EVTEN_SPEC>> for W {
+    fn from(writer: crate::W<EVTEN_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "Enable or disable event routing for event TICK\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TICK_A {
     #[doc = "0: Disable"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Enable"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<TICK_A> for bool {
     #[inline(always)]
     fn from(variant: TICK_A) -> Self {
-        match variant {
-            TICK_A::DISABLED => false,
-            TICK_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `TICK`"]
-pub type TICK_R = crate::R<bool, TICK_A>;
+#[doc = "Field `TICK` reader - Enable or disable event routing for event TICK"]
+pub struct TICK_R(crate::FieldReader<bool, TICK_A>);
 impl TICK_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        TICK_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> TICK_A {
@@ -41,15 +63,22 @@ impl TICK_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == TICK_A::DISABLED
+        **self == TICK_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == TICK_A::ENABLED
+        **self == TICK_A::ENABLED
     }
 }
-#[doc = "Write proxy for field `TICK`"]
+impl core::ops::Deref for TICK_R {
+    type Target = crate::FieldReader<bool, TICK_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `TICK` writer - Enable or disable event routing for event TICK"]
 pub struct TICK_W<'a> {
     w: &'a mut W,
 }
@@ -57,9 +86,7 @@ impl<'a> TICK_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: TICK_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disable"]
     #[inline(always)]
@@ -92,22 +119,22 @@ impl<'a> TICK_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum OVRFLW_A {
     #[doc = "0: Disable"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Enable"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<OVRFLW_A> for bool {
     #[inline(always)]
     fn from(variant: OVRFLW_A) -> Self {
-        match variant {
-            OVRFLW_A::DISABLED => false,
-            OVRFLW_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `OVRFLW`"]
-pub type OVRFLW_R = crate::R<bool, OVRFLW_A>;
+#[doc = "Field `OVRFLW` reader - Enable or disable event routing for event OVRFLW"]
+pub struct OVRFLW_R(crate::FieldReader<bool, OVRFLW_A>);
 impl OVRFLW_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        OVRFLW_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> OVRFLW_A {
@@ -119,15 +146,22 @@ impl OVRFLW_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == OVRFLW_A::DISABLED
+        **self == OVRFLW_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == OVRFLW_A::ENABLED
+        **self == OVRFLW_A::ENABLED
     }
 }
-#[doc = "Write proxy for field `OVRFLW`"]
+impl core::ops::Deref for OVRFLW_R {
+    type Target = crate::FieldReader<bool, OVRFLW_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `OVRFLW` writer - Enable or disable event routing for event OVRFLW"]
 pub struct OVRFLW_W<'a> {
     w: &'a mut W,
 }
@@ -135,9 +169,7 @@ impl<'a> OVRFLW_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: OVRFLW_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disable"]
     #[inline(always)]
@@ -170,22 +202,22 @@ impl<'a> OVRFLW_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum COMPARE0_A {
     #[doc = "0: Disable"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Enable"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<COMPARE0_A> for bool {
     #[inline(always)]
     fn from(variant: COMPARE0_A) -> Self {
-        match variant {
-            COMPARE0_A::DISABLED => false,
-            COMPARE0_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `COMPARE0`"]
-pub type COMPARE0_R = crate::R<bool, COMPARE0_A>;
+#[doc = "Field `COMPARE0` reader - Enable or disable event routing for event COMPARE\\[0\\]"]
+pub struct COMPARE0_R(crate::FieldReader<bool, COMPARE0_A>);
 impl COMPARE0_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        COMPARE0_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> COMPARE0_A {
@@ -197,15 +229,22 @@ impl COMPARE0_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == COMPARE0_A::DISABLED
+        **self == COMPARE0_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == COMPARE0_A::ENABLED
+        **self == COMPARE0_A::ENABLED
     }
 }
-#[doc = "Write proxy for field `COMPARE0`"]
+impl core::ops::Deref for COMPARE0_R {
+    type Target = crate::FieldReader<bool, COMPARE0_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `COMPARE0` writer - Enable or disable event routing for event COMPARE\\[0\\]"]
 pub struct COMPARE0_W<'a> {
     w: &'a mut W,
 }
@@ -213,9 +252,7 @@ impl<'a> COMPARE0_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: COMPARE0_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disable"]
     #[inline(always)]
@@ -248,22 +285,22 @@ impl<'a> COMPARE0_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum COMPARE1_A {
     #[doc = "0: Disable"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Enable"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<COMPARE1_A> for bool {
     #[inline(always)]
     fn from(variant: COMPARE1_A) -> Self {
-        match variant {
-            COMPARE1_A::DISABLED => false,
-            COMPARE1_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `COMPARE1`"]
-pub type COMPARE1_R = crate::R<bool, COMPARE1_A>;
+#[doc = "Field `COMPARE1` reader - Enable or disable event routing for event COMPARE\\[1\\]"]
+pub struct COMPARE1_R(crate::FieldReader<bool, COMPARE1_A>);
 impl COMPARE1_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        COMPARE1_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> COMPARE1_A {
@@ -275,15 +312,22 @@ impl COMPARE1_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == COMPARE1_A::DISABLED
+        **self == COMPARE1_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == COMPARE1_A::ENABLED
+        **self == COMPARE1_A::ENABLED
     }
 }
-#[doc = "Write proxy for field `COMPARE1`"]
+impl core::ops::Deref for COMPARE1_R {
+    type Target = crate::FieldReader<bool, COMPARE1_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `COMPARE1` writer - Enable or disable event routing for event COMPARE\\[1\\]"]
 pub struct COMPARE1_W<'a> {
     w: &'a mut W,
 }
@@ -291,9 +335,7 @@ impl<'a> COMPARE1_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: COMPARE1_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disable"]
     #[inline(always)]
@@ -326,22 +368,22 @@ impl<'a> COMPARE1_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum COMPARE2_A {
     #[doc = "0: Disable"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Enable"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<COMPARE2_A> for bool {
     #[inline(always)]
     fn from(variant: COMPARE2_A) -> Self {
-        match variant {
-            COMPARE2_A::DISABLED => false,
-            COMPARE2_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `COMPARE2`"]
-pub type COMPARE2_R = crate::R<bool, COMPARE2_A>;
+#[doc = "Field `COMPARE2` reader - Enable or disable event routing for event COMPARE\\[2\\]"]
+pub struct COMPARE2_R(crate::FieldReader<bool, COMPARE2_A>);
 impl COMPARE2_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        COMPARE2_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> COMPARE2_A {
@@ -353,15 +395,22 @@ impl COMPARE2_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == COMPARE2_A::DISABLED
+        **self == COMPARE2_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == COMPARE2_A::ENABLED
+        **self == COMPARE2_A::ENABLED
     }
 }
-#[doc = "Write proxy for field `COMPARE2`"]
+impl core::ops::Deref for COMPARE2_R {
+    type Target = crate::FieldReader<bool, COMPARE2_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `COMPARE2` writer - Enable or disable event routing for event COMPARE\\[2\\]"]
 pub struct COMPARE2_W<'a> {
     w: &'a mut W,
 }
@@ -369,9 +418,7 @@ impl<'a> COMPARE2_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: COMPARE2_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disable"]
     #[inline(always)]
@@ -404,22 +451,22 @@ impl<'a> COMPARE2_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum COMPARE3_A {
     #[doc = "0: Disable"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Enable"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<COMPARE3_A> for bool {
     #[inline(always)]
     fn from(variant: COMPARE3_A) -> Self {
-        match variant {
-            COMPARE3_A::DISABLED => false,
-            COMPARE3_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `COMPARE3`"]
-pub type COMPARE3_R = crate::R<bool, COMPARE3_A>;
+#[doc = "Field `COMPARE3` reader - Enable or disable event routing for event COMPARE\\[3\\]"]
+pub struct COMPARE3_R(crate::FieldReader<bool, COMPARE3_A>);
 impl COMPARE3_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        COMPARE3_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> COMPARE3_A {
@@ -431,15 +478,22 @@ impl COMPARE3_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == COMPARE3_A::DISABLED
+        **self == COMPARE3_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == COMPARE3_A::ENABLED
+        **self == COMPARE3_A::ENABLED
     }
 }
-#[doc = "Write proxy for field `COMPARE3`"]
+impl core::ops::Deref for COMPARE3_R {
+    type Target = crate::FieldReader<bool, COMPARE3_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `COMPARE3` writer - Enable or disable event routing for event COMPARE\\[3\\]"]
 pub struct COMPARE3_W<'a> {
     w: &'a mut W,
 }
@@ -447,9 +501,7 @@ impl<'a> COMPARE3_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: COMPARE3_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Disable"]
     #[inline(always)]
@@ -540,5 +592,30 @@ impl W {
     #[inline(always)]
     pub fn compare3(&mut self) -> COMPARE3_W {
         COMPARE3_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Enable or disable event routing\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [evten](index.html) module"]
+pub struct EVTEN_SPEC;
+impl crate::RegisterSpec for EVTEN_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [evten::R](R) reader structure"]
+impl crate::Readable for EVTEN_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [evten::W](W) writer structure"]
+impl crate::Writable for EVTEN_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets EVTEN to value 0"]
+impl crate::Resettable for EVTEN_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

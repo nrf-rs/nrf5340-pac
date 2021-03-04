@@ -1,35 +1,57 @@
-#[doc = "Reader of register DETECTMODE"]
-pub type R = crate::R<u32, super::DETECTMODE>;
-#[doc = "Writer for register DETECTMODE"]
-pub type W = crate::W<u32, super::DETECTMODE>;
-#[doc = "Register DETECTMODE `reset()`'s with value 0"]
-impl crate::ResetValue for super::DETECTMODE {
-    type Type = u32;
+#[doc = "Register `DETECTMODE` reader"]
+pub struct R(crate::R<DETECTMODE_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<DETECTMODE_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<DETECTMODE_SPEC>> for R {
+    fn from(reader: crate::R<DETECTMODE_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `DETECTMODE` writer"]
+pub struct W(crate::W<DETECTMODE_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<DETECTMODE_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<DETECTMODE_SPEC>> for W {
+    fn from(writer: crate::W<DETECTMODE_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "Select between default DETECT signal behavior and LDETECT mode\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DETECTMODE_A {
     #[doc = "0: DETECT directly connected to PIN DETECT signals"]
-    DEFAULT,
+    DEFAULT = 0,
     #[doc = "1: Use the latched LDETECT behavior"]
-    LDETECT,
+    LDETECT = 1,
 }
 impl From<DETECTMODE_A> for bool {
     #[inline(always)]
     fn from(variant: DETECTMODE_A) -> Self {
-        match variant {
-            DETECTMODE_A::DEFAULT => false,
-            DETECTMODE_A::LDETECT => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `DETECTMODE`"]
-pub type DETECTMODE_R = crate::R<bool, DETECTMODE_A>;
+#[doc = "Field `DETECTMODE` reader - Select between default DETECT signal behavior and LDETECT mode"]
+pub struct DETECTMODE_R(crate::FieldReader<bool, DETECTMODE_A>);
 impl DETECTMODE_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DETECTMODE_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> DETECTMODE_A {
@@ -41,15 +63,22 @@ impl DETECTMODE_R {
     #[doc = "Checks if the value of the field is `DEFAULT`"]
     #[inline(always)]
     pub fn is_default(&self) -> bool {
-        *self == DETECTMODE_A::DEFAULT
+        **self == DETECTMODE_A::DEFAULT
     }
     #[doc = "Checks if the value of the field is `LDETECT`"]
     #[inline(always)]
     pub fn is_ldetect(&self) -> bool {
-        *self == DETECTMODE_A::LDETECT
+        **self == DETECTMODE_A::LDETECT
     }
 }
-#[doc = "Write proxy for field `DETECTMODE`"]
+impl core::ops::Deref for DETECTMODE_R {
+    type Target = crate::FieldReader<bool, DETECTMODE_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `DETECTMODE` writer - Select between default DETECT signal behavior and LDETECT mode"]
 pub struct DETECTMODE_W<'a> {
     w: &'a mut W,
 }
@@ -57,9 +86,7 @@ impl<'a> DETECTMODE_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: DETECTMODE_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "DETECT directly connected to PIN DETECT signals"]
     #[inline(always)]
@@ -100,5 +127,30 @@ impl W {
     #[inline(always)]
     pub fn detectmode(&mut self) -> DETECTMODE_W {
         DETECTMODE_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Select between default DETECT signal behavior and LDETECT mode (For non-secure pin only)\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [detectmode](index.html) module"]
+pub struct DETECTMODE_SPEC;
+impl crate::RegisterSpec for DETECTMODE_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [detectmode::R](R) reader structure"]
+impl crate::Readable for DETECTMODE_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [detectmode::W](W) writer structure"]
+impl crate::Writable for DETECTMODE_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets DETECTMODE to value 0"]
+impl crate::Resettable for DETECTMODE_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

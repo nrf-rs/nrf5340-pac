@@ -1,38 +1,60 @@
-#[doc = "Reader of register MODE"]
-pub type R = crate::R<u32, super::MODE>;
-#[doc = "Writer for register MODE"]
-pub type W = crate::W<u32, super::MODE>;
-#[doc = "Register MODE `reset()`'s with value 0"]
-impl crate::ResetValue for super::MODE {
-    type Type = u32;
+#[doc = "Register `MODE` reader"]
+pub struct R(crate::R<MODE_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<MODE_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<MODE_SPEC>> for R {
+    fn from(reader: crate::R<MODE_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `MODE` writer"]
+pub struct W(crate::W<MODE_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<MODE_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<MODE_SPEC>> for W {
+    fn from(writer: crate::W<MODE_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "Speed and power modes\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
+#[repr(u8)]
 pub enum SP_A {
     #[doc = "0: Low-power mode"]
-    LOW,
+    LOW = 0,
     #[doc = "1: Normal mode"]
-    NORMAL,
+    NORMAL = 1,
     #[doc = "2: High-speed mode"]
-    HIGH,
+    HIGH = 2,
 }
 impl From<SP_A> for u8 {
     #[inline(always)]
     fn from(variant: SP_A) -> Self {
-        match variant {
-            SP_A::LOW => 0,
-            SP_A::NORMAL => 1,
-            SP_A::HIGH => 2,
-        }
+        variant as _
     }
 }
-#[doc = "Reader of field `SP`"]
-pub type SP_R = crate::R<u8, SP_A>;
+#[doc = "Field `SP` reader - Speed and power modes"]
+pub struct SP_R(crate::FieldReader<u8, SP_A>);
 impl SP_R {
+    pub(crate) fn new(bits: u8) -> Self {
+        SP_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> crate::Variant<u8, SP_A> {
@@ -47,20 +69,27 @@ impl SP_R {
     #[doc = "Checks if the value of the field is `LOW`"]
     #[inline(always)]
     pub fn is_low(&self) -> bool {
-        *self == SP_A::LOW
+        **self == SP_A::LOW
     }
     #[doc = "Checks if the value of the field is `NORMAL`"]
     #[inline(always)]
     pub fn is_normal(&self) -> bool {
-        *self == SP_A::NORMAL
+        **self == SP_A::NORMAL
     }
     #[doc = "Checks if the value of the field is `HIGH`"]
     #[inline(always)]
     pub fn is_high(&self) -> bool {
-        *self == SP_A::HIGH
+        **self == SP_A::HIGH
     }
 }
-#[doc = "Write proxy for field `SP`"]
+impl core::ops::Deref for SP_R {
+    type Target = crate::FieldReader<u8, SP_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `SP` writer - Speed and power modes"]
 pub struct SP_W<'a> {
     w: &'a mut W,
 }
@@ -96,22 +125,22 @@ impl<'a> SP_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum MAIN_A {
     #[doc = "0: Single-ended mode"]
-    SE,
+    SE = 0,
     #[doc = "1: Differential mode"]
-    DIFF,
+    DIFF = 1,
 }
 impl From<MAIN_A> for bool {
     #[inline(always)]
     fn from(variant: MAIN_A) -> Self {
-        match variant {
-            MAIN_A::SE => false,
-            MAIN_A::DIFF => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `MAIN`"]
-pub type MAIN_R = crate::R<bool, MAIN_A>;
+#[doc = "Field `MAIN` reader - Main operation modes"]
+pub struct MAIN_R(crate::FieldReader<bool, MAIN_A>);
 impl MAIN_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        MAIN_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> MAIN_A {
@@ -123,15 +152,22 @@ impl MAIN_R {
     #[doc = "Checks if the value of the field is `SE`"]
     #[inline(always)]
     pub fn is_se(&self) -> bool {
-        *self == MAIN_A::SE
+        **self == MAIN_A::SE
     }
     #[doc = "Checks if the value of the field is `DIFF`"]
     #[inline(always)]
     pub fn is_diff(&self) -> bool {
-        *self == MAIN_A::DIFF
+        **self == MAIN_A::DIFF
     }
 }
-#[doc = "Write proxy for field `MAIN`"]
+impl core::ops::Deref for MAIN_R {
+    type Target = crate::FieldReader<bool, MAIN_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `MAIN` writer - Main operation modes"]
 pub struct MAIN_W<'a> {
     w: &'a mut W,
 }
@@ -139,9 +175,7 @@ impl<'a> MAIN_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: MAIN_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Single-ended mode"]
     #[inline(always)]
@@ -192,5 +226,30 @@ impl W {
     #[inline(always)]
     pub fn main(&mut self) -> MAIN_W {
         MAIN_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Mode configuration\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [mode](index.html) module"]
+pub struct MODE_SPEC;
+impl crate::RegisterSpec for MODE_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [mode::R](R) reader structure"]
+impl crate::Readable for MODE_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [mode::W](W) writer structure"]
+impl crate::Writable for MODE_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets MODE to value 0"]
+impl crate::Resettable for MODE_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

@@ -1,35 +1,57 @@
-#[doc = "Reader of register INTENSET"]
-pub type R = crate::R<u32, super::INTENSET>;
-#[doc = "Writer for register INTENSET"]
-pub type W = crate::W<u32, super::INTENSET>;
-#[doc = "Register INTENSET `reset()`'s with value 0"]
-impl crate::ResetValue for super::INTENSET {
-    type Type = u32;
+#[doc = "Register `INTENSET` reader"]
+pub struct R(crate::R<INTENSET_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<INTENSET_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<INTENSET_SPEC>> for R {
+    fn from(reader: crate::R<INTENSET_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `INTENSET` writer"]
+pub struct W(crate::W<INTENSET_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<INTENSET_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<INTENSET_SPEC>> for W {
+    fn from(writer: crate::W<INTENSET_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "Write '1' to enable interrupt for event TRIGGERED\\[0\\]\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TRIGGERED0_A {
     #[doc = "0: Read: Disabled"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Read: Enabled"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<TRIGGERED0_A> for bool {
     #[inline(always)]
     fn from(variant: TRIGGERED0_A) -> Self {
-        match variant {
-            TRIGGERED0_A::DISABLED => false,
-            TRIGGERED0_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `TRIGGERED0`"]
-pub type TRIGGERED0_R = crate::R<bool, TRIGGERED0_A>;
+#[doc = "Field `TRIGGERED0` reader - Write '1' to enable interrupt for event TRIGGERED\\[0\\]"]
+pub struct TRIGGERED0_R(crate::FieldReader<bool, TRIGGERED0_A>);
 impl TRIGGERED0_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        TRIGGERED0_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> TRIGGERED0_A {
@@ -41,29 +63,34 @@ impl TRIGGERED0_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == TRIGGERED0_A::DISABLED
+        **self == TRIGGERED0_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == TRIGGERED0_A::ENABLED
+        **self == TRIGGERED0_A::ENABLED
+    }
+}
+impl core::ops::Deref for TRIGGERED0_R {
+    type Target = crate::FieldReader<bool, TRIGGERED0_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Write '1' to enable interrupt for event TRIGGERED\\[0\\]\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TRIGGERED0_AW {
     #[doc = "1: Enable"]
-    SET,
+    SET = 1,
 }
 impl From<TRIGGERED0_AW> for bool {
     #[inline(always)]
     fn from(variant: TRIGGERED0_AW) -> Self {
-        match variant {
-            TRIGGERED0_AW::SET => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Write proxy for field `TRIGGERED0`"]
+#[doc = "Field `TRIGGERED0` writer - Write '1' to enable interrupt for event TRIGGERED\\[0\\]"]
 pub struct TRIGGERED0_W<'a> {
     w: &'a mut W,
 }
@@ -71,9 +98,7 @@ impl<'a> TRIGGERED0_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: TRIGGERED0_AW) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Enable"]
     #[inline(always)]
@@ -101,22 +126,22 @@ impl<'a> TRIGGERED0_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TRIGGERED1_A {
     #[doc = "0: Read: Disabled"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Read: Enabled"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<TRIGGERED1_A> for bool {
     #[inline(always)]
     fn from(variant: TRIGGERED1_A) -> Self {
-        match variant {
-            TRIGGERED1_A::DISABLED => false,
-            TRIGGERED1_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `TRIGGERED1`"]
-pub type TRIGGERED1_R = crate::R<bool, TRIGGERED1_A>;
+#[doc = "Field `TRIGGERED1` reader - Write '1' to enable interrupt for event TRIGGERED\\[1\\]"]
+pub struct TRIGGERED1_R(crate::FieldReader<bool, TRIGGERED1_A>);
 impl TRIGGERED1_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        TRIGGERED1_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> TRIGGERED1_A {
@@ -128,29 +153,34 @@ impl TRIGGERED1_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == TRIGGERED1_A::DISABLED
+        **self == TRIGGERED1_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == TRIGGERED1_A::ENABLED
+        **self == TRIGGERED1_A::ENABLED
+    }
+}
+impl core::ops::Deref for TRIGGERED1_R {
+    type Target = crate::FieldReader<bool, TRIGGERED1_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Write '1' to enable interrupt for event TRIGGERED\\[1\\]\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TRIGGERED1_AW {
     #[doc = "1: Enable"]
-    SET,
+    SET = 1,
 }
 impl From<TRIGGERED1_AW> for bool {
     #[inline(always)]
     fn from(variant: TRIGGERED1_AW) -> Self {
-        match variant {
-            TRIGGERED1_AW::SET => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Write proxy for field `TRIGGERED1`"]
+#[doc = "Field `TRIGGERED1` writer - Write '1' to enable interrupt for event TRIGGERED\\[1\\]"]
 pub struct TRIGGERED1_W<'a> {
     w: &'a mut W,
 }
@@ -158,9 +188,7 @@ impl<'a> TRIGGERED1_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: TRIGGERED1_AW) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Enable"]
     #[inline(always)]
@@ -188,22 +216,22 @@ impl<'a> TRIGGERED1_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TRIGGERED2_A {
     #[doc = "0: Read: Disabled"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Read: Enabled"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<TRIGGERED2_A> for bool {
     #[inline(always)]
     fn from(variant: TRIGGERED2_A) -> Self {
-        match variant {
-            TRIGGERED2_A::DISABLED => false,
-            TRIGGERED2_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `TRIGGERED2`"]
-pub type TRIGGERED2_R = crate::R<bool, TRIGGERED2_A>;
+#[doc = "Field `TRIGGERED2` reader - Write '1' to enable interrupt for event TRIGGERED\\[2\\]"]
+pub struct TRIGGERED2_R(crate::FieldReader<bool, TRIGGERED2_A>);
 impl TRIGGERED2_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        TRIGGERED2_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> TRIGGERED2_A {
@@ -215,29 +243,34 @@ impl TRIGGERED2_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == TRIGGERED2_A::DISABLED
+        **self == TRIGGERED2_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == TRIGGERED2_A::ENABLED
+        **self == TRIGGERED2_A::ENABLED
+    }
+}
+impl core::ops::Deref for TRIGGERED2_R {
+    type Target = crate::FieldReader<bool, TRIGGERED2_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Write '1' to enable interrupt for event TRIGGERED\\[2\\]\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TRIGGERED2_AW {
     #[doc = "1: Enable"]
-    SET,
+    SET = 1,
 }
 impl From<TRIGGERED2_AW> for bool {
     #[inline(always)]
     fn from(variant: TRIGGERED2_AW) -> Self {
-        match variant {
-            TRIGGERED2_AW::SET => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Write proxy for field `TRIGGERED2`"]
+#[doc = "Field `TRIGGERED2` writer - Write '1' to enable interrupt for event TRIGGERED\\[2\\]"]
 pub struct TRIGGERED2_W<'a> {
     w: &'a mut W,
 }
@@ -245,9 +278,7 @@ impl<'a> TRIGGERED2_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: TRIGGERED2_AW) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Enable"]
     #[inline(always)]
@@ -275,22 +306,22 @@ impl<'a> TRIGGERED2_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TRIGGERED3_A {
     #[doc = "0: Read: Disabled"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Read: Enabled"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<TRIGGERED3_A> for bool {
     #[inline(always)]
     fn from(variant: TRIGGERED3_A) -> Self {
-        match variant {
-            TRIGGERED3_A::DISABLED => false,
-            TRIGGERED3_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `TRIGGERED3`"]
-pub type TRIGGERED3_R = crate::R<bool, TRIGGERED3_A>;
+#[doc = "Field `TRIGGERED3` reader - Write '1' to enable interrupt for event TRIGGERED\\[3\\]"]
+pub struct TRIGGERED3_R(crate::FieldReader<bool, TRIGGERED3_A>);
 impl TRIGGERED3_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        TRIGGERED3_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> TRIGGERED3_A {
@@ -302,29 +333,34 @@ impl TRIGGERED3_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == TRIGGERED3_A::DISABLED
+        **self == TRIGGERED3_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == TRIGGERED3_A::ENABLED
+        **self == TRIGGERED3_A::ENABLED
+    }
+}
+impl core::ops::Deref for TRIGGERED3_R {
+    type Target = crate::FieldReader<bool, TRIGGERED3_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Write '1' to enable interrupt for event TRIGGERED\\[3\\]\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TRIGGERED3_AW {
     #[doc = "1: Enable"]
-    SET,
+    SET = 1,
 }
 impl From<TRIGGERED3_AW> for bool {
     #[inline(always)]
     fn from(variant: TRIGGERED3_AW) -> Self {
-        match variant {
-            TRIGGERED3_AW::SET => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Write proxy for field `TRIGGERED3`"]
+#[doc = "Field `TRIGGERED3` writer - Write '1' to enable interrupt for event TRIGGERED\\[3\\]"]
 pub struct TRIGGERED3_W<'a> {
     w: &'a mut W,
 }
@@ -332,9 +368,7 @@ impl<'a> TRIGGERED3_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: TRIGGERED3_AW) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Enable"]
     #[inline(always)]
@@ -362,22 +396,22 @@ impl<'a> TRIGGERED3_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TRIGGERED4_A {
     #[doc = "0: Read: Disabled"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Read: Enabled"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<TRIGGERED4_A> for bool {
     #[inline(always)]
     fn from(variant: TRIGGERED4_A) -> Self {
-        match variant {
-            TRIGGERED4_A::DISABLED => false,
-            TRIGGERED4_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `TRIGGERED4`"]
-pub type TRIGGERED4_R = crate::R<bool, TRIGGERED4_A>;
+#[doc = "Field `TRIGGERED4` reader - Write '1' to enable interrupt for event TRIGGERED\\[4\\]"]
+pub struct TRIGGERED4_R(crate::FieldReader<bool, TRIGGERED4_A>);
 impl TRIGGERED4_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        TRIGGERED4_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> TRIGGERED4_A {
@@ -389,29 +423,34 @@ impl TRIGGERED4_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == TRIGGERED4_A::DISABLED
+        **self == TRIGGERED4_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == TRIGGERED4_A::ENABLED
+        **self == TRIGGERED4_A::ENABLED
+    }
+}
+impl core::ops::Deref for TRIGGERED4_R {
+    type Target = crate::FieldReader<bool, TRIGGERED4_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Write '1' to enable interrupt for event TRIGGERED\\[4\\]\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TRIGGERED4_AW {
     #[doc = "1: Enable"]
-    SET,
+    SET = 1,
 }
 impl From<TRIGGERED4_AW> for bool {
     #[inline(always)]
     fn from(variant: TRIGGERED4_AW) -> Self {
-        match variant {
-            TRIGGERED4_AW::SET => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Write proxy for field `TRIGGERED4`"]
+#[doc = "Field `TRIGGERED4` writer - Write '1' to enable interrupt for event TRIGGERED\\[4\\]"]
 pub struct TRIGGERED4_W<'a> {
     w: &'a mut W,
 }
@@ -419,9 +458,7 @@ impl<'a> TRIGGERED4_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: TRIGGERED4_AW) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Enable"]
     #[inline(always)]
@@ -449,22 +486,22 @@ impl<'a> TRIGGERED4_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TRIGGERED5_A {
     #[doc = "0: Read: Disabled"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Read: Enabled"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<TRIGGERED5_A> for bool {
     #[inline(always)]
     fn from(variant: TRIGGERED5_A) -> Self {
-        match variant {
-            TRIGGERED5_A::DISABLED => false,
-            TRIGGERED5_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `TRIGGERED5`"]
-pub type TRIGGERED5_R = crate::R<bool, TRIGGERED5_A>;
+#[doc = "Field `TRIGGERED5` reader - Write '1' to enable interrupt for event TRIGGERED\\[5\\]"]
+pub struct TRIGGERED5_R(crate::FieldReader<bool, TRIGGERED5_A>);
 impl TRIGGERED5_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        TRIGGERED5_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> TRIGGERED5_A {
@@ -476,29 +513,34 @@ impl TRIGGERED5_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == TRIGGERED5_A::DISABLED
+        **self == TRIGGERED5_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == TRIGGERED5_A::ENABLED
+        **self == TRIGGERED5_A::ENABLED
+    }
+}
+impl core::ops::Deref for TRIGGERED5_R {
+    type Target = crate::FieldReader<bool, TRIGGERED5_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Write '1' to enable interrupt for event TRIGGERED\\[5\\]\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TRIGGERED5_AW {
     #[doc = "1: Enable"]
-    SET,
+    SET = 1,
 }
 impl From<TRIGGERED5_AW> for bool {
     #[inline(always)]
     fn from(variant: TRIGGERED5_AW) -> Self {
-        match variant {
-            TRIGGERED5_AW::SET => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Write proxy for field `TRIGGERED5`"]
+#[doc = "Field `TRIGGERED5` writer - Write '1' to enable interrupt for event TRIGGERED\\[5\\]"]
 pub struct TRIGGERED5_W<'a> {
     w: &'a mut W,
 }
@@ -506,9 +548,7 @@ impl<'a> TRIGGERED5_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: TRIGGERED5_AW) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Enable"]
     #[inline(always)]
@@ -536,22 +576,22 @@ impl<'a> TRIGGERED5_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TRIGGERED6_A {
     #[doc = "0: Read: Disabled"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Read: Enabled"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<TRIGGERED6_A> for bool {
     #[inline(always)]
     fn from(variant: TRIGGERED6_A) -> Self {
-        match variant {
-            TRIGGERED6_A::DISABLED => false,
-            TRIGGERED6_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `TRIGGERED6`"]
-pub type TRIGGERED6_R = crate::R<bool, TRIGGERED6_A>;
+#[doc = "Field `TRIGGERED6` reader - Write '1' to enable interrupt for event TRIGGERED\\[6\\]"]
+pub struct TRIGGERED6_R(crate::FieldReader<bool, TRIGGERED6_A>);
 impl TRIGGERED6_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        TRIGGERED6_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> TRIGGERED6_A {
@@ -563,29 +603,34 @@ impl TRIGGERED6_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == TRIGGERED6_A::DISABLED
+        **self == TRIGGERED6_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == TRIGGERED6_A::ENABLED
+        **self == TRIGGERED6_A::ENABLED
+    }
+}
+impl core::ops::Deref for TRIGGERED6_R {
+    type Target = crate::FieldReader<bool, TRIGGERED6_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Write '1' to enable interrupt for event TRIGGERED\\[6\\]\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TRIGGERED6_AW {
     #[doc = "1: Enable"]
-    SET,
+    SET = 1,
 }
 impl From<TRIGGERED6_AW> for bool {
     #[inline(always)]
     fn from(variant: TRIGGERED6_AW) -> Self {
-        match variant {
-            TRIGGERED6_AW::SET => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Write proxy for field `TRIGGERED6`"]
+#[doc = "Field `TRIGGERED6` writer - Write '1' to enable interrupt for event TRIGGERED\\[6\\]"]
 pub struct TRIGGERED6_W<'a> {
     w: &'a mut W,
 }
@@ -593,9 +638,7 @@ impl<'a> TRIGGERED6_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: TRIGGERED6_AW) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Enable"]
     #[inline(always)]
@@ -623,22 +666,22 @@ impl<'a> TRIGGERED6_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TRIGGERED7_A {
     #[doc = "0: Read: Disabled"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Read: Enabled"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<TRIGGERED7_A> for bool {
     #[inline(always)]
     fn from(variant: TRIGGERED7_A) -> Self {
-        match variant {
-            TRIGGERED7_A::DISABLED => false,
-            TRIGGERED7_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `TRIGGERED7`"]
-pub type TRIGGERED7_R = crate::R<bool, TRIGGERED7_A>;
+#[doc = "Field `TRIGGERED7` reader - Write '1' to enable interrupt for event TRIGGERED\\[7\\]"]
+pub struct TRIGGERED7_R(crate::FieldReader<bool, TRIGGERED7_A>);
 impl TRIGGERED7_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        TRIGGERED7_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> TRIGGERED7_A {
@@ -650,29 +693,34 @@ impl TRIGGERED7_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == TRIGGERED7_A::DISABLED
+        **self == TRIGGERED7_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == TRIGGERED7_A::ENABLED
+        **self == TRIGGERED7_A::ENABLED
+    }
+}
+impl core::ops::Deref for TRIGGERED7_R {
+    type Target = crate::FieldReader<bool, TRIGGERED7_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Write '1' to enable interrupt for event TRIGGERED\\[7\\]\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TRIGGERED7_AW {
     #[doc = "1: Enable"]
-    SET,
+    SET = 1,
 }
 impl From<TRIGGERED7_AW> for bool {
     #[inline(always)]
     fn from(variant: TRIGGERED7_AW) -> Self {
-        match variant {
-            TRIGGERED7_AW::SET => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Write proxy for field `TRIGGERED7`"]
+#[doc = "Field `TRIGGERED7` writer - Write '1' to enable interrupt for event TRIGGERED\\[7\\]"]
 pub struct TRIGGERED7_W<'a> {
     w: &'a mut W,
 }
@@ -680,9 +728,7 @@ impl<'a> TRIGGERED7_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: TRIGGERED7_AW) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Enable"]
     #[inline(always)]
@@ -710,22 +756,22 @@ impl<'a> TRIGGERED7_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TRIGGERED8_A {
     #[doc = "0: Read: Disabled"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Read: Enabled"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<TRIGGERED8_A> for bool {
     #[inline(always)]
     fn from(variant: TRIGGERED8_A) -> Self {
-        match variant {
-            TRIGGERED8_A::DISABLED => false,
-            TRIGGERED8_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `TRIGGERED8`"]
-pub type TRIGGERED8_R = crate::R<bool, TRIGGERED8_A>;
+#[doc = "Field `TRIGGERED8` reader - Write '1' to enable interrupt for event TRIGGERED\\[8\\]"]
+pub struct TRIGGERED8_R(crate::FieldReader<bool, TRIGGERED8_A>);
 impl TRIGGERED8_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        TRIGGERED8_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> TRIGGERED8_A {
@@ -737,29 +783,34 @@ impl TRIGGERED8_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == TRIGGERED8_A::DISABLED
+        **self == TRIGGERED8_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == TRIGGERED8_A::ENABLED
+        **self == TRIGGERED8_A::ENABLED
+    }
+}
+impl core::ops::Deref for TRIGGERED8_R {
+    type Target = crate::FieldReader<bool, TRIGGERED8_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Write '1' to enable interrupt for event TRIGGERED\\[8\\]\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TRIGGERED8_AW {
     #[doc = "1: Enable"]
-    SET,
+    SET = 1,
 }
 impl From<TRIGGERED8_AW> for bool {
     #[inline(always)]
     fn from(variant: TRIGGERED8_AW) -> Self {
-        match variant {
-            TRIGGERED8_AW::SET => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Write proxy for field `TRIGGERED8`"]
+#[doc = "Field `TRIGGERED8` writer - Write '1' to enable interrupt for event TRIGGERED\\[8\\]"]
 pub struct TRIGGERED8_W<'a> {
     w: &'a mut W,
 }
@@ -767,9 +818,7 @@ impl<'a> TRIGGERED8_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: TRIGGERED8_AW) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Enable"]
     #[inline(always)]
@@ -797,22 +846,22 @@ impl<'a> TRIGGERED8_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TRIGGERED9_A {
     #[doc = "0: Read: Disabled"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Read: Enabled"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<TRIGGERED9_A> for bool {
     #[inline(always)]
     fn from(variant: TRIGGERED9_A) -> Self {
-        match variant {
-            TRIGGERED9_A::DISABLED => false,
-            TRIGGERED9_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `TRIGGERED9`"]
-pub type TRIGGERED9_R = crate::R<bool, TRIGGERED9_A>;
+#[doc = "Field `TRIGGERED9` reader - Write '1' to enable interrupt for event TRIGGERED\\[9\\]"]
+pub struct TRIGGERED9_R(crate::FieldReader<bool, TRIGGERED9_A>);
 impl TRIGGERED9_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        TRIGGERED9_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> TRIGGERED9_A {
@@ -824,29 +873,34 @@ impl TRIGGERED9_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == TRIGGERED9_A::DISABLED
+        **self == TRIGGERED9_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == TRIGGERED9_A::ENABLED
+        **self == TRIGGERED9_A::ENABLED
+    }
+}
+impl core::ops::Deref for TRIGGERED9_R {
+    type Target = crate::FieldReader<bool, TRIGGERED9_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Write '1' to enable interrupt for event TRIGGERED\\[9\\]\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TRIGGERED9_AW {
     #[doc = "1: Enable"]
-    SET,
+    SET = 1,
 }
 impl From<TRIGGERED9_AW> for bool {
     #[inline(always)]
     fn from(variant: TRIGGERED9_AW) -> Self {
-        match variant {
-            TRIGGERED9_AW::SET => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Write proxy for field `TRIGGERED9`"]
+#[doc = "Field `TRIGGERED9` writer - Write '1' to enable interrupt for event TRIGGERED\\[9\\]"]
 pub struct TRIGGERED9_W<'a> {
     w: &'a mut W,
 }
@@ -854,9 +908,7 @@ impl<'a> TRIGGERED9_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: TRIGGERED9_AW) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Enable"]
     #[inline(always)]
@@ -884,22 +936,22 @@ impl<'a> TRIGGERED9_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TRIGGERED10_A {
     #[doc = "0: Read: Disabled"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Read: Enabled"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<TRIGGERED10_A> for bool {
     #[inline(always)]
     fn from(variant: TRIGGERED10_A) -> Self {
-        match variant {
-            TRIGGERED10_A::DISABLED => false,
-            TRIGGERED10_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `TRIGGERED10`"]
-pub type TRIGGERED10_R = crate::R<bool, TRIGGERED10_A>;
+#[doc = "Field `TRIGGERED10` reader - Write '1' to enable interrupt for event TRIGGERED\\[10\\]"]
+pub struct TRIGGERED10_R(crate::FieldReader<bool, TRIGGERED10_A>);
 impl TRIGGERED10_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        TRIGGERED10_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> TRIGGERED10_A {
@@ -911,29 +963,34 @@ impl TRIGGERED10_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == TRIGGERED10_A::DISABLED
+        **self == TRIGGERED10_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == TRIGGERED10_A::ENABLED
+        **self == TRIGGERED10_A::ENABLED
+    }
+}
+impl core::ops::Deref for TRIGGERED10_R {
+    type Target = crate::FieldReader<bool, TRIGGERED10_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Write '1' to enable interrupt for event TRIGGERED\\[10\\]\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TRIGGERED10_AW {
     #[doc = "1: Enable"]
-    SET,
+    SET = 1,
 }
 impl From<TRIGGERED10_AW> for bool {
     #[inline(always)]
     fn from(variant: TRIGGERED10_AW) -> Self {
-        match variant {
-            TRIGGERED10_AW::SET => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Write proxy for field `TRIGGERED10`"]
+#[doc = "Field `TRIGGERED10` writer - Write '1' to enable interrupt for event TRIGGERED\\[10\\]"]
 pub struct TRIGGERED10_W<'a> {
     w: &'a mut W,
 }
@@ -941,9 +998,7 @@ impl<'a> TRIGGERED10_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: TRIGGERED10_AW) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Enable"]
     #[inline(always)]
@@ -971,22 +1026,22 @@ impl<'a> TRIGGERED10_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TRIGGERED11_A {
     #[doc = "0: Read: Disabled"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Read: Enabled"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<TRIGGERED11_A> for bool {
     #[inline(always)]
     fn from(variant: TRIGGERED11_A) -> Self {
-        match variant {
-            TRIGGERED11_A::DISABLED => false,
-            TRIGGERED11_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `TRIGGERED11`"]
-pub type TRIGGERED11_R = crate::R<bool, TRIGGERED11_A>;
+#[doc = "Field `TRIGGERED11` reader - Write '1' to enable interrupt for event TRIGGERED\\[11\\]"]
+pub struct TRIGGERED11_R(crate::FieldReader<bool, TRIGGERED11_A>);
 impl TRIGGERED11_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        TRIGGERED11_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> TRIGGERED11_A {
@@ -998,29 +1053,34 @@ impl TRIGGERED11_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == TRIGGERED11_A::DISABLED
+        **self == TRIGGERED11_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == TRIGGERED11_A::ENABLED
+        **self == TRIGGERED11_A::ENABLED
+    }
+}
+impl core::ops::Deref for TRIGGERED11_R {
+    type Target = crate::FieldReader<bool, TRIGGERED11_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Write '1' to enable interrupt for event TRIGGERED\\[11\\]\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TRIGGERED11_AW {
     #[doc = "1: Enable"]
-    SET,
+    SET = 1,
 }
 impl From<TRIGGERED11_AW> for bool {
     #[inline(always)]
     fn from(variant: TRIGGERED11_AW) -> Self {
-        match variant {
-            TRIGGERED11_AW::SET => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Write proxy for field `TRIGGERED11`"]
+#[doc = "Field `TRIGGERED11` writer - Write '1' to enable interrupt for event TRIGGERED\\[11\\]"]
 pub struct TRIGGERED11_W<'a> {
     w: &'a mut W,
 }
@@ -1028,9 +1088,7 @@ impl<'a> TRIGGERED11_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: TRIGGERED11_AW) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Enable"]
     #[inline(always)]
@@ -1058,22 +1116,22 @@ impl<'a> TRIGGERED11_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TRIGGERED12_A {
     #[doc = "0: Read: Disabled"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Read: Enabled"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<TRIGGERED12_A> for bool {
     #[inline(always)]
     fn from(variant: TRIGGERED12_A) -> Self {
-        match variant {
-            TRIGGERED12_A::DISABLED => false,
-            TRIGGERED12_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `TRIGGERED12`"]
-pub type TRIGGERED12_R = crate::R<bool, TRIGGERED12_A>;
+#[doc = "Field `TRIGGERED12` reader - Write '1' to enable interrupt for event TRIGGERED\\[12\\]"]
+pub struct TRIGGERED12_R(crate::FieldReader<bool, TRIGGERED12_A>);
 impl TRIGGERED12_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        TRIGGERED12_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> TRIGGERED12_A {
@@ -1085,29 +1143,34 @@ impl TRIGGERED12_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == TRIGGERED12_A::DISABLED
+        **self == TRIGGERED12_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == TRIGGERED12_A::ENABLED
+        **self == TRIGGERED12_A::ENABLED
+    }
+}
+impl core::ops::Deref for TRIGGERED12_R {
+    type Target = crate::FieldReader<bool, TRIGGERED12_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Write '1' to enable interrupt for event TRIGGERED\\[12\\]\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TRIGGERED12_AW {
     #[doc = "1: Enable"]
-    SET,
+    SET = 1,
 }
 impl From<TRIGGERED12_AW> for bool {
     #[inline(always)]
     fn from(variant: TRIGGERED12_AW) -> Self {
-        match variant {
-            TRIGGERED12_AW::SET => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Write proxy for field `TRIGGERED12`"]
+#[doc = "Field `TRIGGERED12` writer - Write '1' to enable interrupt for event TRIGGERED\\[12\\]"]
 pub struct TRIGGERED12_W<'a> {
     w: &'a mut W,
 }
@@ -1115,9 +1178,7 @@ impl<'a> TRIGGERED12_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: TRIGGERED12_AW) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Enable"]
     #[inline(always)]
@@ -1145,22 +1206,22 @@ impl<'a> TRIGGERED12_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TRIGGERED13_A {
     #[doc = "0: Read: Disabled"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Read: Enabled"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<TRIGGERED13_A> for bool {
     #[inline(always)]
     fn from(variant: TRIGGERED13_A) -> Self {
-        match variant {
-            TRIGGERED13_A::DISABLED => false,
-            TRIGGERED13_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `TRIGGERED13`"]
-pub type TRIGGERED13_R = crate::R<bool, TRIGGERED13_A>;
+#[doc = "Field `TRIGGERED13` reader - Write '1' to enable interrupt for event TRIGGERED\\[13\\]"]
+pub struct TRIGGERED13_R(crate::FieldReader<bool, TRIGGERED13_A>);
 impl TRIGGERED13_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        TRIGGERED13_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> TRIGGERED13_A {
@@ -1172,29 +1233,34 @@ impl TRIGGERED13_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == TRIGGERED13_A::DISABLED
+        **self == TRIGGERED13_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == TRIGGERED13_A::ENABLED
+        **self == TRIGGERED13_A::ENABLED
+    }
+}
+impl core::ops::Deref for TRIGGERED13_R {
+    type Target = crate::FieldReader<bool, TRIGGERED13_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Write '1' to enable interrupt for event TRIGGERED\\[13\\]\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TRIGGERED13_AW {
     #[doc = "1: Enable"]
-    SET,
+    SET = 1,
 }
 impl From<TRIGGERED13_AW> for bool {
     #[inline(always)]
     fn from(variant: TRIGGERED13_AW) -> Self {
-        match variant {
-            TRIGGERED13_AW::SET => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Write proxy for field `TRIGGERED13`"]
+#[doc = "Field `TRIGGERED13` writer - Write '1' to enable interrupt for event TRIGGERED\\[13\\]"]
 pub struct TRIGGERED13_W<'a> {
     w: &'a mut W,
 }
@@ -1202,9 +1268,7 @@ impl<'a> TRIGGERED13_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: TRIGGERED13_AW) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Enable"]
     #[inline(always)]
@@ -1232,22 +1296,22 @@ impl<'a> TRIGGERED13_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TRIGGERED14_A {
     #[doc = "0: Read: Disabled"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Read: Enabled"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<TRIGGERED14_A> for bool {
     #[inline(always)]
     fn from(variant: TRIGGERED14_A) -> Self {
-        match variant {
-            TRIGGERED14_A::DISABLED => false,
-            TRIGGERED14_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `TRIGGERED14`"]
-pub type TRIGGERED14_R = crate::R<bool, TRIGGERED14_A>;
+#[doc = "Field `TRIGGERED14` reader - Write '1' to enable interrupt for event TRIGGERED\\[14\\]"]
+pub struct TRIGGERED14_R(crate::FieldReader<bool, TRIGGERED14_A>);
 impl TRIGGERED14_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        TRIGGERED14_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> TRIGGERED14_A {
@@ -1259,29 +1323,34 @@ impl TRIGGERED14_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == TRIGGERED14_A::DISABLED
+        **self == TRIGGERED14_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == TRIGGERED14_A::ENABLED
+        **self == TRIGGERED14_A::ENABLED
+    }
+}
+impl core::ops::Deref for TRIGGERED14_R {
+    type Target = crate::FieldReader<bool, TRIGGERED14_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Write '1' to enable interrupt for event TRIGGERED\\[14\\]\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TRIGGERED14_AW {
     #[doc = "1: Enable"]
-    SET,
+    SET = 1,
 }
 impl From<TRIGGERED14_AW> for bool {
     #[inline(always)]
     fn from(variant: TRIGGERED14_AW) -> Self {
-        match variant {
-            TRIGGERED14_AW::SET => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Write proxy for field `TRIGGERED14`"]
+#[doc = "Field `TRIGGERED14` writer - Write '1' to enable interrupt for event TRIGGERED\\[14\\]"]
 pub struct TRIGGERED14_W<'a> {
     w: &'a mut W,
 }
@@ -1289,9 +1358,7 @@ impl<'a> TRIGGERED14_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: TRIGGERED14_AW) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Enable"]
     #[inline(always)]
@@ -1319,22 +1386,22 @@ impl<'a> TRIGGERED14_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TRIGGERED15_A {
     #[doc = "0: Read: Disabled"]
-    DISABLED,
+    DISABLED = 0,
     #[doc = "1: Read: Enabled"]
-    ENABLED,
+    ENABLED = 1,
 }
 impl From<TRIGGERED15_A> for bool {
     #[inline(always)]
     fn from(variant: TRIGGERED15_A) -> Self {
-        match variant {
-            TRIGGERED15_A::DISABLED => false,
-            TRIGGERED15_A::ENABLED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `TRIGGERED15`"]
-pub type TRIGGERED15_R = crate::R<bool, TRIGGERED15_A>;
+#[doc = "Field `TRIGGERED15` reader - Write '1' to enable interrupt for event TRIGGERED\\[15\\]"]
+pub struct TRIGGERED15_R(crate::FieldReader<bool, TRIGGERED15_A>);
 impl TRIGGERED15_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        TRIGGERED15_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> TRIGGERED15_A {
@@ -1346,29 +1413,34 @@ impl TRIGGERED15_R {
     #[doc = "Checks if the value of the field is `DISABLED`"]
     #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == TRIGGERED15_A::DISABLED
+        **self == TRIGGERED15_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `ENABLED`"]
     #[inline(always)]
     pub fn is_enabled(&self) -> bool {
-        *self == TRIGGERED15_A::ENABLED
+        **self == TRIGGERED15_A::ENABLED
+    }
+}
+impl core::ops::Deref for TRIGGERED15_R {
+    type Target = crate::FieldReader<bool, TRIGGERED15_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Write '1' to enable interrupt for event TRIGGERED\\[15\\]\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum TRIGGERED15_AW {
     #[doc = "1: Enable"]
-    SET,
+    SET = 1,
 }
 impl From<TRIGGERED15_AW> for bool {
     #[inline(always)]
     fn from(variant: TRIGGERED15_AW) -> Self {
-        match variant {
-            TRIGGERED15_AW::SET => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Write proxy for field `TRIGGERED15`"]
+#[doc = "Field `TRIGGERED15` writer - Write '1' to enable interrupt for event TRIGGERED\\[15\\]"]
 pub struct TRIGGERED15_W<'a> {
     w: &'a mut W,
 }
@@ -1376,9 +1448,7 @@ impl<'a> TRIGGERED15_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: TRIGGERED15_AW) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Enable"]
     #[inline(always)]
@@ -1564,5 +1634,30 @@ impl W {
     #[inline(always)]
     pub fn triggered15(&mut self) -> TRIGGERED15_W {
         TRIGGERED15_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Enable interrupt\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [intenset](index.html) module"]
+pub struct INTENSET_SPEC;
+impl crate::RegisterSpec for INTENSET_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [intenset::R](R) reader structure"]
+impl crate::Readable for INTENSET_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [intenset::W](W) writer structure"]
+impl crate::Writable for INTENSET_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets INTENSET to value 0"]
+impl crate::Resettable for INTENSET_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

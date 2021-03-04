@@ -1,35 +1,57 @@
-#[doc = "Reader of register EVENTCAUSE"]
-pub type R = crate::R<u32, super::EVENTCAUSE>;
-#[doc = "Writer for register EVENTCAUSE"]
-pub type W = crate::W<u32, super::EVENTCAUSE>;
-#[doc = "Register EVENTCAUSE `reset()`'s with value 0"]
-impl crate::ResetValue for super::EVENTCAUSE {
-    type Type = u32;
+#[doc = "Register `EVENTCAUSE` reader"]
+pub struct R(crate::R<EVENTCAUSE_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<EVENTCAUSE_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<EVENTCAUSE_SPEC>> for R {
+    fn from(reader: crate::R<EVENTCAUSE_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `EVENTCAUSE` writer"]
+pub struct W(crate::W<EVENTCAUSE_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<EVENTCAUSE_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<EVENTCAUSE_SPEC>> for W {
+    fn from(writer: crate::W<EVENTCAUSE_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "CRC error was detected on isochronous OUT endpoint 8. Write '1' to clear.\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum ISOOUTCRC_A {
     #[doc = "0: No error detected"]
-    NOTDETECTED,
+    NOTDETECTED = 0,
     #[doc = "1: Error detected"]
-    DETECTED,
+    DETECTED = 1,
 }
 impl From<ISOOUTCRC_A> for bool {
     #[inline(always)]
     fn from(variant: ISOOUTCRC_A) -> Self {
-        match variant {
-            ISOOUTCRC_A::NOTDETECTED => false,
-            ISOOUTCRC_A::DETECTED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `ISOOUTCRC`"]
-pub type ISOOUTCRC_R = crate::R<bool, ISOOUTCRC_A>;
+#[doc = "Field `ISOOUTCRC` reader - CRC error was detected on isochronous OUT endpoint 8. Write '1' to clear."]
+pub struct ISOOUTCRC_R(crate::FieldReader<bool, ISOOUTCRC_A>);
 impl ISOOUTCRC_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        ISOOUTCRC_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> ISOOUTCRC_A {
@@ -41,15 +63,22 @@ impl ISOOUTCRC_R {
     #[doc = "Checks if the value of the field is `NOTDETECTED`"]
     #[inline(always)]
     pub fn is_not_detected(&self) -> bool {
-        *self == ISOOUTCRC_A::NOTDETECTED
+        **self == ISOOUTCRC_A::NOTDETECTED
     }
     #[doc = "Checks if the value of the field is `DETECTED`"]
     #[inline(always)]
     pub fn is_detected(&self) -> bool {
-        *self == ISOOUTCRC_A::DETECTED
+        **self == ISOOUTCRC_A::DETECTED
     }
 }
-#[doc = "Write proxy for field `ISOOUTCRC`"]
+impl core::ops::Deref for ISOOUTCRC_R {
+    type Target = crate::FieldReader<bool, ISOOUTCRC_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `ISOOUTCRC` writer - CRC error was detected on isochronous OUT endpoint 8. Write '1' to clear."]
 pub struct ISOOUTCRC_W<'a> {
     w: &'a mut W,
 }
@@ -57,9 +86,7 @@ impl<'a> ISOOUTCRC_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: ISOOUTCRC_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "No error detected"]
     #[inline(always)]
@@ -92,22 +119,22 @@ impl<'a> ISOOUTCRC_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum SUSPEND_A {
     #[doc = "0: Suspend not detected"]
-    NOTDETECTED,
+    NOTDETECTED = 0,
     #[doc = "1: Suspend detected"]
-    DETECTED,
+    DETECTED = 1,
 }
 impl From<SUSPEND_A> for bool {
     #[inline(always)]
     fn from(variant: SUSPEND_A) -> Self {
-        match variant {
-            SUSPEND_A::NOTDETECTED => false,
-            SUSPEND_A::DETECTED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `SUSPEND`"]
-pub type SUSPEND_R = crate::R<bool, SUSPEND_A>;
+#[doc = "Field `SUSPEND` reader - Signals that USB lines have been idle long enough for the device to enter suspend. Write '1' to clear."]
+pub struct SUSPEND_R(crate::FieldReader<bool, SUSPEND_A>);
 impl SUSPEND_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        SUSPEND_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> SUSPEND_A {
@@ -119,15 +146,22 @@ impl SUSPEND_R {
     #[doc = "Checks if the value of the field is `NOTDETECTED`"]
     #[inline(always)]
     pub fn is_not_detected(&self) -> bool {
-        *self == SUSPEND_A::NOTDETECTED
+        **self == SUSPEND_A::NOTDETECTED
     }
     #[doc = "Checks if the value of the field is `DETECTED`"]
     #[inline(always)]
     pub fn is_detected(&self) -> bool {
-        *self == SUSPEND_A::DETECTED
+        **self == SUSPEND_A::DETECTED
     }
 }
-#[doc = "Write proxy for field `SUSPEND`"]
+impl core::ops::Deref for SUSPEND_R {
+    type Target = crate::FieldReader<bool, SUSPEND_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `SUSPEND` writer - Signals that USB lines have been idle long enough for the device to enter suspend. Write '1' to clear."]
 pub struct SUSPEND_W<'a> {
     w: &'a mut W,
 }
@@ -135,9 +169,7 @@ impl<'a> SUSPEND_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: SUSPEND_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Suspend not detected"]
     #[inline(always)]
@@ -170,22 +202,22 @@ impl<'a> SUSPEND_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum RESUME_A {
     #[doc = "0: Resume not detected"]
-    NOTDETECTED,
+    NOTDETECTED = 0,
     #[doc = "1: Resume detected"]
-    DETECTED,
+    DETECTED = 1,
 }
 impl From<RESUME_A> for bool {
     #[inline(always)]
     fn from(variant: RESUME_A) -> Self {
-        match variant {
-            RESUME_A::NOTDETECTED => false,
-            RESUME_A::DETECTED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `RESUME`"]
-pub type RESUME_R = crate::R<bool, RESUME_A>;
+#[doc = "Field `RESUME` reader - Signals that a RESUME condition (K state or activity restart) has been detected on USB lines. Write '1' to clear."]
+pub struct RESUME_R(crate::FieldReader<bool, RESUME_A>);
 impl RESUME_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        RESUME_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> RESUME_A {
@@ -197,15 +229,22 @@ impl RESUME_R {
     #[doc = "Checks if the value of the field is `NOTDETECTED`"]
     #[inline(always)]
     pub fn is_not_detected(&self) -> bool {
-        *self == RESUME_A::NOTDETECTED
+        **self == RESUME_A::NOTDETECTED
     }
     #[doc = "Checks if the value of the field is `DETECTED`"]
     #[inline(always)]
     pub fn is_detected(&self) -> bool {
-        *self == RESUME_A::DETECTED
+        **self == RESUME_A::DETECTED
     }
 }
-#[doc = "Write proxy for field `RESUME`"]
+impl core::ops::Deref for RESUME_R {
+    type Target = crate::FieldReader<bool, RESUME_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `RESUME` writer - Signals that a RESUME condition (K state or activity restart) has been detected on USB lines. Write '1' to clear."]
 pub struct RESUME_W<'a> {
     w: &'a mut W,
 }
@@ -213,9 +252,7 @@ impl<'a> RESUME_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: RESUME_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Resume not detected"]
     #[inline(always)]
@@ -248,22 +285,22 @@ impl<'a> RESUME_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum USBWUALLOWED_A {
     #[doc = "0: Wake up not allowed"]
-    NOTALLOWED,
+    NOTALLOWED = 0,
     #[doc = "1: Wake up allowed"]
-    ALLOWED,
+    ALLOWED = 1,
 }
 impl From<USBWUALLOWED_A> for bool {
     #[inline(always)]
     fn from(variant: USBWUALLOWED_A) -> Self {
-        match variant {
-            USBWUALLOWED_A::NOTALLOWED => false,
-            USBWUALLOWED_A::ALLOWED => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `USBWUALLOWED`"]
-pub type USBWUALLOWED_R = crate::R<bool, USBWUALLOWED_A>;
+#[doc = "Field `USBWUALLOWED` reader - USB MAC has been woken up and operational. Write '1' to clear."]
+pub struct USBWUALLOWED_R(crate::FieldReader<bool, USBWUALLOWED_A>);
 impl USBWUALLOWED_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        USBWUALLOWED_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> USBWUALLOWED_A {
@@ -275,15 +312,22 @@ impl USBWUALLOWED_R {
     #[doc = "Checks if the value of the field is `NOTALLOWED`"]
     #[inline(always)]
     pub fn is_not_allowed(&self) -> bool {
-        *self == USBWUALLOWED_A::NOTALLOWED
+        **self == USBWUALLOWED_A::NOTALLOWED
     }
     #[doc = "Checks if the value of the field is `ALLOWED`"]
     #[inline(always)]
     pub fn is_allowed(&self) -> bool {
-        *self == USBWUALLOWED_A::ALLOWED
+        **self == USBWUALLOWED_A::ALLOWED
     }
 }
-#[doc = "Write proxy for field `USBWUALLOWED`"]
+impl core::ops::Deref for USBWUALLOWED_R {
+    type Target = crate::FieldReader<bool, USBWUALLOWED_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `USBWUALLOWED` writer - USB MAC has been woken up and operational. Write '1' to clear."]
 pub struct USBWUALLOWED_W<'a> {
     w: &'a mut W,
 }
@@ -291,9 +335,7 @@ impl<'a> USBWUALLOWED_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: USBWUALLOWED_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Wake up not allowed"]
     #[inline(always)]
@@ -326,22 +368,22 @@ impl<'a> USBWUALLOWED_W<'a> {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum READY_A {
     #[doc = "0: USBEVENT was not issued due to USBD peripheral ready"]
-    NOTDETECTED,
+    NOTDETECTED = 0,
     #[doc = "1: USBD peripheral is ready"]
-    READY,
+    READY = 1,
 }
 impl From<READY_A> for bool {
     #[inline(always)]
     fn from(variant: READY_A) -> Self {
-        match variant {
-            READY_A::NOTDETECTED => false,
-            READY_A::READY => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `READY`"]
-pub type READY_R = crate::R<bool, READY_A>;
+#[doc = "Field `READY` reader - USB device is ready for normal operation. Write '1' to clear."]
+pub struct READY_R(crate::FieldReader<bool, READY_A>);
 impl READY_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        READY_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> READY_A {
@@ -353,15 +395,22 @@ impl READY_R {
     #[doc = "Checks if the value of the field is `NOTDETECTED`"]
     #[inline(always)]
     pub fn is_not_detected(&self) -> bool {
-        *self == READY_A::NOTDETECTED
+        **self == READY_A::NOTDETECTED
     }
     #[doc = "Checks if the value of the field is `READY`"]
     #[inline(always)]
     pub fn is_ready(&self) -> bool {
-        *self == READY_A::READY
+        **self == READY_A::READY
     }
 }
-#[doc = "Write proxy for field `READY`"]
+impl core::ops::Deref for READY_R {
+    type Target = crate::FieldReader<bool, READY_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `READY` writer - USB device is ready for normal operation. Write '1' to clear."]
 pub struct READY_W<'a> {
     w: &'a mut W,
 }
@@ -369,9 +418,7 @@ impl<'a> READY_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: READY_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "USBEVENT was not issued due to USBD peripheral ready"]
     #[inline(always)]
@@ -452,5 +499,30 @@ impl W {
     #[inline(always)]
     pub fn ready(&mut self) -> READY_W {
         READY_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Details on what caused the USBEVENT event\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [eventcause](index.html) module"]
+pub struct EVENTCAUSE_SPEC;
+impl crate::RegisterSpec for EVENTCAUSE_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [eventcause::R](R) reader structure"]
+impl crate::Readable for EVENTCAUSE_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [eventcause::W](W) writer structure"]
+impl crate::Writable for EVENTCAUSE_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets EVENTCAUSE to value 0"]
+impl crate::Resettable for EVENTCAUSE_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

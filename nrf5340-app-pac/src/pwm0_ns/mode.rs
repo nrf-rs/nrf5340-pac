@@ -1,35 +1,57 @@
-#[doc = "Reader of register MODE"]
-pub type R = crate::R<u32, super::MODE>;
-#[doc = "Writer for register MODE"]
-pub type W = crate::W<u32, super::MODE>;
-#[doc = "Register MODE `reset()`'s with value 0"]
-impl crate::ResetValue for super::MODE {
-    type Type = u32;
+#[doc = "Register `MODE` reader"]
+pub struct R(crate::R<MODE_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<MODE_SPEC>;
     #[inline(always)]
-    fn reset_value() -> Self::Type {
-        0
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<MODE_SPEC>> for R {
+    fn from(reader: crate::R<MODE_SPEC>) -> Self {
+        R(reader)
+    }
+}
+#[doc = "Register `MODE` writer"]
+pub struct W(crate::W<MODE_SPEC>);
+impl core::ops::Deref for W {
+    type Target = crate::W<MODE_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::ops::DerefMut for W {
+    #[inline(always)]
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl core::convert::From<crate::W<MODE_SPEC>> for W {
+    fn from(writer: crate::W<MODE_SPEC>) -> Self {
+        W(writer)
     }
 }
 #[doc = "Selects up mode or up-and-down mode for the counter\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum UPDOWN_A {
     #[doc = "0: Up counter, edge-aligned PWM duty cycle"]
-    UP,
+    UP = 0,
     #[doc = "1: Up and down counter, center-aligned PWM duty cycle"]
-    UPANDDOWN,
+    UPANDDOWN = 1,
 }
 impl From<UPDOWN_A> for bool {
     #[inline(always)]
     fn from(variant: UPDOWN_A) -> Self {
-        match variant {
-            UPDOWN_A::UP => false,
-            UPDOWN_A::UPANDDOWN => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `UPDOWN`"]
-pub type UPDOWN_R = crate::R<bool, UPDOWN_A>;
+#[doc = "Field `UPDOWN` reader - Selects up mode or up-and-down mode for the counter"]
+pub struct UPDOWN_R(crate::FieldReader<bool, UPDOWN_A>);
 impl UPDOWN_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        UPDOWN_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> UPDOWN_A {
@@ -41,15 +63,22 @@ impl UPDOWN_R {
     #[doc = "Checks if the value of the field is `UP`"]
     #[inline(always)]
     pub fn is_up(&self) -> bool {
-        *self == UPDOWN_A::UP
+        **self == UPDOWN_A::UP
     }
     #[doc = "Checks if the value of the field is `UPANDDOWN`"]
     #[inline(always)]
     pub fn is_up_and_down(&self) -> bool {
-        *self == UPDOWN_A::UPANDDOWN
+        **self == UPDOWN_A::UPANDDOWN
     }
 }
-#[doc = "Write proxy for field `UPDOWN`"]
+impl core::ops::Deref for UPDOWN_R {
+    type Target = crate::FieldReader<bool, UPDOWN_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+#[doc = "Field `UPDOWN` writer - Selects up mode or up-and-down mode for the counter"]
 pub struct UPDOWN_W<'a> {
     w: &'a mut W,
 }
@@ -57,9 +86,7 @@ impl<'a> UPDOWN_W<'a> {
     #[doc = r"Writes `variant` to the field"]
     #[inline(always)]
     pub fn variant(self, variant: UPDOWN_A) -> &'a mut W {
-        {
-            self.bit(variant.into())
-        }
+        self.bit(variant.into())
     }
     #[doc = "Up counter, edge-aligned PWM duty cycle"]
     #[inline(always)]
@@ -100,5 +127,30 @@ impl W {
     #[inline(always)]
     pub fn updown(&mut self) -> UPDOWN_W {
         UPDOWN_W { w: self }
+    }
+    #[doc = "Writes raw bits to the register."]
+    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
+        self.0.bits(bits);
+        self
+    }
+}
+#[doc = "Selects operating mode of the wave counter\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [mode](index.html) module"]
+pub struct MODE_SPEC;
+impl crate::RegisterSpec for MODE_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [mode::R](R) reader structure"]
+impl crate::Readable for MODE_SPEC {
+    type Reader = R;
+}
+#[doc = "`write(|w| ..)` method takes [mode::W](W) writer structure"]
+impl crate::Writable for MODE_SPEC {
+    type Writer = W;
+}
+#[doc = "`reset()` method sets MODE to value 0"]
+impl crate::Resettable for MODE_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
     }
 }

@@ -8,7 +8,7 @@ pub struct RegisterBlock {
 #[repr(C)]
 pub struct SET {
     #[doc = "0x00 - Description collection: Cache information for SET\\[n\\], WAY\\[o\\]."]
-    pub way: [self::set::WAY; 2],
+    pub way: [crate::Reg<self::set::way::WAY_SPEC>; 2],
 }
 #[doc = r"Register block"]
 #[doc = "Unspecified"]

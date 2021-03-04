@@ -1,25 +1,37 @@
-#[doc = "Reader of register DEVICEADDRTYPE"]
-pub type R = crate::R<u32, super::DEVICEADDRTYPE>;
+#[doc = "Register `DEVICEADDRTYPE` reader"]
+pub struct R(crate::R<DEVICEADDRTYPE_SPEC>);
+impl core::ops::Deref for R {
+    type Target = crate::R<DEVICEADDRTYPE_SPEC>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl core::convert::From<crate::R<DEVICEADDRTYPE_SPEC>> for R {
+    fn from(reader: crate::R<DEVICEADDRTYPE_SPEC>) -> Self {
+        R(reader)
+    }
+}
 #[doc = "Device address type\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum DEVICEADDRTYPE_A {
     #[doc = "0: Public address"]
-    PUBLIC,
+    PUBLIC = 0,
     #[doc = "1: Random address"]
-    RANDOM,
+    RANDOM = 1,
 }
 impl From<DEVICEADDRTYPE_A> for bool {
     #[inline(always)]
     fn from(variant: DEVICEADDRTYPE_A) -> Self {
-        match variant {
-            DEVICEADDRTYPE_A::PUBLIC => false,
-            DEVICEADDRTYPE_A::RANDOM => true,
-        }
+        variant as u8 != 0
     }
 }
-#[doc = "Reader of field `DEVICEADDRTYPE`"]
-pub type DEVICEADDRTYPE_R = crate::R<bool, DEVICEADDRTYPE_A>;
+#[doc = "Field `DEVICEADDRTYPE` reader - Device address type"]
+pub struct DEVICEADDRTYPE_R(crate::FieldReader<bool, DEVICEADDRTYPE_A>);
 impl DEVICEADDRTYPE_R {
+    pub(crate) fn new(bits: bool) -> Self {
+        DEVICEADDRTYPE_R(crate::FieldReader::new(bits))
+    }
     #[doc = r"Get enumerated values variant"]
     #[inline(always)]
     pub fn variant(&self) -> DEVICEADDRTYPE_A {
@@ -31,12 +43,19 @@ impl DEVICEADDRTYPE_R {
     #[doc = "Checks if the value of the field is `PUBLIC`"]
     #[inline(always)]
     pub fn is_public(&self) -> bool {
-        *self == DEVICEADDRTYPE_A::PUBLIC
+        **self == DEVICEADDRTYPE_A::PUBLIC
     }
     #[doc = "Checks if the value of the field is `RANDOM`"]
     #[inline(always)]
     pub fn is_random(&self) -> bool {
-        *self == DEVICEADDRTYPE_A::RANDOM
+        **self == DEVICEADDRTYPE_A::RANDOM
+    }
+}
+impl core::ops::Deref for DEVICEADDRTYPE_R {
+    type Target = crate::FieldReader<bool, DEVICEADDRTYPE_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 impl R {
@@ -44,5 +63,21 @@ impl R {
     #[inline(always)]
     pub fn deviceaddrtype(&self) -> DEVICEADDRTYPE_R {
         DEVICEADDRTYPE_R::new((self.bits & 0x01) != 0)
+    }
+}
+#[doc = "Device address type\n\nThis register you can [`read`](crate::generic::Reg::read). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [deviceaddrtype](index.html) module"]
+pub struct DEVICEADDRTYPE_SPEC;
+impl crate::RegisterSpec for DEVICEADDRTYPE_SPEC {
+    type Ux = u32;
+}
+#[doc = "`read()` method returns [deviceaddrtype::R](R) reader structure"]
+impl crate::Readable for DEVICEADDRTYPE_SPEC {
+    type Reader = R;
+}
+#[doc = "`reset()` method sets DEVICEADDRTYPE to value 0xffff_ffff"]
+impl crate::Resettable for DEVICEADDRTYPE_SPEC {
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0xffff_ffff
     }
 }
